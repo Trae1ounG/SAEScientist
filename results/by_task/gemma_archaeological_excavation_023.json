@@ -4,7 +4,20 @@
   "suite": "data/discovery/gemma_l20_round_005_validation.json",
   "expert": {
     "feature_id": 7256,
-    "reference": "data/eval/gemma_archaeological_excavation_l20_7256_reference.json"
+    "reference": "data/eval/gemma_archaeological_excavation_l20_7256_reference.json",
+    "score_baseline": {
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0
+    },
+    "steering": {
+      "target_effect": 0.30625,
+      "target_relevance": 1.225,
+      "task_preservation": 0.875,
+      "causal_stable": false,
+      "usable_steering": false
+    }
   },
   "agents": [
     {
@@ -23,6 +36,14 @@
         "activation_contrast_recovery": 1.0,
         "expert_pattern_spearman": 1.0,
         "mean_score": 1.0
+      },
+      "scores": {
+        "rank_score": 1.0,
+        "activation_score": 1.0,
+        "steering_effect_recovery": 1.0,
+        "steering_pattern_recovery": 1.0,
+        "steering_score": 1.0,
+        "overall_score": 1.0
       },
       "activation": {
         "positive_mean_rank": 53.125,
@@ -43,7 +64,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
-        "source": "expert feature freshly scored by the selected judge"
+        "source": "expert feature freshly scored by the selected judge",
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 1.0
     },
@@ -64,6 +86,14 @@
         "expert_pattern_spearman": 1.0,
         "mean_score": 1.0
       },
+      "scores": {
+        "rank_score": 1.0,
+        "activation_score": 1.0,
+        "steering_effect_recovery": 1.0,
+        "steering_pattern_recovery": 1.0,
+        "steering_score": 1.0,
+        "overall_score": 1.0
+      },
       "activation": {
         "positive_mean_rank": 53.125,
         "positive_mean_percentile": 0.9996023147759612,
@@ -83,7 +113,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
-        "source": "expert feature freshly scored by the selected judge"
+        "source": "expert feature freshly scored by the selected judge",
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 1.0
     },
@@ -104,6 +135,14 @@
         "expert_pattern_spearman": 0.613650925702603,
         "mean_score": 0.6503055279439428
       },
+      "scores": {
+        "rank_score": 0.02359800111049417,
+        "activation_score": 0.8592080368884257,
+        "steering_effect_recovery": 1.0,
+        "steering_pattern_recovery": 0.46450192862529766,
+        "steering_score": 0.7322509643126488,
+        "overall_score": 0.5383523341038562
+      },
       "activation": {
         "positive_mean_rank": 2251.25,
         "positive_mean_percentile": 0.9828318239732664,
@@ -122,7 +161,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 300.0,
-        "pattern_correlation_to_expert": 0.46450192862529766
+        "pattern_correlation_to_expert": 0.46450192862529766,
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 0.6503055279439428
     },
@@ -143,6 +183,14 @@
         "expert_pattern_spearman": 0.7314277747276748,
         "mean_score": 0.6211089436859023
       },
+      "scores": {
+        "rank_score": 0.01871999295247324,
+        "activation_score": 0.8219052605970454,
+        "steering_effect_recovery": 0.0,
+        "steering_pattern_recovery": 0.0,
+        "steering_score": 0.0,
+        "overall_score": 0.2802084178498396
+      },
       "activation": {
         "positive_mean_rank": 2837.875,
         "positive_mean_percentile": 0.9783561962600422,
@@ -161,7 +209,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": null
+        "pattern_correlation_to_expert": null,
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 0.6211089436859023
     },
@@ -182,6 +231,14 @@
         "expert_pattern_spearman": 0.8599759835065042,
         "mean_score": 0.5983162624689591
       },
+      "scores": {
+        "rank_score": 0.17864649012189995,
+        "activation_score": 0.7382061865846454,
+        "steering_effect_recovery": 0.04081632653061224,
+        "steering_pattern_recovery": 0.3441831532162229,
+        "steering_score": 0.19249973987341756,
+        "overall_score": 0.3697841388599876
+      },
       "activation": {
         "positive_mean_rank": 297.375,
         "positive_mean_percentile": 0.9977388209443736,
@@ -200,7 +257,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": 0.3441831532162229
+        "pattern_correlation_to_expert": 0.3441831532162229,
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 0.5983162624689591
     },
@@ -221,6 +279,14 @@
         "expert_pattern_spearman": 0.8599759835065042,
         "mean_score": 0.5983162624689591
       },
+      "scores": {
+        "rank_score": 0.17864649012189995,
+        "activation_score": 0.7382061865846454,
+        "steering_effect_recovery": 0.04081632653061224,
+        "steering_pattern_recovery": 0.3441831532162229,
+        "steering_score": 0.19249973987341756,
+        "overall_score": 0.3697841388599876
+      },
       "activation": {
         "positive_mean_rank": 297.375,
         "positive_mean_percentile": 0.9977388209443736,
@@ -239,7 +305,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": 0.3441831532162229
+        "pattern_correlation_to_expert": 0.3441831532162229,
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 0.5983162624689591
     },
@@ -260,6 +327,14 @@
         "expert_pattern_spearman": 0.8599759835065042,
         "mean_score": 0.5983162624689591
       },
+      "scores": {
+        "rank_score": 0.17864649012189995,
+        "activation_score": 0.7382061865846454,
+        "steering_effect_recovery": 0.04081632653061224,
+        "steering_pattern_recovery": 0.3441831532162229,
+        "steering_score": 0.19249973987341756,
+        "overall_score": 0.3697841388599876
+      },
       "activation": {
         "positive_mean_rank": 297.375,
         "positive_mean_percentile": 0.9977388209443736,
@@ -278,7 +353,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": 0.3441831532162229
+        "pattern_correlation_to_expert": 0.3441831532162229,
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 0.5983162624689591
     },
@@ -299,6 +375,14 @@
         "expert_pattern_spearman": 0.7314277747276748,
         "mean_score": 0.6211089436859023
       },
+      "scores": {
+        "rank_score": 0.01871999295247324,
+        "activation_score": 0.8219052605970454,
+        "steering_effect_recovery": 0.0,
+        "steering_pattern_recovery": 0.0,
+        "steering_score": 0.0,
+        "overall_score": 0.2802084178498396
+      },
       "activation": {
         "positive_mean_rank": 2837.875,
         "positive_mean_percentile": 0.9783561962600422,
@@ -317,7 +401,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": null
+        "pattern_correlation_to_expert": null,
+        "expert_target_effect": 0.30625
       },
       "feature_discovery_score": 0.6211089436859023
     }

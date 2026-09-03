@@ -22,6 +22,53 @@ def mean(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
 
+def clip_unit(value: float) -> float:
+    return min(max(float(value), 0.0), 1.0)
+
+
+def benchmark_scores(
+    activation: dict[str, Any],
+    steering: dict[str, Any],
+    expert_steering: dict[str, Any],
+) -> dict[str, float]:
+    """Return three expert-normalized blocks and their equal-weight mean."""
+    fallback = float(activation["mean_score"])
+    rank_score = clip_unit(activation.get("positive_rank_recovery", fallback))
+    activation_parts = [
+        activation[key]
+        for key in (
+            "auroc_recovery",
+            "activation_contrast_recovery",
+            "expert_pattern_spearman",
+        )
+        if key in activation
+    ]
+    activation_score = (
+        mean([clip_unit(value) for value in activation_parts])
+        if activation_parts
+        else clip_unit(fallback)
+    )
+    expert_effect = float(expert_steering["target_effect"])
+    if expert_effect <= 0:
+        raise ValueError("expert steering target effect must be positive")
+    effect_recovery = clip_unit(
+        max(float(steering["target_effect"]), 0.0) / expert_effect
+    )
+    pattern_recovery = clip_unit(
+        steering.get("pattern_correlation_to_expert") or 0.0
+    )
+    steering_score = mean([effect_recovery, pattern_recovery])
+    overall_score = mean([rank_score, activation_score, steering_score])
+    return {
+        "rank_score": rank_score,
+        "activation_score": activation_score,
+        "steering_effect_recovery": effect_recovery,
+        "steering_pattern_recovery": pattern_recovery,
+        "steering_score": steering_score,
+        "overall_score": overall_score,
+    }
+
+
 def ranks(values: list[float]) -> list[float]:
     order = sorted(range(len(values)), key=values.__getitem__)
     output = [0.0] * len(values)
@@ -351,6 +398,7 @@ def build_results(args: argparse.Namespace) -> dict[str, Any]:
     raw_results = index_files(args.candidate_result_dir, ".json")
 
     agents_by_task: dict[str, list[dict[str, Any]]] = {task: [] for task in task_rows}
+    expert_metrics_by_task: dict[str, dict[str, Any]] = {}
     skipped: dict[str, str] = {}
     judge_models: set[str] = set()
     judge_providers: set[str] = set()
@@ -414,6 +462,7 @@ def build_results(args: argparse.Namespace) -> dict[str, Any]:
                 judge_providers.add(str(expert_summary.get("judge_provider", "unknown")))
             else:
                 steering = frozen_expert_steering(reference)
+            expert_steering = steering
         else:
             candidate_id = f"{task['task_id']}__candidate_{score['feature_id']}"
             expert_id = f"{task['task_id']}__expert_anchor"
@@ -445,12 +494,23 @@ def build_results(args: argparse.Namespace) -> dict[str, Any]:
                 skipped[run_id] = str(error)
                 continue
             steering = steering_from_summary(candidate_summary)
+            expert_steering = steering_from_summary(read_json(required["expert summary"]))
             judge_models.add(str(candidate_summary["judge_model"]))
             judge_providers.add(str(candidate_summary.get("judge_provider", "unknown")))
             steering["selected_alpha"] = raw["steering"]["selected_alpha"]
             steering["pattern_correlation_to_expert"] = pattern_correlation(
                 required["candidate judge rows"], required["expert judge rows"]
             )
+
+        scores = benchmark_scores(score["gt_normalized"], steering, expert_steering)
+        steering["expert_target_effect"] = expert_steering["target_effect"]
+        expert_metrics_by_task[task_name] = {
+            "target_effect": expert_steering["target_effect"],
+            "target_relevance": expert_steering["pe_target_relevance"],
+            "task_preservation": expert_steering["pe_task_preservation"],
+            "causal_stable": expert_steering["causal_stable"],
+            "usable_steering": expert_steering["usable_steering"],
+        }
 
         agents_by_task[task_name].append(
             {
@@ -464,6 +524,7 @@ def build_results(args: argparse.Namespace) -> dict[str, Any]:
                 "feature_id": score["feature_id"],
                 "exact_match": exact,
                 "gt_normalized": score["gt_normalized"],
+                "scores": scores,
                 "activation": compact_activation(score),
                 "steering": steering,
             }
@@ -487,6 +548,13 @@ def build_results(args: argparse.Namespace) -> dict[str, Any]:
             "expert": {
                 "feature_id": row["expert_feature_id"],
                 "reference": row["reference"],
+                "score_baseline": {
+                    "rank_score": 1.0,
+                    "activation_score": 1.0,
+                    "steering_score": 1.0,
+                    "overall_score": 1.0,
+                },
+                "steering": expert_metrics_by_task.get(task_name),
             },
             "agents": sorted(agents, key=lambda item: item["model"]),
         }
@@ -525,4 +593,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

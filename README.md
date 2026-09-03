@@ -24,7 +24,7 @@ then measures localization, held-out activation selectivity, and causal steering
 | Agent input | An English description of the target feature |
 | Agent access | Text-to-activation probe; no web, labels, expert IDs, or hidden cases |
 | Submission | One feature ID |
-| Evaluation | Feature Discovery Score, exact match, target relevance, causal steering, usable steering |
+| Evaluation | Overall Score, rank, activation, steering, exact match, causal control, usable control |
 
 The agent controls its probe texts, analysis, and search strategy. The trusted
 runtime controls the model and SAE, hidden evaluation cases, steering rollouts,
@@ -38,23 +38,30 @@ per task under `results/by_task/`. Raw Agent traces and judge transcripts remain
 
 ## Results
 
-The current 20-feature experiment uses the same hidden cases and expert
-directions for every agent. For each task, **Feature Discovery Score** is the mean of four
-expert-normalized activation measurements: positive-rank recovery, AUROC recovery,
-activation-contrast recovery, and activation-pattern Spearman. It lies in `[0, 1]`.
-The table reports its mean over 20 tasks and its sum out of 20. Steering is
-evaluated against baseline and norm-matched random controls.
+The current 20-feature experiment uses the same hidden cases and expert directions
+for every agent. Each task has three scores in `[0, 1]`, normalized so the Expert
+feature scores `1.0`: **Rank** measures positive-case rank recovery; **Activation**
+averages AUROC, positive-versus-control contrast, and per-case activation-pattern
+recovery; **Steering** averages control-adjusted effect recovery and per-instruction
+steering-pattern recovery. **Overall** is their equal-weight mean. **Total** sums
+Overall across 20 tasks, so the Expert baseline is `20.0 / 20`.
 
-| Model | Mean Discovery Score ↑ | Total / 20 ↑ | Exact ↑ | Target relevance ↑ | Causal ↑ |
-|---|---:|---:|---:|---:|---:|
-| Kimi K3 High | **0.794** | **15.882** | **35%** | 0.281 | **15%** |
-| Grok 4.6 High | 0.786 | 15.718 | **35%** | **0.303** | **15%** |
-| Claude Sonnet 5 High | 0.783 | 15.662 | 30% | 0.277 | 10% |
-| Claude Opus 4.8 High | 0.776 | 15.526 | **35%** | 0.226 | 10% |
-| GPT-5.6 Sol High | 0.752 | 15.043 | **35%** | 0.298 | **15%** |
-| GPT-5.5 High | 0.697 | 13.933 | 30% | 0.217 | 10% |
-| GLM-5.2 High | 0.692 | 13.846 | 20% | 0.242 | **15%** |
-| GPT-5.6 Luna High | 0.645 | 12.894 | 15% | 0.170 | 5% |
+| Model | Overall ↑ | Total / 20 ↑ | Rank ↑ | Activation ↑ | Steering ↑ | Exact ↑ | Causal ↑ | Usable ↑ |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Expert feature baseline | **1.000** | **20.000** | **1.000** | **1.000** | **1.000** | **100%** | 60% | 0% |
+| Kimi K3 High | **0.641** | **12.813** | **0.603** | 0.858 | 0.461 | **35%** | **15%** | 0% |
+| Grok 4.6 High | 0.640 | 12.803 | 0.558 | **0.862** | **0.500** | **35%** | **15%** | 0% |
+| Claude Sonnet 5 High | 0.617 | 12.343 | 0.561 | 0.857 | 0.433 | 30% | 10% | 0% |
+| Claude Opus 4.8 High | 0.617 | 12.341 | 0.560 | 0.848 | 0.443 | **35%** | 10% | 0% |
+| GPT-5.6 Sol High | 0.597 | 11.947 | 0.461 | 0.849 | 0.482 | **35%** | **15%** | 0% |
+| GPT-5.5 High | 0.540 | 10.796 | 0.431 | 0.785 | 0.403 | 30% | 10% | 0% |
+| GLM-5.2 High | 0.512 | 10.241 | 0.408 | 0.787 | 0.341 | 20% | **15%** | 0% |
+| GPT-5.6 Luna High | 0.453 | 9.063 | 0.315 | 0.755 | 0.290 | 15% | 5% | 0% |
+
+Target relevance is the judge's raw semantic-strength measurement. Causal requires
+the steered output to beat both the unsteered and norm-matched-random controls;
+Usable additionally requires task preservation and non-degenerate text. They remain
+separate audit columns instead of being counted a second time in Overall.
 
 These are single-run measurements. Three-run mean and variance, including
 Claude Opus 5, will replace this table after the repeated evaluation completes.

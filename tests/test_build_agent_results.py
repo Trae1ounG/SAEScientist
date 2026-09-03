@@ -236,6 +236,24 @@ class BuildAgentResultsTest(unittest.TestCase):
         )
         self.assertEqual(output["agents"][0]["reasoning_effort"], "high")
         self.assertTrue(output["agents"][0]["exact_match"])
+        self.assertEqual(output["agents"][0]["scores"]["overall_score"], 1.0)
+        self.assertEqual(output["expert"]["score_baseline"]["overall_score"], 1.0)
+
+    def test_benchmark_scores_are_expert_normalized(self):
+        activation = {
+            "positive_rank_recovery": 0.6,
+            "auroc_recovery": 0.9,
+            "activation_contrast_recovery": 0.6,
+            "expert_pattern_spearman": 0.3,
+            "mean_score": 0.6,
+        }
+        steering = {"target_effect": 0.2, "pattern_correlation_to_expert": 0.5}
+        expert = {"target_effect": 0.4}
+        scores = build_agent_results.benchmark_scores(activation, steering, expert)
+        self.assertAlmostEqual(scores["rank_score"], 0.6)
+        self.assertAlmostEqual(scores["activation_score"], 0.6)
+        self.assertAlmostEqual(scores["steering_score"], 0.5)
+        self.assertAlmostEqual(scores["overall_score"], 17 / 30)
 
     def test_validate_pe_pair_requires_complete_matching_pair(self):
         with TemporaryDirectory() as directory:
@@ -368,4 +386,3 @@ class BuildAgentResultsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

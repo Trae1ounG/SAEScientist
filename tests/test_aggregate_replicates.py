@@ -17,6 +17,11 @@ def leaderboard(activation: float, exact: float, feature_ids: list[int]) -> dict
         "model": "model",
         "reasoning_effort": "high",
         "completed_tasks": 2,
+        "mean_overall_score": activation,
+        "total_overall_score": activation * 2,
+        "mean_rank_score": activation,
+        "mean_activation_score": activation,
+        "mean_steering_score": activation,
         "macro_gt_normalized_activation": activation,
         "exact_match_rate": exact,
         "causal_steering_rate": exact,
@@ -52,6 +57,8 @@ class AggregateReplicatesTest(unittest.TestCase):
             ]
         )
         row = payload["configurations"][0]
+        self.assertAlmostEqual(row["metrics"]["mean_overall_score"]["mean"], 0.8)
+        self.assertAlmostEqual(row["metrics"]["total_overall_score"]["mean"], 1.6)
         self.assertAlmostEqual(row["metrics"]["macro_gt_normalized_activation"]["mean"], 0.8)
         self.assertAlmostEqual(row["metrics"]["macro_gt_normalized_activation"]["std"], 0.1632993162)
         self.assertAlmostEqual(row["metrics"]["exact_match_rate"]["mean"], 0.5)

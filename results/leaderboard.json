@@ -11,6 +11,21 @@
     "skipped": 0,
     "skipped_by_reason": {}
   },
+  "expert_baseline": {
+    "label": "Expert feature baseline",
+    "completed_tasks": 20,
+    "benchmark_tasks": 20,
+    "mean_rank_score": 1.0,
+    "mean_activation_score": 1.0,
+    "mean_steering_score": 1.0,
+    "mean_overall_score": 1.0,
+    "total_overall_score": 20.0,
+    "maximum_overall_score": 20,
+    "exact_match_rate": 1.0,
+    "mean_target_relevance": 0.5774999999999999,
+    "causal_steering_rate": 0.6,
+    "usable_steering_rate": 0.0
+  },
   "configurations": [
     {
       "configuration": "cursor/kimi-k3-high",
@@ -22,16 +37,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.7941005651635598,
+      "total_feature_discovery_score": 15.882011303271195,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.7941005651635598,
+      "mean_rank_score": 0.6029320990477508,
+      "mean_activation_score": 0.8578233872021628,
+      "mean_steering_score": 0.4612298526587174,
+      "mean_overall_score": 0.6406617796362103,
+      "total_overall_score": 12.813235592724206,
+      "maximum_overall_score": 20,
       "exact_matches": 7,
       "exact_match_rate": 0.35,
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 301.7356703749974,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.7941005651635598,
-      "total_feature_discovery_score": 15.882011303271195,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     },
     {
       "configuration": "cursor/cursor-grok-4.6-high",
@@ -43,16 +64,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.7858872821550774,
+      "total_feature_discovery_score": 15.717745643101548,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.7858872821550774,
+      "mean_rank_score": 0.5583763585998331,
+      "mean_activation_score": 0.8617242566734922,
+      "mean_steering_score": 0.5003394138707529,
+      "mean_overall_score": 0.6401466763813594,
+      "total_overall_score": 12.802933527627188,
+      "maximum_overall_score": 20,
       "exact_matches": 7,
       "exact_match_rate": 0.35,
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 589.376303438039,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.7858872821550774,
-      "total_feature_discovery_score": 15.717745643101548,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     },
     {
       "configuration": "cursor/claude-sonnet-5-thinking-high",
@@ -64,16 +91,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.783093900285953,
+      "total_feature_discovery_score": 15.66187800571906,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.783093900285953,
+      "mean_rank_score": 0.5613601454809675,
+      "mean_activation_score": 0.8570051518876148,
+      "mean_steering_score": 0.43302917983697153,
+      "mean_overall_score": 0.6171314924018513,
+      "total_overall_score": 12.342629848037026,
+      "maximum_overall_score": 20,
       "exact_matches": 6,
       "exact_match_rate": 0.3,
       "causal_steering_rate": 0.1,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 490.1649296039832,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.783093900285953,
-      "total_feature_discovery_score": 15.66187800571906,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     },
     {
       "configuration": "cursor/claude-opus-4-8-thinking-high",
@@ -85,16 +118,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.7763089585324864,
+      "total_feature_discovery_score": 15.526179170649728,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.7763089585324864,
+      "mean_rank_score": 0.5600096679736402,
+      "mean_activation_score": 0.8484087220521017,
+      "mean_steering_score": 0.4427705157639238,
+      "mean_overall_score": 0.6170629685965553,
+      "total_overall_score": 12.341259371931105,
+      "maximum_overall_score": 20,
       "exact_matches": 7,
       "exact_match_rate": 0.35,
       "causal_steering_rate": 0.1,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 388.3133746870444,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.7763089585324864,
-      "total_feature_discovery_score": 15.526179170649728,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     },
     {
       "configuration": "codex/gpt-5.6-sol (high)",
@@ -106,16 +145,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.7521603455730868,
+      "total_feature_discovery_score": 15.043206911461736,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.7521603455730868,
+      "mean_rank_score": 0.4612565359782216,
+      "mean_activation_score": 0.8491282821047085,
+      "mean_steering_score": 0.48159924055977976,
+      "mean_overall_score": 0.59732801954757,
+      "total_overall_score": 11.946560390951399,
+      "maximum_overall_score": 20,
       "exact_matches": 7,
       "exact_match_rate": 0.35,
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 246.24218352104072,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.7521603455730868,
-      "total_feature_discovery_score": 15.043206911461734,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     },
     {
       "configuration": "cursor/gpt-5.5-high",
@@ -127,16 +172,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.6966665960616795,
+      "total_feature_discovery_score": 13.93333192123359,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.6966665960616795,
+      "mean_rank_score": 0.4306731465835645,
+      "mean_activation_score": 0.7853310792210512,
+      "mean_steering_score": 0.40344375155123985,
+      "mean_overall_score": 0.5398159924519519,
+      "total_overall_score": 10.796319849039037,
+      "maximum_overall_score": 20,
       "exact_matches": 6,
       "exact_match_rate": 0.3,
       "causal_steering_rate": 0.1,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 453.2804516039323,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.6966665960616795,
-      "total_feature_discovery_score": 13.93333192123359,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     },
     {
       "configuration": "cursor/glm-5.2-high",
@@ -148,16 +199,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.692318814657453,
+      "total_feature_discovery_score": 13.84637629314906,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.692318814657453,
+      "mean_rank_score": 0.4084529814384668,
+      "mean_activation_score": 0.7869407590637818,
+      "mean_steering_score": 0.3407841971543508,
+      "mean_overall_score": 0.5120593125521997,
+      "total_overall_score": 10.241186251043995,
+      "maximum_overall_score": 20,
       "exact_matches": 4,
       "exact_match_rate": 0.2,
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 344.39874556293944,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.692318814657453,
-      "total_feature_discovery_score": 13.84637629314906,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     },
     {
       "configuration": "codex/gpt-5.6-luna (high)",
@@ -169,16 +226,22 @@
       "coverage_rate": 1.0,
       "missing_tasks": [],
       "completed_runs": 20,
+      "mean_feature_discovery_score": 0.644706699499655,
+      "total_feature_discovery_score": 12.8941339899931,
+      "maximum_feature_discovery_score": 20,
       "macro_gt_normalized_activation": 0.644706699499655,
+      "mean_rank_score": 0.3151209892356383,
+      "mean_activation_score": 0.7545686029209938,
+      "mean_steering_score": 0.28976740969723147,
+      "mean_overall_score": 0.4531523339512879,
+      "total_overall_score": 9.063046679025758,
+      "maximum_overall_score": 20,
       "exact_matches": 3,
       "exact_match_rate": 0.15,
       "causal_steering_rate": 0.05,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 241.27133481251076,
-      "latency_runs": 20,
-      "mean_feature_discovery_score": 0.644706699499655,
-      "total_feature_discovery_score": 12.8941339899931,
-      "maximum_feature_discovery_score": 20
+      "latency_runs": 20
     }
   ],
   "runs": [
@@ -193,6 +256,11 @@
       "selected_feature_id": 115400,
       "expert_feature_id": 7256,
       "exact_match": false,
+      "feature_discovery_score": 0.5983162624689591,
+      "rank_score": 0.17864649012189995,
+      "activation_score": 0.7382061865846454,
+      "steering_score": 0.19249973987341756,
+      "overall_score": 0.3697841388599876,
       "gt_normalized_activation": 0.5983162624689591,
       "positive_mean_rank": 297.375,
       "activation_auroc": 1.0,
@@ -203,8 +271,7 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 416.11441000003833,
-      "feature_discovery_score": 0.5983162624689591
+      "elapsed_seconds": 416.11441000003833
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -217,6 +284,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -227,8 +299,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 187.0747054159874,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 187.0747054159874
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -241,6 +312,11 @@
       "selected_feature_id": 85400,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.7413686435335088,
+      "rank_score": 0.3300751879699248,
+      "activation_score": 0.8784664620547035,
+      "steering_score": 0.0,
+      "overall_score": 0.40284721667487605,
       "gt_normalized_activation": 0.7413686435335088,
       "positive_mean_rank": 166.25,
       "activation_auroc": 1.0,
@@ -251,8 +327,7 @@
       "pe_task_preservation": 0.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 284.74970845796634,
-      "feature_discovery_score": 0.7413686435335088
+      "elapsed_seconds": 284.74970845796634
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -265,6 +340,11 @@
       "selected_feature_id": 34893,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.9667953667953668,
+      "rank_score": 1.0,
+      "activation_score": 0.9557271557271557,
+      "steering_score": 0.0,
+      "overall_score": 0.6519090519090519,
       "gt_normalized_activation": 0.9667953667953668,
       "positive_mean_rank": 14.25,
       "activation_auroc": 1.0,
@@ -275,8 +355,7 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 149.97037875000387,
-      "feature_discovery_score": 0.9667953667953668
+      "elapsed_seconds": 149.97037875000387
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -289,6 +368,11 @@
       "selected_feature_id": 59750,
       "expert_feature_id": 100747,
       "exact_match": false,
+      "feature_discovery_score": 0.6088345007659011,
+      "rank_score": 0.004336632009053004,
+      "activation_score": 0.810333790351517,
+      "steering_score": 0.4281254021725236,
+      "overall_score": 0.41426527484436454,
       "gt_normalized_activation": 0.6088345007659011,
       "positive_mean_rank": 16458.625,
       "activation_auroc": 0.921875,
@@ -299,8 +383,7 @@
       "pe_task_preservation": 1.4,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 505.78985995799303,
-      "feature_discovery_score": 0.6088345007659011
+      "elapsed_seconds": 505.78985995799303
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -313,6 +396,11 @@
       "selected_feature_id": 108861,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.38992352891356163,
+      "rank_score": 0.02418762362249223,
+      "activation_score": 0.5118354973439181,
+      "steering_score": 0.0,
+      "overall_score": 0.17867437365547012,
       "gt_normalized_activation": 0.38992352891356163,
       "positive_mean_rank": 2211.875,
       "activation_auroc": 0.8020833333333334,
@@ -323,8 +411,7 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 340.50170437502675,
-      "feature_discovery_score": 0.38992352891356163
+      "elapsed_seconds": 340.50170437502675
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -337,6 +424,11 @@
       "selected_feature_id": 2006,
       "expert_feature_id": 93406,
       "exact_match": false,
+      "feature_discovery_score": 0.6566680717609865,
+      "rank_score": 0.022552783109404992,
+      "activation_score": 0.868039834644847,
+      "steering_score": 0.44462487485127694,
+      "overall_score": 0.4450724975351763,
       "gt_normalized_activation": 0.6566680717609865,
       "positive_mean_rank": 2605.0,
       "activation_auroc": 0.9270833333333334,
@@ -347,8 +439,7 @@
       "pe_task_preservation": 0.25,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 232.4669922090834,
-      "feature_discovery_score": 0.6566680717609865
+      "elapsed_seconds": 232.4669922090834
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -361,6 +452,11 @@
       "selected_feature_id": 8810,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.5990988144100771,
+      "rank_score": 0.0028861017826818662,
+      "activation_score": 0.7978363852858754,
+      "steering_score": 0.0,
+      "overall_score": 0.2669074956895191,
       "gt_normalized_activation": 0.5990988144100771,
       "positive_mean_rank": 16414.875,
       "activation_auroc": 0.8854166666666666,
@@ -371,8 +467,7 @@
       "pe_task_preservation": 2.275,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 462.21324229205493,
-      "feature_discovery_score": 0.5990988144100771
+      "elapsed_seconds": 462.21324229205493
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -385,6 +480,11 @@
       "selected_feature_id": 93639,
       "expert_feature_id": 91086,
       "exact_match": false,
+      "feature_discovery_score": 0.5324835873272722,
+      "rank_score": 0.0015146671537958015,
+      "activation_score": 0.7094732273850978,
+      "steering_score": 0.0,
+      "overall_score": 0.23699596484629784,
       "gt_normalized_activation": 0.5324835873272722,
       "positive_mean_rank": 16422.75,
       "activation_auroc": 0.875,
@@ -395,8 +495,7 @@
       "pe_task_preservation": 0.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 241.47733858402353,
-      "feature_discovery_score": 0.5324835873272722
+      "elapsed_seconds": 241.47733858402353
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -409,6 +508,11 @@
       "selected_feature_id": 7659,
       "expert_feature_id": 7659,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 3.75,
       "activation_auroc": 1.0,
@@ -419,8 +523,7 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 153.30560466693714,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 153.30560466693714
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -433,6 +536,11 @@
       "selected_feature_id": 20652,
       "expert_feature_id": 104583,
       "exact_match": false,
+      "feature_discovery_score": 0.8203325445260929,
+      "rank_score": 0.4110599078341014,
+      "activation_score": 0.9567567567567568,
+      "steering_score": 0.0,
+      "overall_score": 0.4559388881969528,
       "gt_normalized_activation": 0.8203325445260929,
       "positive_mean_rank": 135.625,
       "activation_auroc": 1.0,
@@ -443,8 +551,7 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 210.30594708304852,
-      "feature_discovery_score": 0.8203325445260929
+      "elapsed_seconds": 210.30594708304852
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -457,6 +564,11 @@
       "selected_feature_id": 57480,
       "expert_feature_id": 77390,
       "exact_match": false,
+      "feature_discovery_score": 0.6279940359256911,
+      "rank_score": 0.07922272047832586,
+      "activation_score": 0.8109178077414797,
+      "steering_score": 0.3014912863477825,
+      "overall_score": 0.39721060485586274,
       "gt_normalized_activation": 0.6279940359256911,
       "positive_mean_rank": 83.625,
       "activation_auroc": 0.9479166666666666,
@@ -467,8 +579,7 @@
       "pe_task_preservation": 0.275,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 111.01086345908698,
-      "feature_discovery_score": 0.6279940359256911
+      "elapsed_seconds": 111.01086345908698
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -481,6 +592,11 @@
       "selected_feature_id": 39179,
       "expert_feature_id": 101617,
       "exact_match": false,
+      "feature_discovery_score": 0.44821933404897435,
+      "rank_score": 0.0042187066333610876,
+      "activation_score": 0.596219543187512,
+      "steering_score": 0.10807436026326603,
+      "overall_score": 0.23617087002804638,
       "gt_normalized_activation": 0.44821933404897435,
       "positive_mean_rank": 2251.875,
       "activation_auroc": 0.8229166666666666,
@@ -491,8 +607,7 @@
       "pe_task_preservation": 0.35,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 355.0174705419922,
-      "feature_discovery_score": 0.44821933404897435
+      "elapsed_seconds": 355.0174705419922
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -505,6 +620,11 @@
       "selected_feature_id": 68458,
       "expert_feature_id": 41424,
       "exact_match": false,
+      "feature_discovery_score": 0.2045602382658235,
+      "rank_score": 0.0007442339757122104,
+      "activation_score": 0.27249890636252727,
+      "steering_score": 0.0,
+      "overall_score": 0.09108104677941316,
       "gt_normalized_activation": 0.2045602382658235,
       "positive_mean_rank": 17467.625,
       "activation_auroc": 0.7291666666666666,
@@ -515,8 +635,7 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 312.5552730829222,
-      "feature_discovery_score": 0.2045602382658235
+      "elapsed_seconds": 312.5552730829222
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -529,6 +648,11 @@
       "selected_feature_id": 30338,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.3475157171644367,
+      "rank_score": 0.0033841207317420875,
+      "activation_score": 0.4622262493086682,
+      "steering_score": 0.5398667555490465,
+      "overall_score": 0.33515904186315226,
       "gt_normalized_activation": 0.3475157171644367,
       "positive_mean_rank": 56994.125,
       "activation_auroc": 0.765625,
@@ -539,8 +663,7 @@
       "pe_task_preservation": 0.775,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 305.3682920410065,
-      "feature_discovery_score": 0.3475157171644367
+      "elapsed_seconds": 305.3682920410065
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -553,6 +676,11 @@
       "selected_feature_id": 66256,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.18532247104716976,
+      "rank_score": 0.0006587565114082919,
+      "activation_score": 0.24687704255909027,
+      "steering_score": 0.0,
+      "overall_score": 0.08251193302349952,
       "gt_normalized_activation": 0.18532247104716976,
       "positive_mean_rank": 98481.0,
       "activation_auroc": 0.59375,
@@ -563,8 +691,7 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 232.0002649590606,
-      "feature_discovery_score": 0.18532247104716976
+      "elapsed_seconds": 232.0002649590606
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -577,6 +704,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -587,8 +719,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 101.58306195796467,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 101.58306195796467
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -601,6 +732,11 @@
       "selected_feature_id": 13805,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.5783981159471485,
+      "rank_score": 0.03295178633368019,
+      "activation_score": 0.760213559151638,
+      "steering_score": 0.27189566859055564,
+      "overall_score": 0.35502033802529126,
       "gt_normalized_activation": 0.5783981159471485,
       "positive_mean_rank": 4684.875,
       "activation_auroc": 0.9791666666666666,
@@ -611,8 +747,7 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 341.4630756250117,
-      "feature_discovery_score": 0.5783981159471485
+      "elapsed_seconds": 341.4630756250117
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -625,6 +760,11 @@
       "selected_feature_id": 85098,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.6543481227265854,
+      "rank_score": 0.2059800664451827,
+      "activation_score": 0.8038041414870528,
+      "steering_score": 0.0,
+      "overall_score": 0.3365947359774118,
       "gt_normalized_activation": 0.6543481227265854,
       "positive_mean_rank": 75.25,
       "activation_auroc": 0.9583333333333334,
@@ -635,8 +775,7 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 241.065331040998,
-      "feature_discovery_score": 0.6543481227265854
+      "elapsed_seconds": 241.065331040998
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -649,6 +788,11 @@
       "selected_feature_id": 44494,
       "expert_feature_id": 44494,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 11.75,
       "activation_auroc": 1.0,
@@ -659,8 +803,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 149.6941397920018,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 149.6941397920018
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -673,6 +816,11 @@
       "selected_feature_id": 115400,
       "expert_feature_id": 7256,
       "exact_match": false,
+      "feature_discovery_score": 0.5983162624689591,
+      "rank_score": 0.17864649012189995,
+      "activation_score": 0.7382061865846454,
+      "steering_score": 0.19249973987341756,
+      "overall_score": 0.3697841388599876,
       "gt_normalized_activation": 0.5983162624689591,
       "positive_mean_rank": 297.375,
       "activation_auroc": 1.0,
@@ -683,8 +831,7 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 224.5583445840748,
-      "feature_discovery_score": 0.5983162624689591
+      "elapsed_seconds": 224.5583445840748
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -697,6 +844,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -707,8 +859,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 122.7555514590349,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 122.7555514590349
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -721,6 +872,11 @@
       "selected_feature_id": 13140,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.7814096433167028,
+      "rank_score": 0.41493383742911155,
+      "activation_score": 0.9035682452792333,
+      "steering_score": 0.11267605633802819,
+      "overall_score": 0.47705937968212436,
       "gt_normalized_activation": 0.7814096433167028,
       "positive_mean_rank": 132.25,
       "activation_auroc": 1.0,
@@ -731,8 +887,7 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 302.21179895906243,
-      "feature_discovery_score": 0.7814096433167028
+      "elapsed_seconds": 302.21179895906243
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -745,6 +900,11 @@
       "selected_feature_id": 71787,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.6141356505136863,
+      "rank_score": 0.005292882922335815,
+      "activation_score": 0.8170832397108031,
+      "steering_score": 0.0,
+      "overall_score": 0.27412537421104627,
       "gt_normalized_activation": 0.6141356505136863,
       "positive_mean_rank": 16555.25,
       "activation_auroc": 0.9322916666666666,
@@ -755,8 +915,7 @@
       "pe_task_preservation": 0.3,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 256.82081950001884,
-      "feature_discovery_score": 0.6141356505136863
+      "elapsed_seconds": 256.82081950001884
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -769,6 +928,11 @@
       "selected_feature_id": 59750,
       "expert_feature_id": 100747,
       "exact_match": false,
+      "feature_discovery_score": 0.6088345007659011,
+      "rank_score": 0.004336632009053004,
+      "activation_score": 0.810333790351517,
+      "steering_score": 0.4281254021725236,
+      "overall_score": 0.41426527484436454,
       "gt_normalized_activation": 0.6088345007659011,
       "positive_mean_rank": 16458.625,
       "activation_auroc": 0.921875,
@@ -779,8 +943,7 @@
       "pe_task_preservation": 1.4,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 231.55329033290036,
-      "feature_discovery_score": 0.6088345007659011
+      "elapsed_seconds": 231.55329033290036
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -793,6 +956,11 @@
       "selected_feature_id": 43576,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.6633339588385289,
+      "rank_score": 0.07876334192123666,
+      "activation_score": 0.858190831144293,
+      "steering_score": 0.0,
+      "overall_score": 0.3123180576885099,
       "gt_normalized_activation": 0.6633339588385289,
       "positive_mean_rank": 679.25,
       "activation_auroc": 0.9895833333333334,
@@ -803,8 +971,7 @@
       "pe_task_preservation": 3.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 596.6049301249441,
-      "feature_discovery_score": 0.6633339588385289
+      "elapsed_seconds": 596.6049301249441
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -817,6 +984,11 @@
       "selected_feature_id": 22806,
       "expert_feature_id": 93406,
       "exact_match": false,
+      "feature_discovery_score": 0.5687683401856729,
+      "rank_score": 0.02422680412371134,
+      "activation_score": 0.7502821855396601,
+      "steering_score": 0.03174603174603175,
+      "overall_score": 0.2687516738031344,
       "gt_normalized_activation": 0.5687683401856729,
       "positive_mean_rank": 2425.0,
       "activation_auroc": 0.9166666666666666,
@@ -827,8 +999,7 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 356.1498322080588,
-      "feature_discovery_score": 0.5687683401856729
+      "elapsed_seconds": 356.1498322080588
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -841,6 +1012,11 @@
       "selected_feature_id": 75036,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.5694640891869166,
+      "rank_score": 0.002304932189989661,
+      "activation_score": 0.7585171415192256,
+      "steering_score": 0.0,
+      "overall_score": 0.2536073579030717,
       "gt_normalized_activation": 0.5694640891869166,
       "positive_mean_rank": 20553.75,
       "activation_auroc": 0.9010416666666666,
@@ -851,8 +1027,7 @@
       "pe_task_preservation": 2.475,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 324.86357858299743,
-      "feature_discovery_score": 0.5694640891869166
+      "elapsed_seconds": 324.86357858299743
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -865,6 +1040,11 @@
       "selected_feature_id": 91086,
       "expert_feature_id": 91086,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 24.875,
       "activation_auroc": 1.0,
@@ -875,8 +1055,7 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 184.89130029198714,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 184.89130029198714
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -889,6 +1068,11 @@
       "selected_feature_id": 7659,
       "expert_feature_id": 7659,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 3.75,
       "activation_auroc": 1.0,
@@ -899,8 +1083,7 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 215.84366829204373,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 215.84366829204373
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -913,6 +1096,11 @@
       "selected_feature_id": 104583,
       "expert_feature_id": 104583,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 55.75,
       "activation_auroc": 1.0,
@@ -923,8 +1111,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 328.2346158749424,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 328.2346158749424
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -937,6 +1124,11 @@
       "selected_feature_id": 77390,
       "expert_feature_id": 77390,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 6.625,
       "activation_auroc": 1.0,
@@ -947,8 +1139,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 145.12519720802084,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 145.12519720802084
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -961,6 +1152,11 @@
       "selected_feature_id": 101617,
       "expert_feature_id": 101617,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 9.5,
       "activation_auroc": 1.0,
@@ -971,8 +1167,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 199.56296841602307,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 199.56296841602307
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -985,6 +1180,11 @@
       "selected_feature_id": 114418,
       "expert_feature_id": 41424,
       "exact_match": false,
+      "feature_discovery_score": 0.2412971602201044,
+      "rank_score": 0.00038545214648664074,
+      "activation_score": 0.3216010629113103,
+      "steering_score": 0.0,
+      "overall_score": 0.10732883835259899,
       "gt_normalized_activation": 0.2412971602201044,
       "positive_mean_rank": 33726.625,
       "activation_auroc": 0.7083333333333334,
@@ -995,8 +1195,7 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 295.740406124969,
-      "feature_discovery_score": 0.2412971602201044
+      "elapsed_seconds": 295.740406124969
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -1009,6 +1208,11 @@
       "selected_feature_id": 17219,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.6115546777224377,
+      "rank_score": 0.010353272721172879,
+      "activation_score": 0.8119551460561926,
+      "steering_score": 0.7136702844860299,
+      "overall_score": 0.5119929010877985,
       "gt_normalized_activation": 0.6115546777224377,
       "positive_mean_rank": 18629.375,
       "activation_auroc": 0.9166666666666666,
@@ -1019,8 +1223,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 235.6635475420626,
-      "feature_discovery_score": 0.6115546777224377
+      "elapsed_seconds": 235.6635475420626
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -1033,6 +1236,11 @@
       "selected_feature_id": 292,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.7288142466171453,
+      "rank_score": 0.295221843003413,
+      "activation_score": 0.8733450478217227,
+      "steering_score": 0.0,
+      "overall_score": 0.38952229694171187,
       "gt_normalized_activation": 0.7288142466171453,
       "positive_mean_rank": 219.75,
       "activation_auroc": 0.9479166666666666,
@@ -1043,8 +1251,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 280.17603629198857,
-      "feature_discovery_score": 0.7288142466171453
+      "elapsed_seconds": 280.17603629198857
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -1057,6 +1264,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -1067,8 +1279,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 183.75838474999182,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 183.75838474999182
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -1081,6 +1292,11 @@
       "selected_feature_id": 37636,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.468975624533551,
+      "rank_score": 0.004685164530838625,
+      "activation_score": 0.6237391112011218,
+      "steering_score": 0.6444971902828038,
+      "overall_score": 0.42430715533825475,
       "gt_normalized_activation": 0.468975624533551,
       "positive_mean_rank": 32949.75,
       "activation_auroc": 0.84375,
@@ -1091,8 +1307,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 329.1803890829906,
-      "feature_discovery_score": 0.468975624533551
+      "elapsed_seconds": 329.1803890829906
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -1105,6 +1320,11 @@
       "selected_feature_id": 85098,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.6543481227265854,
+      "rank_score": 0.2059800664451827,
+      "activation_score": 0.8038041414870528,
+      "steering_score": 0.0,
+      "overall_score": 0.3365947359774118,
       "gt_normalized_activation": 0.6543481227265854,
       "positive_mean_rank": 75.25,
       "activation_auroc": 0.9583333333333334,
@@ -1115,8 +1335,7 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 258.0772642090451,
-      "feature_discovery_score": 0.6543481227265854
+      "elapsed_seconds": 258.0772642090451
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -1129,6 +1348,11 @@
       "selected_feature_id": 44494,
       "expert_feature_id": 44494,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 11.75,
       "activation_auroc": 1.0,
@@ -1139,8 +1363,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 141.13768712501042,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 141.13768712501042
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -1153,6 +1376,11 @@
       "selected_feature_id": 7256,
       "expert_feature_id": 7256,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 53.125,
       "activation_auroc": 0.9791666666666666,
@@ -1163,8 +1391,7 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 544.0248350000475,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 544.0248350000475
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -1177,6 +1404,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -1187,8 +1419,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 157.28441508300602,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 157.28441508300602
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -1201,6 +1432,11 @@
       "selected_feature_id": 113440,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.7256709479081433,
+      "rank_score": 0.12439784641541513,
+      "activation_score": 0.9260953150723861,
+      "steering_score": 0.0,
+      "overall_score": 0.3501643871626004,
       "gt_normalized_activation": 0.7256709479081433,
       "positive_mean_rank": 441.125,
       "activation_auroc": 1.0,
@@ -1211,8 +1447,7 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 423.45991466601845,
-      "feature_discovery_score": 0.7256709479081433
+      "elapsed_seconds": 423.45991466601845
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -1225,6 +1460,11 @@
       "selected_feature_id": 34893,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.9667953667953668,
+      "rank_score": 1.0,
+      "activation_score": 0.9557271557271557,
+      "steering_score": 0.0,
+      "overall_score": 0.6519090519090519,
       "gt_normalized_activation": 0.9667953667953668,
       "positive_mean_rank": 14.25,
       "activation_auroc": 1.0,
@@ -1235,8 +1475,7 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 292.3146675840253,
-      "feature_discovery_score": 0.9667953667953668
+      "elapsed_seconds": 292.3146675840253
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -1249,6 +1488,11 @@
       "selected_feature_id": 76582,
       "expert_feature_id": 100747,
       "exact_match": false,
+      "feature_discovery_score": 0.6858659998097791,
+      "rank_score": 0.020213820447465308,
+      "activation_score": 0.9077500595972171,
+      "steering_score": 0.5155539758260537,
+      "overall_score": 0.4811726186235787,
       "gt_normalized_activation": 0.6858659998097791,
       "positive_mean_rank": 3531.0,
       "activation_auroc": 0.9895833333333334,
@@ -1259,8 +1503,7 @@
       "pe_task_preservation": 0.775,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 537.3638033330208,
-      "feature_discovery_score": 0.6858659998097791
+      "elapsed_seconds": 537.3638033330208
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -1273,6 +1516,11 @@
       "selected_feature_id": 108861,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.38992352891356163,
+      "rank_score": 0.02418762362249223,
+      "activation_score": 0.5118354973439181,
+      "steering_score": 0.0,
+      "overall_score": 0.17867437365547012,
       "gt_normalized_activation": 0.38992352891356163,
       "positive_mean_rank": 2211.875,
       "activation_auroc": 0.8020833333333334,
@@ -1283,8 +1531,7 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 601.0359760830179,
-      "feature_discovery_score": 0.38992352891356163
+      "elapsed_seconds": 601.0359760830179
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -1297,6 +1544,11 @@
       "selected_feature_id": 55062,
       "expert_feature_id": 93406,
       "exact_match": false,
+      "feature_discovery_score": 0.736295458606735,
+      "rank_score": 0.18606492478226444,
+      "activation_score": 0.9197056365482252,
+      "steering_score": 0.35714285714285715,
+      "overall_score": 0.48763780615778224,
       "gt_normalized_activation": 0.736295458606735,
       "positive_mean_rank": 315.75,
       "activation_auroc": 0.96875,
@@ -1307,8 +1559,7 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 547.3651088749757,
-      "feature_discovery_score": 0.736295458606735
+      "elapsed_seconds": 547.3651088749757
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -1321,6 +1572,11 @@
       "selected_feature_id": 50688,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.6087881300899309,
+      "rank_score": 0.13574498567335244,
+      "activation_score": 0.7664691782287903,
+      "steering_score": 0.0,
+      "overall_score": 0.3007380546340476,
       "gt_normalized_activation": 0.6087881300899309,
       "positive_mean_rank": 349.0,
       "activation_auroc": 0.8958333333333334,
@@ -1331,8 +1587,7 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 260.8692148330156,
-      "feature_discovery_score": 0.6087881300899309
+      "elapsed_seconds": 260.8692148330156
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -1345,6 +1600,11 @@
       "selected_feature_id": 91086,
       "expert_feature_id": 91086,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 24.875,
       "activation_auroc": 1.0,
@@ -1355,8 +1615,7 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 231.2214927499881,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 231.2214927499881
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -1369,6 +1628,11 @@
       "selected_feature_id": 7659,
       "expert_feature_id": 7659,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 3.75,
       "activation_auroc": 1.0,
@@ -1379,8 +1643,7 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 353.1668347080704,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 353.1668347080704
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -1393,6 +1656,11 @@
       "selected_feature_id": 20652,
       "expert_feature_id": 104583,
       "exact_match": false,
+      "feature_discovery_score": 0.8203325445260929,
+      "rank_score": 0.4110599078341014,
+      "activation_score": 0.9567567567567568,
+      "steering_score": 0.0,
+      "overall_score": 0.4559388881969528,
       "gt_normalized_activation": 0.8203325445260929,
       "positive_mean_rank": 135.625,
       "activation_auroc": 1.0,
@@ -1403,8 +1671,7 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 305.7856430420652,
-      "feature_discovery_score": 0.8203325445260929
+      "elapsed_seconds": 305.7856430420652
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -1417,6 +1684,11 @@
       "selected_feature_id": 77390,
       "expert_feature_id": 77390,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 6.625,
       "activation_auroc": 1.0,
@@ -1427,8 +1699,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 431.0585859580897,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 431.0585859580897
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -1441,6 +1712,11 @@
       "selected_feature_id": 101617,
       "expert_feature_id": 101617,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 9.5,
       "activation_auroc": 1.0,
@@ -1451,8 +1727,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 272.17311916698236,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 272.17311916698236
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -1465,6 +1740,11 @@
       "selected_feature_id": 111414,
       "expert_feature_id": 41424,
       "exact_match": false,
+      "feature_discovery_score": 0.055422924744859894,
+      "rank_score": 0.0001314120221783059,
+      "activation_score": 0.07385342898575376,
+      "steering_score": 0.0,
+      "overall_score": 0.02466161366931069,
       "gt_normalized_activation": 0.055422924744859894,
       "positive_mean_rank": 98925.5,
       "activation_auroc": 0.5208333333333334,
@@ -1475,8 +1755,7 @@
       "pe_task_preservation": 0.675,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 331.48100962501485,
-      "feature_discovery_score": 0.055422924744859894
+      "elapsed_seconds": 331.48100962501485
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -1489,6 +1768,11 @@
       "selected_feature_id": 124726,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.3851678950837198,
+      "rank_score": 0.002277289096168605,
+      "activation_score": 0.5127980970795701,
+      "steering_score": 0.0,
+      "overall_score": 0.17169179539191293,
       "gt_normalized_activation": 0.3851678950837198,
       "positive_mean_rank": 84695.0,
       "activation_auroc": 0.6875,
@@ -1499,8 +1783,7 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 655.3739690829534,
-      "feature_discovery_score": 0.3851678950837198
+      "elapsed_seconds": 655.3739690829534
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -1513,6 +1796,11 @@
       "selected_feature_id": 292,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.7288142466171453,
+      "rank_score": 0.295221843003413,
+      "activation_score": 0.8733450478217227,
+      "steering_score": 0.0,
+      "overall_score": 0.38952229694171187,
       "gt_normalized_activation": 0.7288142466171453,
       "positive_mean_rank": 219.75,
       "activation_auroc": 0.9479166666666666,
@@ -1523,8 +1811,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 604.0334002089221,
-      "feature_discovery_score": 0.7288142466171453
+      "elapsed_seconds": 604.0334002089221
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -1537,6 +1824,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -1547,8 +1839,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 273.6943850000389,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 273.6943850000389
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -1561,6 +1852,11 @@
       "selected_feature_id": 45257,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.9665262119996532,
+      "rank_score": 1.0,
+      "activation_score": 0.9553682826662042,
+      "steering_score": 0.4739433760128051,
+      "overall_score": 0.8097705528930031,
       "gt_normalized_activation": 0.9665262119996532,
       "positive_mean_rank": 30.625,
       "activation_auroc": 1.0,
@@ -1571,8 +1867,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 449.0798203749582,
-      "feature_discovery_score": 0.9665262119996532
+      "elapsed_seconds": 449.0798203749582
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -1585,6 +1880,11 @@
       "selected_feature_id": 50260,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.5226212811891954,
+      "rank_score": 0.0008937065759506444,
+      "activation_score": 0.6965304727269436,
+      "steering_score": 0.0,
+      "overall_score": 0.2324747264342981,
       "gt_normalized_activation": 0.5226212811891954,
       "positive_mean_rank": 17343.5,
       "activation_auroc": 0.9375,
@@ -1595,8 +1895,7 @@
       "pe_task_preservation": 1.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 750.0367968329228,
-      "feature_discovery_score": 0.5226212811891954
+      "elapsed_seconds": 750.0367968329228
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -1609,6 +1908,11 @@
       "selected_feature_id": 44494,
       "expert_feature_id": 44494,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 11.75,
       "activation_auroc": 1.0,
@@ -1619,8 +1923,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 316.48068066698033,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 316.48068066698033
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -1633,6 +1936,11 @@
       "selected_feature_id": 7256,
       "expert_feature_id": 7256,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 53.125,
       "activation_auroc": 0.9791666666666666,
@@ -1643,8 +1951,7 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 513.7192522090627,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 513.7192522090627
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -1657,6 +1964,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -1667,8 +1979,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 414.2092339580413,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 414.2092339580413
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -1681,6 +1992,11 @@
       "selected_feature_id": 113440,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.7256709479081433,
+      "rank_score": 0.12439784641541513,
+      "activation_score": 0.9260953150723861,
+      "steering_score": 0.0,
+      "overall_score": 0.3501643871626004,
       "gt_normalized_activation": 0.7256709479081433,
       "positive_mean_rank": 441.125,
       "activation_auroc": 1.0,
@@ -1691,8 +2007,7 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 412.25027962506283,
-      "feature_discovery_score": 0.7256709479081433
+      "elapsed_seconds": 412.25027962506283
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -1705,6 +2020,11 @@
       "selected_feature_id": 34893,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.9667953667953668,
+      "rank_score": 1.0,
+      "activation_score": 0.9557271557271557,
+      "steering_score": 0.0,
+      "overall_score": 0.6519090519090519,
       "gt_normalized_activation": 0.9667953667953668,
       "positive_mean_rank": 14.25,
       "activation_auroc": 1.0,
@@ -1715,8 +2035,7 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 296.47942141699605,
-      "feature_discovery_score": 0.9667953667953668
+      "elapsed_seconds": 296.47942141699605
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -1729,6 +2048,11 @@
       "selected_feature_id": 82885,
       "expert_feature_id": 100747,
       "exact_match": false,
+      "feature_discovery_score": 0.6633672211324971,
+      "rank_score": 0.0920522327905852,
+      "activation_score": 0.8538055505798011,
+      "steering_score": 0.5702901364697979,
+      "overall_score": 0.505382639946728,
       "gt_normalized_activation": 0.6633672211324971,
       "positive_mean_rank": 775.375,
       "activation_auroc": 1.0,
@@ -1739,8 +2063,7 @@
       "pe_task_preservation": 0.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 1057.9198617079528,
-      "feature_discovery_score": 0.6633672211324971
+      "elapsed_seconds": 1057.9198617079528
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -1753,6 +2076,11 @@
       "selected_feature_id": 130037,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.6070694422093376,
+      "rank_score": 0.04698649687122626,
+      "activation_score": 0.7937637573220414,
+      "steering_score": 0.0,
+      "overall_score": 0.2802500847310892,
       "gt_normalized_activation": 0.6070694422093376,
       "positive_mean_rank": 1138.625,
       "activation_auroc": 0.9895833333333334,
@@ -1763,8 +2091,7 @@
       "pe_task_preservation": 3.325,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 342.98304787499364,
-      "feature_discovery_score": 0.6070694422093376
+      "elapsed_seconds": 342.98304787499364
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -1777,6 +2104,11 @@
       "selected_feature_id": 55062,
       "expert_feature_id": 93406,
       "exact_match": false,
+      "feature_discovery_score": 0.736295458606735,
+      "rank_score": 0.18606492478226444,
+      "activation_score": 0.9197056365482252,
+      "steering_score": 0.35714285714285715,
+      "overall_score": 0.48763780615778224,
       "gt_normalized_activation": 0.736295458606735,
       "positive_mean_rank": 315.75,
       "activation_auroc": 0.96875,
@@ -1787,8 +2119,7 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 385.3031967909774,
-      "feature_discovery_score": 0.736295458606735
+      "elapsed_seconds": 385.3031967909774
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -1801,6 +2132,11 @@
       "selected_feature_id": 8810,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.5990988144100771,
+      "rank_score": 0.0028861017826818662,
+      "activation_score": 0.7978363852858754,
+      "steering_score": 0.0,
+      "overall_score": 0.2669074956895191,
       "gt_normalized_activation": 0.5990988144100771,
       "positive_mean_rank": 16414.875,
       "activation_auroc": 0.8854166666666666,
@@ -1811,8 +2147,7 @@
       "pe_task_preservation": 2.275,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 589.3094313750044,
-      "feature_discovery_score": 0.5990988144100771
+      "elapsed_seconds": 589.3094313750044
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -1825,6 +2160,11 @@
       "selected_feature_id": 91086,
       "expert_feature_id": 91086,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 24.875,
       "activation_auroc": 1.0,
@@ -1835,8 +2175,7 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 493.6920027079759,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 493.6920027079759
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -1849,6 +2188,11 @@
       "selected_feature_id": 22262,
       "expert_feature_id": 7659,
       "exact_match": false,
+      "feature_discovery_score": 0.03,
+      "rank_score": 0.12,
+      "activation_score": 0.0,
+      "steering_score": 0.0,
+      "overall_score": 0.04,
       "gt_normalized_activation": 0.03,
       "positive_mean_rank": 31.25,
       "activation_auroc": 0.13541666666666666,
@@ -1859,8 +2203,7 @@
       "pe_task_preservation": 1.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 618.5084347090451,
-      "feature_discovery_score": 0.03
+      "elapsed_seconds": 618.5084347090451
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -1873,6 +2216,11 @@
       "selected_feature_id": 116356,
       "expert_feature_id": 104583,
       "exact_match": false,
+      "feature_discovery_score": 0.9760721771701406,
+      "rank_score": 1.0,
+      "activation_score": 0.9680962362268541,
+      "steering_score": 0.0,
+      "overall_score": 0.6560320787422848,
       "gt_normalized_activation": 0.9760721771701406,
       "positive_mean_rank": 16.25,
       "activation_auroc": 1.0,
@@ -1883,8 +2231,7 @@
       "pe_task_preservation": 1.35,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 594.9473643749952,
-      "feature_discovery_score": 0.9760721771701406
+      "elapsed_seconds": 594.9473643749952
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -1897,6 +2244,11 @@
       "selected_feature_id": 77390,
       "expert_feature_id": 77390,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 6.625,
       "activation_auroc": 1.0,
@@ -1907,8 +2259,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 481.45830929197837,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 481.45830929197837
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -1921,6 +2272,11 @@
       "selected_feature_id": 101617,
       "expert_feature_id": 101617,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 9.5,
       "activation_auroc": 1.0,
@@ -1931,8 +2287,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 430.5692312079482,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 430.5692312079482
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -1945,6 +2300,11 @@
       "selected_feature_id": 41424,
       "expert_feature_id": 41424,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 13.0,
       "activation_auroc": 1.0,
@@ -1955,8 +2315,7 @@
       "pe_task_preservation": 3.15,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 652.7200472919503,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 652.7200472919503
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -1969,6 +2328,11 @@
       "selected_feature_id": 124726,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.3851678950837198,
+      "rank_score": 0.002277289096168605,
+      "activation_score": 0.5127980970795701,
+      "steering_score": 0.0,
+      "overall_score": 0.17169179539191293,
       "gt_normalized_activation": 0.3851678950837198,
       "positive_mean_rank": 84695.0,
       "activation_auroc": 0.6875,
@@ -1979,8 +2343,7 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 483.4108156670118,
-      "feature_discovery_score": 0.3851678950837198
+      "elapsed_seconds": 483.4108156670118
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -1993,6 +2356,11 @@
       "selected_feature_id": 292,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.7288142466171453,
+      "rank_score": 0.295221843003413,
+      "activation_score": 0.8733450478217227,
+      "steering_score": 0.0,
+      "overall_score": 0.38952229694171187,
       "gt_normalized_activation": 0.7288142466171453,
       "positive_mean_rank": 219.75,
       "activation_auroc": 0.9479166666666666,
@@ -2003,8 +2371,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 441.69879370799754,
-      "feature_discovery_score": 0.7288142466171453
+      "elapsed_seconds": 441.69879370799754
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -2017,6 +2384,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -2027,8 +2399,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 486.63785649999045,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 486.63785649999045
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -2041,6 +2412,11 @@
       "selected_feature_id": 45257,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.9665262119996532,
+      "rank_score": 1.0,
+      "activation_score": 0.9553682826662042,
+      "steering_score": 0.4739433760128051,
+      "overall_score": 0.8097705528930031,
       "gt_normalized_activation": 0.9665262119996532,
       "positive_mean_rank": 30.625,
       "activation_auroc": 1.0,
@@ -2051,8 +2427,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 605.4405655410374,
-      "feature_discovery_score": 0.9665262119996532
+      "elapsed_seconds": 605.4405655410374
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -2065,6 +2440,11 @@
       "selected_feature_id": 98108,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.6064404803070479,
+      "rank_score": 0.19745222929936307,
+      "activation_score": 0.7427698973096096,
+      "steering_score": 0.028037383177570093,
+      "overall_score": 0.32275316992884756,
       "gt_normalized_activation": 0.6064404803070479,
       "positive_mean_rank": 78.5,
       "activation_auroc": 0.9895833333333334,
@@ -2075,8 +2455,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 1115.7630702090682,
-      "feature_discovery_score": 0.6064404803070479
+      "elapsed_seconds": 1115.7630702090682
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -2089,6 +2468,11 @@
       "selected_feature_id": 85606,
       "expert_feature_id": 44494,
       "exact_match": false,
+      "feature_discovery_score": 0.7366051091136532,
+      "rank_score": 0.1598639455782313,
+      "activation_score": 0.9288521636254604,
+      "steering_score": 0.7223997376396399,
+      "overall_score": 0.6037052822811105,
       "gt_normalized_activation": 0.7366051091136532,
       "positive_mean_rank": 73.5,
       "activation_auroc": 1.0,
@@ -2099,8 +2483,7 @@
       "pe_task_preservation": 0.375,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 618.5801557080122,
-      "feature_discovery_score": 0.7366051091136532
+      "elapsed_seconds": 618.5801557080122
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -2113,6 +2496,11 @@
       "selected_feature_id": 5279,
       "expert_feature_id": 7256,
       "exact_match": false,
+      "feature_discovery_score": 0.6503055279439428,
+      "rank_score": 0.02359800111049417,
+      "activation_score": 0.8592080368884257,
+      "steering_score": 0.7322509643126488,
+      "overall_score": 0.5383523341038562,
       "gt_normalized_activation": 0.6503055279439428,
       "positive_mean_rank": 2251.25,
       "activation_auroc": 0.9791666666666666,
@@ -2123,8 +2511,7 @@
       "pe_task_preservation": 0.35,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 538.1560811669333,
-      "feature_discovery_score": 0.6503055279439428
+      "elapsed_seconds": 538.1560811669333
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -2137,6 +2524,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -2147,8 +2539,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 350.36636149999686,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 350.36636149999686
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -2161,6 +2552,11 @@
       "selected_feature_id": 113440,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.7256709479081433,
+      "rank_score": 0.12439784641541513,
+      "activation_score": 0.9260953150723861,
+      "steering_score": 0.0,
+      "overall_score": 0.3501643871626004,
       "gt_normalized_activation": 0.7256709479081433,
       "positive_mean_rank": 441.125,
       "activation_auroc": 1.0,
@@ -2171,8 +2567,7 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 908.5073839579709,
-      "feature_discovery_score": 0.7256709479081433
+      "elapsed_seconds": 908.5073839579709
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -2185,6 +2580,11 @@
       "selected_feature_id": 34893,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.9667953667953668,
+      "rank_score": 1.0,
+      "activation_score": 0.9557271557271557,
+      "steering_score": 0.0,
+      "overall_score": 0.6519090519090519,
       "gt_normalized_activation": 0.9667953667953668,
       "positive_mean_rank": 14.25,
       "activation_auroc": 1.0,
@@ -2195,8 +2595,7 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 541.3979777079076,
-      "feature_discovery_score": 0.9667953667953668
+      "elapsed_seconds": 541.3979777079076
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -2209,6 +2608,11 @@
       "selected_feature_id": 100747,
       "expert_feature_id": 100747,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 71.375,
       "activation_auroc": 1.0,
@@ -2219,8 +2623,7 @@
       "pe_task_preservation": 1.25,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 862.4322852500482,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 862.4322852500482
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -2233,6 +2636,11 @@
       "selected_feature_id": 108861,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.38992352891356163,
+      "rank_score": 0.02418762362249223,
+      "activation_score": 0.5118354973439181,
+      "steering_score": 0.0,
+      "overall_score": 0.17867437365547012,
       "gt_normalized_activation": 0.38992352891356163,
       "positive_mean_rank": 2211.875,
       "activation_auroc": 0.8020833333333334,
@@ -2243,8 +2651,7 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 907.4349207910709,
-      "feature_discovery_score": 0.38992352891356163
+      "elapsed_seconds": 907.4349207910709
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -2257,6 +2664,11 @@
       "selected_feature_id": 55062,
       "expert_feature_id": 93406,
       "exact_match": false,
+      "feature_discovery_score": 0.736295458606735,
+      "rank_score": 0.18606492478226444,
+      "activation_score": 0.9197056365482252,
+      "steering_score": 0.35714285714285715,
+      "overall_score": 0.48763780615778224,
       "gt_normalized_activation": 0.736295458606735,
       "positive_mean_rank": 315.75,
       "activation_auroc": 0.96875,
@@ -2267,8 +2679,7 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 718.112508582999,
-      "feature_discovery_score": 0.736295458606735
+      "elapsed_seconds": 718.112508582999
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -2281,6 +2692,11 @@
       "selected_feature_id": 50688,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.6087881300899309,
+      "rank_score": 0.13574498567335244,
+      "activation_score": 0.7664691782287903,
+      "steering_score": 0.0,
+      "overall_score": 0.3007380546340476,
       "gt_normalized_activation": 0.6087881300899309,
       "positive_mean_rank": 349.0,
       "activation_auroc": 0.8958333333333334,
@@ -2291,8 +2707,7 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 527.2175035419641,
-      "feature_discovery_score": 0.6087881300899309
+      "elapsed_seconds": 527.2175035419641
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -2305,6 +2720,11 @@
       "selected_feature_id": 91086,
       "expert_feature_id": 91086,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 24.875,
       "activation_auroc": 1.0,
@@ -2315,8 +2735,7 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 544.09505833406,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 544.09505833406
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -2329,6 +2748,11 @@
       "selected_feature_id": 7659,
       "expert_feature_id": 7659,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 3.75,
       "activation_auroc": 1.0,
@@ -2339,8 +2763,7 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 343.60370604204945,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 343.60370604204945
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -2353,6 +2776,11 @@
       "selected_feature_id": 20652,
       "expert_feature_id": 104583,
       "exact_match": false,
+      "feature_discovery_score": 0.8203325445260929,
+      "rank_score": 0.4110599078341014,
+      "activation_score": 0.9567567567567568,
+      "steering_score": 0.0,
+      "overall_score": 0.4559388881969528,
       "gt_normalized_activation": 0.8203325445260929,
       "positive_mean_rank": 135.625,
       "activation_auroc": 1.0,
@@ -2363,8 +2791,7 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 634.657548542018,
-      "feature_discovery_score": 0.8203325445260929
+      "elapsed_seconds": 634.657548542018
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -2377,6 +2804,11 @@
       "selected_feature_id": 77390,
       "expert_feature_id": 77390,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 6.625,
       "activation_auroc": 1.0,
@@ -2387,8 +2819,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 312.8631925409427,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 312.8631925409427
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -2401,6 +2832,11 @@
       "selected_feature_id": 101617,
       "expert_feature_id": 101617,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 9.5,
       "activation_auroc": 1.0,
@@ -2411,8 +2847,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 541.4035090000834,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 541.4035090000834
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -2425,6 +2860,11 @@
       "selected_feature_id": 114418,
       "expert_feature_id": 41424,
       "exact_match": false,
+      "feature_discovery_score": 0.2412971602201044,
+      "rank_score": 0.00038545214648664074,
+      "activation_score": 0.3216010629113103,
+      "steering_score": 0.0,
+      "overall_score": 0.10732883835259899,
       "gt_normalized_activation": 0.2412971602201044,
       "positive_mean_rank": 33726.625,
       "activation_auroc": 0.7083333333333334,
@@ -2435,8 +2875,7 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 840.8434004998999,
-      "feature_discovery_score": 0.2412971602201044
+      "elapsed_seconds": 840.8434004998999
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -2449,6 +2888,11 @@
       "selected_feature_id": 17219,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.6115546777224377,
+      "rank_score": 0.010353272721172879,
+      "activation_score": 0.8119551460561926,
+      "steering_score": 0.7136702844860299,
+      "overall_score": 0.5119929010877985,
       "gt_normalized_activation": 0.6115546777224377,
       "positive_mean_rank": 18629.375,
       "activation_auroc": 0.9166666666666666,
@@ -2459,8 +2903,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 724.3910921249771,
-      "feature_discovery_score": 0.6115546777224377
+      "elapsed_seconds": 724.3910921249771
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -2473,6 +2916,11 @@
       "selected_feature_id": 25806,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.41000078821589564,
+      "rank_score": 0.04575509124570219,
+      "activation_score": 0.5314160205392935,
+      "steering_score": 0.0,
+      "overall_score": 0.19239037059499856,
       "gt_normalized_activation": 0.41000078821589564,
       "positive_mean_rank": 1417.875,
       "activation_auroc": 0.8697916666666666,
@@ -2483,8 +2931,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 728.1059244170319,
-      "feature_discovery_score": 0.41000078821589564
+      "elapsed_seconds": 728.1059244170319
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -2497,6 +2944,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -2507,8 +2959,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 280.5561861250317,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 280.5561861250317
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -2521,6 +2972,11 @@
       "selected_feature_id": 53018,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.9684787550672072,
+      "rank_score": 1.0,
+      "activation_score": 0.9579716734229429,
+      "steering_score": 0.6949540651767627,
+      "overall_score": 0.8843085795332352,
       "gt_normalized_activation": 0.9684787550672072,
       "positive_mean_rank": 113.875,
       "activation_auroc": 1.0,
@@ -2531,8 +2987,7 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 901.8714673341019,
-      "feature_discovery_score": 0.9684787550672072
+      "elapsed_seconds": 901.8714673341019
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -2545,6 +3000,11 @@
       "selected_feature_id": 85098,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.6543481227265854,
+      "rank_score": 0.2059800664451827,
+      "activation_score": 0.8038041414870528,
+      "steering_score": 0.0,
+      "overall_score": 0.3365947359774118,
       "gt_normalized_activation": 0.6543481227265854,
       "positive_mean_rank": 75.25,
       "activation_auroc": 0.9583333333333334,
@@ -2555,8 +3015,7 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 1053.462807792006,
-      "feature_discovery_score": 0.6543481227265854
+      "elapsed_seconds": 1053.462807792006
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -2569,6 +3028,11 @@
       "selected_feature_id": 44494,
       "expert_feature_id": 44494,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 11.75,
       "activation_auroc": 1.0,
@@ -2579,8 +3043,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 542.7408356670057,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 542.7408356670057
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -2593,6 +3056,11 @@
       "selected_feature_id": 112459,
       "expert_feature_id": 7256,
       "exact_match": false,
+      "feature_discovery_score": 0.6211089436859023,
+      "rank_score": 0.01871999295247324,
+      "activation_score": 0.8219052605970454,
+      "steering_score": 0.0,
+      "overall_score": 0.2802084178498396,
       "gt_normalized_activation": 0.6211089436859023,
       "positive_mean_rank": 2837.875,
       "activation_auroc": 0.9791666666666666,
@@ -2603,8 +3071,7 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 388.21474829199724,
-      "feature_discovery_score": 0.6211089436859023
+      "elapsed_seconds": 388.21474829199724
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -2617,6 +3084,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -2627,8 +3099,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 333.45554645895027,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 333.45554645895027
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -2641,6 +3112,11 @@
       "selected_feature_id": 53882,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.9160979367694138,
+      "rank_score": 0.9712389380530974,
+      "activation_score": 0.897717603008186,
+      "steering_score": 0.42289483713557396,
+      "overall_score": 0.7639504593989525,
       "gt_normalized_activation": 0.9160979367694138,
       "positive_mean_rank": 56.5,
       "activation_auroc": 1.0,
@@ -2651,8 +3127,7 @@
       "pe_task_preservation": 1.4,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 181.97422325005755,
-      "feature_discovery_score": 0.9160979367694138
+      "elapsed_seconds": 181.97422325005755
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -2665,6 +3140,11 @@
       "selected_feature_id": 93760,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.35026298403644285,
+      "rank_score": 0.0016804345637342565,
+      "activation_score": 0.46645716719401237,
+      "steering_score": 0.0,
+      "overall_score": 0.1560458672525822,
       "gt_normalized_activation": 0.35026298403644285,
       "positive_mean_rank": 52144.25,
       "activation_auroc": 0.7864583333333334,
@@ -2675,8 +3155,7 @@
       "pe_task_preservation": 0.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 250.95670562493615,
-      "feature_discovery_score": 0.35026298403644285
+      "elapsed_seconds": 250.95670562493615
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -2689,6 +3168,11 @@
       "selected_feature_id": 48097,
       "expert_feature_id": 100747,
       "exact_match": false,
+      "feature_discovery_score": 0.6899397279655968,
+      "rank_score": 0.10035149384885765,
+      "activation_score": 0.8864691393378431,
+      "steering_score": 0.44903693399053746,
+      "overall_score": 0.4786191890590794,
       "gt_normalized_activation": 0.6899397279655968,
       "positive_mean_rank": 711.25,
       "activation_auroc": 1.0,
@@ -2699,8 +3183,7 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 432.41339483391494,
-      "feature_discovery_score": 0.6899397279655968
+      "elapsed_seconds": 432.41339483391494
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -2713,6 +3196,11 @@
       "selected_feature_id": 78422,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.23915804426393616,
+      "rank_score": 0.0006441456491573432,
+      "activation_score": 0.3186626771355291,
+      "steering_score": 0.0,
+      "overall_score": 0.10643560759489547,
       "gt_normalized_activation": 0.23915804426393616,
       "positive_mean_rank": 83055.75,
       "activation_auroc": 0.6875,
@@ -2723,8 +3211,7 @@
       "pe_task_preservation": 2.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 223.6577058749972,
-      "feature_discovery_score": 0.23915804426393616
+      "elapsed_seconds": 223.6577058749972
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -2737,6 +3224,11 @@
       "selected_feature_id": 55062,
       "expert_feature_id": 93406,
       "exact_match": false,
+      "feature_discovery_score": 0.736295458606735,
+      "rank_score": 0.18606492478226444,
+      "activation_score": 0.9197056365482252,
+      "steering_score": 0.35714285714285715,
+      "overall_score": 0.48763780615778224,
       "gt_normalized_activation": 0.736295458606735,
       "positive_mean_rank": 315.75,
       "activation_auroc": 0.96875,
@@ -2747,8 +3239,7 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 433.35477237496525,
-      "feature_discovery_score": 0.736295458606735
+      "elapsed_seconds": 433.35477237496525
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -2761,6 +3252,11 @@
       "selected_feature_id": 50688,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.6087881300899309,
+      "rank_score": 0.13574498567335244,
+      "activation_score": 0.7664691782287903,
+      "steering_score": 0.0,
+      "overall_score": 0.3007380546340476,
       "gt_normalized_activation": 0.6087881300899309,
       "positive_mean_rank": 349.0,
       "activation_auroc": 0.8958333333333334,
@@ -2771,8 +3267,7 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 304.2448525830405,
-      "feature_discovery_score": 0.6087881300899309
+      "elapsed_seconds": 304.2448525830405
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -2785,6 +3280,11 @@
       "selected_feature_id": 111016,
       "expert_feature_id": 91086,
       "exact_match": false,
+      "feature_discovery_score": 0.07157763943238192,
+      "rank_score": 0.00021689160542294407,
+      "activation_score": 0.09536455537470158,
+      "steering_score": 0.0,
+      "overall_score": 0.03186048232670818,
       "gt_normalized_activation": 0.07157763943238192,
       "positive_mean_rank": 114688.625,
       "activation_auroc": 0.453125,
@@ -2795,8 +3295,7 @@
       "pe_task_preservation": 0.375,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 206.82435675000306,
-      "feature_discovery_score": 0.07157763943238192
+      "elapsed_seconds": 206.82435675000306
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -2809,6 +3308,11 @@
       "selected_feature_id": 87901,
       "expert_feature_id": 7659,
       "exact_match": false,
+      "feature_discovery_score": 0.6433196920260896,
+      "rank_score": 0.01579778830963665,
+      "activation_score": 0.8524936599315739,
+      "steering_score": 0.0,
+      "overall_score": 0.2894304827470702,
       "gt_normalized_activation": 0.6433196920260896,
       "positive_mean_rank": 237.375,
       "activation_auroc": 1.0,
@@ -2819,8 +3323,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 337.7866249169456,
-      "feature_discovery_score": 0.6433196920260896
+      "elapsed_seconds": 337.7866249169456
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -2833,6 +3336,11 @@
       "selected_feature_id": 20652,
       "expert_feature_id": 104583,
       "exact_match": false,
+      "feature_discovery_score": 0.8203325445260929,
+      "rank_score": 0.4110599078341014,
+      "activation_score": 0.9567567567567568,
+      "steering_score": 0.0,
+      "overall_score": 0.4559388881969528,
       "gt_normalized_activation": 0.8203325445260929,
       "positive_mean_rank": 135.625,
       "activation_auroc": 1.0,
@@ -2843,8 +3351,7 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 502.61032483307645,
-      "feature_discovery_score": 0.8203325445260929
+      "elapsed_seconds": 502.61032483307645
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -2857,6 +3364,11 @@
       "selected_feature_id": 77390,
       "expert_feature_id": 77390,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 6.625,
       "activation_auroc": 1.0,
@@ -2867,8 +3379,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 351.0108662089333,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 351.0108662089333
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -2881,6 +3392,11 @@
       "selected_feature_id": 101617,
       "expert_feature_id": 101617,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 9.5,
       "activation_auroc": 1.0,
@@ -2891,8 +3407,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 298.273838916095,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 298.273838916095
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -2905,6 +3420,11 @@
       "selected_feature_id": 41424,
       "expert_feature_id": 41424,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 13.0,
       "activation_auroc": 1.0,
@@ -2915,8 +3435,7 @@
       "pe_task_preservation": 3.15,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 960.432238999987,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 960.432238999987
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -2929,6 +3448,11 @@
       "selected_feature_id": 124726,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.3851678950837198,
+      "rank_score": 0.002277289096168605,
+      "activation_score": 0.5127980970795701,
+      "steering_score": 0.0,
+      "overall_score": 0.17169179539191293,
       "gt_normalized_activation": 0.3851678950837198,
       "positive_mean_rank": 84695.0,
       "activation_auroc": 0.6875,
@@ -2939,8 +3463,7 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 428.95478150004055,
-      "feature_discovery_score": 0.3851678950837198
+      "elapsed_seconds": 428.95478150004055
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -2953,6 +3476,11 @@
       "selected_feature_id": 292,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.7288142466171453,
+      "rank_score": 0.295221843003413,
+      "activation_score": 0.8733450478217227,
+      "steering_score": 0.0,
+      "overall_score": 0.38952229694171187,
       "gt_normalized_activation": 0.7288142466171453,
       "positive_mean_rank": 219.75,
       "activation_auroc": 0.9479166666666666,
@@ -2963,8 +3491,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 422.62125133303925,
-      "feature_discovery_score": 0.7288142466171453
+      "elapsed_seconds": 422.62125133303925
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -2977,6 +3504,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -2987,8 +3519,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 178.9943622079445,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 178.9943622079445
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -3001,6 +3532,11 @@
       "selected_feature_id": 53018,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.9684787550672072,
+      "rank_score": 1.0,
+      "activation_score": 0.9579716734229429,
+      "steering_score": 0.6949540651767627,
+      "overall_score": 0.8843085795332352,
       "gt_normalized_activation": 0.9684787550672072,
       "positive_mean_rank": 113.875,
       "activation_auroc": 1.0,
@@ -3011,8 +3547,7 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 404.4117125410121,
-      "feature_discovery_score": 0.9684787550672072
+      "elapsed_seconds": 404.4117125410121
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -3025,6 +3560,11 @@
       "selected_feature_id": 50260,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.5226212811891954,
+      "rank_score": 0.0008937065759506444,
+      "activation_score": 0.6965304727269436,
+      "steering_score": 0.0,
+      "overall_score": 0.2324747264342981,
       "gt_normalized_activation": 0.5226212811891954,
       "positive_mean_rank": 17343.5,
       "activation_auroc": 0.9375,
@@ -3035,8 +3575,7 @@
       "pe_task_preservation": 1.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 513.3920261249878,
-      "feature_discovery_score": 0.5226212811891954
+      "elapsed_seconds": 513.3920261249878
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -3049,6 +3588,11 @@
       "selected_feature_id": 127623,
       "expert_feature_id": 44494,
       "exact_match": false,
+      "feature_discovery_score": 0.6104583794237268,
+      "rank_score": 0.029147286821705427,
+      "activation_score": 0.8042287436244008,
+      "steering_score": 0.38288514334452467,
+      "overall_score": 0.4054203912635436,
       "gt_normalized_activation": 0.6104583794237268,
       "positive_mean_rank": 403.125,
       "activation_auroc": 0.9895833333333334,
@@ -3059,8 +3603,7 @@
       "pe_task_preservation": 1.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 199.43316829099786,
-      "feature_discovery_score": 0.6104583794237268
+      "elapsed_seconds": 199.43316829099786
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -3073,6 +3616,11 @@
       "selected_feature_id": 115400,
       "expert_feature_id": 7256,
       "exact_match": false,
+      "feature_discovery_score": 0.5983162624689591,
+      "rank_score": 0.17864649012189995,
+      "activation_score": 0.7382061865846454,
+      "steering_score": 0.19249973987341756,
+      "overall_score": 0.3697841388599876,
       "gt_normalized_activation": 0.5983162624689591,
       "positive_mean_rank": 297.375,
       "activation_auroc": 1.0,
@@ -3083,8 +3631,7 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 596.5244975839742,
-      "feature_discovery_score": 0.5983162624689591
+      "elapsed_seconds": 596.5244975839742
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -3097,6 +3644,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -3107,8 +3659,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 282.0401761250105,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 282.0401761250105
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -3121,6 +3672,11 @@
       "selected_feature_id": 113440,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.7256709479081433,
+      "rank_score": 0.12439784641541513,
+      "activation_score": 0.9260953150723861,
+      "steering_score": 0.0,
+      "overall_score": 0.3501643871626004,
       "gt_normalized_activation": 0.7256709479081433,
       "positive_mean_rank": 441.125,
       "activation_auroc": 1.0,
@@ -3131,8 +3687,7 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 321.6377565829316,
-      "feature_discovery_score": 0.7256709479081433
+      "elapsed_seconds": 321.6377565829316
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -3145,6 +3700,11 @@
       "selected_feature_id": 93760,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.35026298403644285,
+      "rank_score": 0.0016804345637342565,
+      "activation_score": 0.46645716719401237,
+      "steering_score": 0.0,
+      "overall_score": 0.1560458672525822,
       "gt_normalized_activation": 0.35026298403644285,
       "positive_mean_rank": 52144.25,
       "activation_auroc": 0.7864583333333334,
@@ -3155,8 +3715,7 @@
       "pe_task_preservation": 0.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 456.9257000829093,
-      "feature_discovery_score": 0.35026298403644285
+      "elapsed_seconds": 456.9257000829093
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -3169,6 +3728,11 @@
       "selected_feature_id": 48097,
       "expert_feature_id": 100747,
       "exact_match": false,
+      "feature_discovery_score": 0.6899397279655968,
+      "rank_score": 0.10035149384885765,
+      "activation_score": 0.8864691393378431,
+      "steering_score": 0.44903693399053746,
+      "overall_score": 0.4786191890590794,
       "gt_normalized_activation": 0.6899397279655968,
       "positive_mean_rank": 711.25,
       "activation_auroc": 1.0,
@@ -3179,8 +3743,7 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 402.7414420839632,
-      "feature_discovery_score": 0.6899397279655968
+      "elapsed_seconds": 402.7414420839632
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -3193,6 +3756,11 @@
       "selected_feature_id": 108861,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.38992352891356163,
+      "rank_score": 0.02418762362249223,
+      "activation_score": 0.5118354973439181,
+      "steering_score": 0.0,
+      "overall_score": 0.17867437365547012,
       "gt_normalized_activation": 0.38992352891356163,
       "positive_mean_rank": 2211.875,
       "activation_auroc": 0.8020833333333334,
@@ -3203,8 +3771,7 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 276.54268349998165,
-      "feature_discovery_score": 0.38992352891356163
+      "elapsed_seconds": 276.54268349998165
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -3217,6 +3784,11 @@
       "selected_feature_id": 2006,
       "expert_feature_id": 93406,
       "exact_match": false,
+      "feature_discovery_score": 0.6566680717609865,
+      "rank_score": 0.022552783109404992,
+      "activation_score": 0.868039834644847,
+      "steering_score": 0.44462487485127694,
+      "overall_score": 0.4450724975351763,
       "gt_normalized_activation": 0.6566680717609865,
       "positive_mean_rank": 2605.0,
       "activation_auroc": 0.9270833333333334,
@@ -3227,8 +3799,7 @@
       "pe_task_preservation": 0.25,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 337.28330529108644,
-      "feature_discovery_score": 0.6566680717609865
+      "elapsed_seconds": 337.28330529108644
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -3241,6 +3812,11 @@
       "selected_feature_id": 50688,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.6087881300899309,
+      "rank_score": 0.13574498567335244,
+      "activation_score": 0.7664691782287903,
+      "steering_score": 0.0,
+      "overall_score": 0.3007380546340476,
       "gt_normalized_activation": 0.6087881300899309,
       "positive_mean_rank": 349.0,
       "activation_auroc": 0.8958333333333334,
@@ -3251,8 +3827,7 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 465.9233732079156,
-      "feature_discovery_score": 0.6087881300899309
+      "elapsed_seconds": 465.9233732079156
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -3265,6 +3840,11 @@
       "selected_feature_id": 91086,
       "expert_feature_id": 91086,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 24.875,
       "activation_auroc": 1.0,
@@ -3275,8 +3855,7 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 314.0482880419586,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 314.0482880419586
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -3289,6 +3868,11 @@
       "selected_feature_id": 87901,
       "expert_feature_id": 7659,
       "exact_match": false,
+      "feature_discovery_score": 0.6433196920260896,
+      "rank_score": 0.01579778830963665,
+      "activation_score": 0.8524936599315739,
+      "steering_score": 0.0,
+      "overall_score": 0.2894304827470702,
       "gt_normalized_activation": 0.6433196920260896,
       "positive_mean_rank": 237.375,
       "activation_auroc": 1.0,
@@ -3299,8 +3883,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 456.9891569999745,
-      "feature_discovery_score": 0.6433196920260896
+      "elapsed_seconds": 456.9891569999745
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -3313,6 +3896,11 @@
       "selected_feature_id": 104583,
       "expert_feature_id": 104583,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 55.75,
       "activation_auroc": 1.0,
@@ -3323,8 +3911,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 512.9721684580436,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 512.9721684580436
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -3337,6 +3924,11 @@
       "selected_feature_id": 77390,
       "expert_feature_id": 77390,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 6.625,
       "activation_auroc": 1.0,
@@ -3347,8 +3939,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 551.1407470409758,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 551.1407470409758
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -3361,6 +3952,11 @@
       "selected_feature_id": 101617,
       "expert_feature_id": 101617,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 9.5,
       "activation_auroc": 1.0,
@@ -3371,8 +3967,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 449.6352031249553,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 449.6352031249553
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -3385,6 +3980,11 @@
       "selected_feature_id": 68458,
       "expert_feature_id": 41424,
       "exact_match": false,
+      "feature_discovery_score": 0.2045602382658235,
+      "rank_score": 0.0007442339757122104,
+      "activation_score": 0.27249890636252727,
+      "steering_score": 0.0,
+      "overall_score": 0.09108104677941316,
       "gt_normalized_activation": 0.2045602382658235,
       "positive_mean_rank": 17467.625,
       "activation_auroc": 0.7291666666666666,
@@ -3395,8 +3995,7 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 762.9938133750111,
-      "feature_discovery_score": 0.2045602382658235
+      "elapsed_seconds": 762.9938133750111
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -3409,6 +4008,11 @@
       "selected_feature_id": 124726,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.3851678950837198,
+      "rank_score": 0.002277289096168605,
+      "activation_score": 0.5127980970795701,
+      "steering_score": 0.0,
+      "overall_score": 0.17169179539191293,
       "gt_normalized_activation": 0.3851678950837198,
       "positive_mean_rank": 84695.0,
       "activation_auroc": 0.6875,
@@ -3419,8 +4023,7 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 584.2878446250688,
-      "feature_discovery_score": 0.3851678950837198
+      "elapsed_seconds": 584.2878446250688
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -3433,6 +4036,11 @@
       "selected_feature_id": 66256,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.18532247104716976,
+      "rank_score": 0.0006587565114082919,
+      "activation_score": 0.24687704255909027,
+      "steering_score": 0.0,
+      "overall_score": 0.08251193302349952,
       "gt_normalized_activation": 0.18532247104716976,
       "positive_mean_rank": 98481.0,
       "activation_auroc": 0.59375,
@@ -3443,8 +4051,7 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 283.2618237079587,
-      "feature_discovery_score": 0.18532247104716976
+      "elapsed_seconds": 283.2618237079587
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -3457,6 +4064,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -3467,8 +4079,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 216.60913633403834,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 216.60913633403834
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -3481,6 +4092,11 @@
       "selected_feature_id": 45257,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.9665262119996532,
+      "rank_score": 1.0,
+      "activation_score": 0.9553682826662042,
+      "steering_score": 0.4739433760128051,
+      "overall_score": 0.8097705528930031,
       "gt_normalized_activation": 0.9665262119996532,
       "positive_mean_rank": 30.625,
       "activation_auroc": 1.0,
@@ -3491,8 +4107,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 475.8022730409866,
-      "feature_discovery_score": 0.9665262119996532
+      "elapsed_seconds": 475.8022730409866
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -3505,6 +4120,11 @@
       "selected_feature_id": 87901,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.5949111253019692,
+      "rank_score": 0.006423206423206423,
+      "activation_score": 0.7910737649282235,
+      "steering_score": 0.0,
+      "overall_score": 0.26583232378380994,
       "gt_normalized_activation": 0.5949111253019692,
       "positive_mean_rank": 2413.125,
       "activation_auroc": 0.9791666666666666,
@@ -3515,8 +4135,7 @@
       "pe_task_preservation": 0.775,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 426.42488454200793,
-      "feature_discovery_score": 0.5949111253019692
+      "elapsed_seconds": 426.42488454200793
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -3529,6 +4148,11 @@
       "selected_feature_id": 44494,
       "expert_feature_id": 44494,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 11.75,
       "activation_auroc": 1.0,
@@ -3539,8 +4163,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 504.0658636249136,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 504.0658636249136
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -3553,6 +4176,11 @@
       "selected_feature_id": 112459,
       "expert_feature_id": 7256,
       "exact_match": false,
+      "feature_discovery_score": 0.6211089436859023,
+      "rank_score": 0.01871999295247324,
+      "activation_score": 0.8219052605970454,
+      "steering_score": 0.0,
+      "overall_score": 0.2802084178498396,
       "gt_normalized_activation": 0.6211089436859023,
       "positive_mean_rank": 2837.875,
       "activation_auroc": 0.9791666666666666,
@@ -3563,8 +4191,7 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 941.5470374999568,
-      "feature_discovery_score": 0.6211089436859023
+      "elapsed_seconds": 941.5470374999568
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -3577,6 +4204,11 @@
       "selected_feature_id": 62610,
       "expert_feature_id": 62610,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 4.166666666666667,
       "activation_auroc": 0.9958333333333333,
@@ -3587,8 +4219,7 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 135.2274693750078,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 135.2274693750078
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -3601,6 +4232,11 @@
       "selected_feature_id": 113440,
       "expert_feature_id": 3927,
       "exact_match": false,
+      "feature_discovery_score": 0.7256709479081433,
+      "rank_score": 0.12439784641541513,
+      "activation_score": 0.9260953150723861,
+      "steering_score": 0.0,
+      "overall_score": 0.3501643871626004,
       "gt_normalized_activation": 0.7256709479081433,
       "positive_mean_rank": 441.125,
       "activation_auroc": 1.0,
@@ -3611,8 +4247,7 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 202.72960491699632,
-      "feature_discovery_score": 0.7256709479081433
+      "elapsed_seconds": 202.72960491699632
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -3625,6 +4260,11 @@
       "selected_feature_id": 34893,
       "expert_feature_id": 131024,
       "exact_match": false,
+      "feature_discovery_score": 0.9667953667953668,
+      "rank_score": 1.0,
+      "activation_score": 0.9557271557271557,
+      "steering_score": 0.0,
+      "overall_score": 0.6519090519090519,
       "gt_normalized_activation": 0.9667953667953668,
       "positive_mean_rank": 14.25,
       "activation_auroc": 1.0,
@@ -3635,8 +4275,7 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 166.4602743750438,
-      "feature_discovery_score": 0.9667953667953668
+      "elapsed_seconds": 166.4602743750438
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -3649,6 +4288,11 @@
       "selected_feature_id": 82885,
       "expert_feature_id": 100747,
       "exact_match": false,
+      "feature_discovery_score": 0.6633672211324971,
+      "rank_score": 0.0920522327905852,
+      "activation_score": 0.8538055505798011,
+      "steering_score": 0.5702901364697979,
+      "overall_score": 0.505382639946728,
       "gt_normalized_activation": 0.6633672211324971,
       "positive_mean_rank": 775.375,
       "activation_auroc": 1.0,
@@ -3659,8 +4303,7 @@
       "pe_task_preservation": 0.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 253.17745379102416,
-      "feature_discovery_score": 0.6633672211324971
+      "elapsed_seconds": 253.17745379102416
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -3673,6 +4316,11 @@
       "selected_feature_id": 108861,
       "expert_feature_id": 105738,
       "exact_match": false,
+      "feature_discovery_score": 0.38992352891356163,
+      "rank_score": 0.02418762362249223,
+      "activation_score": 0.5118354973439181,
+      "steering_score": 0.0,
+      "overall_score": 0.17867437365547012,
       "gt_normalized_activation": 0.38992352891356163,
       "positive_mean_rank": 2211.875,
       "activation_auroc": 0.8020833333333334,
@@ -3683,8 +4331,7 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 279.91588754195254,
-      "feature_discovery_score": 0.38992352891356163
+      "elapsed_seconds": 279.91588754195254
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -3697,6 +4344,11 @@
       "selected_feature_id": 93406,
       "expert_feature_id": 93406,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 58.75,
       "activation_auroc": 0.9583333333333334,
@@ -3707,8 +4359,7 @@
       "pe_task_preservation": 0.275,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 726.1059322500369,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 726.1059322500369
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -3721,6 +4372,11 @@
       "selected_feature_id": 50688,
       "expert_feature_id": 33987,
       "exact_match": false,
+      "feature_discovery_score": 0.6087881300899309,
+      "rank_score": 0.13574498567335244,
+      "activation_score": 0.7664691782287903,
+      "steering_score": 0.0,
+      "overall_score": 0.3007380546340476,
       "gt_normalized_activation": 0.6087881300899309,
       "positive_mean_rank": 349.0,
       "activation_auroc": 0.8958333333333334,
@@ -3731,8 +4387,7 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 460.18423308304045,
-      "feature_discovery_score": 0.6087881300899309
+      "elapsed_seconds": 460.18423308304045
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -3745,6 +4400,11 @@
       "selected_feature_id": 91086,
       "expert_feature_id": 91086,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 24.875,
       "activation_auroc": 1.0,
@@ -3755,8 +4415,7 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 303.1000873330049,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 303.1000873330049
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -3769,6 +4428,11 @@
       "selected_feature_id": 7659,
       "expert_feature_id": 7659,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 3.75,
       "activation_auroc": 1.0,
@@ -3779,8 +4443,7 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 348.312270958093,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 348.312270958093
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -3793,6 +4456,11 @@
       "selected_feature_id": 20652,
       "expert_feature_id": 104583,
       "exact_match": false,
+      "feature_discovery_score": 0.8203325445260929,
+      "rank_score": 0.4110599078341014,
+      "activation_score": 0.9567567567567568,
+      "steering_score": 0.0,
+      "overall_score": 0.4559388881969528,
       "gt_normalized_activation": 0.8203325445260929,
       "positive_mean_rank": 135.625,
       "activation_auroc": 1.0,
@@ -3803,8 +4471,7 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 326.5120369999204,
-      "feature_discovery_score": 0.8203325445260929
+      "elapsed_seconds": 326.5120369999204
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -3817,6 +4484,11 @@
       "selected_feature_id": 77390,
       "expert_feature_id": 77390,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 6.625,
       "activation_auroc": 1.0,
@@ -3827,8 +4499,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 664.782069790992,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 664.782069790992
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -3841,6 +4512,11 @@
       "selected_feature_id": 101617,
       "expert_feature_id": 101617,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 9.5,
       "activation_auroc": 1.0,
@@ -3851,8 +4527,7 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 252.7056004590122,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 252.7056004590122
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -3865,6 +4540,11 @@
       "selected_feature_id": 68458,
       "expert_feature_id": 41424,
       "exact_match": false,
+      "feature_discovery_score": 0.2045602382658235,
+      "rank_score": 0.0007442339757122104,
+      "activation_score": 0.27249890636252727,
+      "steering_score": 0.0,
+      "overall_score": 0.09108104677941316,
       "gt_normalized_activation": 0.2045602382658235,
       "positive_mean_rank": 17467.625,
       "activation_auroc": 0.7291666666666666,
@@ -3875,8 +4555,7 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 604.7173488750122,
-      "feature_discovery_score": 0.2045602382658235
+      "elapsed_seconds": 604.7173488750122
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -3889,6 +4568,11 @@
       "selected_feature_id": 84434,
       "expert_feature_id": 27182,
       "exact_match": false,
+      "feature_discovery_score": 0.9166346246461987,
+      "rank_score": 1.0,
+      "activation_score": 0.8888461661949316,
+      "steering_score": 0.6715934343949839,
+      "overall_score": 0.8534798668633051,
       "gt_normalized_activation": 0.9166346246461987,
       "positive_mean_rank": 40.0,
       "activation_auroc": 1.0,
@@ -3899,8 +4583,7 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 524.3648372919997,
-      "feature_discovery_score": 0.9166346246461987
+      "elapsed_seconds": 524.3648372919997
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -3913,6 +4596,11 @@
       "selected_feature_id": 25806,
       "expert_feature_id": 94329,
       "exact_match": false,
+      "feature_discovery_score": 0.41000078821589564,
+      "rank_score": 0.04575509124570219,
+      "activation_score": 0.5314160205392935,
+      "steering_score": 0.0,
+      "overall_score": 0.19239037059499856,
       "gt_normalized_activation": 0.41000078821589564,
       "positive_mean_rank": 1417.875,
       "activation_auroc": 0.8697916666666666,
@@ -3923,8 +4611,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 278.8774943749886,
-      "feature_discovery_score": 0.41000078821589564
+      "elapsed_seconds": 278.8774943749886
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -3937,6 +4624,11 @@
       "selected_feature_id": 64827,
       "expert_feature_id": 18713,
       "exact_match": false,
+      "feature_discovery_score": 0.9339546343655439,
+      "rank_score": 1.0,
+      "activation_score": 0.9119395124873919,
+      "steering_score": 0.5087701062967606,
+      "overall_score": 0.8069032062613841,
       "gt_normalized_activation": 0.9339546343655439,
       "positive_mean_rank": 62.75,
       "activation_auroc": 0.9791666666666666,
@@ -3947,8 +4639,7 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 235.18586112500634,
-      "feature_discovery_score": 0.9339546343655439
+      "elapsed_seconds": 235.18586112500634
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -3961,6 +4652,11 @@
       "selected_feature_id": 45257,
       "expert_feature_id": 78694,
       "exact_match": false,
+      "feature_discovery_score": 0.9665262119996532,
+      "rank_score": 1.0,
+      "activation_score": 0.9553682826662042,
+      "steering_score": 0.4739433760128051,
+      "overall_score": 0.8097705528930031,
       "gt_normalized_activation": 0.9665262119996532,
       "positive_mean_rank": 30.625,
       "activation_auroc": 1.0,
@@ -3971,8 +4667,7 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 463.14314100006595,
-      "feature_discovery_score": 0.9665262119996532
+      "elapsed_seconds": 463.14314100006595
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -3985,6 +4680,11 @@
       "selected_feature_id": 85098,
       "expert_feature_id": 99383,
       "exact_match": false,
+      "feature_discovery_score": 0.6543481227265854,
+      "rank_score": 0.2059800664451827,
+      "activation_score": 0.8038041414870528,
+      "steering_score": 0.0,
+      "overall_score": 0.3365947359774118,
       "gt_normalized_activation": 0.6543481227265854,
       "positive_mean_rank": 75.25,
       "activation_auroc": 0.9583333333333334,
@@ -3995,8 +4695,7 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 298.5272455830127,
-      "feature_discovery_score": 0.6543481227265854
+      "elapsed_seconds": 298.5272455830127
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -4009,6 +4708,11 @@
       "selected_feature_id": 44494,
       "expert_feature_id": 44494,
       "exact_match": true,
+      "feature_discovery_score": 1.0,
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0,
       "gt_normalized_activation": 1.0,
       "positive_mean_rank": 11.75,
       "activation_auroc": 1.0,
@@ -4019,8 +4723,7 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 300.37125341698993,
-      "feature_discovery_score": 1.0
+      "elapsed_seconds": 300.37125341698993
     }
   ]
 }

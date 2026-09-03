@@ -4,7 +4,20 @@
   "suite": "data/discovery/gemma_l20_round_005_validation.json",
   "expert": {
     "feature_id": 27182,
-    "reference": "data/eval/gemma_real_estate_listings_l20_27182_reference.json"
+    "reference": "data/eval/gemma_real_estate_listings_l20_27182_reference.json",
+    "score_baseline": {
+      "rank_score": 1.0,
+      "activation_score": 1.0,
+      "steering_score": 1.0,
+      "overall_score": 1.0
+    },
+    "steering": {
+      "target_effect": 0.39375,
+      "target_relevance": 1.575,
+      "task_preservation": 0.5,
+      "causal_stable": false,
+      "usable_steering": false
+    }
   },
   "agents": [
     {
@@ -24,6 +37,14 @@
         "expert_pattern_spearman": 0.4448731830489275,
         "mean_score": 0.3851678950837198
       },
+      "scores": {
+        "rank_score": 0.002277289096168605,
+        "activation_score": 0.5127980970795701,
+        "steering_effect_recovery": 0.0,
+        "steering_pattern_recovery": 0.0,
+        "steering_score": 0.0,
+        "overall_score": 0.17169179539191293
+      },
       "activation": {
         "positive_mean_rank": 84695.0,
         "positive_mean_percentile": 0.3538311296930671,
@@ -42,7 +63,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": null
+        "pattern_correlation_to_expert": null,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.3851678950837198
     },
@@ -63,6 +85,14 @@
         "expert_pattern_spearman": 0.4448731830489275,
         "mean_score": 0.3851678950837198
       },
+      "scores": {
+        "rank_score": 0.002277289096168605,
+        "activation_score": 0.5127980970795701,
+        "steering_effect_recovery": 0.0,
+        "steering_pattern_recovery": 0.0,
+        "steering_score": 0.0,
+        "overall_score": 0.17169179539191293
+      },
       "activation": {
         "positive_mean_rank": 84695.0,
         "positive_mean_percentile": 0.3538311296930671,
@@ -81,7 +111,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": null
+        "pattern_correlation_to_expert": null,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.3851678950837198
     },
@@ -102,6 +133,14 @@
         "expert_pattern_spearman": 0.7366444188262455,
         "mean_score": 0.6115546777224377
       },
+      "scores": {
+        "rank_score": 0.010353272721172879,
+        "activation_score": 0.8119551460561926,
+        "steering_effect_recovery": 1.0,
+        "steering_pattern_recovery": 0.42734056897205963,
+        "steering_score": 0.7136702844860299,
+        "overall_score": 0.5119929010877985
+      },
       "activation": {
         "positive_mean_rank": 18629.375,
         "positive_mean_percentile": 0.8578756933265177,
@@ -120,7 +159,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 240.0,
-        "pattern_correlation_to_expert": 0.42734056897205963
+        "pattern_correlation_to_expert": 0.42734056897205963,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.6115546777224377
     },
@@ -141,6 +181,14 @@
         "expert_pattern_spearman": 0.4448731830489275,
         "mean_score": 0.3851678950837198
       },
+      "scores": {
+        "rank_score": 0.002277289096168605,
+        "activation_score": 0.5127980970795701,
+        "steering_effect_recovery": 0.0,
+        "steering_pattern_recovery": 0.0,
+        "steering_score": 0.0,
+        "overall_score": 0.17169179539191293
+      },
       "activation": {
         "positive_mean_rank": 84695.0,
         "positive_mean_percentile": 0.3538311296930671,
@@ -159,7 +207,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": null
+        "pattern_correlation_to_expert": null,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.3851678950837198
     },
@@ -180,6 +229,14 @@
         "expert_pattern_spearman": 0.4448731830489275,
         "mean_score": 0.3851678950837198
       },
+      "scores": {
+        "rank_score": 0.002277289096168605,
+        "activation_score": 0.5127980970795701,
+        "steering_effect_recovery": 0.0,
+        "steering_pattern_recovery": 0.0,
+        "steering_score": 0.0,
+        "overall_score": 0.17169179539191293
+      },
       "activation": {
         "positive_mean_rank": 84695.0,
         "positive_mean_percentile": 0.3538311296930671,
@@ -198,7 +255,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 120.0,
-        "pattern_correlation_to_expert": null
+        "pattern_correlation_to_expert": null,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.3851678950837198
     },
@@ -219,6 +277,14 @@
         "expert_pattern_spearman": 0.5133464298849049,
         "mean_score": 0.3475157171644367
       },
+      "scores": {
+        "rank_score": 0.0033841207317420875,
+        "activation_score": 0.4622262493086682,
+        "steering_effect_recovery": 0.9523809523809524,
+        "steering_pattern_recovery": 0.12735255871714063,
+        "steering_score": 0.5398667555490465,
+        "overall_score": 0.33515904186315226
+      },
       "activation": {
         "positive_mean_rank": 56994.125,
         "positive_mean_percentile": 0.5651736463443477,
@@ -237,7 +303,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 240.0,
-        "pattern_correlation_to_expert": 0.12735255871714063
+        "pattern_correlation_to_expert": 0.12735255871714063,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.3475157171644367
     },
@@ -258,6 +325,14 @@
         "expert_pattern_spearman": 0.7366444188262455,
         "mean_score": 0.6115546777224377
       },
+      "scores": {
+        "rank_score": 0.010353272721172879,
+        "activation_score": 0.8119551460561926,
+        "steering_effect_recovery": 1.0,
+        "steering_pattern_recovery": 0.42734056897205963,
+        "steering_score": 0.7136702844860299,
+        "overall_score": 0.5119929010877985
+      },
       "activation": {
         "positive_mean_rank": 18629.375,
         "positive_mean_percentile": 0.8578756933265177,
@@ -276,7 +351,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 240.0,
-        "pattern_correlation_to_expert": 0.42734056897205963
+        "pattern_correlation_to_expert": 0.42734056897205963,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.6115546777224377
     },
@@ -297,6 +373,14 @@
         "expert_pattern_spearman": 0.6665384985847949,
         "mean_score": 0.9166346246461987
       },
+      "scores": {
+        "rank_score": 1.0,
+        "activation_score": 0.8888461661949316,
+        "steering_effect_recovery": 1.0,
+        "steering_pattern_recovery": 0.34318686878996785,
+        "steering_score": 0.6715934343949839,
+        "overall_score": 0.8534798668633051
+      },
       "activation": {
         "positive_mean_rank": 40.0,
         "positive_mean_percentile": 0.9997024513431652,
@@ -315,7 +399,8 @@
         "causal_stable": false,
         "usable_steering": false,
         "selected_alpha": 240.0,
-        "pattern_correlation_to_expert": 0.34318686878996785
+        "pattern_correlation_to_expert": 0.34318686878996785,
+        "expert_target_effect": 0.39375
       },
       "feature_discovery_score": 0.9166346246461987
     }

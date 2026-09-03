@@ -10,6 +10,11 @@ from typing import Any
 
 
 METRICS = (
+    "mean_overall_score",
+    "total_overall_score",
+    "mean_rank_score",
+    "mean_activation_score",
+    "mean_steering_score",
     "macro_gt_normalized_activation",
     "exact_match_rate",
     "causal_steering_rate",
@@ -122,7 +127,7 @@ def aggregate(replicates: list[tuple[str, dict[str, Any]]]) -> dict[str, Any]:
         )
 
     rows.sort(
-        key=lambda row: row["metrics"]["macro_gt_normalized_activation"]["mean"],
+        key=lambda row: row["metrics"]["mean_overall_score"]["mean"],
         reverse=True,
     )
     return {

@@ -111,6 +111,15 @@ def _agent_row(source_path: Path, task_meta: dict[str, Any], agent: dict[str, An
     elapsed_seconds = _finite_number(agent.get("elapsed_seconds"))
     if None in (gt_score, auroc, positive_rank, steering_effect):
         return None, "missing_compact_scores"
+    scores = agent.get("scores", {})
+    rank_score = _finite_number(scores.get("rank_score"))
+    activation_score = _finite_number(scores.get("activation_score"))
+    steering_score = _finite_number(scores.get("steering_score"))
+    overall_score = _finite_number(scores.get("overall_score"))
+    rank_score = gt_score if rank_score is None else rank_score
+    activation_score = gt_score if activation_score is None else activation_score
+    steering_score = gt_score if steering_score is None else steering_score
+    overall_score = gt_score if overall_score is None else overall_score
 
     return {
         "task": task_meta["task"],
@@ -124,6 +133,10 @@ def _agent_row(source_path: Path, task_meta: dict[str, Any], agent: dict[str, An
         "expert_feature_id": task_meta["expert_feature_id"],
         "exact_match": int(agent["feature_id"]) == int(task_meta["expert_feature_id"]),
         "feature_discovery_score": gt_score,
+        "rank_score": rank_score,
+        "activation_score": activation_score,
+        "steering_score": steering_score,
+        "overall_score": overall_score,
         "gt_normalized_activation": gt_score,
         "positive_mean_rank": positive_rank,
         "activation_auroc": auroc,
@@ -161,6 +174,7 @@ def collect_leaderboard(
     tasks = _benchmark_tasks(benchmark_path)
     skipped: dict[str, int] = defaultdict(int)
     rows: list[dict[str, Any]] = []
+    expert_by_task: dict[str, dict[str, Any]] = {}
     seen_run_ids: set[str] = set()
 
     for path in result_paths:
@@ -172,6 +186,9 @@ def collect_leaderboard(
         if task not in tasks:
             _skip(skipped, "task_not_in_stable_benchmark")
             continue
+        expert = payload.get("expert")
+        if isinstance(expert, dict) and isinstance(expert.get("score_baseline"), dict):
+            expert_by_task[task] = expert
         for agent in payload["agents"]:
             run_id = agent.get("run_id")
             if run_id not in selected_run_ids:
@@ -221,6 +238,10 @@ def collect_leaderboard(
             mean([row["feature_discovery_score"] for row in task]) for task in task_rows
         ]
         mean_discovery_score = mean(task_discovery_scores)
+        task_rank_scores = [mean([row["rank_score"] for row in task]) for task in task_rows]
+        task_activation_scores = [mean([row["activation_score"] for row in task]) for task in task_rows]
+        task_steering_scores = [mean([row["steering_score"] for row in task]) for task in task_rows]
+        task_overall_scores = [mean([row["overall_score"] for row in task]) for task in task_rows]
         configuration_rows.append(
             {
                 "configuration": _configuration_name(configuration),
@@ -236,6 +257,12 @@ def collect_leaderboard(
                 "total_feature_discovery_score": sum(task_discovery_scores),
                 "maximum_feature_discovery_score": len(tasks),
                 "macro_gt_normalized_activation": mean_discovery_score,
+                "mean_rank_score": mean(task_rank_scores),
+                "mean_activation_score": mean(task_activation_scores),
+                "mean_steering_score": mean(task_steering_scores),
+                "mean_overall_score": mean(task_overall_scores),
+                "total_overall_score": sum(task_overall_scores),
+                "maximum_overall_score": len(tasks),
                 "exact_matches": sum(row["exact_match"] for row in configuration_runs),
                 "exact_match_rate": mean(
                     [mean([row["exact_match"] for row in task]) for task in task_rows]
@@ -253,13 +280,43 @@ def collect_leaderboard(
     configuration_rows.sort(
         key=lambda row: (
             -row["coverage_rate"],
-            -row["macro_gt_normalized_activation"],
+            -row["mean_overall_score"],
             -row["exact_match_rate"],
             row["configuration"],
         )
     )
 
     covered_tasks = sorted({row["task"] for row in rows})
+    expert_rows = [expert_by_task[task] for task in sorted(expert_by_task)]
+    expert_steering = [row.get("steering") for row in expert_rows]
+    expert_steering = [row for row in expert_steering if isinstance(row, dict)]
+    expert_baseline = {
+        "label": "Expert feature baseline",
+        "completed_tasks": len(expert_rows),
+        "benchmark_tasks": len(tasks),
+        "mean_rank_score": 1.0 if expert_rows else None,
+        "mean_activation_score": 1.0 if expert_rows else None,
+        "mean_steering_score": 1.0 if expert_rows else None,
+        "mean_overall_score": 1.0 if expert_rows else None,
+        "total_overall_score": float(len(expert_rows)),
+        "maximum_overall_score": len(tasks),
+        "exact_match_rate": 1.0 if expert_rows else None,
+        "mean_target_relevance": (
+            mean([float(row["target_relevance"]) / 4 for row in expert_steering])
+            if expert_steering
+            else None
+        ),
+        "causal_steering_rate": (
+            mean([float(bool(row["causal_stable"])) for row in expert_steering])
+            if expert_steering
+            else None
+        ),
+        "usable_steering_rate": (
+            mean([float(bool(row["usable_steering"])) for row in expert_steering])
+            if expert_steering
+            else None
+        ),
+    }
     return {
         "schema": 1,
         "benchmark": _repo_path(benchmark_path),
@@ -273,6 +330,7 @@ def collect_leaderboard(
             "skipped": sum(skipped.values()),
             "skipped_by_reason": dict(sorted(skipped.items())),
         },
+        "expert_baseline": expert_baseline,
         "configurations": configuration_rows,
         "runs": rows,
     }
@@ -293,26 +351,22 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "",
         "## Configuration Summary",
         "",
-        "Feature Discovery Score is the expert-normalized activation score in [0, 1] for one task. Mean is the macro-average; Total is its sum across tasks.",
+        "Overall Score is the equal-weight mean of expert-normalized Rank, Activation, and Steering scores. Total is the sum across tasks; the Expert baseline is 1.0 per task.",
         "",
-        "| Configuration | Coverage | Mean Discovery Score | Total | Exact | Causal | Usable | Median discovery time |",
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| Configuration | Coverage | Overall | Total | Rank | Activation | Steering | Exact | Causal | Usable | Median discovery time |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for row in payload["configurations"]:
         latency = row["median_elapsed_seconds"]
         latency_text = "" if latency is None else f"{latency / 60:.1f} min"
-        mean_discovery_score = row.get(
-            "mean_feature_discovery_score", row["macro_gt_normalized_activation"]
-        )
-        maximum_discovery_score = row.get(
-            "maximum_feature_discovery_score", row["benchmark_tasks"]
-        )
-        total_discovery_score = row.get(
-            "total_feature_discovery_score", mean_discovery_score * row["completed_tasks"]
-        )
+        overall = row.get("mean_overall_score", row["macro_gt_normalized_activation"])
+        total = row.get("total_overall_score", overall * row["completed_tasks"])
+        maximum = row.get("maximum_overall_score", row["benchmark_tasks"])
         lines.append(
             f"| {row['configuration']} | {row['completed_tasks']}/{row['benchmark_tasks']} | "
-            f"{mean_discovery_score:.3f} | {total_discovery_score:.3f}/{maximum_discovery_score} | {row['exact_match_rate']:.3f} | "
+            f"{overall:.3f} | {total:.3f}/{maximum} | "
+            f"{row.get('mean_rank_score', overall):.3f} | {row.get('mean_activation_score', overall):.3f} | "
+            f"{row.get('mean_steering_score', overall):.3f} | {row['exact_match_rate']:.3f} | "
             f"{row['causal_steering_rate']:.3f} | {row['usable_steering_rate']:.3f} | "
             f"{latency_text} |"
         )
@@ -321,20 +375,19 @@ def render_markdown(payload: dict[str, Any]) -> str:
             "",
             "## Runs",
             "",
-            "| Configuration | Task | Selected ID | Exact | Discovery Score | Mean rank | AUROC | Activation corr. | Steering | Steering corr. |",
-            "| --- | --- | ---: | :---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+            "| Configuration | Task | Selected ID | Exact | Overall | Rank | Activation | Steering | Mean rank | AUROC | Steering effect |",
+            "| --- | --- | ---: | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
         ]
     )
     for row in payload["runs"]:
         exact = "yes" if row["exact_match"] else "no"
-        spearman = "" if row["expert_spearman"] is None else f"{row['expert_spearman']:.3f}"
-        steering_pattern = row["steering_pattern_correlation"]
-        steering_pattern_text = "" if steering_pattern is None else f"{steering_pattern:.3f}"
         lines.append(
             f"| {_configuration_name(_configuration(row))} | {row['concept_id']} | {row['selected_feature_id']} | {exact} | "
-            f"{row.get('feature_discovery_score', row['gt_normalized_activation']):.3f} | {row['positive_mean_rank']:.1f} | "
-            f"{row['activation_auroc']:.3f} | {spearman} | {row['steering_effect']:.3f} | "
-            f"{steering_pattern_text} |"
+            f"{row.get('overall_score', row['gt_normalized_activation']):.3f} | "
+            f"{row.get('rank_score', row['gt_normalized_activation']):.3f} | "
+            f"{row.get('activation_score', row['gt_normalized_activation']):.3f} | "
+            f"{row.get('steering_score', row['gt_normalized_activation']):.3f} | "
+            f"{row['positive_mean_rank']:.1f} | {row['activation_auroc']:.3f} | {row['steering_effect']:.3f} |"
         )
     lines.append("")
     return "\n".join(lines)

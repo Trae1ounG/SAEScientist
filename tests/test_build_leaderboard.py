@@ -240,6 +240,12 @@ class BuildLeaderboardTest(unittest.TestCase):
         self.assertEqual(summary["mean_feature_discovery_score"], 0.5)
         self.assertEqual(summary["total_feature_discovery_score"], 1.0)
         self.assertEqual(summary["maximum_feature_discovery_score"], 2)
+        self.assertEqual(summary["mean_rank_score"], 0.5)
+        self.assertEqual(summary["mean_activation_score"], 0.5)
+        self.assertEqual(summary["mean_steering_score"], 0.5)
+        self.assertEqual(summary["mean_overall_score"], 0.5)
+        self.assertEqual(summary["total_overall_score"], 1.0)
+        self.assertEqual(summary["maximum_overall_score"], 2)
         self.assertEqual(summary["exact_match_rate"], 0.5)
         self.assertEqual(summary["causal_steering_rate"], 0.5)
         self.assertEqual(summary["usable_steering_rate"], 0.5)
@@ -319,10 +325,10 @@ class BuildLeaderboardTest(unittest.TestCase):
         }
         markdown = build_leaderboard.render_markdown(payload)
         self.assertIn(
-            "| codex/model-a (high) | 1/1 | 0.800 | 0.800/1 | 1.000 | 0.000 | 0.000 | 2.0 min |",
+            "| codex/model-a (high) | 1/1 | 0.800 | 0.800/1 | 0.800 | 0.800 | 0.800 | 1.000 | 0.000 | 0.000 | 2.0 min |",
             markdown,
         )
-        self.assertIn("| codex/model-a (high) | alpha | 10 | yes | 0.800 | 20.0 | 0.900 |  | 0.400 |  |", markdown)
+        self.assertIn("| codex/model-a (high) | alpha | 10 | yes | 0.800 | 0.800 | 0.800 | 0.800 | 20.0 | 0.900 | 0.400 |", markdown)
 
 
 if __name__ == "__main__":
