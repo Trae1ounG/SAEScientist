@@ -186,9 +186,15 @@ class BuildAgentResultsTest(unittest.TestCase):
                     "gt_normalized": {"mean_score": 1},
                     "expert_activation_spearman": 1,
                     "activation_rank": {
-                        "positive": {"mean_rank": 1, "mean_percentile": 1},
-                        "hard_negative": {"mean_rank": 2},
-                        "neutral": {"mean_rank": 3},
+                        "positive": {"mean_activation": 4, "mean_rank": 1, "mean_percentile": 1},
+                        "hard_negative": {"mean_activation": 0, "mean_rank": 2},
+                        "neutral": {"mean_activation": 0, "mean_rank": 3},
+                        "activation_auroc": 1,
+                    },
+                    "expert_activation_rank": {
+                        "positive": {"mean_activation": 4, "mean_rank": 1},
+                        "hard_negative": {"mean_activation": 0, "mean_rank": 2},
+                        "neutral": {"mean_activation": 0, "mean_rank": 3},
                         "activation_auroc": 1,
                     },
                 }
@@ -240,20 +246,28 @@ class BuildAgentResultsTest(unittest.TestCase):
         self.assertEqual(output["expert"]["score_baseline"]["overall_score"], 1.0)
 
     def test_benchmark_scores_are_expert_normalized(self):
-        activation = {
-            "positive_rank_recovery": 0.6,
-            "auroc_recovery": 0.9,
-            "activation_contrast_recovery": 0.6,
-            "expert_pattern_spearman": 0.3,
-            "mean_score": 0.6,
+        score = {
+            "activation_rank": {
+                "positive": {"mean_activation": 3, "mean_rank": 2},
+                "hard_negative": {"mean_activation": 1},
+                "neutral": {"mean_activation": 0},
+                "activation_auroc": 0.8,
+            },
+            "expert_activation_rank": {
+                "positive": {"mean_activation": 3, "mean_rank": 3},
+                "hard_negative": {"mean_activation": 1},
+                "neutral": {"mean_activation": 0},
+                "activation_auroc": 0.8,
+            },
+            "expert_activation_spearman": 1.0,
         }
         steering = {"target_effect": 0.2, "pattern_correlation_to_expert": 0.5}
         expert = {"target_effect": 0.4}
-        scores = build_agent_results.benchmark_scores(activation, steering, expert)
-        self.assertAlmostEqual(scores["rank_score"], 0.6)
-        self.assertAlmostEqual(scores["activation_score"], 0.6)
-        self.assertAlmostEqual(scores["steering_score"], 0.5)
-        self.assertAlmostEqual(scores["overall_score"], 17 / 30)
+        scores = build_agent_results.benchmark_scores(score, steering, expert)
+        self.assertAlmostEqual(scores["rank_score"], 1.2)
+        self.assertAlmostEqual(scores["activation_score"], 1.0)
+        self.assertAlmostEqual(scores["steering_score"], 2 / 3)
+        self.assertAlmostEqual(scores["overall_score"], 43 / 45)
 
     def test_validate_pe_pair_requires_complete_matching_pair(self):
         with TemporaryDirectory() as directory:

@@ -11,7 +11,12 @@
       "steering_score": 1.0,
       "overall_score": 1.0
     },
-    "steering": {
+    "metrics": {
+      "activation": {
+        "positive_mean_rank": 87.625,
+        "auroc": 0.9791666666666666,
+        "contrast": 16.510416880249977
+      },
       "target_effect": 0.66875,
       "target_relevance": 2.675,
       "task_preservation": 0.725,
@@ -38,12 +43,15 @@
         "mean_score": 0.9667953667953668
       },
       "scores": {
-        "rank_score": 1.0,
-        "activation_score": 0.9557271557271557,
+        "rank_score": 1.7202453987730062,
+        "activation_auroc_score": 1.021276595744681,
+        "activation_contrast_score": 1.1169685926577506,
+        "activation_pattern_score": 0.9288668320926384,
+        "activation_score": 1.0223706734983566,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.6519090519090519
+        "overall_score": 0.9142053574237877
       },
       "activation": {
         "positive_mean_rank": 14.25,
@@ -86,12 +94,15 @@
         "mean_score": 0.9667953667953668
       },
       "scores": {
-        "rank_score": 1.0,
-        "activation_score": 0.9557271557271557,
+        "rank_score": 1.7202453987730062,
+        "activation_auroc_score": 1.021276595744681,
+        "activation_contrast_score": 1.1169685926577506,
+        "activation_pattern_score": 0.9288668320926384,
+        "activation_score": 1.0223706734983566,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.6519090519090519
+        "overall_score": 0.9142053574237877
       },
       "activation": {
         "positive_mean_rank": 14.25,
@@ -134,12 +145,15 @@
         "mean_score": 0.9667953667953668
       },
       "scores": {
-        "rank_score": 1.0,
-        "activation_score": 0.9557271557271557,
+        "rank_score": 1.7202453987730062,
+        "activation_auroc_score": 1.021276595744681,
+        "activation_contrast_score": 1.1169685926577506,
+        "activation_pattern_score": 0.9288668320926384,
+        "activation_score": 1.0223706734983566,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.6519090519090519
+        "overall_score": 0.9142053574237877
       },
       "activation": {
         "positive_mean_rank": 14.25,
@@ -182,12 +196,15 @@
         "mean_score": 0.35026298403644285
       },
       "scores": {
-        "rank_score": 0.0016804345637342565,
-        "activation_score": 0.46645716719401237,
+        "rank_score": 0.003355230881525888,
+        "activation_auroc_score": 0.7482993197278912,
+        "activation_contrast_score": 0.41796631095649067,
+        "activation_pattern_score": 0.6990599294063754,
+        "activation_score": 0.6217751866969191,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.1560458672525822
+        "overall_score": 0.20837680585948168
       },
       "activation": {
         "positive_mean_rank": 52144.25,
@@ -230,12 +247,15 @@
         "mean_score": 0.35026298403644285
       },
       "scores": {
-        "rank_score": 0.0016804345637342565,
-        "activation_score": 0.46645716719401237,
+        "rank_score": 0.003355230881525888,
+        "activation_auroc_score": 0.7482993197278912,
+        "activation_contrast_score": 0.41796631095649067,
+        "activation_pattern_score": 0.6990599294063754,
+        "activation_score": 0.6217751866969191,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.1560458672525822
+        "overall_score": 0.20837680585948168
       },
       "activation": {
         "positive_mean_rank": 52144.25,
@@ -278,12 +298,15 @@
         "mean_score": 0.9667953667953668
       },
       "scores": {
-        "rank_score": 1.0,
-        "activation_score": 0.9557271557271557,
+        "rank_score": 1.7202453987730062,
+        "activation_auroc_score": 1.021276595744681,
+        "activation_contrast_score": 1.1169685926577506,
+        "activation_pattern_score": 0.9288668320926384,
+        "activation_score": 1.0223706734983566,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.6519090519090519
+        "overall_score": 0.9142053574237877
       },
       "activation": {
         "positive_mean_rank": 14.25,
@@ -326,12 +349,15 @@
         "mean_score": 0.6141356505136863
       },
       "scores": {
-        "rank_score": 0.005292882922335815,
-        "activation_score": 0.8170832397108031,
+        "rank_score": 0.010530031620137747,
+        "activation_auroc_score": 0.9485714285714286,
+        "activation_contrast_score": 0.93371455373938,
+        "activation_pattern_score": 0.8048323871564099,
+        "activation_score": 0.8957061231557395,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.27412537421104627
+        "overall_score": 0.30207871825862576
       },
       "activation": {
         "positive_mean_rank": 16555.25,
@@ -374,12 +400,15 @@
         "mean_score": 0.9667953667953668
       },
       "scores": {
-        "rank_score": 1.0,
-        "activation_score": 0.9557271557271557,
+        "rank_score": 1.7202453987730062,
+        "activation_auroc_score": 1.021276595744681,
+        "activation_contrast_score": 1.1169685926577506,
+        "activation_pattern_score": 0.9288668320926384,
+        "activation_score": 1.0223706734983566,
         "steering_effect_recovery": 0.0,
         "steering_pattern_recovery": 0.0,
         "steering_score": 0.0,
-        "overall_score": 0.6519090519090519
+        "overall_score": 0.9142053574237877
       },
       "activation": {
         "positive_mean_rank": 14.25,

@@ -22,45 +22,67 @@ def mean(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
 
-def clip_unit(value: float) -> float:
-    return min(max(float(value), 0.0), 1.0)
+def relative_higher_is_better(candidate: float, expert: float) -> float:
+    candidate = max(float(candidate), 0.0)
+    expert = max(float(expert), 0.0)
+    if candidate + expert == 0:
+        raise ValueError("candidate and expert baselines cannot both be zero")
+    return 2 * candidate / (candidate + expert)
+
+
+def relative_lower_is_better(candidate: float, expert: float) -> float:
+    candidate = float(candidate)
+    expert = float(expert)
+    if candidate <= 0 or expert <= 0:
+        raise ValueError("rank baselines must be positive")
+    return 2 * expert / (candidate + expert)
+
+
+def activation_contrast(summary: dict[str, Any]) -> float:
+    return float(summary["positive"]["mean_activation"]) - max(
+        float(summary["hard_negative"]["mean_activation"]),
+        float(summary["neutral"]["mean_activation"]),
+    )
 
 
 def benchmark_scores(
-    activation: dict[str, Any],
+    score: dict[str, Any],
     steering: dict[str, Any],
     expert_steering: dict[str, Any],
 ) -> dict[str, float]:
     """Return three expert-normalized blocks and their equal-weight mean."""
-    fallback = float(activation["mean_score"])
-    rank_score = clip_unit(activation.get("positive_rank_recovery", fallback))
-    activation_parts = [
-        activation[key]
-        for key in (
-            "auroc_recovery",
-            "activation_contrast_recovery",
-            "expert_pattern_spearman",
-        )
-        if key in activation
-    ]
-    activation_score = (
-        mean([clip_unit(value) for value in activation_parts])
-        if activation_parts
-        else clip_unit(fallback)
+    candidate = score["activation_rank"]
+    expert = score["expert_activation_rank"]
+    rank_score = relative_lower_is_better(
+        candidate["positive"]["mean_rank"], expert["positive"]["mean_rank"]
     )
+    auroc_score = relative_higher_is_better(
+        float(candidate["activation_auroc"]) - 0.5,
+        float(expert["activation_auroc"]) - 0.5,
+    )
+    contrast_score = relative_higher_is_better(
+        activation_contrast(candidate), activation_contrast(expert)
+    )
+    pattern_score = relative_higher_is_better(
+        max(float(score["expert_activation_spearman"]), 0.0), 1.0
+    )
+    activation_score = mean([auroc_score, contrast_score, pattern_score])
     expert_effect = float(expert_steering["target_effect"])
     if expert_effect <= 0:
         raise ValueError("expert steering target effect must be positive")
-    effect_recovery = clip_unit(
-        max(float(steering["target_effect"]), 0.0) / expert_effect
+    effect_recovery = relative_higher_is_better(
+        max(float(steering["target_effect"]), 0.0), expert_effect
     )
-    pattern_recovery = clip_unit(
-        steering.get("pattern_correlation_to_expert") or 0.0
+    pattern_recovery = relative_higher_is_better(
+        max(float(steering.get("pattern_correlation_to_expert") or 0.0), 0.0), 1.0
     )
     steering_score = mean([effect_recovery, pattern_recovery])
     overall_score = mean([rank_score, activation_score, steering_score])
     return {
         "rank_score": rank_score,
+        "activation_auroc_score": auroc_score,
+        "activation_contrast_score": contrast_score,
+        "activation_pattern_score": pattern_score,
         "activation_score": activation_score,
         "steering_effect_recovery": effect_recovery,
         "steering_pattern_recovery": pattern_recovery,
@@ -502,9 +524,14 @@ def build_results(args: argparse.Namespace) -> dict[str, Any]:
                 required["candidate judge rows"], required["expert judge rows"]
             )
 
-        scores = benchmark_scores(score["gt_normalized"], steering, expert_steering)
+        scores = benchmark_scores(score, steering, expert_steering)
         steering["expert_target_effect"] = expert_steering["target_effect"]
         expert_metrics_by_task[task_name] = {
+            "activation": {
+                "positive_mean_rank": score["expert_activation_rank"]["positive"]["mean_rank"],
+                "auroc": score["expert_activation_rank"]["activation_auroc"],
+                "contrast": activation_contrast(score["expert_activation_rank"]),
+            },
             "target_effect": expert_steering["target_effect"],
             "target_relevance": expert_steering["pe_target_relevance"],
             "task_preservation": expert_steering["pe_task_preservation"],
@@ -554,7 +581,7 @@ def build_results(args: argparse.Namespace) -> dict[str, Any]:
                     "steering_score": 1.0,
                     "overall_score": 1.0,
                 },
-                "steering": expert_metrics_by_task.get(task_name),
+                "metrics": expert_metrics_by_task.get(task_name),
             },
             "agents": sorted(agents, key=lambda item: item["model"]),
         }

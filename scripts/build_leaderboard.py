@@ -288,8 +288,8 @@ def collect_leaderboard(
 
     covered_tasks = sorted({row["task"] for row in rows})
     expert_rows = [expert_by_task[task] for task in sorted(expert_by_task)]
-    expert_steering = [row.get("steering") for row in expert_rows]
-    expert_steering = [row for row in expert_steering if isinstance(row, dict)]
+    expert_metrics = [row.get("metrics") for row in expert_rows]
+    expert_metrics = [row for row in expert_metrics if isinstance(row, dict)]
     expert_baseline = {
         "label": "Expert feature baseline",
         "completed_tasks": len(expert_rows),
@@ -302,20 +302,34 @@ def collect_leaderboard(
         "maximum_overall_score": len(tasks),
         "exact_match_rate": 1.0 if expert_rows else None,
         "mean_target_relevance": (
-            mean([float(row["target_relevance"]) / 4 for row in expert_steering])
-            if expert_steering
+            mean([float(row["target_relevance"]) / 4 for row in expert_metrics])
+            if expert_metrics
             else None
         ),
         "causal_steering_rate": (
-            mean([float(bool(row["causal_stable"])) for row in expert_steering])
-            if expert_steering
+            mean([float(bool(row["causal_stable"])) for row in expert_metrics])
+            if expert_metrics
             else None
         ),
         "usable_steering_rate": (
-            mean([float(bool(row["usable_steering"])) for row in expert_steering])
-            if expert_steering
+            mean([float(bool(row["usable_steering"])) for row in expert_metrics])
+            if expert_metrics
             else None
         ),
+        "raw_metrics": {
+            "mean_positive_rank": mean(
+                [float(row["activation"]["positive_mean_rank"]) for row in expert_metrics]
+            ) if expert_metrics else None,
+            "mean_activation_auroc": mean(
+                [float(row["activation"]["auroc"]) for row in expert_metrics]
+            ) if expert_metrics else None,
+            "mean_activation_contrast": mean(
+                [float(row["activation"]["contrast"]) for row in expert_metrics]
+            ) if expert_metrics else None,
+            "mean_steering_effect": mean(
+                [float(row["target_effect"]) for row in expert_metrics]
+            ) if expert_metrics else None,
+        },
     }
     return {
         "schema": 1,
