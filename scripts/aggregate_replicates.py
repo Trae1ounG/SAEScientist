@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+from collections import defaultdict
+import json
+from pathlib import Path
+from statistics import fmean, pstdev
+from typing import Any
+
+
+METRICS = (
+    "macro_gt_normalized_activation",
+    "exact_match_rate",
+    "causal_steering_rate",
+    "usable_steering_rate",
+    "median_elapsed_seconds",
+)
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def parse_replicate(value: str) -> tuple[str, Path]:
+    label, separator, path = value.partition("=")
+    if not separator or not label or not path:
+        raise argparse.ArgumentTypeError("replicates must use LABEL=PATH")
+    return label, Path(path)
+
+
+def configuration_key(row: dict[str, Any]) -> tuple[str, str, str | None]:
+    return row["harness"], row["model"], row.get("reasoning_effort")
+
+
+def mean_std(values: list[float]) -> dict[str, float]:
+    return {"mean": fmean(values), "std": pstdev(values)}
+
+
+def aggregate(replicates: list[tuple[str, dict[str, Any]]]) -> dict[str, Any]:
+    if len(replicates) < 2:
+        raise ValueError("at least two replicates are required")
+    labels = [label for label, _ in replicates]
+    if len(set(labels)) != len(labels):
+        raise ValueError("replicate labels must be unique")
+
+    benchmark_tasks = {
+        int(payload["task_coverage"]["stable_benchmark_tasks"])
+        for _, payload in replicates
+    }
+    if len(benchmark_tasks) != 1:
+        raise ValueError("replicates use different benchmark task counts")
+    task_count = benchmark_tasks.pop()
+
+    by_config: dict[tuple[str, str, str | None], dict[str, dict[str, Any]]] = defaultdict(dict)
+    runs_by_config: dict[
+        tuple[str, str, str | None], dict[str, dict[str, dict[str, Any]]]
+    ] = defaultdict(lambda: defaultdict(dict))
+    for label, payload in replicates:
+        for row in payload["configurations"]:
+            key = configuration_key(row)
+            if label in by_config[key]:
+                raise ValueError(f"duplicate configuration in {label}: {key}")
+            if int(row["completed_tasks"]) != task_count:
+                raise ValueError(f"incomplete configuration in {label}: {key}")
+            by_config[key][label] = row
+        for row in payload["runs"]:
+            key = (row["harness"], row["model"], row.get("reasoning_effort"))
+            task = row["task"]
+            if task in runs_by_config[key][label]:
+                raise ValueError(f"duplicate task in {label}: {key} {task}")
+            runs_by_config[key][label][task] = row
+
+    rows = []
+    expected_labels = set(labels)
+    for key, by_label in by_config.items():
+        if set(by_label) != expected_labels:
+            raise ValueError(f"configuration missing from a replicate: {key}")
+        run_sets = runs_by_config[key]
+        if set(run_sets) != expected_labels:
+            raise ValueError(f"configuration has missing run data: {key}")
+        task_sets = [set(run_sets[label]) for label in labels]
+        if any(tasks != task_sets[0] for tasks in task_sets[1:]) or len(task_sets[0]) != task_count:
+            raise ValueError(f"configuration has inconsistent task coverage: {key}")
+
+        metrics = {
+            metric: mean_std([float(by_label[label][metric]) for label in labels])
+            for metric in METRICS
+        }
+        pe_target = []
+        pe_preservation = []
+        pairwise_matches = []
+        all_same = []
+        for label in labels:
+            runs = run_sets[label].values()
+            pe_target.append(fmean(float(row["pe_target_relevance"]) for row in runs))
+            pe_preservation.append(fmean(float(row["pe_task_preservation"]) for row in runs))
+        for task in sorted(task_sets[0]):
+            feature_ids = [int(run_sets[label][task]["selected_feature_id"]) for label in labels]
+            matches = [
+                left == right
+                for index, left in enumerate(feature_ids)
+                for right in feature_ids[index + 1 :]
+            ]
+            pairwise_matches.extend(matches)
+            all_same.append(len(set(feature_ids)) == 1)
+
+        metrics["macro_pe_target_relevance"] = mean_std(pe_target)
+        metrics["macro_pe_task_preservation"] = mean_std(pe_preservation)
+        rows.append(
+            {
+                "configuration": by_label[labels[0]]["configuration"],
+                "harness": key[0],
+                "model": key[1],
+                "reasoning_effort": key[2],
+                "replicates": len(labels),
+                "benchmark_tasks": task_count,
+                "metrics": metrics,
+                "feature_id_pairwise_agreement": fmean(pairwise_matches),
+                "feature_id_all_replicates_same_rate": fmean(all_same),
+            }
+        )
+
+    rows.sort(
+        key=lambda row: row["metrics"]["macro_gt_normalized_activation"]["mean"],
+        reverse=True,
+    )
+    return {
+        "schema": 1,
+        "replicate_labels": labels,
+        "replicates": len(labels),
+        "benchmark_tasks": task_count,
+        "configurations": rows,
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Aggregate independent SAE-Bench replicates.")
+    parser.add_argument("--replicate", action="append", type=parse_replicate, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    payload = aggregate([(label, load_json(path)) for label, path in args.replicate])
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"replicates": payload["replicates"], "configurations": len(payload["configurations"])}))
+
+
+if __name__ == "__main__":
+    main()
