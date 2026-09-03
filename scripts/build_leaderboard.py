@@ -365,21 +365,18 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "",
         "## Configuration Summary",
         "",
-        "Overall Score is the equal-weight mean of expert-normalized Rank, Activation, and Steering scores. Total is the sum across tasks; the Expert baseline is 1.0 per task.",
+        "Overall Score is the equal-weight mean of expert-normalized Rank, Activation, and Steering scores. The Expert baseline is 1.0 per task.",
         "",
-        "| Configuration | Coverage | Overall | Total | Rank | Activation | Steering | Exact | Causal | Usable | Median discovery time |",
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| Configuration | Coverage | Overall | Rank | Activation | Steering | Exact | Causal | Usable | Median discovery time |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for row in payload["configurations"]:
         latency = row["median_elapsed_seconds"]
         latency_text = "" if latency is None else f"{latency / 60:.1f} min"
         overall = row.get("mean_overall_score", row["macro_gt_normalized_activation"])
-        total = row.get("total_overall_score", overall * row["completed_tasks"])
-        maximum = row.get("maximum_overall_score", row["benchmark_tasks"])
         lines.append(
             f"| {row['configuration']} | {row['completed_tasks']}/{row['benchmark_tasks']} | "
-            f"{overall:.3f} | {total:.3f}/{maximum} | "
-            f"{row.get('mean_rank_score', overall):.3f} | {row.get('mean_activation_score', overall):.3f} | "
+            f"{overall:.3f} | {row.get('mean_rank_score', overall):.3f} | {row.get('mean_activation_score', overall):.3f} | "
             f"{row.get('mean_steering_score', overall):.3f} | {row['exact_match_rate']:.3f} | "
             f"{row['causal_steering_rate']:.3f} | {row['usable_steering_rate']:.3f} | "
             f"{latency_text} |"

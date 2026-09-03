@@ -43,22 +43,22 @@ for every agent. Each task has three scores in `[0, 2]`, centered so the Expert
 feature scores `1.0`: **Rank** measures positive-case rank recovery; **Activation**
 averages AUROC, positive-versus-control contrast, and per-case activation-pattern
 recovery; **Steering** averages control-adjusted effect recovery and per-instruction
-steering-pattern recovery. **Overall** is their equal-weight mean. **Total** sums
-Overall across 20 tasks, so the Expert baseline is `20.0 / 20`. A candidate can
+steering-pattern recovery. **Overall** is their equal-weight mean across tasks, with
+the Expert baseline at `1.0`. A candidate can
 score above `1.0` when its measured rank, separation, or steering effect exceeds
 the Expert on the same hidden cases.
 
-| Model | Overall ↑ | Total / 20 ↑ | Rank ↑ | Activation ↑ | Steering ↑ | Exact ↑ | Causal ↑ | Usable ↑ |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Expert feature baseline | **1.000** | **20.000** | **1.000** | **1.000** | **1.000** | **100%** | 60% | 0% |
-| Kimi K3 High | **0.718** | **14.370** | **0.748** | 0.920 | 0.488 | **35%** | **15%** | 0% |
-| Grok 4.6 High | 0.699 | 13.978 | 0.648 | **0.920** | **0.529** | **35%** | **15%** | 0% |
-| Claude Sonnet 5 High | 0.696 | 13.916 | 0.710 | 0.917 | 0.461 | 30% | 10% | 0% |
-| Claude Opus 4.8 High | 0.680 | 13.598 | 0.674 | 0.907 | 0.458 | **35%** | 10% | 0% |
-| GPT-5.6 Sol High | 0.645 | 12.895 | 0.506 | 0.912 | 0.517 | **35%** | **15%** | 0% |
-| GPT-5.5 High | 0.596 | 11.922 | 0.497 | 0.862 | 0.429 | 30% | 10% | 0% |
-| GLM-5.2 High | 0.562 | 11.248 | 0.462 | 0.857 | 0.368 | 20% | **15%** | 0% |
-| GPT-5.6 Luna High | 0.526 | 10.516 | 0.398 | 0.849 | 0.330 | 15% | 5% | 0% |
+| Model | Overall ↑ | Rank ↑ | Activation ↑ | Steering ↑ | Exact ↑ | Causal ↑ | Usable ↑ |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Expert feature baseline | **1.000** | **1.000** | **1.000** | **1.000** | **100%** | 60% | 0% |
+| Kimi K3 High | **0.718** | **0.748** | 0.920 | 0.488 | **35%** | **15%** | 0% |
+| Grok 4.6 High | 0.699 | 0.648 | **0.920** | **0.529** | **35%** | **15%** | 0% |
+| Claude Sonnet 5 High | 0.696 | 0.710 | 0.917 | 0.461 | 30% | 10% | 0% |
+| Claude Opus 4.8 High | 0.680 | 0.674 | 0.907 | 0.458 | **35%** | 10% | 0% |
+| GPT-5.6 Sol High | 0.645 | 0.506 | 0.912 | 0.517 | **35%** | **15%** | 0% |
+| GPT-5.5 High | 0.596 | 0.497 | 0.862 | 0.429 | 30% | 10% | 0% |
+| GLM-5.2 High | 0.562 | 0.462 | 0.857 | 0.368 | 20% | **15%** | 0% |
+| GPT-5.6 Luna High | 0.526 | 0.398 | 0.849 | 0.330 | 15% | 5% | 0% |
 
 Across the 20 tasks, the raw Expert means are positive rank `53.74`, activation
 AUROC `0.995`, activation contrast `19.99`, and control-adjusted steering effect

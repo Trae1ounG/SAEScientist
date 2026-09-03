@@ -325,7 +325,7 @@ class BuildLeaderboardTest(unittest.TestCase):
         }
         markdown = build_leaderboard.render_markdown(payload)
         self.assertIn(
-            "| codex/model-a (high) | 1/1 | 0.800 | 0.800/1 | 0.800 | 0.800 | 0.800 | 1.000 | 0.000 | 0.000 | 2.0 min |",
+            "| codex/model-a (high) | 1/1 | 0.800 | 0.800 | 0.800 | 0.800 | 1.000 | 0.000 | 0.000 | 2.0 min |",
             markdown,
         )
         self.assertIn("| codex/model-a (high) | alpha | 10 | yes | 0.800 | 0.800 | 0.800 | 0.800 | 20.0 | 0.900 | 0.400 |", markdown)
