@@ -101,10 +101,10 @@ class AggregateReplicatesTest(unittest.TestCase):
         model_b_3 = rename_model(leaderboard(1.1, 1.0, [3, 4]), "model-b")
         payload = aggregate_replicates.aggregate(
             [
-                ("original", model_a_1),
-                ("opus-first", model_b_1),
-                ("repeat-2", combine(model_a_2, model_b_2)),
-                ("repeat-3", combine(model_a_3, model_b_3)),
+                ("run1", model_a_1),
+                ("run1", model_b_1),
+                ("run2", combine(model_a_2, model_b_2)),
+                ("run3", combine(model_a_3, model_b_3)),
             ],
             expected_replicates=3,
         )
@@ -116,8 +116,9 @@ class AggregateReplicatesTest(unittest.TestCase):
         configurations = {
             row["model"]: row["configuration"] for row in payload["configurations"]
         }
-        self.assertEqual(labels["model-a"], ["original", "repeat-2", "repeat-3"])
-        self.assertEqual(labels["model-b"], ["opus-first", "repeat-2", "repeat-3"])
+        self.assertEqual(labels["model-a"], ["run1", "run2", "run3"])
+        self.assertEqual(labels["model-b"], ["run1", "run2", "run3"])
+        self.assertEqual(payload["replicate_sources"], ["run1", "run2", "run3"])
         self.assertEqual(configurations["model-b"], "cursor/model-b (high)")
 
 

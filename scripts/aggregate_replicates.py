@@ -46,14 +46,12 @@ def aggregate(
     replicates: list[tuple[str, dict[str, Any]]],
     expected_replicates: int | None = None,
 ) -> dict[str, Any]:
-    if len(replicates) < 2:
+    labels = list(dict.fromkeys(label for label, _ in replicates))
+    if len(labels) < 2:
         raise ValueError("at least two replicates are required")
-    expected_replicates = expected_replicates or len(replicates)
-    if not 2 <= expected_replicates <= len(replicates):
+    expected_replicates = expected_replicates or len(labels)
+    if not 2 <= expected_replicates <= len(labels):
         raise ValueError("expected replicates must be between 2 and the number of inputs")
-    labels = [label for label, _ in replicates]
-    if len(set(labels)) != len(labels):
-        raise ValueError("replicate labels must be unique")
 
     benchmark_tasks = {
         int(payload["task_coverage"]["stable_benchmark_tasks"])
