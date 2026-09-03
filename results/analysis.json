@@ -8,6 +8,7 @@
     "high_activation_alternatives": 287,
     "high_activation_causal_alternatives": 5,
     "task_discoverability_expert_rank_spearman": -0.8257812727594532,
+    "task_entropy_exact_spearman": -0.5606221484788949,
     "model_exact_overall_pearson": 0.8759694777688104,
     "alternative_by_model": [
       {
@@ -110,193 +111,545 @@
       {
         "task": "tasks/gemma_cat_001/task.json",
         "label": "cat 001",
+        "layer": 9,
         "expert_positive_mean_rank": 4.166666666666667,
         "exact_rate": 1.0,
+        "exact_count": 27,
+        "mean_rank_score": 1.0,
+        "mean_activation_score": 1.0,
+        "mean_steering_score": 1.0,
+        "mean_overall_score": 1.0,
+        "candidate_entropy_bits": -0.0,
+        "unique_selected_features": 1,
         "modal_feature_id": 62610,
         "modal_count": 27,
-        "expert_feature_id": 62610
+        "expert_feature_id": 62610,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_portfolio_allocation_018/task.json",
         "label": "portfolio allocation 018",
+        "layer": 20,
         "expert_positive_mean_rank": 9.5,
         "exact_rate": 0.9629629629629629,
+        "exact_count": 26,
+        "mean_rank_score": 0.963274146956641,
+        "mean_activation_score": 0.9903814866873214,
+        "mean_steering_score": 0.9697071806293857,
+        "mean_overall_score": 0.9744542714244493,
+        "candidate_entropy_bits": 0.228538143953528,
+        "unique_selected_features": 2,
         "modal_feature_id": 101617,
         "modal_count": 26,
-        "expert_feature_id": 101617
+        "expert_feature_id": 101617,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_job_postings_012/task.json",
         "label": "job postings 012",
+        "layer": 9,
         "expert_positive_mean_rank": 24.875,
         "exact_rate": 0.7777777777777778,
+        "exact_count": 21,
+        "mean_rank_score": 0.7781052564882452,
+        "mean_activation_score": 0.8865417961440409,
+        "mean_steering_score": 0.7777777777777778,
+        "mean_overall_score": 0.814141610136688,
+        "candidate_entropy_bits": 1.1904924696318402,
+        "unique_selected_features": 5,
         "modal_feature_id": 91086,
         "modal_count": 21,
-        "expert_feature_id": 91086
+        "expert_feature_id": 91086,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_latin_language_013/task.json",
         "label": "latin language 013",
+        "layer": 9,
         "expert_positive_mean_rank": 3.75,
         "exact_rate": 0.7777777777777778,
+        "exact_count": 21,
+        "mean_rank_score": 0.7908423765729158,
+        "mean_activation_score": 0.9211216351916083,
+        "mean_steering_score": 0.7777777777777778,
+        "mean_overall_score": 0.829913929847434,
+        "candidate_entropy_bits": 1.042344321483692,
+        "unique_selected_features": 4,
         "modal_feature_id": 7659,
         "modal_count": 21,
-        "expert_feature_id": 7659
+        "expert_feature_id": 7659,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_portfolio_allocation_014/task.json",
         "label": "portfolio allocation 014",
+        "layer": 9,
         "expert_positive_mean_rank": 6.625,
         "exact_rate": 0.7777777777777778,
+        "exact_count": 21,
+        "mean_rank_score": 0.8104032009849185,
+        "mean_activation_score": 0.9760766187662647,
+        "mean_steering_score": 0.8807141564049729,
+        "mean_overall_score": 0.8890646587187186,
+        "candidate_entropy_bits": 0.7642045065086203,
+        "unique_selected_features": 2,
         "modal_feature_id": 77390,
         "modal_count": 21,
-        "expert_feature_id": 77390
+        "expert_feature_id": 77390,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_weather_forecasts_022/task.json",
         "label": "weather forecasts 022",
+        "layer": 20,
         "expert_positive_mean_rank": 11.75,
         "exact_rate": 0.7407407407407407,
+        "exact_count": 20,
+        "mean_rank_score": 0.7949798238062317,
+        "mean_activation_score": 0.9741721071777713,
+        "mean_steering_score": 0.9524369736904392,
+        "mean_overall_score": 0.9071963015581473,
+        "candidate_entropy_bits": 1.183088913358015,
+        "unique_selected_features": 4,
         "modal_feature_id": 44494,
         "modal_count": 20,
-        "expert_feature_id": 44494
+        "expert_feature_id": 44494,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_archaeological_excavation_023/task.json",
         "label": "archaeological excavation 023",
+        "layer": 20,
         "expert_positive_mean_rank": 53.125,
         "exact_rate": 0.2962962962962963,
+        "exact_count": 8,
+        "mean_rank_score": 0.4670246514105918,
+        "mean_activation_score": 0.8699164401315727,
+        "mean_steering_score": 0.4582596445064874,
+        "mean_overall_score": 0.5984002453495506,
+        "candidate_entropy_bits": 2.3369537053062728,
+        "unique_selected_features": 7,
         "modal_feature_id": 115400,
         "modal_count": 9,
-        "expert_feature_id": 7256
+        "expert_feature_id": 7256,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_portuguese_007/task.json",
         "label": "portuguese 007",
+        "layer": 9,
         "expert_positive_mean_rank": 13.0,
         "exact_rate": 0.2222222222222222,
+        "exact_count": 6,
+        "mean_rank_score": 0.23590248648587364,
+        "mean_activation_score": 0.5759732386289635,
+        "mean_steering_score": 0.2823594372249866,
+        "mean_overall_score": 0.36474505411327457,
+        "candidate_entropy_bits": 2.0432205664693783,
+        "unique_selected_features": 6,
         "modal_feature_id": 68458,
         "modal_count": 11,
-        "expert_feature_id": 41424
+        "expert_feature_id": 41424,
+        "causal_alternative_counts": [
+          {
+            "feature_id": 49607,
+            "count": 1
+          }
+        ]
       },
       {
         "task": "tasks/gemma_french_005/task.json",
         "label": "french 005",
+        "layer": 9,
         "expert_positive_mean_rank": 53.5,
         "exact_rate": 0.14814814814814814,
+        "exact_count": 4,
+        "mean_rank_score": 0.3034805522270026,
+        "mean_activation_score": 0.7521763158910963,
+        "mean_steering_score": 0.1937780667160065,
+        "mean_overall_score": 0.4164783116113685,
+        "candidate_entropy_bits": 2.6047486945704956,
+        "unique_selected_features": 9,
         "modal_feature_id": 108861,
         "modal_count": 11,
-        "expert_feature_id": 105738
+        "expert_feature_id": 105738,
+        "causal_alternative_counts": [
+          {
+            "feature_id": 20058,
+            "count": 1
+          }
+        ]
       },
       {
         "task": "tasks/gemma_german_008/task.json",
         "label": "german 008",
+        "layer": 9,
         "expert_positive_mean_rank": 47.375,
         "exact_rate": 0.14814814814814814,
+        "exact_count": 4,
+        "mean_rank_score": 0.2566907751651177,
+        "mean_activation_score": 0.9172620964918125,
+        "mean_steering_score": 0.14814814814814814,
+        "mean_overall_score": 0.44070033993502605,
+        "candidate_entropy_bits": 1.6349308000328204,
+        "unique_selected_features": 4,
         "modal_feature_id": 50688,
         "modal_count": 12,
-        "expert_feature_id": 33987
+        "expert_feature_id": 33987,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
         "label": "pharmaceutical dosing 019",
+        "layer": 20,
         "expert_positive_mean_rank": 55.75,
         "exact_rate": 0.14814814814814814,
+        "exact_count": 4,
+        "mean_rank_score": 0.8363178167283762,
+        "mean_activation_score": 1.019099304188265,
+        "mean_steering_score": 0.18689075762681354,
+        "mean_overall_score": 0.6807692928478183,
+        "candidate_entropy_bits": 1.6582341512584016,
+        "unique_selected_features": 5,
         "modal_feature_id": 20652,
         "modal_count": 16,
-        "expert_feature_id": 104583
+        "expert_feature_id": 104583,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
         "label": "clinical symptom reports 016",
+        "layer": 20,
         "expert_positive_mean_rank": 54.875,
         "exact_rate": 0.1111111111111111,
+        "exact_count": 3,
+        "mean_rank_score": 0.4897521745886902,
+        "mean_activation_score": 0.9544436334063444,
+        "mean_steering_score": 0.23159533788920672,
+        "mean_overall_score": 0.5585970486280805,
+        "candidate_entropy_bits": 2.7460419111439314,
+        "unique_selected_features": 9,
         "modal_feature_id": 113440,
         "modal_count": 10,
-        "expert_feature_id": 3927
+        "expert_feature_id": 3927,
+        "causal_alternative_counts": [
+          {
+            "feature_id": 53882,
+            "count": 3
+          }
+        ]
       },
       {
         "task": "tasks/gemma_earnings_reports_017/task.json",
         "label": "earnings reports 017",
+        "layer": 20,
         "expert_positive_mean_rank": 71.375,
         "exact_rate": 0.1111111111111111,
+        "exact_count": 3,
+        "mean_rank_score": 0.25470832823422324,
+        "mean_activation_score": 0.930231392261168,
+        "mean_steering_score": 0.6103773622109646,
+        "mean_overall_score": 0.5984390275687853,
+        "candidate_entropy_bits": 2.9673074093304903,
+        "unique_selected_features": 9,
         "modal_feature_id": 48097,
         "modal_count": 6,
-        "expert_feature_id": 100747
+        "expert_feature_id": 100747,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_spanish_006/task.json",
         "label": "spanish 006",
+        "layer": 9,
         "expert_positive_mean_rank": 64.875,
         "exact_rate": 0.07407407407407407,
+        "exact_count": 2,
+        "mean_rank_score": 0.34401858768920723,
+        "mean_activation_score": 0.8243130574019624,
+        "mean_steering_score": 0.07407407407407407,
+        "mean_overall_score": 0.41413523972174787,
+        "candidate_entropy_bits": 1.784035672216632,
+        "unique_selected_features": 5,
         "modal_feature_id": 292,
         "modal_count": 15,
-        "expert_feature_id": 94329
+        "expert_feature_id": 94329,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_tax_filing_language_020/task.json",
         "label": "tax filing language 020",
+        "layer": 20,
         "expert_positive_mean_rank": 154.375,
         "exact_rate": 0.07407407407407407,
+        "exact_count": 2,
+        "mean_rank_score": 1.1984499972261713,
+        "mean_activation_score": 0.9959276641205708,
+        "mean_steering_score": 0.6051798891644654,
+        "mean_overall_score": 0.9331858501704026,
+        "candidate_entropy_bits": 1.9582291686698783,
+        "unique_selected_features": 7,
         "modal_feature_id": 45257,
         "modal_count": 16,
-        "expert_feature_id": 78694
+        "expert_feature_id": 78694,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_gardening_advice_010/task.json",
         "label": "gardening advice 010",
+        "layer": 9,
         "expert_positive_mean_rank": 58.75,
         "exact_rate": 0.037037037037037035,
+        "exact_count": 1,
+        "mean_rank_score": 0.23725728890631964,
+        "mean_activation_score": 0.9683724917644704,
+        "mean_steering_score": 0.3414699509286839,
+        "mean_overall_score": 0.515699910533158,
+        "candidate_entropy_bits": 1.9638413378563853,
+        "unique_selected_features": 6,
         "modal_feature_id": 55062,
         "modal_count": 15,
-        "expert_feature_id": 93406
+        "expert_feature_id": 93406,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_earnings_reports_009/task.json",
         "label": "earnings reports 009",
+        "layer": 9,
         "expert_positive_mean_rank": 87.625,
         "exact_rate": 0.0,
+        "exact_count": 0,
+        "mean_rank_score": 1.2381353345050328,
+        "mean_activation_score": 0.9459931287917154,
+        "mean_steering_score": 0.0031655587211142765,
+        "mean_overall_score": 0.7290980073392875,
+        "candidate_entropy_bits": 1.7527152789797047,
+        "unique_selected_features": 7,
         "modal_feature_id": 34893,
         "modal_count": 18,
-        "expert_feature_id": 131024
+        "expert_feature_id": 131024,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_real_estate_listings_021/task.json",
         "label": "real estate listings 021",
+        "layer": 20,
         "expert_positive_mean_rank": 192.875,
         "exact_rate": 0.0,
+        "exact_count": 0,
+        "mean_rank_score": 0.14603693090999942,
+        "mean_activation_score": 0.7045215649649079,
+        "mean_steering_score": 0.4086775837344193,
+        "mean_overall_score": 0.4197453598697755,
+        "candidate_entropy_bits": 2.6741167811492446,
+        "unique_selected_features": 10,
         "modal_feature_id": 124726,
         "modal_count": 9,
-        "expert_feature_id": 27182
+        "expert_feature_id": 27182,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_tax_filing_language_011/task.json",
         "label": "tax filing language 011",
+        "layer": 9,
         "expert_positive_mean_rank": 91.125,
         "exact_rate": 0.0,
+        "exact_count": 0,
+        "mean_rank_score": 1.0993444958635301,
+        "mean_activation_score": 1.014779450679837,
+        "mean_steering_score": 0.5086826812488778,
+        "mean_overall_score": 0.8742688759307483,
+        "candidate_entropy_bits": 0.3809465857053901,
+        "unique_selected_features": 2,
         "modal_feature_id": 64827,
         "modal_count": 25,
-        "expert_feature_id": 18713
+        "expert_feature_id": 18713,
+        "causal_alternative_counts": []
       },
       {
         "task": "tasks/gemma_turkish_language_015/task.json",
         "label": "turkish language 015",
+        "layer": 9,
         "expert_positive_mean_rank": 15.5,
         "exact_rate": 0.0,
+        "exact_count": 0,
+        "mean_rank_score": 0.2535247819708883,
+        "mean_activation_score": 0.8657536071561756,
+        "mean_steering_score": 0.0033012363395844226,
+        "mean_overall_score": 0.3741932084888827,
+        "candidate_entropy_bits": 2.7673546029246876,
+        "unique_selected_features": 11,
         "modal_feature_id": 85098,
         "modal_count": 11,
-        "expert_feature_id": 99383
+        "expert_feature_id": 99383,
+        "causal_alternative_counts": []
       }
     ],
     "stable_wrong_consensus": [
       {
         "task": "tasks/gemma_tax_filing_language_011/task.json",
         "label": "tax filing language 011",
+        "layer": 9,
         "expert_positive_mean_rank": 91.125,
         "exact_rate": 0.0,
+        "exact_count": 0,
+        "mean_rank_score": 1.0993444958635301,
+        "mean_activation_score": 1.014779450679837,
+        "mean_steering_score": 0.5086826812488778,
+        "mean_overall_score": 0.8742688759307483,
+        "candidate_entropy_bits": 0.3809465857053901,
+        "unique_selected_features": 2,
         "modal_feature_id": 64827,
         "modal_count": 25,
-        "expert_feature_id": 18713
+        "expert_feature_id": 18713,
+        "causal_alternative_counts": []
+      }
+    ],
+    "replicate_consistency": {
+      "model_task_groups": 180,
+      "same_expert_id": 37,
+      "same_alternative_id": 31,
+      "different_ids": 112,
+      "by_model": [
+        {
+          "model": "Claude Opus 5",
+          "stable_exact": 6,
+          "stable_alternative": 3,
+          "variable": 11
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "stable_exact": 4,
+          "stable_alternative": 3,
+          "variable": 13
+        },
+        {
+          "model": "Kimi K3",
+          "stable_exact": 5,
+          "stable_alternative": 5,
+          "variable": 10
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "stable_exact": 5,
+          "stable_alternative": 4,
+          "variable": 11
+        },
+        {
+          "model": "Grok 4.6",
+          "stable_exact": 4,
+          "stable_alternative": 3,
+          "variable": 13
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "stable_exact": 6,
+          "stable_alternative": 4,
+          "variable": 10
+        },
+        {
+          "model": "GPT-5.5",
+          "stable_exact": 2,
+          "stable_alternative": 4,
+          "variable": 14
+        },
+        {
+          "model": "GLM-5.2",
+          "stable_exact": 3,
+          "stable_alternative": 1,
+          "variable": 16
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "stable_exact": 2,
+          "stable_alternative": 4,
+          "variable": 14
+        }
+      ]
+    }
+  },
+  "search_behavior": {
+    "runs": 540,
+    "expert_recovered": {
+      "runs": 173,
+      "mean_probe_calls": 5.6473988439306355,
+      "mean_unique_texts": 51.47976878612717,
+      "mean_candidate_ids_tested": 26.508670520231213,
+      "mean_authored_texts": 65.22543352601156,
+      "mean_discovery_calls": 2.1040462427745665,
+      "mean_validation_calls": 3.5433526011560694
+    },
+    "alternative_selected": {
+      "runs": 367,
+      "mean_probe_calls": 7.223433242506812,
+      "mean_unique_texts": 66.33787465940054,
+      "mean_candidate_ids_tested": 36.283378746594,
+      "mean_authored_texts": 86.88555858310627,
+      "mean_discovery_calls": 2.697547683923706,
+      "mean_validation_calls": 4.525885558583107
+    },
+    "by_model": [
+      {
+        "model": "Claude Opus 5",
+        "mean_probe_calls": 8.933333333333334,
+        "mean_unique_texts": 77.58333333333333,
+        "mean_candidate_ids_tested": 80.16666666666667,
+        "mean_overall_score": 0.7378977216802153
+      },
+      {
+        "model": "Claude Sonnet 5",
+        "mean_probe_calls": 6.816666666666666,
+        "mean_unique_texts": 51.166666666666664,
+        "mean_candidate_ids_tested": 13.616666666666667,
+        "mean_overall_score": 0.7270718127754998
+      },
+      {
+        "model": "Kimi K3",
+        "mean_probe_calls": 4.85,
+        "mean_unique_texts": 38.88333333333333,
+        "mean_candidate_ids_tested": 32,
+        "mean_overall_score": 0.7244812602269917
+      },
+      {
+        "model": "Claude Opus 4.8",
+        "mean_probe_calls": 4.983333333333333,
+        "mean_unique_texts": 37.516666666666666,
+        "mean_candidate_ids_tested": 16.066666666666666,
+        "mean_overall_score": 0.7045124054784766
+      },
+      {
+        "model": "Grok 4.6",
+        "mean_probe_calls": 8.583333333333334,
+        "mean_unique_texts": 62.18333333333333,
+        "mean_candidate_ids_tested": 51.65,
+        "mean_overall_score": 0.7012538678094176
+      },
+      {
+        "model": "GPT-5.6 Sol",
+        "mean_probe_calls": 7.983333333333333,
+        "mean_unique_texts": 115.06666666666666,
+        "mean_candidate_ids_tested": 20.183333333333334,
+        "mean_overall_score": 0.6431304740256056
+      },
+      {
+        "model": "GPT-5.5",
+        "mean_probe_calls": 4.85,
+        "mean_unique_texts": 51.416666666666664,
+        "mean_candidate_ids_tested": 22.783333333333335,
+        "mean_overall_score": 0.6112633463484803
+      },
+      {
+        "model": "GLM-5.2",
+        "mean_probe_calls": 5.333333333333333,
+        "mean_unique_texts": 32.46666666666667,
+        "mean_candidate_ids_tested": 39.95,
+        "mean_overall_score": 0.5857296343584997
+      },
+      {
+        "model": "GPT-5.6 Luna",
+        "mean_probe_calls": 8.133333333333333,
+        "mean_unique_texts": 87.91666666666667,
+        "mean_candidate_ids_tested": 21.95,
+        "mean_overall_score": 0.564611422003818
       }
     ]
   },

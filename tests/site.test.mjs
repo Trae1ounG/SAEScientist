@@ -47,6 +47,11 @@ test("research blog contains feature meaning, activation depth, and steering con
   assert.match(bundle, /Difficulty is largely governed by expert-anchor discoverability/);
   assert.match(bundle, /The top three form a statistical cluster/);
   assert.match(bundle, /25 of 27 runs/);
+  assert.match(bundle, /Feature-ID landscape across all 20 tasks/);
+  assert.match(bundle, /How agents search, interpret, and stop/);
+  assert.match(bundle, /Three characteristic research traces/);
+  assert.match(bundle, /Coherent but stably non-expert/);
+  assert.match(bundle, /Search behavior across agents/);
 });
 
 test("three-run leaderboard is complete", () => {
@@ -58,6 +63,10 @@ test("three-run leaderboard is complete", () => {
   assert.equal(replicates.analysis.evaluated_task_feature_pairs, 119);
   assert.equal(analysis.diagnostics.runs, 540);
   assert.equal(analysis.diagnostics.high_activation_alternatives, 287);
+  assert.equal(analysis.diagnostics.replicate_consistency.model_task_groups, 180);
+  assert.equal(analysis.search_behavior.runs, 540);
+  assert.equal(analysis.search_behavior.expert_recovered.runs, 173);
+  assert.equal(analysis.search_behavior.alternative_selected.runs, 367);
   assert.equal(analysis.bootstrap.samples, 10000);
 });
 
