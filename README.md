@@ -70,63 +70,22 @@ hf download google/gemma-scope-9b-it-res \
   --local-dir checkpoints/gemma-scope-9b-it-res
 ```
 
-Start the restricted probe service:
+Configure the Agent and GPT-4o endpoint in [`configs/cat.json`](configs/cat.json),
+export the endpoint credentials, and run the complete experiment:
 
 ```bash
-PYTHONPATH=src python scripts/serve_probe.py \
-  --model-path checkpoints/gemma-2-9b-it \
-  --sae-path checkpoints/gemma-scope-9b-it-res/layer_9/width_131k/average_l0_121/params.npz \
-  --layer 9 --workers 1 --host 127.0.0.1 --port 8765
+export AZURE_OPENAI_API_KEY='<your-key>'
+export AZURE_OPENAI_ENDPOINT='https://<resource>.openai.azure.com/'
+export OPENAI_API_VERSION='<supported-api-version>'
+
+sae-bench run --config configs/cat.json
 ```
 
-Run an agent on the public Cat task:
+The command starts and stops the restricted probe runtime, runs the Agent,
+scores the submitted feature on held-out activations, generates baseline / feature /
+matched-random steering rollouts, and performs the blinded judge pass. Its complete
+output is written under `outputs/cat-codex-run01/`.
 
-```bash
-PYTHONPATH=src python scripts/run_agent.py \
-  --task examples/cat/task.json \
-  --run-id cat-codex-run01 \
-  --harness codex --model gpt-5.6-sol --reasoning-effort high \
-  --cli-path "$(command -v codex)" \
-  --probe-url http://127.0.0.1:8765
-```
-
-Score its feature on held-out activation cases:
-
-```bash
-PYTHONPATH=src python scripts/score_feature_submission.py \
-  --model-path checkpoints/gemma-2-9b-it \
-  --full-sae checkpoints/gemma-scope-9b-it-res/layer_9/width_131k/average_l0_121/params.npz \
-  --suite examples/cat/suite.json \
-  --submission runs/cat-codex-run01/workspace/submission.json \
-  --expert-feature-id 62610 --layer 9 \
-  --output outputs/cat_activation.json
-```
-
-Generate baseline, candidate-feature, and norm-matched-random steering rollouts:
-
-```bash
-FEATURE_ID="$(jq -r .feature_id runs/cat-codex-run01/workspace/submission.json)"
-
-PYTHONPATH=src python scripts/fetch_gemma_feature.py \
-  --layer 9 --width 131k --average-l0 121 --feature-id "$FEATURE_ID" \
-  --output-dir artifacts
-
-PYTHONPATH=src python scripts/evaluate_gemma_feature.py \
-  --model-path checkpoints/gemma-2-9b-it \
-  --feature "artifacts/gemma2_9b_it_l9_w131k_feature_${FEATURE_ID}.npz" \
-  --suite examples/cat/suite.json --alphas 160 --max-new-tokens 192 \
-  --output outputs/cat_steering.json
-```
-
-Judge the blinded rollouts with a configured GPT-4o endpoint:
-
-```bash
-PYTHONPATH=src python scripts/judge_feature_steering.py \
-  --result outputs/cat_steering.json \
-  --suite examples/cat/suite.json \
-  --output-prefix outputs/cat_judgment \
-  --provider azure-openai --model-name gpt-4o-2024-11-20 --repeats 2
-```
-
-Run the protocol tests with `pytest -q`. Raw traces, private evaluation cases,
-and judge credentials are intentionally excluded from the public repository.
+Use `sae-bench serve --config configs/cat.json` only when running the probe as a
+separate long-lived service. Developer-level batch commands remain in `scripts/`.
+Run the protocol tests with `pytest -q`.
