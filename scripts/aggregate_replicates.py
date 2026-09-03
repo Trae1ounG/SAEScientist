@@ -42,6 +42,33 @@ def mean_std(values: list[float]) -> dict[str, float]:
     return {"mean": fmean(values), "std": pstdev(values)}
 
 
+def rankdata(values: list[float]) -> list[float]:
+    ordered = sorted(range(len(values)), key=values.__getitem__)
+    ranks = [0.0] * len(values)
+    start = 0
+    while start < len(ordered):
+        end = start + 1
+        while end < len(ordered) and values[ordered[end]] == values[ordered[start]]:
+            end += 1
+        rank = (start + end - 1) / 2 + 1
+        for index in ordered[start:end]:
+            ranks[index] = rank
+        start = end
+    return ranks
+
+
+def correlation(left: list[float], right: list[float]) -> float:
+    left_ranks, right_ranks = rankdata(left), rankdata(right)
+    left_mean, right_mean = fmean(left_ranks), fmean(right_ranks)
+    numerator = sum(
+        (left_value - left_mean) * (right_value - right_mean)
+        for left_value, right_value in zip(left_ranks, right_ranks)
+    )
+    left_norm = sum((value - left_mean) ** 2 for value in left_ranks) ** 0.5
+    right_norm = sum((value - right_mean) ** 2 for value in right_ranks) ** 0.5
+    return numerator / (left_norm * right_norm)
+
+
 def aggregate(
     replicates: list[tuple[str, dict[str, Any]]],
     expected_replicates: int | None = None,
@@ -141,11 +168,63 @@ def aggregate(
         key=lambda row: row["metrics"]["mean_overall_score"]["mean"],
         reverse=True,
     )
+    all_runs = [run for labels in runs_by_config.values() for tasks in labels.values() for run in tasks.values()]
+    analysis_fields = {
+        "exact_match",
+        "causal_stable",
+        "usable_steering",
+        "gt_normalized_activation",
+        "steering_effect",
+        "expert_feature_id",
+    }
+    analysis = None
+    if all(analysis_fields <= run.keys() for run in all_runs):
+        alternative_runs = [run for run in all_runs if not run["exact_match"]]
+        task_feature_pairs = {
+            (run["task"], int(run["selected_feature_id"])) for run in all_runs
+        } | {
+            (run["task"], int(run["expert_feature_id"])) for run in all_runs
+        }
+        analysis = {
+            "exact_runs": sum(bool(run["exact_match"]) for run in all_runs),
+            "causal_runs": sum(bool(run["causal_stable"]) for run in all_runs),
+            "usable_runs": sum(bool(run["usable_steering"]) for run in all_runs),
+            "alternative_runs": len(alternative_runs),
+            "alternative_causal_runs": sum(
+                bool(run["causal_stable"]) for run in alternative_runs
+            ),
+            "alternative_usable_runs": sum(
+                bool(run["usable_steering"]) for run in alternative_runs
+            ),
+            "activation_steering_spearman": correlation(
+                [float(run["gt_normalized_activation"]) for run in all_runs],
+                [float(run["steering_effect"]) for run in all_runs],
+            ),
+            "alternative_activation_steering_spearman": correlation(
+                [float(run["gt_normalized_activation"]) for run in alternative_runs],
+                [float(run["steering_effect"]) for run in alternative_runs],
+            ),
+            "exact_mean_steering_effect": fmean(
+                float(run["steering_effect"]) for run in all_runs if run["exact_match"]
+            ),
+            "alternative_mean_steering_effect": fmean(
+                float(run["steering_effect"]) for run in alternative_runs
+            ),
+            "evaluated_task_feature_pairs": len(task_feature_pairs),
+        }
+    expert_baselines = [
+        payload["expert_baseline"]
+        for _, payload in replicates
+        if "expert_baseline" in payload
+    ]
     return {
         "schema": 1,
         "replicate_sources": labels,
         "replicates": expected_replicates,
         "benchmark_tasks": task_count,
+        "discovery_runs": len(all_runs),
+        "expert_baseline": expert_baselines[0] if expert_baselines else None,
+        "analysis": analysis,
         "configurations": rows,
     }
 

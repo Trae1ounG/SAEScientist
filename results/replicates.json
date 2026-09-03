@@ -1,0 +1,632 @@
+{
+  "schema": 1,
+  "replicate_sources": [
+    "run1",
+    "run2",
+    "run3"
+  ],
+  "replicates": 3,
+  "benchmark_tasks": 20,
+  "discovery_runs": 540,
+  "expert_baseline": {
+    "label": "Expert feature baseline",
+    "completed_tasks": 20,
+    "benchmark_tasks": 20,
+    "mean_rank_score": 1.0,
+    "mean_activation_score": 1.0,
+    "mean_steering_score": 1.0,
+    "mean_overall_score": 1.0,
+    "total_overall_score": 20.0,
+    "maximum_overall_score": 20,
+    "exact_match_rate": 1.0,
+    "mean_target_relevance": 0.5774999999999999,
+    "causal_steering_rate": 0.6,
+    "usable_steering_rate": 0.0,
+    "raw_metrics": {
+      "mean_positive_rank": 53.739583333333336,
+      "mean_activation_auroc": 0.9945833333333333,
+      "mean_activation_contrast": 19.993110287189484,
+      "mean_steering_effect": 0.5774999999999999
+    }
+  },
+  "analysis": {
+    "exact_runs": 173,
+    "causal_runs": 79,
+    "usable_runs": 1,
+    "alternative_runs": 367,
+    "alternative_causal_runs": 5,
+    "alternative_usable_runs": 1,
+    "activation_steering_spearman": 0.6846323317624168,
+    "alternative_activation_steering_spearman": 0.32192339711278317,
+    "exact_mean_steering_effect": 0.5466040462427746,
+    "alternative_mean_steering_effect": 0.14303474114441417,
+    "evaluated_task_feature_pairs": 119
+  },
+  "configurations": [
+    {
+      "configuration": "cursor/claude-opus-5-thinking-high",
+      "harness": "cursor",
+      "model": "claude-opus-5-thinking-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.7378977216802153,
+          "std": 0.0071335041170891254
+        },
+        "total_overall_score": {
+          "mean": 14.757954433604306,
+          "std": 0.14267008234178283
+        },
+        "mean_rank_score": {
+          "mean": 0.753457468545785,
+          "std": 0.0011706172560887532
+        },
+        "mean_activation_score": {
+          "mean": 0.9345584173817083,
+          "std": 0.0034963825896803962
+        },
+        "mean_steering_score": {
+          "mean": 0.5256772791131524,
+          "std": 0.023469367072340017
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.8172175595938002,
+          "std": 0.0031881915803870387
+        },
+        "exact_match_rate": {
+          "mean": 0.4166666666666667,
+          "std": 0.02357022603955158
+        },
+        "causal_steering_rate": {
+          "mean": 0.18333333333333335,
+          "std": 0.02357022603955159
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 542.5405370345106,
+          "std": 53.651952714064564
+        },
+        "macro_pe_target_relevance": {
+          "mean": 1.1595833333333332,
+          "std": 0.06558497456650327
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.1812500000000001,
+          "std": 0.04877670208887306
+        }
+      },
+      "feature_id_pairwise_agreement": 0.5666666666666667,
+      "feature_id_all_replicates_same_rate": 0.45
+    },
+    {
+      "configuration": "cursor/claude-sonnet-5-thinking-high",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.7270718127754998,
+          "std": 0.02377634831627691
+        },
+        "total_overall_score": {
+          "mean": 14.541436255509998,
+          "std": 0.4755269663255382
+        },
+        "mean_rank_score": {
+          "mean": 0.7344883819686339,
+          "std": 0.022973344534548506
+        },
+        "mean_activation_score": {
+          "mean": 0.9388837363457169,
+          "std": 0.01967075233093096
+        },
+        "mean_steering_score": {
+          "mean": 0.5078433200121488,
+          "std": 0.03333668680206907
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.8168907995068359,
+          "std": 0.03172994316592367
+        },
+        "exact_match_rate": {
+          "mean": 0.39999999999999997,
+          "std": 0.08164965809277261
+        },
+        "causal_steering_rate": {
+          "mean": 0.16666666666666666,
+          "std": 0.04714045207910317
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 423.5361055138249,
+          "std": 52.97009032329328
+        },
+        "macro_pe_target_relevance": {
+          "mean": 1.18625,
+          "std": 0.0876308545357551
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.16375,
+          "std": 0.05345364034999552
+        }
+      },
+      "feature_id_pairwise_agreement": 0.5,
+      "feature_id_all_replicates_same_rate": 0.35
+    },
+    {
+      "configuration": "cursor/kimi-k3-high",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.7244812602269918,
+          "std": 0.020947460841622568
+        },
+        "total_overall_score": {
+          "mean": 14.489625204539834,
+          "std": 0.41894921683245107
+        },
+        "mean_rank_score": {
+          "mean": 0.7430368460318233,
+          "std": 0.04572994728896594
+        },
+        "mean_activation_score": {
+          "mean": 0.927334830449095,
+          "std": 0.007072190007771606
+        },
+        "mean_steering_score": {
+          "mean": 0.5030721042000568,
+          "std": 0.015607057207374205
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.7999520027505852,
+          "std": 0.017234161295789058
+        },
+        "exact_match_rate": {
+          "mean": 0.31666666666666665,
+          "std": 0.04714045207910316
+        },
+        "causal_steering_rate": {
+          "mean": 0.15,
+          "std": 0.0
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 238.25681526419552,
+          "std": 44.99651603020171
+        },
+        "macro_pe_target_relevance": {
+          "mean": 1.2104166666666667,
+          "std": 0.06592556829907159
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.1029166666666665,
+          "std": 0.062126662732052654
+        }
+      },
+      "feature_id_pairwise_agreement": 0.6333333333333333,
+      "feature_id_all_replicates_same_rate": 0.5
+    },
+    {
+      "configuration": "cursor/claude-opus-4-8-thinking-high",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.7045124054784767,
+          "std": 0.046420813906907214
+        },
+        "total_overall_score": {
+          "mean": 14.090248109569531,
+          "std": 0.9284162781381439
+        },
+        "mean_rank_score": {
+          "mean": 0.7024902703821274,
+          "std": 0.05211895281258405
+        },
+        "mean_activation_score": {
+          "mean": 0.9288803637339197,
+          "std": 0.0192762856296133
+        },
+        "mean_steering_score": {
+          "mean": 0.4821665823193828,
+          "std": 0.07130818903311259
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.7963047700087684,
+          "std": 0.033008238081328446
+        },
+        "exact_match_rate": {
+          "mean": 0.35000000000000003,
+          "std": 0.08164965809277261
+        },
+        "causal_steering_rate": {
+          "mean": 0.13333333333333333,
+          "std": 0.04714045207910317
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 351.9174723055136,
+          "std": 63.47255728948404
+        },
+        "macro_pe_target_relevance": {
+          "mean": 1.0620833333333335,
+          "std": 0.23279178226236605
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.1216666666666668,
+          "std": 0.06671092281045309
+        }
+      },
+      "feature_id_pairwise_agreement": 0.5666666666666667,
+      "feature_id_all_replicates_same_rate": 0.45
+    },
+    {
+      "configuration": "cursor/cursor-grok-4.6-high",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.7012538678094176,
+          "std": 0.005044732248156724
+        },
+        "total_overall_score": {
+          "mean": 14.025077356188353,
+          "std": 0.1008946449631349
+        },
+        "mean_rank_score": {
+          "mean": 0.6721432341061083,
+          "std": 0.025037514044537294
+        },
+        "mean_activation_score": {
+          "mean": 0.9189313809084693,
+          "std": 0.0009851173105439818
+        },
+        "mean_steering_score": {
+          "mean": 0.5126869884136751,
+          "std": 0.03376938360523964
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.7817977126108618,
+          "std": 0.0067414486577423455
+        },
+        "exact_match_rate": {
+          "mean": 0.3333333333333333,
+          "std": 0.062360956446232366
+        },
+        "causal_steering_rate": {
+          "mean": 0.16666666666666666,
+          "std": 0.06236095644623235
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 561.0977934310407,
+          "std": 20.189102631086342
+        },
+        "macro_pe_target_relevance": {
+          "mean": 1.25875,
+          "std": 0.11081140133879128
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.1258333333333335,
+          "std": 0.07406594284074755
+        }
+      },
+      "feature_id_pairwise_agreement": 0.5,
+      "feature_id_all_replicates_same_rate": 0.35
+    },
+    {
+      "configuration": "codex/gpt-5.6-sol (high)",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.6431304740256056,
+          "std": 0.005617521542183732
+        },
+        "total_overall_score": {
+          "mean": 12.862609480512113,
+          "std": 0.11235043084367471
+        },
+        "mean_rank_score": {
+          "mean": 0.5164511929622767,
+          "std": 0.017537450117111206
+        },
+        "mean_activation_score": {
+          "mean": 0.9024183661528262,
+          "std": 0.006920373088830853
+        },
+        "mean_steering_score": {
+          "mean": 0.5105218629617142,
+          "std": 0.03054942473832941
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.7460225319578796,
+          "std": 0.004426232837779233
+        },
+        "exact_match_rate": {
+          "mean": 0.3499999999999999,
+          "std": 0.0
+        },
+        "causal_steering_rate": {
+          "mean": 0.16666666666666666,
+          "std": 0.02357022603955159
+        },
+        "usable_steering_rate": {
+          "mean": 0.016666666666666666,
+          "std": 0.023570226039551584
+        },
+        "median_elapsed_seconds": {
+          "mean": 241.83581761815972,
+          "std": 10.930505263173382
+        },
+        "macro_pe_target_relevance": {
+          "mean": 1.20625,
+          "std": 0.11014668250413477
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.15125,
+          "std": 0.09532837982468816
+        }
+      },
+      "feature_id_pairwise_agreement": 0.6166666666666667,
+      "feature_id_all_replicates_same_rate": 0.5
+    },
+    {
+      "configuration": "cursor/gpt-5.5-high",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.6112633463484803,
+          "std": 0.024365115862263764
+        },
+        "total_overall_score": {
+          "mean": 12.225266926969608,
+          "std": 0.4873023172452753
+        },
+        "mean_rank_score": {
+          "mean": 0.5563103902310252,
+          "std": 0.04307325760422586
+        },
+        "mean_activation_score": {
+          "mean": 0.8761959719440403,
+          "std": 0.016369391281812015
+        },
+        "mean_steering_score": {
+          "mean": 0.40128367687037575,
+          "std": 0.04621132676681167
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.7138859129928955,
+          "std": 0.01619564495379509
+        },
+        "exact_match_rate": {
+          "mean": 0.25,
+          "std": 0.04082482904638629
+        },
+        "causal_steering_rate": {
+          "mean": 0.11666666666666665,
+          "std": 0.02357022603955158
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 337.58143824278767,
+          "std": 89.20456515013427
+        },
+        "macro_pe_target_relevance": {
+          "mean": 0.9274999999999999,
+          "std": 0.11445978187410048
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.0816666666666668,
+          "std": 0.05968959056839162
+        }
+      },
+      "feature_id_pairwise_agreement": 0.48333333333333334,
+      "feature_id_all_replicates_same_rate": 0.3
+    },
+    {
+      "configuration": "cursor/glm-5.2-high",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.5857296343584997,
+          "std": 0.02807692299299978
+        },
+        "total_overall_score": {
+          "mean": 11.714592687169992,
+          "std": 0.5615384598599954
+        },
+        "mean_rank_score": {
+          "mean": 0.47663100374100137,
+          "std": 0.04695281329904898
+        },
+        "mean_activation_score": {
+          "mean": 0.8604263145669847,
+          "std": 0.02030947446859109
+        },
+        "mean_steering_score": {
+          "mean": 0.42013158476751267,
+          "std": 0.0367335667642832
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.7003486712825141,
+          "std": 0.026362888803026847
+        },
+        "exact_match_rate": {
+          "mean": 0.26666666666666666,
+          "std": 0.062360956446232345
+        },
+        "causal_steering_rate": {
+          "mean": 0.13333333333333333,
+          "std": 0.02357022603955158
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 251.79363374315048,
+          "std": 65.48827179291719
+        },
+        "macro_pe_target_relevance": {
+          "mean": 0.97125,
+          "std": 0.05522680508593631
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.1391666666666667,
+          "std": 0.11111336803263396
+        }
+      },
+      "feature_id_pairwise_agreement": 0.35,
+      "feature_id_all_replicates_same_rate": 0.2
+    },
+    {
+      "configuration": "codex/gpt-5.6-luna (high)",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.564611422003818,
+          "std": 0.06330806430858235
+        },
+        "total_overall_score": {
+          "mean": 11.292228440076359,
+          "std": 1.266161286171647
+        },
+        "mean_rank_score": {
+          "mean": 0.469203265055208,
+          "std": 0.1217155109062072
+        },
+        "mean_activation_score": {
+          "mean": 0.851546281947881,
+          "std": 0.0139847726550827
+        },
+        "mean_steering_score": {
+          "mean": 0.3730847190083651,
+          "std": 0.05555671425295065
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.672482997041025,
+          "std": 0.04396700067684376
+        },
+        "exact_match_rate": {
+          "mean": 0.19999999999999998,
+          "std": 0.07071067811865475
+        },
+        "causal_steering_rate": {
+          "mean": 0.09999999999999999,
+          "std": 0.0408248290463863
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 225.15652087501562,
+          "std": 21.591886177508155
+        },
+        "macro_pe_target_relevance": {
+          "mean": 0.8216666666666667,
+          "std": 0.18807227481889918
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.07,
+          "std": 0.04549496309116724
+        }
+      },
+      "feature_id_pairwise_agreement": 0.48333333333333334,
+      "feature_id_all_replicates_same_rate": 0.3
+    }
+  ]
+}

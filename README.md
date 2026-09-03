@@ -32,9 +32,10 @@ trace audit, and blinded GPT-4o judgment.
 
 The released dataset is indexed by [`data/benchmark.json`](data/benchmark.json):
 all 20 task descriptions are under `tasks/`, frozen activation and steering
-cases are under `data/`, and the complete 160-run aggregate is available as
-[`results/leaderboard.json`](results/leaderboard.json) with one compact record
-per task under `results/by_task/`. Raw Agent traces and judge transcripts remain private.
+cases are under `data/`, and the three-run aggregate is available as
+[`results/replicates.json`](results/replicates.json). The representative first-run
+records remain in [`results/leaderboard.json`](results/leaderboard.json) and
+`results/by_task/`. Raw Agent traces and judge transcripts remain private.
 
 ## Results
 
@@ -48,17 +49,21 @@ the Expert baseline at `1.0`. A candidate can
 score above `1.0` when its measured rank, separation, or steering effect exceeds
 the Expert on the same hidden cases.
 
+Each entry below is the mean ± population standard deviation over three independent
+runs; every run contains the same 20 tasks (540 completed Agent episodes in total).
+
 | Model | Overall ↑ | Rank ↑ | Activation ↑ | Steering ↑ | Exact ↑ | Causal ↑ | Usable ↑ |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Expert feature baseline | **1.000** | **1.000** | **1.000** | **1.000** | **100%** | 60% | 0% |
-| Kimi K3 High | **0.718** | **0.748** | 0.920 | 0.488 | **35%** | **15%** | 0% |
-| Grok 4.6 High | 0.699 | 0.648 | **0.920** | **0.529** | **35%** | **15%** | 0% |
-| Claude Sonnet 5 High | 0.696 | 0.710 | 0.917 | 0.461 | 30% | 10% | 0% |
-| Claude Opus 4.8 High | 0.680 | 0.674 | 0.907 | 0.458 | **35%** | 10% | 0% |
-| GPT-5.6 Sol High | 0.645 | 0.506 | 0.912 | 0.517 | **35%** | **15%** | 0% |
-| GPT-5.5 High | 0.596 | 0.497 | 0.862 | 0.429 | 30% | 10% | 0% |
-| GLM-5.2 High | 0.562 | 0.462 | 0.857 | 0.368 | 20% | **15%** | 0% |
-| GPT-5.6 Luna High | 0.526 | 0.398 | 0.849 | 0.330 | 15% | 5% | 0% |
+| Claude Opus 5 High | **0.738 ± 0.007** | **0.753 ± 0.001** | 0.935 ± 0.003 | **0.526 ± 0.023** | **41.7% ± 2.4** | **18.3% ± 2.4** | 0.0% ± 0.0 |
+| Claude Sonnet 5 High | 0.727 ± 0.024 | 0.734 ± 0.023 | **0.939 ± 0.020** | 0.508 ± 0.033 | 40.0% ± 8.2 | 16.7% ± 4.7 | 0.0% ± 0.0 |
+| Kimi K3 High | 0.724 ± 0.021 | 0.743 ± 0.046 | 0.927 ± 0.007 | 0.503 ± 0.016 | 31.7% ± 4.7 | 15.0% ± 0.0 | 0.0% ± 0.0 |
+| Claude Opus 4.8 High | 0.705 ± 0.046 | 0.702 ± 0.052 | 0.929 ± 0.019 | 0.482 ± 0.071 | 35.0% ± 8.2 | 13.3% ± 4.7 | 0.0% ± 0.0 |
+| Grok 4.6 High | 0.701 ± 0.005 | 0.672 ± 0.025 | 0.919 ± 0.001 | 0.513 ± 0.034 | 33.3% ± 6.2 | 16.7% ± 6.2 | 0.0% ± 0.0 |
+| GPT-5.6 Sol High | 0.643 ± 0.006 | 0.516 ± 0.018 | 0.902 ± 0.007 | 0.511 ± 0.031 | 35.0% ± 0.0 | 16.7% ± 2.4 | **1.7% ± 2.4** |
+| GPT-5.5 High | 0.611 ± 0.024 | 0.556 ± 0.043 | 0.876 ± 0.016 | 0.401 ± 0.046 | 25.0% ± 4.1 | 11.7% ± 2.4 | 0.0% ± 0.0 |
+| GLM-5.2 High | 0.586 ± 0.028 | 0.477 ± 0.047 | 0.860 ± 0.020 | 0.420 ± 0.037 | 26.7% ± 6.2 | 13.3% ± 2.4 | 0.0% ± 0.0 |
+| GPT-5.6 Luna High | 0.565 ± 0.063 | 0.469 ± 0.122 | 0.852 ± 0.014 | 0.373 ± 0.056 | 20.0% ± 7.1 | 10.0% ± 4.1 | 0.0% ± 0.0 |
 
 Across the 20 tasks, the raw Expert means are positive rank `53.74`, activation
 AUROC `0.995`, activation contrast `19.99`, and control-adjusted steering effect
@@ -70,8 +75,9 @@ the steered output to beat both the unsteered and norm-matched-random controls;
 Usable additionally requires task preservation and non-degenerate text. They remain
 separate audit columns instead of being counted a second time in Overall.
 
-These are single-run measurements. Three-run mean and variance, including
-Claude Opus 5, will replace this table after the repeated evaluation completes.
+Across all 540 runs, 173 recover the exact expert ID, 79 pass the causal gate,
+and one passes the stricter usable gate. Natural-activation recovery and steering
+effect have Spearman correlation 0.685 overall and 0.322 among non-exact selections.
 Full analysis and per-feature visualizations are on the
 [research blog](https://trae1oung.github.io/SAEScientist/).
 
