@@ -13,6 +13,20 @@ SPEC.loader.exec_module(audit_agent_runs)
 
 
 class AuditAgentRunsTest(unittest.TestCase):
+    def test_optional_run_id_filter(self):
+        pattern = audit_agent_runs.re.compile(r"-rep-03-(?:retry-)?\d+$")
+        self.assertTrue(
+            audit_agent_runs.matches_run_id(
+                "gemma-cat-001-offline-codex-sol-high-rep-03-01", pattern
+            )
+        )
+        self.assertFalse(
+            audit_agent_runs.matches_run_id(
+                "gemma-cat-001-offline-codex-sol-high-rep-04-01", pattern
+            )
+        )
+        self.assertTrue(audit_agent_runs.matches_run_id("anything", None))
+
     def test_python_variable_named_nc_is_not_network(self):
         body = {
             "args": {
@@ -208,4 +222,3 @@ class AuditAgentRunsTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

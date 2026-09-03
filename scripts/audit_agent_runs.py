@@ -67,6 +67,10 @@ def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def matches_run_id(run_id: str, pattern: re.Pattern[str] | None) -> bool:
+    return pattern is None or pattern.search(run_id) is not None
+
+
 def current_task_path(metadata: dict[str, Any]) -> Path:
     return Path(__file__).resolve().parents[1] / "tasks" / metadata["task_id"] / "task.json"
 
@@ -207,8 +211,13 @@ def codex_audit(run_root: Path) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Audit completed agent traces for benchmark isolation.")
     parser.add_argument("--runs-root", type=Path, default=Path("runs"))
+    parser.add_argument(
+        "--run-id-regex",
+        help="Audit only submitted runs whose run ID matches this regular expression.",
+    )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    run_id_pattern = re.compile(args.run_id_regex) if args.run_id_regex else None
 
     rows = []
     for run_root in sorted(args.runs_root.iterdir()):
@@ -220,6 +229,8 @@ def main() -> None:
         if result.get("status") != "submitted":
             continue
         metadata = read_json(metadata_path)
+        if not matches_run_id(metadata["run_id"], run_id_pattern):
+            continue
         harness = metadata.get("harness")
         if harness == "cursor":
             audit = cursor_audit(run_root)
@@ -253,4 +264,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
