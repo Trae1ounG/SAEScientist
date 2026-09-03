@@ -1,89 +1,98 @@
 # SAE-Bench
 
-[English](README.md) · [方法与分析](docs/benchmark_v2_blog.md) · [机器可读结果](results/leaderboard.json)
+[English](README.md) · [交互式研究博客](https://trae1oung.github.io/SAE-Bench/) · [机器可读结果](results/leaderboard.json)
 
-**SAE-Bench：评估 Agent 的自主 SAE 可解释性研究能力。**
+**SAE-Bench 评估 AI Agent 能否独立完成一次稀疏自编码器 Feature 的研究与定位。**
 
-Agent 只会看到英文研究目标和一个受限的 SAE probe 接口；它需要像研究者一样提出对照、构造诊断文本、运行激活实验、修正解释，并最终提交一个 feature ID 与证据。评测随后把三个问题分开：
+Agent 只获得一个英文语义目标和受限的 activation probe API。它需要自主编写诊断样例、比较 Feature 激活、修正假设，并最终提交一个 Feature ID。隐藏评测器随后检验该候选能否复现 Expert feature 的自然激活 pattern 与因果 steering 行为。
 
-1. 是否精确找到了 Expert feature？
-2. 如果没有，它的自然激活模式是否仍与 Expert 接近？
-3. 沿这个 feature 做 steering，能否因果地诱导目标行为，同时不破坏原任务？
+当前快照使用 Google 官方 Gemma Scope SAE 与 `google/gemma-2-9b-it`，包含 20 个 Expert feature/layer 任务、8 个 Agent 配置和 160 次通过 trace audit 的 discovery episode。Agent 不可联网，也不能读取 benchmark 代码、隐藏 case、Expert ID 或公开 feature label。
 
-当前版本基于 Google 官方发布的 Gemma Scope SAE 与 `google/gemma-2-9b-it`，包含 20 个 Expert 任务、8 个 Agent 配置和 160 次完整 discovery run。正式评测时 Agent 不可联网，也看不到 benchmark 源码、Expert ID、隐藏评测 case 或公开 feature label。
-
-## 主结果
-
-主排序指标是 macro GT-normalized activation：每道题的冻结 Expert feature 被归一化为 `1.0`。Exact match、因果 steering 和可用 steering 独立汇报，不压缩成一个不透明总分。
-
-| 排名 | Agent 配置 | GT activation | Exact | Causal | Usable | 中位耗时 |
-| ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | Kimi K3 High · Cursor | 0.794 | 35% | 45% | 5% | 5.0 分钟 |
-| 2 | Grok 4.6 High · Cursor | 0.786 | 35% | 40% | 5% | 9.8 分钟 |
-| 3 | Claude Sonnet 5 High · Cursor | 0.783 | 30% | 35% | 10% | 8.2 分钟 |
-| 4 | Claude Opus 4.8 High · Cursor | 0.776 | 35% | 45% | 5% | 6.5 分钟 |
-| 5 | GPT-5.6 Sol High · Codex | 0.752 | 35% | 40% | 5% | 4.1 分钟 |
-| 6 | GPT-5.5 High · Cursor | 0.697 | 30% | 35% | 5% | 7.6 分钟 |
-| 7 | GLM-5.2 High · Cursor | 0.692 | 20% | 30% | 10% | 5.7 分钟 |
-| 8 | GPT-5.6 Luna High · Codex | 0.645 | 15% | 20% | 5% | 4.0 分钟 |
-
-160 次运行中共有 47 次精确命中（29.4%）。整体上，激活相似度能够预测因果 steering；但只看非精确候选时，这个关系明显变弱：一个 feature 可以在自然激活上很像目标，却无法沿 Expert 的方向完成控制。
-
-![Discovery quality 与因果 steering](artifacts/leaderboard/discovery_vs_causal.svg)
-
-## 指标含义
-
-- **Exact match**：提交的 feature ID 与冻结 Expert ID 完全相同。
-- **GT-normalized activation**：相对 Expert 的正例平均排名、AUROC、正例与控制组激活差，以及激活 pattern 相关度的平均恢复比例。
-- **Causal pass**：在固定 steering 与盲评协议下，目标诱导效果同时超过未 steering baseline 和等范数随机方向。
-- **Usable pass**：除目标行为外，输出还需要保留原任务并避免退化。
-- **Latency**：Agent 完成 discovery 的真实耗时，与质量指标分开报告。
-
-我们刻意不提供一个统一总分。如果把“语义检索”和“因果控制”合在一起，SAE feature 最关键的失败模式反而会被隐藏。
-
-## 评测流程
+## 架构
 
 ```text
-目标语义
-  │
-  ▼
-离线 Agent ── 自己构造 probe ──► 受限 SAE 接口
-  │                              只返回激活和排名
-  ▼
-一个 feature ID
-  │
-  ├── 与 Expert 比较自然激活 pattern
-  └── 与 baseline / 随机方向比较 steering
-                         │
-                         ▼
-                       PE 盲评
+语义目标
+   │
+   ▼
+隔离 Agent ── 编写 positive / hard-negative / neutral probes
+   │
+   ├── 查询：文本 + 候选 Feature IDs
+   └── 返回：activations + ranks
+   │
+   ▼
+提交一个 Feature ID
+   │
+   ▼
+冻结隐藏评测器
+   ├── Expert ID 精确恢复
+   ├── held-out activation 一致性
+   └── baseline / feature / 等范数随机方向 steering
+                                      │
+                                      ▼
+                              盲化 GPT-4o Judge
 ```
 
-Expert set 包含 20 个互不重复的 feature/layer 组合：12 个位于 residual layer 9，8 个位于 layer 20，覆盖语言、技术文体、领域写作和一般语义概念。所有 Expert direction 都通过冻结的因果准入流程：15 个处于 causal-only tier，另外 5 个还能通过更严格的任务保持型 `usable` tier。
+Benchmark 分开汇报四项结果：
 
-## 公开边界
+- **Exact**：提交 ID 是否等于冻结 Expert ID。
+- **Activation**：候选对 Expert held-out rank、AUROC、激活对比度与逐 case pattern 的归一化恢复程度。
+- **Causal**：Feature steering 是否比两个 control 更强地诱导目标行为。
+- **Usable**：目标行为出现时，是否仍然保留用户的原始任务。
 
-本仓库公开方法、Agent 提交与 Expert feature ID、逐运行聚合指标、行为分析和网站源码。隐藏 prompts 与 task payload、Agent 原始 trace、内部模型路径、judge endpoint 与逐 prompt PE 记录保留在独立私有研究仓库中。这样既能保持未来离线评测有效，也不会把内部基础设施写入公开 Git 历史。
+这四项不会被压缩成一个掩盖差异的总分。
 
-完整 evaluator 会在 hidden/public split 固定后发布。当前 JSON 已足以复现网站上的所有聚合数字和实验图。
+## 当前结论
 
-## 复现公开分析
+| 排名 | Agent 配置 | Activation | Exact | GPT-4o 目标分 | Causal | Usable |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | Kimi K3 High · Cursor | 0.794 | 35% | 0.281 | 15% | 0% |
+| 2 | Grok 4.6 High · Cursor | 0.786 | 35% | 0.303 | 15% | 0% |
+| 3 | Claude Sonnet 5 High · Cursor | 0.783 | 30% | 0.277 | 10% | 0% |
+| 4 | Claude Opus 4.8 High · Cursor | 0.776 | 35% | 0.226 | 10% | 0% |
+| 5 | GPT-5.6 Sol High · Codex | 0.752 | 35% | 0.298 | 15% | 0% |
+| 6 | GPT-5.5 High · Cursor | 0.697 | 30% | 0.217 | 10% | 0% |
+| 7 | GLM-5.2 High · Cursor | 0.692 | 20% | 0.242 | 15% | 0% |
+| 8 | GPT-5.6 Luna High · Codex | 0.645 | 15% | 0.170 | 5% | 0% |
 
-交互式双语研究网站位于 `website` 分支：
+当前单次运行快照支持三个观察：
+
+1. Agent 经常能找到语义相关 Feature，但未必恢复准确的 Expert ID。
+2. Activation 相似性有用，但不足以证明因果等价：在 GPT‑4o 重新打标后，全部运行的 activation–steering Spearman 相关为 0.690；只看非 exact 候选时降至 0.378。
+3. 很强的 steering 可能直接抹掉用户任务，因此 causal target induction 和 usable control 必须分别评估。
+
+GPT‑4o 将 19/160 条运行判为 causal，没有运行通过 usable gate；113 个非 exact 候选中只有 1 个通过 causal gate。20 个 Expert direction 中也有 8 个未达到冻结的 70% target-success 阈值。这是 Judge 敏感性结果，最终论文需要先重新校准 Expert steering，或把因果结论限制在重新准入的子集上。这些仍是快照结论，不是最终方差估计。
+
+## Steering 评测
+
+对提交的 Feature `k`，评测器在 SAE 所在层执行：
+
+```text
+h'_t = h_t + alpha × W_dec[:, k]
+```
+
+`alpha` 在 5 条 calibration prompts 上选择；正式评测使用另外 20 条 held-out instructions，以及 baseline、提交 Feature、等范数随机 decoder direction 三个条件。三个输出在交给 GPT‑4o 前会被打乱并匿名化。Judge 在 temperature 0 下独立打分两次，评价 target relevance、task preservation 与 degeneration。
+
+完整 Judge Prompt、标签定义、聚合公式、逐 Feature 激活分布和 steering 前后案例均放在[研究博客](https://trae1oung.github.io/SAE-Bench/)正文中。
+
+## 复现公开结果
 
 ```bash
+git clone https://github.com/Trae1ounG/SAE-Bench.git
+cd SAE-Bench
+git checkout website
 npm ci
 npm test
+npm run dev
 ```
 
-静态产物输出到 `dist-pages/`，可直接部署到 GitHub Pages。
+`npm test` 会构建 GitHub Pages 静态站点，并执行数据与正文一致性检查；`npm run dev` 会启动本地交互博客。提交的结果快照可直接读取：
 
-## 当前状态
+```bash
+jq '.benchmark, .configurations' results/leaderboard.json
+```
 
-- Benchmark v2：20 题、160 次正式运行，已完成。
-- Claude Opus 5 High：正在补跑完整 20 题；只有 discovery、activation scoring、steering 与 judge 全部通过后才会进入主榜。
-- 论文：在私有研究仓库中准备。
+公开仓库可以复现当前分析与网站。隐藏 prompts 与脱敏后的原始 Agent traces 保存在私有研究仓库；credentials 不落盘，两边仓库都不保留机器相关的绝对路径。
 
 ## 引用
 
-SAE-Bench 仍处于研究发布阶段。首版论文完成后会补充正式 BibTeX；目前请引用仓库链接和所使用的 commit。
+使用本 Benchmark 或文中结果时，请引用本仓库及所访问的 commit。

@@ -1,89 +1,98 @@
 # SAE-Bench
 
-[中文](README.zh-CN.md) · [Methods and analysis](docs/benchmark_v2_blog.md) · [Machine-readable results](results/leaderboard.json)
+[中文](README.zh-CN.md) · [Interactive research blog](https://trae1oung.github.io/SAE-Bench/) · [Machine-readable results](results/leaderboard.json)
 
-**SAE-Bench evaluates agents as autonomous SAE interpretability researchers.**
+**SAE-Bench evaluates whether an AI agent can independently investigate and identify a sparse-autoencoder feature.**
 
-An agent receives an English research target and a restricted probe interface to an official sparse autoencoder (SAE). It must form contrasts, construct diagnostic texts, run activation experiments, revise its interpretation, and submit one feature ID with evidence. The evaluator then separates three questions that are often conflated:
+The agent receives an English semantic target and a restricted activation-probe API. It writes diagnostic examples, compares feature activations, revises its hypothesis, and submits one Feature ID. A hidden evaluator then checks whether the submitted feature matches the expert feature's activation pattern and causal steering behavior.
 
-1. Did the agent recover the expert feature exactly?
-2. If not, does its feature reproduce the expert activation pattern?
-3. Does steering along that feature causally induce the target behavior without collapsing the model output?
+The current snapshot uses the official Google Gemma Scope SAE for `google/gemma-2-9b-it`: 20 expert feature/layer tasks, eight agent configurations, and 160 trace-audited discovery episodes. Agents have no web access and cannot inspect benchmark code, hidden cases, expert IDs, or public feature labels.
 
-The current release contains 20 expert tasks built on the official Google Gemma Scope SAE for `google/gemma-2-9b-it`, eight agent configurations, and 160 completed discovery runs. Scored agents had no web access and could not read benchmark source, expert IDs, hidden evaluation cases, or public feature labels.
-
-## Results
-
-The primary ordering is macro GT-normalized activation, where the frozen expert feature is `1.0` on each task. Exact match and steering outcomes are reported independently rather than folded into one opaque score.
-
-| Rank | Agent configuration | GT activation | Exact | Causal | Usable | Median time |
-| ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | Kimi K3 High · Cursor | 0.794 | 35% | 45% | 5% | 5.0 min |
-| 2 | Grok 4.6 High · Cursor | 0.786 | 35% | 40% | 5% | 9.8 min |
-| 3 | Claude Sonnet 5 High · Cursor | 0.783 | 30% | 35% | 10% | 8.2 min |
-| 4 | Claude Opus 4.8 High · Cursor | 0.776 | 35% | 45% | 5% | 6.5 min |
-| 5 | GPT-5.6 Sol High · Codex | 0.752 | 35% | 40% | 5% | 4.1 min |
-| 6 | GPT-5.5 High · Cursor | 0.697 | 30% | 35% | 5% | 7.6 min |
-| 7 | GLM-5.2 High · Cursor | 0.692 | 20% | 30% | 10% | 5.7 min |
-| 8 | GPT-5.6 Luna High · Codex | 0.645 | 15% | 20% | 5% | 4.0 min |
-
-Across all 160 runs, agents exactly recovered the expert ID in 47 cases (29.4%). Activation similarity predicted causal success at the aggregate level, but was much weaker among non-exact alternatives: a feature can look semantically close under natural activation and still fail to steer in the expert direction.
-
-![Discovery quality versus causal steering](artifacts/leaderboard/discovery_vs_causal.svg)
-
-## What is measured
-
-- **Exact match**: submitted feature ID equals the frozen expert ID.
-- **GT-normalized activation**: mean recovery of positive rank, AUROC, positive-control contrast, and activation-pattern correlation relative to the expert.
-- **Causal pass**: target induction beats unsteered and matched-random controls under the frozen steering and blinded-judge protocol.
-- **Usable pass**: the steered output additionally preserves the requested task and avoids degeneration.
-- **Latency**: wall-clock discovery time, reported separately from quality.
-
-There is deliberately no single composite score. A benchmark that hides the difference between semantic retrieval and causal control would make the central failure mode impossible to see.
-
-## Benchmark shape
+## Architecture
 
 ```text
 semantic target
       │
       ▼
-offline agent ── writes diagnostic probes ──► restricted SAE probe
-      │                                      activations + ranks only
-      ▼
-one feature ID
+isolated agent ── writes positive / hard-negative / neutral probes
       │
-      ├── natural-activation comparison against the expert
-      └── feature steering against baseline and random direction
-                         │
-                         ▼
-                  blinded PE judgment
+      ├── query: text + candidate Feature IDs
+      └── receive: activations + ranks
+      │
+      ▼
+one submitted Feature ID
+      │
+      ▼
+frozen hidden evaluator
+      ├── exact expert-ID recovery
+      ├── held-out activation fidelity
+      └── baseline / feature / norm-matched-random steering
+                                   │
+                                   ▼
+                         blinded GPT-4o judge
 ```
 
-The expert set uses 20 unique feature/layer pairs: 12 at residual layer 9 and eight at residual layer 20. The tasks span languages, technical registers, domain-specific writing, and ordinary semantic concepts. Every expert direction passes the frozen causal admission gate: 15 remain in the causal-only tier, while five also pass the stricter task-preserving `usable` tier.
+The benchmark reports four outcomes separately:
 
-## Public release boundary
+- **Exact:** whether the submitted ID equals the frozen expert ID.
+- **Activation:** expert-normalized recovery of held-out rank, AUROC, activation contrast, and per-case activation pattern.
+- **Causal:** whether feature steering induces the target more strongly than both control conditions.
+- **Usable:** whether the target is induced without destroying the original user task.
 
-This repository publishes the methodology, submitted and expert feature IDs, aggregate per-run metrics, behavior analysis, and website source. Hidden prompts and task payloads, raw agent traces, internal model paths, judge endpoints, and per-prompt PE records remain in a separate private research repository. That split keeps future offline evaluations meaningful and prevents infrastructure details from entering the public Git history.
+There is no composite score that hides these distinctions.
 
-The full evaluator will be released only after its hidden/public split is finalized. The current JSON files are sufficient to reproduce every aggregate number and visualization on this site without exposing the sealed evaluation inputs.
+## Current evidence
 
-## Reproduce the public analysis
+| Rank | Agent configuration | Activation | Exact | GPT-4o target | Causal | Usable |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | Kimi K3 High · Cursor | 0.794 | 35% | 0.281 | 15% | 0% |
+| 2 | Grok 4.6 High · Cursor | 0.786 | 35% | 0.303 | 15% | 0% |
+| 3 | Claude Sonnet 5 High · Cursor | 0.783 | 30% | 0.277 | 10% | 0% |
+| 4 | Claude Opus 4.8 High · Cursor | 0.776 | 35% | 0.226 | 10% | 0% |
+| 5 | GPT-5.6 Sol High · Codex | 0.752 | 35% | 0.298 | 15% | 0% |
+| 6 | GPT-5.5 High · Cursor | 0.697 | 30% | 0.217 | 10% | 0% |
+| 7 | GLM-5.2 High · Cursor | 0.692 | 20% | 0.242 | 15% | 0% |
+| 8 | GPT-5.6 Luna High · Codex | 0.645 | 15% | 0.170 | 5% | 0% |
 
-The `website` branch contains the interactive bilingual research site and its deterministic figure scripts. After checking out that branch:
+The single-run snapshot supports three observations:
+
+1. Agents often find semantically related features without recovering the exact expert ID.
+2. Activation similarity is informative but insufficient for causal equivalence: under the GPT-4o re-judgment, the activation–steering Spearman correlation is 0.690 overall and 0.378 among non-exact candidates.
+3. Strong steering can erase the requested task. Causal target induction and usable control therefore need separate metrics.
+
+GPT-4o marks 19/160 runs causal and none usable; only 1/113 non-exact selections passes the causal gate. Eight of the 20 expert directions also fall below the frozen 70% target-success threshold under this judge. The latter is a judge-sensitivity finding and requires expert re-calibration or a restricted causal subset before a final paper claim. These are snapshot results, not final variance estimates.
+
+## Steering evaluation
+
+For submitted feature `k`, the evaluator intervenes at the SAE layer with
+
+```text
+h'_t = h_t + alpha × W_dec[:, k]
+```
+
+`alpha` is chosen on five calibration prompts. Evaluation uses 20 separate held-out instructions and three conditions: baseline, the submitted feature, and a norm-matched random decoder direction. Their outputs are shuffled and anonymized before GPT-4o scores target relevance, task preservation, and degeneration twice at temperature zero.
+
+The full judge prompt, label definitions, aggregation formulas, per-feature activation distributions, and steering examples are reported in the [research blog](https://trae1oung.github.io/SAE-Bench/).
+
+## Reproduce the public release
 
 ```bash
+git clone https://github.com/Trae1ounG/SAE-Bench.git
+cd SAE-Bench
+git checkout website
 npm ci
 npm test
+npm run dev
 ```
 
-The generated static site is written to `dist-pages/` and is compatible with GitHub Pages.
+`npm test` builds the static GitHub Pages site and runs its data/content consistency checks. `npm run dev` starts the local interactive blog. The committed result snapshot is available directly:
 
-## Status
+```bash
+jq '.benchmark, .configurations' results/leaderboard.json
+```
 
-- Benchmark v2: 20 tasks, 160 scored runs, complete.
-- Claude Opus 5 High: full 20-task evaluation in progress; it will enter the table only after discovery, activation scoring, steering, and judge validation all complete.
-- Paper: in preparation in the private research repository.
+The public repository reproduces the reported analysis and website. Hidden prompts and sanitized raw agent traces remain in the private research repository; credentials are never stored, and machine-specific paths are removed from both repositories.
 
 ## Citation
 
-SAE-Bench is an active research release. A BibTeX entry will be added with the first paper draft; until then, please cite this repository URL and the accessed commit.
+Please cite this repository and the accessed commit when using the benchmark or reported results.
