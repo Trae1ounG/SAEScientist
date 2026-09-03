@@ -36,6 +36,17 @@ class PrepareAgentSteeringTest(unittest.TestCase):
             "custom/features/gemma2_9b_it_l9_w131k_feature_12.npz",
         )
 
+    def test_reusable_candidate_ids_ignore_summary(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "task__candidate_7.json").write_text(
+                json.dumps({"feature": {"layer": 9}, "steering": {}})
+            )
+            (root / "summary.json").write_text(json.dumps({"tasks": []}))
+            self.assertEqual(
+                MODULE.reusable_candidate_ids([root]), {"task__candidate_7"}
+            )
+
     def test_candidates_use_summary_allowlist_and_trace_audit(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -185,4 +196,3 @@ class PrepareAgentSteeringTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

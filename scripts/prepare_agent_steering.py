@@ -115,6 +115,19 @@ def feature_path(feature_dir: Path, layer: int, feature_id: int) -> str:
     )
 
 
+def reusable_candidate_ids(directories: list[Path]) -> set[str]:
+    task_ids: set[str] = set()
+    for directory in directories:
+        for path in sorted(directory.glob("*.json")):
+            if path.name == "summary.json":
+                continue
+            result = read_json(path)
+            if "feature" not in result or "steering" not in result:
+                raise ValueError(f"invalid reusable steering result: {path}")
+            task_ids.add(path.stem)
+    return task_ids
+
+
 def extract_features(
     params_path: Path,
     rows: list[dict[str, Any]],
@@ -156,6 +169,13 @@ def main() -> None:
     parser.add_argument("--full-sae", action="append", required=True)
     parser.add_argument("--feature-dir", type=Path, default=Path("artifacts/features"))
     parser.add_argument("--manifest-dir", type=Path, required=True)
+    parser.add_argument(
+        "--exclude-candidate-result-dir",
+        action="append",
+        type=Path,
+        default=[],
+        help="Omit candidate task IDs with an existing reusable steering result.",
+    )
     parser.add_argument("--model-path", required=True)
     parser.add_argument("--trial-id", required=True)
     args = parser.parse_args()
@@ -168,8 +188,10 @@ def main() -> None:
         args.audit,
         task_rows,
     )
+    reusable_ids = reusable_candidate_ids(args.exclude_candidate_result_dir)
 
     prepared = []
+    reused_candidate_pairs = 0
     expert_rows = []
     groups: dict[tuple[int, int], list[dict[str, Any]]] = defaultdict(list)
     for (task_name, feature_id), score in candidates.items():
@@ -179,8 +201,12 @@ def main() -> None:
         feature_case = read_json(ROOT / reference["feature_case"])
         layer = task_layer(task)
         max_new_tokens = int(reference["protocol"]["max_new_tokens"])
+        candidate_id = f"{task['task_id']}__candidate_{feature_id}"
+        if candidate_id in reusable_ids:
+            reused_candidate_pairs += 1
+            continue
         row = {
-            "id": f"{task['task_id']}__candidate_{feature_id}",
+            "id": candidate_id,
             "task": task_name,
             "feature_id": feature_id,
             "layer": layer,
@@ -289,6 +315,7 @@ def main() -> None:
         json.dumps(
             {
                 "candidate_pairs": len(prepared),
+                "reused_candidate_pairs": reused_candidate_pairs,
                 "expert_tasks": len(expert_rows),
                 "manifests": manifests,
             }
@@ -298,4 +325,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
