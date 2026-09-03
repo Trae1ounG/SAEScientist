@@ -7,7 +7,7 @@
   ],
   "replicates": 3,
   "benchmark_tasks": 20,
-  "discovery_runs": 540,
+  "discovery_runs": 600,
   "expert_baseline": {
     "label": "Expert feature baseline",
     "completed_tasks": 20,
@@ -30,17 +30,17 @@
     }
   },
   "analysis": {
-    "exact_runs": 173,
-    "causal_runs": 79,
+    "exact_runs": 193,
+    "causal_runs": 85,
     "usable_runs": 1,
-    "alternative_runs": 367,
+    "alternative_runs": 407,
     "alternative_causal_runs": 5,
     "alternative_usable_runs": 1,
-    "activation_steering_spearman": 0.6846323317624168,
-    "alternative_activation_steering_spearman": 0.32192339711278317,
-    "exact_mean_steering_effect": 0.5466040462427746,
-    "alternative_mean_steering_effect": 0.14303474114441417,
-    "evaluated_task_feature_pairs": 119
+    "activation_steering_spearman": 0.6942123392310471,
+    "alternative_activation_steering_spearman": 0.3283855643502025,
+    "exact_mean_steering_effect": 0.5408031088082902,
+    "alternative_mean_steering_effect": 0.13792997542997543,
+    "evaluated_task_feature_pairs": 124
   },
   "configurations": [
     {
@@ -65,12 +65,12 @@
           "std": 0.14267008234178283
         },
         "mean_rank_score": {
-          "mean": 0.753457468545785,
+          "mean": 0.7534574685457851,
           "std": 0.0011706172560887532
         },
         "mean_activation_score": {
           "mean": 0.9345584173817083,
-          "std": 0.0034963825896803962
+          "std": 0.0034963825896803446
         },
         "mean_steering_score": {
           "mean": 0.5256772791131524,
@@ -78,7 +78,7 @@
         },
         "macro_gt_normalized_activation": {
           "mean": 0.8172175595938002,
-          "std": 0.0031881915803870387
+          "std": 0.003188191580387119
         },
         "exact_match_rate": {
           "mean": 0.4166666666666667,
@@ -97,11 +97,11 @@
           "std": 53.651952714064564
         },
         "macro_pe_target_relevance": {
-          "mean": 1.1595833333333332,
+          "mean": 1.1595833333333334,
           "std": 0.06558497456650327
         },
         "macro_pe_task_preservation": {
-          "mean": 1.1812500000000001,
+          "mean": 1.18125,
           "std": 0.04877670208887306
         }
       },
@@ -123,10 +123,10 @@
       "metrics": {
         "mean_overall_score": {
           "mean": 0.7270718127754998,
-          "std": 0.02377634831627691
+          "std": 0.023776348316276903
         },
         "total_overall_score": {
-          "mean": 14.541436255509998,
+          "mean": 14.541436255509996,
           "std": 0.4755269663255382
         },
         "mean_rank_score": {
@@ -134,23 +134,23 @@
           "std": 0.022973344534548506
         },
         "mean_activation_score": {
-          "mean": 0.9388837363457169,
-          "std": 0.01967075233093096
+          "mean": 0.9388837363457166,
+          "std": 0.019670752330931008
         },
         "mean_steering_score": {
-          "mean": 0.5078433200121488,
-          "std": 0.03333668680206907
+          "mean": 0.5078433200121489,
+          "std": 0.03333668680206912
         },
         "macro_gt_normalized_activation": {
           "mean": 0.8168907995068359,
-          "std": 0.03172994316592367
+          "std": 0.03172994316592362
         },
         "exact_match_rate": {
-          "mean": 0.39999999999999997,
+          "mean": 0.4,
           "std": 0.08164965809277261
         },
         "causal_steering_rate": {
-          "mean": 0.16666666666666666,
+          "mean": 0.16666666666666669,
           "std": 0.04714045207910317
         },
         "usable_steering_rate": {
@@ -163,11 +163,11 @@
         },
         "macro_pe_target_relevance": {
           "mean": 1.18625,
-          "std": 0.0876308545357551
+          "std": 0.08763085453575506
         },
         "macro_pe_task_preservation": {
           "mean": 1.16375,
-          "std": 0.05345364034999552
+          "std": 0.05345364034999549
         }
       },
       "feature_id_pairwise_agreement": 0.5,
@@ -187,7 +187,7 @@
       "benchmark_tasks": 20,
       "metrics": {
         "mean_overall_score": {
-          "mean": 0.7244812602269918,
+          "mean": 0.7244812602269917,
           "std": 0.020947460841622568
         },
         "total_overall_score": {
@@ -204,11 +204,11 @@
         },
         "mean_steering_score": {
           "mean": 0.5030721042000568,
-          "std": 0.015607057207374205
+          "std": 0.015607057207374188
         },
         "macro_gt_normalized_activation": {
           "mean": 0.7999520027505852,
-          "std": 0.017234161295789058
+          "std": 0.017234161295789148
         },
         "exact_match_rate": {
           "mean": 0.31666666666666665,
@@ -232,7 +232,7 @@
         },
         "macro_pe_task_preservation": {
           "mean": 1.1029166666666665,
-          "std": 0.062126662732052654
+          "std": 0.06212666273205268
         }
       },
       "feature_id_pairwise_agreement": 0.6333333333333333,
@@ -252,16 +252,16 @@
       "benchmark_tasks": 20,
       "metrics": {
         "mean_overall_score": {
-          "mean": 0.7045124054784767,
-          "std": 0.046420813906907214
+          "mean": 0.7045124054784766,
+          "std": 0.046420813906907235
         },
         "total_overall_score": {
-          "mean": 14.090248109569531,
+          "mean": 14.090248109569533,
           "std": 0.9284162781381439
         },
         "mean_rank_score": {
           "mean": 0.7024902703821274,
-          "std": 0.05211895281258405
+          "std": 0.052118952812584
         },
         "mean_activation_score": {
           "mean": 0.9288803637339197,
@@ -269,14 +269,14 @@
         },
         "mean_steering_score": {
           "mean": 0.4821665823193828,
-          "std": 0.07130818903311259
+          "std": 0.07130818903311253
         },
         "macro_gt_normalized_activation": {
           "mean": 0.7963047700087684,
           "std": 0.033008238081328446
         },
         "exact_match_rate": {
-          "mean": 0.35000000000000003,
+          "mean": 0.35,
           "std": 0.08164965809277261
         },
         "causal_steering_rate": {
@@ -292,12 +292,12 @@
           "std": 63.47255728948404
         },
         "macro_pe_target_relevance": {
-          "mean": 1.0620833333333335,
-          "std": 0.23279178226236605
+          "mean": 1.0620833333333333,
+          "std": 0.23279178226236621
         },
         "macro_pe_task_preservation": {
-          "mean": 1.1216666666666668,
-          "std": 0.06671092281045309
+          "mean": 1.1216666666666666,
+          "std": 0.06671092281045299
         }
       },
       "feature_id_pairwise_agreement": 0.5666666666666667,
@@ -318,15 +318,15 @@
       "metrics": {
         "mean_overall_score": {
           "mean": 0.7012538678094176,
-          "std": 0.005044732248156724
+          "std": 0.00504473224815681
         },
         "total_overall_score": {
-          "mean": 14.025077356188353,
+          "mean": 14.025077356188351,
           "std": 0.1008946449631349
         },
         "mean_rank_score": {
-          "mean": 0.6721432341061083,
-          "std": 0.025037514044537294
+          "mean": 0.6721432341061084,
+          "std": 0.02503751404453726
         },
         "mean_activation_score": {
           "mean": 0.9189313809084693,
@@ -334,11 +334,11 @@
         },
         "mean_steering_score": {
           "mean": 0.5126869884136751,
-          "std": 0.03376938360523964
+          "std": 0.03376938360523967
         },
         "macro_gt_normalized_activation": {
           "mean": 0.7817977126108618,
-          "std": 0.0067414486577423455
+          "std": 0.006741448657742375
         },
         "exact_match_rate": {
           "mean": 0.3333333333333333,
@@ -358,7 +358,7 @@
         },
         "macro_pe_target_relevance": {
           "mean": 1.25875,
-          "std": 0.11081140133879128
+          "std": 0.11081140133879115
         },
         "macro_pe_task_preservation": {
           "mean": 1.1258333333333335,
@@ -367,6 +367,71 @@
       },
       "feature_id_pairwise_agreement": 0.5,
       "feature_id_all_replicates_same_rate": 0.35
+    },
+    {
+      "configuration": "cursor/gemini-3.8-flash-high",
+      "harness": "cursor",
+      "model": "gemini-3.8-flash-high",
+      "reasoning_effort": null,
+      "replicates": 3,
+      "replicate_labels": [
+        "run1",
+        "run2",
+        "run3"
+      ],
+      "benchmark_tasks": 20,
+      "metrics": {
+        "mean_overall_score": {
+          "mean": 0.6762399076216713,
+          "std": 0.011935882972738898
+        },
+        "total_overall_score": {
+          "mean": 13.524798152433426,
+          "std": 0.2387176594547774
+        },
+        "mean_rank_score": {
+          "mean": 0.6948770853781877,
+          "std": 0.04141417780203355
+        },
+        "mean_activation_score": {
+          "mean": 0.8979645749120916,
+          "std": 0.020204536271969675
+        },
+        "mean_steering_score": {
+          "mean": 0.4358780625747348,
+          "std": 0.01539732160179746
+        },
+        "macro_gt_normalized_activation": {
+          "mean": 0.7647996217025249,
+          "std": 0.008427258920444096
+        },
+        "exact_match_rate": {
+          "mean": 0.3333333333333333,
+          "std": 0.062360956446232366
+        },
+        "causal_steering_rate": {
+          "mean": 0.1,
+          "std": 0.0408248290463863
+        },
+        "usable_steering_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "median_elapsed_seconds": {
+          "mean": 706.3099792361803,
+          "std": 66.51530366542262
+        },
+        "macro_pe_target_relevance": {
+          "mean": 0.8970833333333333,
+          "std": 0.04541857794143516
+        },
+        "macro_pe_task_preservation": {
+          "mean": 1.03125,
+          "std": 0.037928111825750926
+        }
+      },
+      "feature_id_pairwise_agreement": 0.6666666666666666,
+      "feature_id_all_replicates_same_rate": 0.55
     },
     {
       "configuration": "codex/gpt-5.6-sol (high)",
@@ -394,8 +459,8 @@
           "std": 0.017537450117111206
         },
         "mean_activation_score": {
-          "mean": 0.9024183661528262,
-          "std": 0.006920373088830853
+          "mean": 0.9024183661528261,
+          "std": 0.006920373088830892
         },
         "mean_steering_score": {
           "mean": 0.5105218629617142,
@@ -403,10 +468,10 @@
         },
         "macro_gt_normalized_activation": {
           "mean": 0.7460225319578796,
-          "std": 0.004426232837779233
+          "std": 0.004426232837779267
         },
         "exact_match_rate": {
-          "mean": 0.3499999999999999,
+          "mean": 0.35,
           "std": 0.0
         },
         "causal_steering_rate": {
@@ -423,11 +488,11 @@
         },
         "macro_pe_target_relevance": {
           "mean": 1.20625,
-          "std": 0.11014668250413477
+          "std": 0.11014668250413469
         },
         "macro_pe_task_preservation": {
-          "mean": 1.15125,
-          "std": 0.09532837982468816
+          "mean": 1.1512499999999999,
+          "std": 0.09532837982468807
         }
       },
       "feature_id_pairwise_agreement": 0.6166666666666667,
@@ -447,7 +512,7 @@
       "benchmark_tasks": 20,
       "metrics": {
         "mean_overall_score": {
-          "mean": 0.6112633463484803,
+          "mean": 0.6112633463484805,
           "std": 0.024365115862263764
         },
         "total_overall_score": {
@@ -455,19 +520,19 @@
           "std": 0.4873023172452753
         },
         "mean_rank_score": {
-          "mean": 0.5563103902310252,
-          "std": 0.04307325760422586
+          "mean": 0.5563103902310254,
+          "std": 0.04307325760422584
         },
         "mean_activation_score": {
-          "mean": 0.8761959719440403,
-          "std": 0.016369391281812015
+          "mean": 0.8761959719440402,
+          "std": 0.016369391281811994
         },
         "mean_steering_score": {
-          "mean": 0.40128367687037575,
+          "mean": 0.4012836768703757,
           "std": 0.04621132676681167
         },
         "macro_gt_normalized_activation": {
-          "mean": 0.7138859129928955,
+          "mean": 0.7138859129928956,
           "std": 0.01619564495379509
         },
         "exact_match_rate": {
@@ -475,7 +540,7 @@
           "std": 0.04082482904638629
         },
         "causal_steering_rate": {
-          "mean": 0.11666666666666665,
+          "mean": 0.11666666666666667,
           "std": 0.02357022603955158
         },
         "usable_steering_rate": {
@@ -487,12 +552,12 @@
           "std": 89.20456515013427
         },
         "macro_pe_target_relevance": {
-          "mean": 0.9274999999999999,
-          "std": 0.11445978187410048
+          "mean": 0.9275000000000001,
+          "std": 0.11445978187410055
         },
         "macro_pe_task_preservation": {
-          "mean": 1.0816666666666668,
-          "std": 0.05968959056839162
+          "mean": 1.0816666666666666,
+          "std": 0.05968959056839152
         }
       },
       "feature_id_pairwise_agreement": 0.48333333333333334,
@@ -513,26 +578,26 @@
       "metrics": {
         "mean_overall_score": {
           "mean": 0.5857296343584997,
-          "std": 0.02807692299299978
+          "std": 0.02807692299299973
         },
         "total_overall_score": {
-          "mean": 11.714592687169992,
+          "mean": 11.714592687169993,
           "std": 0.5615384598599954
         },
         "mean_rank_score": {
-          "mean": 0.47663100374100137,
+          "mean": 0.4766310037410014,
           "std": 0.04695281329904898
         },
         "mean_activation_score": {
           "mean": 0.8604263145669847,
-          "std": 0.02030947446859109
+          "std": 0.020309474468591052
         },
         "mean_steering_score": {
-          "mean": 0.42013158476751267,
+          "mean": 0.4201315847675127,
           "std": 0.0367335667642832
         },
         "macro_gt_normalized_activation": {
-          "mean": 0.7003486712825141,
+          "mean": 0.7003486712825142,
           "std": 0.026362888803026847
         },
         "exact_match_rate": {
@@ -552,12 +617,12 @@
           "std": 65.48827179291719
         },
         "macro_pe_target_relevance": {
-          "mean": 0.97125,
-          "std": 0.05522680508593631
+          "mean": 0.9712500000000001,
+          "std": 0.055226805085936304
         },
         "macro_pe_task_preservation": {
           "mean": 1.1391666666666667,
-          "std": 0.11111336803263396
+          "std": 0.1111133680326339
         }
       },
       "feature_id_pairwise_agreement": 0.35,
@@ -586,15 +651,15 @@
         },
         "mean_rank_score": {
           "mean": 0.469203265055208,
-          "std": 0.1217155109062072
+          "std": 0.12171551090620727
         },
         "mean_activation_score": {
-          "mean": 0.851546281947881,
-          "std": 0.0139847726550827
+          "mean": 0.8515462819478808,
+          "std": 0.013984772655082656
         },
         "mean_steering_score": {
           "mean": 0.3730847190083651,
-          "std": 0.05555671425295065
+          "std": 0.05555671425295062
         },
         "macro_gt_normalized_activation": {
           "mean": 0.672482997041025,
@@ -605,7 +670,7 @@
           "std": 0.07071067811865475
         },
         "causal_steering_rate": {
-          "mean": 0.09999999999999999,
+          "mean": 0.1,
           "std": 0.0408248290463863
         },
         "usable_steering_rate": {
@@ -622,7 +687,7 @@
         },
         "macro_pe_task_preservation": {
           "mean": 1.07,
-          "std": 0.04549496309116724
+          "std": 0.04549496309116715
         }
       },
       "feature_id_pairwise_agreement": 0.48333333333333334,

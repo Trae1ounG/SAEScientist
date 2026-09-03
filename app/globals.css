@@ -230,7 +230,7 @@ footer {
 .alternative-point { stroke: #fff; opacity: .72; }
 .selected-point { stroke-width: 3; opacity: 1; }
 .series-a { fill: #286ee0; } .series-b { fill: #d4572a; } .series-c { fill: #4c9b78; } .series-d { fill: #7b61a8; }
-.series-e { fill: #c4932d; } .series-f { fill: #466a45; } .series-g { fill: #8a5944; } .series-h { fill: #4e5a72; } .series-i { fill: #92546d; }
+.series-e { fill: #c4932d; } .series-f { fill: #466a45; } .series-g { fill: #8a5944; } .series-h { fill: #4e5a72; } .series-i { fill: #92546d; } .series-j { fill: #267f8d; }
 .scatter-detail { min-height: 330px; padding: 18px; color: #fff; background: var(--ink); }
 .scatter-detail > span { color: #bbb; font-size: 10px; }
 .scatter-detail h4 { margin: 24px 0 5px; font-size: 22px; }

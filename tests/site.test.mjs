@@ -38,7 +38,7 @@ test("research blog contains feature meaning, activation depth, and steering con
   assert.match(bundle, /Return exactly three ratings with labels A, B, and C/);
   assert.match(bundle, /GPT-4o-2024-11-20/);
   assert.match(bundle, /Expert steering is/);
-  assert.match(bundle, /540 completed trace-audited episodes/);
+  assert.match(bundle, /600 completed trace-audited episodes/);
   assert.match(bundle, /Claude Opus 5 High/);
   assert.match(bundle, /mean ± population standard deviation/);
   assert.doesNotMatch(bundle, /SUMMARY/);
@@ -46,7 +46,7 @@ test("research blog contains feature meaning, activation depth, and steering con
   assert.match(bundle, /Association between natural activation and steering/);
   assert.match(bundle, /Difficulty is largely governed by expert-anchor discoverability/);
   assert.match(bundle, /The top three form a statistical cluster/);
-  assert.match(bundle, /25 of 27 runs/);
+  assert.match(bundle, /28 of 30 runs/);
   assert.match(bundle, /Feature-ID landscape across all 20 tasks/);
   assert.match(bundle, /How agents search, interpret, and stop/);
   assert.match(bundle, /Three characteristic research traces/);
@@ -55,18 +55,18 @@ test("research blog contains feature meaning, activation depth, and steering con
 });
 
 test("three-run leaderboard is complete", () => {
-  assert.equal(replicates.discovery_runs, 540);
-  assert.equal(replicates.configurations.length, 9);
+  assert.equal(replicates.discovery_runs, 600);
+  assert.equal(replicates.configurations.length, 10);
   assert.ok(replicates.configurations.every((row) => row.replicates === 3));
   assert.equal(replicates.configurations[0].model, "claude-opus-5-thinking-high");
   assert.equal(replicates.configurations[0].metrics.mean_overall_score.mean.toFixed(3), "0.738");
-  assert.equal(replicates.analysis.evaluated_task_feature_pairs, 119);
-  assert.equal(analysis.diagnostics.runs, 540);
-  assert.equal(analysis.diagnostics.high_activation_alternatives, 287);
-  assert.equal(analysis.diagnostics.replicate_consistency.model_task_groups, 180);
-  assert.equal(analysis.search_behavior.runs, 540);
-  assert.equal(analysis.search_behavior.expert_recovered.runs, 173);
-  assert.equal(analysis.search_behavior.alternative_selected.runs, 367);
+  assert.equal(replicates.analysis.evaluated_task_feature_pairs, 124);
+  assert.equal(analysis.diagnostics.runs, 600);
+  assert.equal(analysis.diagnostics.high_activation_alternatives, 317);
+  assert.equal(analysis.diagnostics.replicate_consistency.model_task_groups, 200);
+  assert.equal(analysis.search_behavior.runs, 600);
+  assert.equal(analysis.search_behavior.expert_recovered.runs, 193);
+  assert.equal(analysis.search_behavior.alternative_selected.runs, 407);
   assert.equal(analysis.bootstrap.samples, 10000);
 });
 

@@ -6,7 +6,7 @@
 
 Agent 只获得一个英文语义目标和受限的 activation probe API。它需要自主编写诊断样例、比较 Feature 激活、修正假设，并最终提交一个 Feature ID。隐藏评测器随后检验该候选能否复现 Expert feature 的自然激活 pattern 与因果 steering 行为。
 
-实验使用 Google 官方 Gemma Scope SAE 与 `google/gemma-2-9b-it`，包含 20 个 Expert feature/layer 任务和 9 个 Agent 配置；每个配置独立运行三次，共 540 次通过 trace audit 的 discovery episode。Agent 不可联网，也不能读取 benchmark 代码、隐藏 case、Expert ID 或公开 feature label。
+实验使用 Google 官方 Gemma Scope SAE 与 `google/gemma-2-9b-it`，包含 20 个 Expert feature/layer 任务和 10 个 Agent 配置；每个配置独立运行三次，共 600 次通过 trace audit 的 discovery episode。Agent 不可联网，也不能读取 benchmark 代码、隐藏 case、Expert ID 或公开 feature label。
 
 ## 架构
 
@@ -38,10 +38,11 @@ Overall 是 20 题的平均值。Expert Feature 是归一化参照点 1.0，但�
 | 3 | Kimi K3 High | 0.724 ± 0.021 | 0.743 ± 0.046 | 0.927 ± 0.007 | 0.503 ± 0.016 | 31.7% ± 4.7 | 15.0% ± 0.0 | 0.0% ± 0.0 |
 | 4 | Claude Opus 4.8 High | 0.705 ± 0.046 | 0.702 ± 0.052 | 0.929 ± 0.019 | 0.482 ± 0.071 | 35.0% ± 8.2 | 13.3% ± 4.7 | 0.0% ± 0.0 |
 | 5 | Grok 4.6 High | 0.701 ± 0.005 | 0.672 ± 0.025 | 0.919 ± 0.001 | 0.513 ± 0.034 | 33.3% ± 6.2 | 16.7% ± 6.2 | 0.0% ± 0.0 |
-| 6 | GPT-5.6 Sol High | 0.643 ± 0.006 | 0.516 ± 0.018 | 0.902 ± 0.007 | 0.511 ± 0.031 | 35.0% ± 0.0 | 16.7% ± 2.4 | 1.7% ± 2.4 |
-| 7 | GPT-5.5 High | 0.611 ± 0.024 | 0.556 ± 0.043 | 0.876 ± 0.016 | 0.401 ± 0.046 | 25.0% ± 4.1 | 11.7% ± 2.4 | 0.0% ± 0.0 |
-| 8 | GLM-5.2 High | 0.586 ± 0.028 | 0.477 ± 0.047 | 0.860 ± 0.020 | 0.420 ± 0.037 | 26.7% ± 6.2 | 13.3% ± 2.4 | 0.0% ± 0.0 |
-| 9 | GPT-5.6 Luna High | 0.565 ± 0.063 | 0.469 ± 0.122 | 0.852 ± 0.014 | 0.373 ± 0.056 | 20.0% ± 7.1 | 10.0% ± 4.1 | 0.0% ± 0.0 |
+| 6 | Gemini 3.8 Flash High | 0.676 ± 0.012 | 0.695 ± 0.041 | 0.898 ± 0.020 | 0.436 ± 0.015 | 33.3% ± 6.2 | 10.0% ± 4.1 | 0.0% ± 0.0 |
+| 7 | GPT-5.6 Sol High | 0.643 ± 0.006 | 0.516 ± 0.018 | 0.902 ± 0.007 | 0.511 ± 0.031 | 35.0% ± 0.0 | 16.7% ± 2.4 | 1.7% ± 2.4 |
+| 8 | GPT-5.5 High | 0.611 ± 0.024 | 0.556 ± 0.043 | 0.876 ± 0.016 | 0.401 ± 0.046 | 25.0% ± 4.1 | 11.7% ± 2.4 | 0.0% ± 0.0 |
+| 9 | GLM-5.2 High | 0.586 ± 0.028 | 0.477 ± 0.047 | 0.860 ± 0.020 | 0.420 ± 0.037 | 26.7% ± 6.2 | 13.3% ± 2.4 | 0.0% ± 0.0 |
+| 10 | GPT-5.6 Luna High | 0.565 ± 0.063 | 0.469 ± 0.122 | 0.852 ± 0.014 | 0.373 ± 0.056 | 20.0% ± 7.1 | 10.0% ± 4.1 | 0.0% ± 0.0 |
 
 重标定以 Expert 为中心：越大越好的量使用 `2c/(c+e)`，越小越好的 rank
 使用 `2e/(c+e)`。所得 0–2 分数会保留优于 Expert 的候选，不再截断到 1。
@@ -49,14 +50,14 @@ Overall 是 20 题的平均值。Expert Feature 是归一化参照点 1.0，但�
 三轮实验支持三个观察：
 
 1. Agent 经常能找到语义相关 Feature，但未必恢复准确的 Expert ID。
-2. Activation 相似性有用，但不足以证明因果等价：全部运行的 activation–steering Spearman 相关为 0.685；只看非 exact 候选时降至 0.322。
+2. Activation 相似性有用，但不足以证明因果等价：全部运行的 activation–steering Spearman 相关为 0.694；只看非 exact 候选时降至 0.328。
 3. 很强的 steering 可能直接抹掉用户任务，因此 causal target induction 和 usable control 必须分别评估。
 
-540 条运行中，173 条精确恢复 Expert ID，79 条通过 causal gate，1 条通过更严格的 usable gate；367 个非 exact 选择中有 5 个通过 causal gate。
+600 条运行中，193 条精确恢复 Expert ID，85 条通过 causal gate，1 条通过更严格的 usable gate；407 个非 exact 选择中有 5 个通过 causal gate。
 
 题目难度与 Expert anchor 的可发现性高度相关：Expert 在正例上的平均 rank
-与 exact recovery 的 Spearman 相关系数为 `-0.826`。367 个非精确选择中，
-287 个达到 Activation Score ≥ 0.8，但只有 5 个通过 causal gate。对题目执行
+与 exact recovery 的 Spearman 相关系数为 `-0.810`。407 个非精确选择中，
+317 个达到 Activation Score ≥ 0.8，但只有 5 个通过 causal gate。对题目执行
 10,000 次 paired bootstrap 后，Claude Opus 5、Claude Sonnet 5 与 Kimi K3
 在当前 20 道题上属于尚不能稳定排序的第一梯队。机器可读的诊断结果见
 [`results/analysis.json`](results/analysis.json)。

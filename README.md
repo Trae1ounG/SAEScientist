@@ -6,7 +6,7 @@
 
 The agent receives an English semantic target and a restricted activation-probe API. It writes diagnostic examples, compares feature activations, revises its hypothesis, and submits one Feature ID. A hidden evaluator then checks whether the submitted feature matches the expert feature's activation pattern and causal steering behavior.
 
-The experiment uses the official Google Gemma Scope SAE for `google/gemma-2-9b-it`: 20 expert feature/layer tasks, nine agent configurations, and three independent runs per configuration, for 540 trace-audited discovery episodes. Agents have no web access and cannot inspect benchmark code, hidden cases, expert IDs, or public feature labels.
+The experiment uses the official Google Gemma Scope SAE for `google/gemma-2-9b-it`: 20 expert feature/layer tasks, ten agent configurations, and three independent runs per configuration, for 600 trace-audited discovery episodes. Agents have no web access and cannot inspect benchmark code, hidden cases, expert IDs, or public feature labels.
 
 ## Architecture
 
@@ -39,10 +39,11 @@ Each entry is the mean ± population standard deviation over three independent r
 | 3 | Kimi K3 High | 0.724 ± 0.021 | 0.743 ± 0.046 | 0.927 ± 0.007 | 0.503 ± 0.016 | 31.7% ± 4.7 | 15.0% ± 0.0 | 0.0% ± 0.0 |
 | 4 | Claude Opus 4.8 High | 0.705 ± 0.046 | 0.702 ± 0.052 | 0.929 ± 0.019 | 0.482 ± 0.071 | 35.0% ± 8.2 | 13.3% ± 4.7 | 0.0% ± 0.0 |
 | 5 | Grok 4.6 High | 0.701 ± 0.005 | 0.672 ± 0.025 | 0.919 ± 0.001 | 0.513 ± 0.034 | 33.3% ± 6.2 | 16.7% ± 6.2 | 0.0% ± 0.0 |
-| 6 | GPT-5.6 Sol High | 0.643 ± 0.006 | 0.516 ± 0.018 | 0.902 ± 0.007 | 0.511 ± 0.031 | 35.0% ± 0.0 | 16.7% ± 2.4 | 1.7% ± 2.4 |
-| 7 | GPT-5.5 High | 0.611 ± 0.024 | 0.556 ± 0.043 | 0.876 ± 0.016 | 0.401 ± 0.046 | 25.0% ± 4.1 | 11.7% ± 2.4 | 0.0% ± 0.0 |
-| 8 | GLM-5.2 High | 0.586 ± 0.028 | 0.477 ± 0.047 | 0.860 ± 0.020 | 0.420 ± 0.037 | 26.7% ± 6.2 | 13.3% ± 2.4 | 0.0% ± 0.0 |
-| 9 | GPT-5.6 Luna High | 0.565 ± 0.063 | 0.469 ± 0.122 | 0.852 ± 0.014 | 0.373 ± 0.056 | 20.0% ± 7.1 | 10.0% ± 4.1 | 0.0% ± 0.0 |
+| 6 | Gemini 3.8 Flash High | 0.676 ± 0.012 | 0.695 ± 0.041 | 0.898 ± 0.020 | 0.436 ± 0.015 | 33.3% ± 6.2 | 10.0% ± 4.1 | 0.0% ± 0.0 |
+| 7 | GPT-5.6 Sol High | 0.643 ± 0.006 | 0.516 ± 0.018 | 0.902 ± 0.007 | 0.511 ± 0.031 | 35.0% ± 0.0 | 16.7% ± 2.4 | 1.7% ± 2.4 |
+| 8 | GPT-5.5 High | 0.611 ± 0.024 | 0.556 ± 0.043 | 0.876 ± 0.016 | 0.401 ± 0.046 | 25.0% ± 4.1 | 11.7% ± 2.4 | 0.0% ± 0.0 |
+| 9 | GLM-5.2 High | 0.586 ± 0.028 | 0.477 ± 0.047 | 0.860 ± 0.020 | 0.420 ± 0.037 | 26.7% ± 6.2 | 13.3% ± 2.4 | 0.0% ± 0.0 |
+| 10 | GPT-5.6 Luna High | 0.565 ± 0.063 | 0.469 ± 0.122 | 0.852 ± 0.014 | 0.373 ± 0.056 | 20.0% ± 7.1 | 10.0% ± 4.1 | 0.0% ± 0.0 |
 
 The rescaling is symmetric around the Expert: higher-is-better quantities use
 `2c/(c+e)`, while lower-is-better rank uses `2e/(c+e)`. The resulting 0–2 scale
@@ -51,14 +52,14 @@ preserves candidates that exceed the Expert instead of clipping them to 1.
 The three-run experiment supports three observations:
 
 1. Agents often find semantically related features without recovering the exact expert ID.
-2. Activation similarity is informative but insufficient for causal equivalence: the activation–steering Spearman correlation is 0.685 overall and 0.322 among non-exact candidates.
+2. Activation similarity is informative but insufficient for causal equivalence: the activation–steering Spearman correlation is 0.694 overall and 0.328 among non-exact candidates.
 3. Strong steering can erase the requested task. Causal target induction and usable control therefore need separate metrics.
 
-Across 540 runs, 173 recover the exact expert ID, 79 pass the causal gate, and one passes the stricter usable gate. Five of 367 non-exact selections pass the causal gate.
+Across 600 runs, 193 recover the exact expert ID, 85 pass the causal gate, and one passes the stricter usable gate. Five of 407 non-exact selections pass the causal gate.
 
 Task difficulty is strongly associated with expert-anchor discoverability: the
 expert's positive-case mean rank correlates with exact recovery at Spearman
-`-0.826`. Among 367 non-exact selections, 287 attain Activation Score ≥ 0.8,
+`-0.810`. Among 407 non-exact selections, 317 attain Activation Score ≥ 0.8,
 but only five pass the causal gate. A 10,000-sample paired task bootstrap places
 Claude Opus 5, Claude Sonnet 5, and Kimi K3 in an unresolved top cluster on the
 current 20 tasks. The machine-readable diagnostics are in
