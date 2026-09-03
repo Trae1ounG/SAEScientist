@@ -1,0 +1,340 @@
+{
+  "schema": 1,
+  "source": "results/formal/benchmark_v2_repeats/leaderboard_replicates.json",
+  "diagnostics": {
+    "runs": 540,
+    "exact_runs": 173,
+    "alternative_runs": 367,
+    "high_activation_alternatives": 287,
+    "high_activation_causal_alternatives": 5,
+    "task_discoverability_expert_rank_spearman": -0.8257812727594532,
+    "model_exact_overall_pearson": 0.8759694777688104,
+    "alternative_by_model": [
+      {
+        "model": "Kimi K3",
+        "runs": 41,
+        "mean_overall_score": 0.596801844234622,
+        "mean_activation_score": 0.8936607274864805,
+        "mean_steering_score": 0.27278844517081474
+      },
+      {
+        "model": "Grok 4.6",
+        "runs": 40,
+        "mean_overall_score": 0.5518808017141265,
+        "mean_activation_score": 0.878397071362704,
+        "mean_steering_score": 0.26903048262051266
+      },
+      {
+        "model": "Claude Opus 5",
+        "runs": 35,
+        "mean_overall_score": 0.5506818085946548,
+        "mean_activation_score": 0.8878144297972141,
+        "mean_steering_score": 0.18687533562254705
+      },
+      {
+        "model": "Claude Opus 4.8",
+        "runs": 39,
+        "mean_overall_score": 0.5454037007361179,
+        "mean_activation_score": 0.890585174975261,
+        "mean_steering_score": 0.20333320356828122
+      },
+      {
+        "model": "Claude Sonnet 5",
+        "runs": 36,
+        "mean_overall_score": 0.5451196879591663,
+        "mean_activation_score": 0.8981395605761945,
+        "mean_steering_score": 0.17973886668691483
+      },
+      {
+        "model": "GPT-5.5",
+        "runs": 45,
+        "mean_overall_score": 0.48168446179797386,
+        "mean_activation_score": 0.8349279625920536,
+        "mean_steering_score": 0.20171156916050093
+      },
+      {
+        "model": "GPT-5.6 Luna",
+        "runs": 48,
+        "mean_overall_score": 0.4557642775047725,
+        "mean_activation_score": 0.8144328524348511,
+        "mean_steering_score": 0.21635589876045638
+      },
+      {
+        "model": "GPT-5.6 Sol",
+        "runs": 39,
+        "mean_overall_score": 0.4509699600393933,
+        "mean_activation_score": 0.8498744094658863,
+        "mean_steering_score": 0.246956712248791
+      },
+      {
+        "model": "GLM-5.2",
+        "runs": 44,
+        "mean_overall_score": 0.4350858650343177,
+        "mean_activation_score": 0.8096722471367974,
+        "mean_steering_score": 0.20927034286479007
+      }
+    ],
+    "layer_summary": [
+      {
+        "layer": 9,
+        "runs": 324,
+        "exact_rate": 0.33024691358024694,
+        "mean_overall_score": 0.6385365955313612,
+        "mean_activation_score": 0.8873636197423289,
+        "mean_steering_score": 0.41593740544683366
+      },
+      {
+        "layer": 20,
+        "runs": 216,
+        "exact_rate": 0.3055555555555556,
+        "mean_overall_score": 0.7088484246771262,
+        "mean_activation_score": 0.9298366991172402,
+        "mean_steering_score": 0.5528905911815227
+      }
+    ],
+    "causal_alternative_pairs": [
+      [
+        "gemma_clinical_symptom_reports_016",
+        53882
+      ],
+      [
+        "gemma_french_005",
+        20058
+      ],
+      [
+        "gemma_portuguese_007",
+        49607
+      ]
+    ],
+    "task_rows": [
+      {
+        "task": "tasks/gemma_cat_001/task.json",
+        "label": "cat 001",
+        "expert_positive_mean_rank": 4.166666666666667,
+        "exact_rate": 1.0,
+        "modal_feature_id": 62610,
+        "modal_count": 27,
+        "expert_feature_id": 62610
+      },
+      {
+        "task": "tasks/gemma_portfolio_allocation_018/task.json",
+        "label": "portfolio allocation 018",
+        "expert_positive_mean_rank": 9.5,
+        "exact_rate": 0.9629629629629629,
+        "modal_feature_id": 101617,
+        "modal_count": 26,
+        "expert_feature_id": 101617
+      },
+      {
+        "task": "tasks/gemma_job_postings_012/task.json",
+        "label": "job postings 012",
+        "expert_positive_mean_rank": 24.875,
+        "exact_rate": 0.7777777777777778,
+        "modal_feature_id": 91086,
+        "modal_count": 21,
+        "expert_feature_id": 91086
+      },
+      {
+        "task": "tasks/gemma_latin_language_013/task.json",
+        "label": "latin language 013",
+        "expert_positive_mean_rank": 3.75,
+        "exact_rate": 0.7777777777777778,
+        "modal_feature_id": 7659,
+        "modal_count": 21,
+        "expert_feature_id": 7659
+      },
+      {
+        "task": "tasks/gemma_portfolio_allocation_014/task.json",
+        "label": "portfolio allocation 014",
+        "expert_positive_mean_rank": 6.625,
+        "exact_rate": 0.7777777777777778,
+        "modal_feature_id": 77390,
+        "modal_count": 21,
+        "expert_feature_id": 77390
+      },
+      {
+        "task": "tasks/gemma_weather_forecasts_022/task.json",
+        "label": "weather forecasts 022",
+        "expert_positive_mean_rank": 11.75,
+        "exact_rate": 0.7407407407407407,
+        "modal_feature_id": 44494,
+        "modal_count": 20,
+        "expert_feature_id": 44494
+      },
+      {
+        "task": "tasks/gemma_archaeological_excavation_023/task.json",
+        "label": "archaeological excavation 023",
+        "expert_positive_mean_rank": 53.125,
+        "exact_rate": 0.2962962962962963,
+        "modal_feature_id": 115400,
+        "modal_count": 9,
+        "expert_feature_id": 7256
+      },
+      {
+        "task": "tasks/gemma_portuguese_007/task.json",
+        "label": "portuguese 007",
+        "expert_positive_mean_rank": 13.0,
+        "exact_rate": 0.2222222222222222,
+        "modal_feature_id": 68458,
+        "modal_count": 11,
+        "expert_feature_id": 41424
+      },
+      {
+        "task": "tasks/gemma_french_005/task.json",
+        "label": "french 005",
+        "expert_positive_mean_rank": 53.5,
+        "exact_rate": 0.14814814814814814,
+        "modal_feature_id": 108861,
+        "modal_count": 11,
+        "expert_feature_id": 105738
+      },
+      {
+        "task": "tasks/gemma_german_008/task.json",
+        "label": "german 008",
+        "expert_positive_mean_rank": 47.375,
+        "exact_rate": 0.14814814814814814,
+        "modal_feature_id": 50688,
+        "modal_count": 12,
+        "expert_feature_id": 33987
+      },
+      {
+        "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
+        "label": "pharmaceutical dosing 019",
+        "expert_positive_mean_rank": 55.75,
+        "exact_rate": 0.14814814814814814,
+        "modal_feature_id": 20652,
+        "modal_count": 16,
+        "expert_feature_id": 104583
+      },
+      {
+        "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
+        "label": "clinical symptom reports 016",
+        "expert_positive_mean_rank": 54.875,
+        "exact_rate": 0.1111111111111111,
+        "modal_feature_id": 113440,
+        "modal_count": 10,
+        "expert_feature_id": 3927
+      },
+      {
+        "task": "tasks/gemma_earnings_reports_017/task.json",
+        "label": "earnings reports 017",
+        "expert_positive_mean_rank": 71.375,
+        "exact_rate": 0.1111111111111111,
+        "modal_feature_id": 48097,
+        "modal_count": 6,
+        "expert_feature_id": 100747
+      },
+      {
+        "task": "tasks/gemma_spanish_006/task.json",
+        "label": "spanish 006",
+        "expert_positive_mean_rank": 64.875,
+        "exact_rate": 0.07407407407407407,
+        "modal_feature_id": 292,
+        "modal_count": 15,
+        "expert_feature_id": 94329
+      },
+      {
+        "task": "tasks/gemma_tax_filing_language_020/task.json",
+        "label": "tax filing language 020",
+        "expert_positive_mean_rank": 154.375,
+        "exact_rate": 0.07407407407407407,
+        "modal_feature_id": 45257,
+        "modal_count": 16,
+        "expert_feature_id": 78694
+      },
+      {
+        "task": "tasks/gemma_gardening_advice_010/task.json",
+        "label": "gardening advice 010",
+        "expert_positive_mean_rank": 58.75,
+        "exact_rate": 0.037037037037037035,
+        "modal_feature_id": 55062,
+        "modal_count": 15,
+        "expert_feature_id": 93406
+      },
+      {
+        "task": "tasks/gemma_earnings_reports_009/task.json",
+        "label": "earnings reports 009",
+        "expert_positive_mean_rank": 87.625,
+        "exact_rate": 0.0,
+        "modal_feature_id": 34893,
+        "modal_count": 18,
+        "expert_feature_id": 131024
+      },
+      {
+        "task": "tasks/gemma_real_estate_listings_021/task.json",
+        "label": "real estate listings 021",
+        "expert_positive_mean_rank": 192.875,
+        "exact_rate": 0.0,
+        "modal_feature_id": 124726,
+        "modal_count": 9,
+        "expert_feature_id": 27182
+      },
+      {
+        "task": "tasks/gemma_tax_filing_language_011/task.json",
+        "label": "tax filing language 011",
+        "expert_positive_mean_rank": 91.125,
+        "exact_rate": 0.0,
+        "modal_feature_id": 64827,
+        "modal_count": 25,
+        "expert_feature_id": 18713
+      },
+      {
+        "task": "tasks/gemma_turkish_language_015/task.json",
+        "label": "turkish language 015",
+        "expert_positive_mean_rank": 15.5,
+        "exact_rate": 0.0,
+        "modal_feature_id": 85098,
+        "modal_count": 11,
+        "expert_feature_id": 99383
+      }
+    ],
+    "stable_wrong_consensus": [
+      {
+        "task": "tasks/gemma_tax_filing_language_011/task.json",
+        "label": "tax filing language 011",
+        "expert_positive_mean_rank": 91.125,
+        "exact_rate": 0.0,
+        "modal_feature_id": 64827,
+        "modal_count": 25,
+        "expert_feature_id": 18713
+      }
+    ]
+  },
+  "bootstrap": {
+    "samples": 10000,
+    "top_probability": {
+      "Claude Opus 5": 0.4829,
+      "Claude Sonnet 5": 0.2327,
+      "Kimi K3": 0.2844
+    },
+    "pairwise_task_bootstrap": [
+      {
+        "left": "Claude Opus 5",
+        "right": "Claude Sonnet 5",
+        "mean_difference": 0.01079855095390445,
+        "ci95": [
+          -0.08375189198827751,
+          0.10084227399016915
+        ]
+      },
+      {
+        "left": "Claude Opus 5",
+        "right": "Kimi K3",
+        "mean_difference": 0.013578407580392169,
+        "ci95": [
+          -0.10398148705192801,
+          0.12865339717335716
+        ]
+      },
+      {
+        "left": "Claude Sonnet 5",
+        "right": "Kimi K3",
+        "mean_difference": 0.0027798566264877187,
+        "ci95": [
+          -0.08035037925424314,
+          0.08492620219853819
+        ]
+      }
+    ]
+  }
+}

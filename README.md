@@ -56,6 +56,14 @@ The three-run experiment supports three observations:
 
 Across 540 runs, 173 recover the exact expert ID, 79 pass the causal gate, and one passes the stricter usable gate. Five of 367 non-exact selections pass the causal gate.
 
+Task difficulty is strongly associated with expert-anchor discoverability: the
+expert's positive-case mean rank correlates with exact recovery at Spearman
+`-0.826`. Among 367 non-exact selections, 287 attain Activation Score ≥ 0.8,
+but only five pass the causal gate. A 10,000-sample paired task bootstrap places
+Claude Opus 5, Claude Sonnet 5, and Kimi K3 in an unresolved top cluster on the
+current 20 tasks. The machine-readable diagnostics are in
+[`results/analysis.json`](results/analysis.json).
+
 ## Steering evaluation
 
 For submitted feature `k`, the evaluator intervenes at the SAE layer with

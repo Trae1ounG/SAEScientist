@@ -54,6 +54,13 @@ Overall 是 20 题的平均值。Expert Feature 是归一化参照点 1.0，但�
 
 540 条运行中，173 条精确恢复 Expert ID，79 条通过 causal gate，1 条通过更严格的 usable gate；367 个非 exact 选择中有 5 个通过 causal gate。
 
+题目难度与 Expert anchor 的可发现性高度相关：Expert 在正例上的平均 rank
+与 exact recovery 的 Spearman 相关系数为 `-0.826`。367 个非精确选择中，
+287 个达到 Activation Score ≥ 0.8，但只有 5 个通过 causal gate。对题目执行
+10,000 次 paired bootstrap 后，Claude Opus 5、Claude Sonnet 5 与 Kimi K3
+在当前 20 道题上属于尚不能稳定排序的第一梯队。机器可读的诊断结果见
+[`results/analysis.json`](results/analysis.json)。
+
 ## Steering 评测
 
 对提交的 Feature `k`，评测器在 SAE 所在层执行：

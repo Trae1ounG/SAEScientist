@@ -1,4 +1,5 @@
 import { ReactNode, useMemo, useState } from "react";
+import analysisResults from "../results/analysis.json";
 import leaderboard from "../results/leaderboard.json";
 import replicateResults from "../results/replicates.json";
 
@@ -94,6 +95,8 @@ function ResearchFigure({
 const configurations = leaderboard.configurations as Configuration[];
 const aggregateConfigurations = replicateResults.configurations as ReplicateConfiguration[];
 const aggregateAnalysis = replicateResults.analysis;
+const diagnostics = analysisResults.diagnostics;
+const bootstrap = analysisResults.bootstrap;
 const runs = (leaderboard.runs as RawRun[]).map((run) => ({
   ...run,
   task_id: run.task.split("/").at(-1)?.replace(/\.json$/, "") ?? run.task,
@@ -483,7 +486,7 @@ function ScatterExplorer({ language }: { language: Language }) {
             const active = selected === run;
             return (
               <circle
-                key={`${run.configuration}-${run.task_id}`}
+                key={`${run.configuration}-${run.target}-${index}`}
                 className={`${seriesClasses[configIndex]} ${run.exact_match ? "exact-point" : "alternative-point"} ${active ? "selected-point" : ""}`}
                 cx={x(run.feature_discovery_score)}
                 cy={y(run.steering_effect)}
@@ -614,6 +617,16 @@ function Home() {
           <div className="article-copy"><h2>{tx("4. Activation fidelity 与因果 steering 的关系", "4. Relationship between activation fidelity and causal steering")}</h2><p>{tx("全部运行上的 activation—steering rank correlation 较高，部分原因是 exact features 会同时提高两个指标。将分析限制在非精确候选后，相关性显著降低。自然激活因此适合作为 discovery 指标，因果有效性仍需通过独立 steering 实验估计。", "Activation and steering have a relatively high rank correlation across all runs, partly because exact features increase both measures. The association is substantially weaker when the analysis is restricted to non-exact candidates. Natural activation is therefore suitable as a discovery metric, while causal validity still requires an independent steering experiment.")}</p></div>
           <div className="finding-grid"><div><span>Spearman · all</span><strong>{summary.allCorrelation.toFixed(3)}</strong><p>activation ↔ steering</p></div><div><span>Spearman · alternatives</span><strong>{summary.alternativeCorrelation.toFixed(3)}</strong><p>{tx("只看非精确候选", "non-exact candidates only")}</p></div><div><span>Mean causal effect</span><strong>{summary.exactEffect.toFixed(3)} <i>/</i> {summary.alternativeEffect.toFixed(3)}</strong><p>exact / alternative</p></div></div>
           <ResearchFigure wide number={6} title={tx("自然激活与因果效果。", "Natural activation versus causal effect.")} caption={tx("相关系数使用全部 540 条运行；可交互散点展示首轮的 160 条逐题记录，点击可查看 Feature ID 与盲评结果。", "Correlations use all 540 runs; the interactive scatter shows the 160 task-level records from the representative first run. Select a point to inspect its feature ID and blinded-judge outcomes.")}><ScatterExplorer language={language} /></ResearchFigure>
+          <div className="article-copy post-figure-copy">
+            <h3>{tx("难度主要来自 Expert anchor 的可发现性", "Difficulty is largely governed by expert-anchor discoverability")}</h3>
+            <p>{tx(`20 道题的 exact recovery 并不只由语义类别决定。Expert feature 在正例上的平均 rank 与跨 Agent 的 exact rate 呈强负相关（Spearman ${diagnostics.task_discoverability_expert_rank_spearman.toFixed(3)}）：当 anchor 本身不在正例激活榜前列时，Agent 即使构造出合理 probes，也更容易稳定地收敛到另一个语义方向。报税任务 layer 9 是最清楚的例子：Expert 为 #18713，而 #64827 在 27 次运行中被提交 25 次。`, `Exact recovery across the 20 tasks is not determined by semantic category alone. The expert feature's mean rank on positive cases is strongly negatively associated with cross-agent exact rate (Spearman ${diagnostics.task_discoverability_expert_rank_spearman.toFixed(3)}). When the anchor itself is not near the top of the positive activation list, agents can construct sensible probes yet converge consistently on another semantic direction. The layer-9 tax task is the clearest example: the expert is #18713, while #64827 is submitted in 25 of 27 runs.`)}</p>
+            <p>{tx(`模型级 exact rate 与 Overall 仍高度相关（Pearson ${diagnostics.model_exact_overall_pearson.toFixed(3)}），但并非同一个指标。只看 ${diagnostics.alternative_runs} 条非精确运行，Kimi K3 的平均 Overall 为 ${diagnostics.alternative_by_model[0].mean_overall_score.toFixed(3)}；这表明主榜同时包含“找到 anchor”与“找到有证据支持的替代方向”两种能力。`, `Model-level exact rate remains strongly correlated with Overall (Pearson ${diagnostics.model_exact_overall_pearson.toFixed(3)}), but the two are not identical. Restricting evaluation to the ${diagnostics.alternative_runs} non-exact runs, Kimi K3 attains an average Overall of ${diagnostics.alternative_by_model[0].mean_overall_score.toFixed(3)}. The main leaderboard therefore combines the ability to recover the anchor with the ability to find an evidence-supported alternative direction.`)}</p>
+          </div>
+          <ResearchFigure wide number={7} title={tx("题目难度与 activation–causality gap。", "Task difficulty and the activation–causality gap.")} caption={tx(`左图显示 Expert 正例 rank 与 exact recovery 的关系；右图显示 ${diagnostics.high_activation_alternatives}/${diagnostics.alternative_runs} 个替代方向有较高 activation score，但只有 ${diagnostics.high_activation_causal_alternatives} 个通过 causal gate。`, `The left panel relates expert positive rank to exact recovery. The right panel shows that ${diagnostics.high_activation_alternatives}/${diagnostics.alternative_runs} alternatives have high activation scores, while only ${diagnostics.high_activation_causal_alternatives} pass the causal gate.`)}><img className="mechanism-diagram diagnostic-figure" src={`${import.meta.env.BASE_URL}figures/diagnostic-results.png`} alt={tx("任务难度与 activation-causality gap 诊断图", "Diagnostic plots for task difficulty and the activation-causality gap")} /></ResearchFigure>
+          <div className="article-copy post-figure-copy">
+            <h3>{tx("前三名应视为一个统计簇", "The top three form a statistical cluster")}</h3>
+            <p>{tx(`三次重复运行给出了配置内波动，但每次仍复用同一组 20 道题。我们因此按题目执行 10,000 次 paired bootstrap。Opus 5 相对 Sonnet 5 的 Overall 差值为 ${bootstrap.pairwise_task_bootstrap[0].mean_difference.toFixed(3)}，95% CI [${bootstrap.pairwise_task_bootstrap[0].ci95[0].toFixed(3)}, ${bootstrap.pairwise_task_bootstrap[0].ci95[1].toFixed(3)}]；相对 Kimi K3 的差值为 ${bootstrap.pairwise_task_bootstrap[1].mean_difference.toFixed(3)}，95% CI [${bootstrap.pairwise_task_bootstrap[1].ci95[0].toFixed(3)}, ${bootstrap.pairwise_task_bootstrap[1].ci95[1].toFixed(3)}]。两个区间都跨过 0，因此当前 20 题支持的是一个前三统计簇，而不是稳定的严格排序。`, `Three independent runs estimate within-configuration variation, but each run reuses the same 20 tasks. We therefore perform 10,000 paired task-bootstrap samples. Opus 5 exceeds Sonnet 5 by ${bootstrap.pairwise_task_bootstrap[0].mean_difference.toFixed(3)} Overall with a 95% CI of [${bootstrap.pairwise_task_bootstrap[0].ci95[0].toFixed(3)}, ${bootstrap.pairwise_task_bootstrap[0].ci95[1].toFixed(3)}], and exceeds Kimi K3 by ${bootstrap.pairwise_task_bootstrap[1].mean_difference.toFixed(3)} with a 95% CI of [${bootstrap.pairwise_task_bootstrap[1].ci95[0].toFixed(3)}, ${bootstrap.pairwise_task_bootstrap[1].ci95[1].toFixed(3)}]. Both intervals cross zero, so the current 20-task set supports a top-three statistical cluster rather than a stable strict ordering.`)}</p>
+          </div>
         </section>
 
         <section id="method" className="article-section methods-section">
