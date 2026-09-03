@@ -1,8 +1,8 @@
-# SAE-Bench
+# SAEScientist-Bench
 
-[中文](README.zh-CN.md) · [Interactive research blog](https://trae1oung.github.io/SAE-Bench/) · [Machine-readable results](results/leaderboard.json)
+[中文](README.zh-CN.md) · [Interactive research blog](https://trae1oung.github.io/SAEScientist/) · [Machine-readable results](results/leaderboard.json)
 
-**SAE-Bench evaluates whether an AI agent can independently investigate and identify a sparse-autoencoder feature.**
+**SAEScientist-Bench evaluates whether an AI agent can independently investigate and identify a sparse-autoencoder feature.**
 
 The agent receives an English semantic target and a restricted activation-probe API. It writes diagnostic examples, compares feature activations, revises its hypothesis, and submits one Feature ID. A hidden evaluator then checks whether the submitted feature matches the expert feature's activation pattern and causal steering behavior.
 
@@ -83,13 +83,13 @@ h'_t = h_t + alpha × W_dec[:, k]
 
 `alpha` is chosen on five calibration prompts. Evaluation uses 20 separate held-out instructions and three conditions: baseline, the submitted feature, and a norm-matched random decoder direction. Their outputs are shuffled and anonymized before GPT-4o scores target relevance, task preservation, and degeneration twice at temperature zero.
 
-The full judge prompt, label definitions, aggregation formulas, per-feature activation distributions, and steering examples are reported in the [research blog](https://trae1oung.github.io/SAE-Bench/).
+The full judge prompt, label definitions, aggregation formulas, per-feature activation distributions, and steering examples are reported in the [research blog](https://trae1oung.github.io/SAEScientist/).
 
 ## Reproduce the public release
 
 ```bash
-git clone https://github.com/Trae1ounG/SAE-Bench.git
-cd SAE-Bench
+git clone https://github.com/Trae1ounG/SAEScientist.git
+cd SAEScientist
 git checkout website
 npm ci
 npm test

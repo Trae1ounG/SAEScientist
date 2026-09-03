@@ -1,4 +1,4 @@
-# SAE-Bench leaderboard
+# SAEScientist-Bench leaderboard
 
 Primary ordering: the equal-weight mean of Expert-centered Rank, Activation, and Steering scores. The Expert feature is the 1.0 reference point, not a ceiling or a competing model.
 

@@ -31,7 +31,7 @@
     </marker>
   </defs>
 
-  <text class="h0 mono" x="24" y="31">SAE-Bench system overview</text>
+  <text class="h0 mono" x="24" y="31">SAEScientist-Bench system overview</text>
   <text class="body" x="24" y="50">Expert task construction and scored agent evaluation are separated by a frozen benchmark boundary.</text>
 
   <text class="band mono" x="24" y="83">A · EXPERT TASK CONSTRUCTION</text>

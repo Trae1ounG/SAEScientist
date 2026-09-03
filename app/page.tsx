@@ -514,23 +514,23 @@ function Home() {
   return (
     <main lang={language === "zh" ? "zh-CN" : "en"}>
       <header className="site-header">
-        <a className="wordmark" href="#top"><strong>SAE</strong><span>BENCH</span></a>
+        <a className="wordmark" href="#top"><strong>SAE</strong><span>SCIENTIST</span></a>
         <nav><a href="#idea">{tx("核心想法", "Idea")}</a><a href="#features">Feature IDs</a><a href="#results">{tx("结果", "Results")}</a><a href="#method">{tx("方法", "Methods")}</a></nav>
         <div className="language-control" aria-label="Language"><button className={language === "zh" ? "active" : ""} onClick={() => setLanguage("zh")}>中文</button><button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button></div>
       </header>
 
       <article id="top" className="research-article">
         <section className="article-masthead">
-          <h1>{tx("SAE-Bench：评估 Agent 的自主 SAE 可解释性研究能力", "SAE-Bench: Evaluating agents as autonomous SAE researchers")}</h1>
+          <h1>{tx("SAEScientist-Bench：评估 Agent 的自主 SAE 可解释性研究能力", "SAEScientist-Bench: Evaluating agents as autonomous SAE researchers")}</h1>
           <p className="dek">{tx("我们评估 Agent 能否像研究者一样提出对照、设计实验、搜索并解释 SAE feature，再用 activation 与 steering 证据验证自己的结论。", "We evaluate whether an agent can work like a researcher: form contrasts, design experiments, discover and interpret an SAE feature, then validate its claim with activation and steering evidence.")}</p>
-          <div className="article-authors"><p className="author-names">SAE-Bench Research Team</p></div>
+          <div className="article-authors"><p className="author-names">SAEScientist Research Team</p></div>
           <p className="article-meta">{tx("2026 年 9 月", "September 2026")} <span>·</span> {tx("预计阅读时间：18 分钟", "18 min read")} <span>·</span> {summary.tasks} tasks <span>·</span> {runs.length} runs</p>
-          <p className="article-links"><a href="https://github.com/Trae1ounG/SAE-Bench">Code &amp; data</a> <span>·</span> <a href="https://huggingface.co/google/gemma-scope-9b-it-res">Official SAE</a></p>
+          <p className="article-links"><a href="https://github.com/Trae1ounG/SAEScientist">Code &amp; data</a> <span>·</span> <a href="https://huggingface.co/google/gemma-scope-9b-it-res">Official SAE</a></p>
         </section>
 
         <section className="abstract-block">
           <h2>Abstract</h2>
-          <p>{tx("稀疏自编码器把模型内部状态分解成大量 feature，但从语义假设走到可复现的 Feature ID，仍是一项需要构造数据、运行实验、解释证据并排除替代解释的科学研究工作。SAE-Bench 测试 Agent 能否自主完成这条研究链。在 20 个官方 Gemma Scope expert features 上，Agent 经常能找到语义接近的方向，但 exact recovery 与等价 steering 明显更难。", "Sparse autoencoders decompose model states into a large feature dictionary, but moving from a semantic hypothesis to a reproducible feature ID remains a scientific workflow: construct data, run experiments, interpret evidence, and rule out alternatives. SAE-Bench tests whether an agent can execute that research loop autonomously. Across 20 expert features from the official Gemma Scope release, semantic neighbors are common; exact recovery and equivalent steering are much harder.")}</p>
+          <p>{tx("稀疏自编码器把模型内部状态分解成大量 feature，但从语义假设走到可复现的 Feature ID，仍是一项需要构造数据、运行实验、解释证据并排除替代解释的科学研究工作。SAEScientist-Bench 测试 Agent 能否自主完成这条研究链。在 20 个官方 Gemma Scope expert features 上，Agent 经常能找到语义接近的方向，但 exact recovery 与等价 steering 明显更难。", "Sparse autoencoders decompose model states into a large feature dictionary, but moving from a semantic hypothesis to a reproducible feature ID remains a scientific workflow: construct data, run experiments, interpret evidence, and rule out alternatives. SAEScientist-Bench tests whether an agent can execute that research loop autonomously. Across 20 expert features from the official Gemma Scope release, semantic neighbors are common; exact recovery and equivalent steering are much harder.")}</p>
         </section>
 
         <aside className="table-of-contents"><details open><summary>{tx("目录", "Table of Contents")}</summary><ol><li><a href="#idea">{tx("我们究竟测什么能力", "What capability are we measuring?")}</a></li><li><a href="#features">{tx("Expert feature 与案例", "Expert features and cases")}</a></li><li><a href="#results">{tx("主要实验结果", "Main experimental results")}</a></li><li><a href="#analysis">{tx("语义—因果鸿沟", "The semantic–causal gap")}</a></li><li><a href="#method">{tx("有效性边界与局限", "Validity and limitations")}</a></li><li><a href="#conclusion">{tx("结论", "Conclusion")}</a></li></ol></details></aside>
@@ -552,7 +552,7 @@ function Home() {
               <div><dt>{tx("隐藏评测", "Hidden evaluation")}</dt><dd>{tx("激活、Expert rank、steering 与盲评", "Activation, expert rank, steering, and blinded judging")}</dd></div>
             </dl>
           </div>
-          <ResearchFigure wide number={1} title={tx("SAE-Bench 的系统框架。", "System architecture of SAE-Bench.")} caption={tx("上半部分展示 Expert task 的构造与准入；下半部分展示隔离的 Agent discovery episode、提交审计和可信隐藏评测。", "The upper lane constructs and admits expert tasks; the lower lane contains the isolated agent discovery episode, submission audit, and trusted hidden evaluation.")}><img className="mechanism-diagram" src={`${import.meta.env.BASE_URL}figures/feature-discovery-mechanism/diagram.svg?v=6`} alt={tx("SAE-Bench 系统框架图", "SAE-Bench system architecture")} /></ResearchFigure>
+          <ResearchFigure wide number={1} title={tx("SAEScientist-Bench 的系统框架。", "System architecture of SAEScientist-Bench.")} caption={tx("上半部分展示 Expert task 的构造与准入；下半部分展示隔离的 Agent discovery episode、提交审计和可信隐藏评测。", "The upper lane constructs and admits expert tasks; the lower lane contains the isolated agent discovery episode, submission audit, and trusted hidden evaluation.")}><img className="mechanism-diagram" src={`${import.meta.env.BASE_URL}figures/feature-discovery-mechanism/diagram.svg?v=6`} alt={tx("SAEScientist-Bench 系统框架图", "SAEScientist-Bench system architecture")} /></ResearchFigure>
           <ResearchFigure wide number={2} title={tx("Feature 62610 的完整画像。", "A complete portrait of feature 62610.")} caption={tx("上半部分展示 feature 的语义与 32 条冻结 case 上的 activation 深度；下半部分展示同一 instruction 在 steering 前后的真实输出差异。", "The upper half shows the feature's interpretation and activation depth over 32 frozen cases; the lower half shows real before/after outputs for the same instruction.")}><FeaturePortrait language={language} /></ResearchFigure>
         </section>
 
@@ -577,7 +577,7 @@ function Home() {
 
         <section id="results" className="article-section">
           <div className="article-copy"><h2>{tx("3. 20 个任务上的主要实验结果", "3. Main results across 20 tasks")}</h2><p>{tx(`当前公开快照覆盖 ${summary.tasks} 道题、${configurations.length} 个 Agent 配置与 ${runs.length} 条完整运行。每题先得到三个以同题 Expert 为 1.0 参照点的分数：Rank 衡量正例平均排名，Activation 汇总 AUROC、正负例激活对比度与逐 case 激活 pattern，Steering 汇总 control-adjusted effect 与逐 instruction steering pattern。Overall 是三项等权平均；总分是 20 个 Overall 的和。候选若在同一 hidden set 上优于 Expert，可以得到高于 1.0 的单项或单题分数。`, `The current public snapshot covers ${summary.tasks} tasks, ${configurations.length} agent configurations, and ${runs.length} complete runs. Each task first receives three scores centered on its expert feature at 1.0: Rank measures positive-case ranking, Activation combines AUROC, positive-versus-control contrast, and per-case activation patterns, and Steering combines control-adjusted effect with per-instruction steering patterns. Overall is their equal-weight mean; Total sums the 20 Overall scores. A candidate can score above 1.0 when it exceeds the expert on the same hidden set.`)}</p></div>
-          <ResearchFigure number={5} title={tx("SAE-Bench 当前主榜。", "Current SAE-Bench leaderboard.")} caption={tx("GT 行是同一套 hidden cases 上的 Expert Feature 归一化基线，不参与模型排名。Exact 衡量 Expert ID 的精确恢复。Target relevance 是匿名输出对目标语义的平均相关度；Causal 要求它显著强于 baseline 和等范数随机方向；Usable 还要求保留原始任务且输出不退化。GPT‑4o 仅作为 steering 输出的盲评模型。每个配置目前每题运行一次。", "The GT row is the expert-feature normalization baseline on the same hidden cases and is not a competing model. Exact measures recovery of the expert ID. Target relevance is the mean semantic relevance of anonymized outputs; Causal requires a clear gain over baseline and a norm-matched random direction; Usable additionally requires task preservation and non-degenerate text. GPT-4o is only the blinded judge for steering outputs. Each configuration currently has one run per task.")}><FormalLeaderboard language={language} /></ResearchFigure>
+          <ResearchFigure number={5} title={tx("SAEScientist-Bench 当前主榜。", "Current SAEScientist-Bench leaderboard.")} caption={tx("GT 行是同一套 hidden cases 上的 Expert Feature 归一化基线，不参与模型排名。Exact 衡量 Expert ID 的精确恢复。Target relevance 是匿名输出对目标语义的平均相关度；Causal 要求它显著强于 baseline 和等范数随机方向；Usable 还要求保留原始任务且输出不退化。GPT‑4o 仅作为 steering 输出的盲评模型。每个配置目前每题运行一次。", "The GT row is the expert-feature normalization baseline on the same hidden cases and is not a competing model. Exact measures recovery of the expert ID. Target relevance is the mean semantic relevance of anonymized outputs; Causal requires a clear gain over baseline and a norm-matched random direction; Usable additionally requires task preservation and non-degenerate text. GPT-4o is only the blinded judge for steering outputs. Each configuration currently has one run per task.")}><FormalLeaderboard language={language} /></ResearchFigure>
           <div className="article-copy post-figure-copy"><h3>{tx("Judge 重打实验", "Judge re-scoring experiment")}</h3><p>{tx("我们固定全部 73 组 steering 输出，只替换 Judge，并以 GPT‑4o-2024-11-20 在 temperature 0 下完成 2,920 条有效判断。GPT‑4o 与旧 Judge 的 feature target score 在 73 个方向上的 Spearman 相关为 0.962，但均值由 0.387 降至 0.278；causal gate 从 21/73 降至 13/73。映射回 160 条 Agent 运行后，19 条通过 causal gate，0 条通过 usable gate；113 个非 exact 候选中仅 1 条通过 causal gate。这说明排序趋势相对稳定，但阈值结论明显依赖 Judge。", "We froze all 73 steering-output sets and changed only the judge. GPT-4o-2024-11-20 produced 2,920 valid judgments at temperature zero. Across the 73 directions, its feature target scores have Spearman 0.962 with the previous judge, while the mean falls from 0.387 to 0.278 and causal passes fall from 21/73 to 13/73. Mapped back to 160 agent runs, 19 pass the causal gate and none pass the usable gate; only one of 113 non-exact selections passes the causal gate. Ranking trends are comparatively stable, but thresholded conclusions are judge-sensitive.")}</p></div>
         </section>
 
@@ -642,7 +642,7 @@ function Home() {
         </section>
       </article>
 
-      <footer><span>SAE-Bench · 2026</span><span>{tx("基于官方 Google Gemma Scope SAE", "Built on the official Google Gemma Scope SAE")}</span></footer>
+      <footer><span>SAEScientist-Bench · 2026</span><span>{tx("基于官方 Google Gemma Scope SAE", "Built on the official Google Gemma Scope SAE")}</span></footer>
     </main>
   );
 }

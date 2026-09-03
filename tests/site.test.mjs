@@ -9,8 +9,8 @@ assert.ok(script, "built JavaScript asset is missing");
 const bundle = readFileSync(new URL(`../dist-pages/assets/${script}`, import.meta.url), "utf8");
 
 test("build targets the GitHub Pages base path", () => {
-  assert.match(html, /\/SAE-Bench\/assets\//);
-  assert.match(html, /SAE-Bench · Autonomous SAE interpretability research/);
+  assert.match(html, /\/SAEScientist\/assets\//);
+  assert.match(html, /SAEScientist-Bench · Autonomous SAE interpretability research/);
 });
 
 test("research blog contains feature meaning, activation depth, and steering contrast", () => {

@@ -1,4 +1,4 @@
-# Figure 1 plan — SAE-Bench system design
+# Figure 1 plan — SAEScientist-Bench system design
 
 ## Reader need
 

@@ -1,8 +1,8 @@
-# SAE-Bench
+# SAEScientist-Bench
 
-[English](README.md) · [交互式研究博客](https://trae1oung.github.io/SAE-Bench/) · [机器可读结果](results/leaderboard.json)
+[English](README.md) · [交互式研究博客](https://trae1oung.github.io/SAEScientist/) · [机器可读结果](results/leaderboard.json)
 
-**SAE-Bench 评估 AI Agent 能否独立完成一次稀疏自编码器 Feature 的研究与定位。**
+**SAEScientist-Bench 评估 AI Agent 能否独立完成一次稀疏自编码器 Feature 的研究与定位。**
 
 Agent 只获得一个英文语义目标和受限的 activation probe API。它需要自主编写诊断样例、比较 Feature 激活、修正假设，并最终提交一个 Feature ID。隐藏评测器随后检验该候选能否复现 Expert feature 的自然激活 pattern 与因果 steering 行为。
 
@@ -81,13 +81,13 @@ h'_t = h_t + alpha × W_dec[:, k]
 
 `alpha` 在 5 条 calibration prompts 上选择；正式评测使用另外 20 条 held-out instructions，以及 baseline、提交 Feature、等范数随机 decoder direction 三个条件。三个输出在交给 GPT‑4o 前会被打乱并匿名化。Judge 在 temperature 0 下独立打分两次，评价 target relevance、task preservation 与 degeneration。
 
-完整 Judge Prompt、标签定义、聚合公式、逐 Feature 激活分布和 steering 前后案例均放在[研究博客](https://trae1oung.github.io/SAE-Bench/)正文中。
+完整 Judge Prompt、标签定义、聚合公式、逐 Feature 激活分布和 steering 前后案例均放在[研究博客](https://trae1oung.github.io/SAEScientist/)正文中。
 
 ## 复现公开结果
 
 ```bash
-git clone https://github.com/Trae1ounG/SAE-Bench.git
-cd SAE-Bench
+git clone https://github.com/Trae1ounG/SAEScientist.git
+cd SAEScientist
 git checkout website
 npm ci
 npm test
