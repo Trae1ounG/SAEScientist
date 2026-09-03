@@ -24,7 +24,7 @@ then measures localization, held-out activation selectivity, and causal steering
 | Agent input | An English description of the target feature |
 | Agent access | Text-to-activation probe; no web, labels, expert IDs, or hidden cases |
 | Submission | One feature ID |
-| Evaluation | Exact match, expert-normalized activation, causal steering, usable steering |
+| Evaluation | Feature Discovery Score, exact match, target relevance, causal steering, usable steering |
 
 The agent controls its probe texts, analysis, and search strategy. The trusted
 runtime controls the model and SAE, hidden evaluation cases, steering rollouts,
@@ -39,19 +39,22 @@ per task under `results/by_task/`. Raw Agent traces and judge transcripts remain
 ## Results
 
 The current 20-feature experiment uses the same hidden cases and expert
-directions for every agent. Activation is normalized against the expert feature;
-steering is evaluated against baseline and norm-matched random controls.
+directions for every agent. For each task, **Feature Discovery Score** is the mean of four
+expert-normalized activation measurements: positive-rank recovery, AUROC recovery,
+activation-contrast recovery, and activation-pattern Spearman. It lies in `[0, 1]`.
+The table reports its mean over 20 tasks and its sum out of 20. Steering is
+evaluated against baseline and norm-matched random controls.
 
-| Agent | Activation ↑ | Exact ↑ | GPT-4o target relevance ↑ | Causal steering ↑ |
-|---|---:|---:|---:|---:|
-| Kimi K3 | **0.794** | **35%** | 0.281 | **15%** |
-| Grok 4.6 | 0.786 | **35%** | **0.303** | **15%** |
-| Claude Sonnet 5 | 0.783 | 30% | 0.277 | 10% |
-| Claude Opus 4.8 | 0.776 | **35%** | 0.226 | 10% |
-| Codex Sol | 0.752 | **35%** | 0.298 | **15%** |
-| GPT-5.5 | 0.697 | 30% | 0.217 | 10% |
-| GLM-5.2 | 0.692 | 20% | 0.242 | **15%** |
-| Codex Luna | 0.645 | 15% | 0.170 | 5% |
+| Model | Mean Discovery Score ↑ | Total / 20 ↑ | Exact ↑ | Target relevance ↑ | Causal ↑ |
+|---|---:|---:|---:|---:|---:|
+| Kimi K3 High | **0.794** | **15.882** | **35%** | 0.281 | **15%** |
+| Grok 4.6 High | 0.786 | 15.718 | **35%** | **0.303** | **15%** |
+| Claude Sonnet 5 High | 0.783 | 15.662 | 30% | 0.277 | 10% |
+| Claude Opus 4.8 High | 0.776 | 15.526 | **35%** | 0.226 | 10% |
+| GPT-5.6 Sol High | 0.752 | 15.043 | **35%** | 0.298 | **15%** |
+| GPT-5.5 High | 0.697 | 13.933 | 30% | 0.217 | 10% |
+| GLM-5.2 High | 0.692 | 13.846 | 20% | 0.242 | **15%** |
+| GPT-5.6 Luna High | 0.645 | 12.894 | 15% | 0.170 | 5% |
 
 These are single-run measurements. Three-run mean and variance, including
 Claude Opus 5, will replace this table after the repeated evaluation completes.

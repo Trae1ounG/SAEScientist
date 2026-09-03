@@ -43,7 +43,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": -0.3932584834898796
-      }
+      },
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "status": "complete",
@@ -81,7 +82,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": -0.3932584834898796
-      }
+      },
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "status": "complete",
@@ -119,7 +121,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": -0.3932584834898796
-      }
+      },
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "status": "complete",
@@ -157,7 +160,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": -0.3932584834898796
-      }
+      },
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "status": "complete",
@@ -195,7 +199,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 0.2067100671628713
-      }
+      },
+      "feature_discovery_score": 0.6566680717609865
     },
     {
       "status": "complete",
@@ -233,7 +238,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 0.2067100671628713
-      }
+      },
+      "feature_discovery_score": 0.6566680717609865
     },
     {
       "status": "complete",
@@ -271,7 +277,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": -0.2894378179176265
-      }
+      },
+      "feature_discovery_score": 0.5687683401856729
     },
     {
       "status": "complete",
@@ -310,7 +317,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     }
   ]
 }

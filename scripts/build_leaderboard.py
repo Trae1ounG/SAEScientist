@@ -123,6 +123,7 @@ def _agent_row(source_path: Path, task_meta: dict[str, Any], agent: dict[str, An
         "selected_feature_id": int(agent["feature_id"]),
         "expert_feature_id": task_meta["expert_feature_id"],
         "exact_match": int(agent["feature_id"]) == int(task_meta["expert_feature_id"]),
+        "feature_discovery_score": gt_score,
         "gt_normalized_activation": gt_score,
         "positive_mean_rank": positive_rank,
         "activation_auroc": auroc,
@@ -216,6 +217,10 @@ def collect_leaderboard(
             for row in configuration_runs
             if row["elapsed_seconds"] is not None
         ]
+        task_discovery_scores = [
+            mean([row["feature_discovery_score"] for row in task]) for task in task_rows
+        ]
+        mean_discovery_score = mean(task_discovery_scores)
         configuration_rows.append(
             {
                 "configuration": _configuration_name(configuration),
@@ -227,9 +232,10 @@ def collect_leaderboard(
                 "coverage_rate": len(task_rows) / len(tasks) if tasks else 0.0,
                 "missing_tasks": sorted(set(tasks) - set(by_task)),
                 "completed_runs": len(configuration_runs),
-                "macro_gt_normalized_activation": mean(
-                    [mean([row["gt_normalized_activation"] for row in task]) for task in task_rows]
-                ),
+                "mean_feature_discovery_score": mean_discovery_score,
+                "total_feature_discovery_score": sum(task_discovery_scores),
+                "maximum_feature_discovery_score": len(tasks),
+                "macro_gt_normalized_activation": mean_discovery_score,
                 "exact_matches": sum(row["exact_match"] for row in configuration_runs),
                 "exact_match_rate": mean(
                     [mean([row["exact_match"] for row in task]) for task in task_rows]
@@ -287,17 +293,26 @@ def render_markdown(payload: dict[str, Any]) -> str:
         "",
         "## Configuration Summary",
         "",
-        "GT-normalized activation (expert = 1.0 per task) is the primary discovery ordering; steering is reported separately.",
+        "Feature Discovery Score is the expert-normalized activation score in [0, 1] for one task. Mean is the macro-average; Total is its sum across tasks.",
         "",
-        "| Configuration | Coverage | Macro GT activation | Exact | Causal | Usable | Median discovery time |",
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| Configuration | Coverage | Mean Discovery Score | Total | Exact | Causal | Usable | Median discovery time |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for row in payload["configurations"]:
         latency = row["median_elapsed_seconds"]
         latency_text = "" if latency is None else f"{latency / 60:.1f} min"
+        mean_discovery_score = row.get(
+            "mean_feature_discovery_score", row["macro_gt_normalized_activation"]
+        )
+        maximum_discovery_score = row.get(
+            "maximum_feature_discovery_score", row["benchmark_tasks"]
+        )
+        total_discovery_score = row.get(
+            "total_feature_discovery_score", mean_discovery_score * row["completed_tasks"]
+        )
         lines.append(
             f"| {row['configuration']} | {row['completed_tasks']}/{row['benchmark_tasks']} | "
-            f"{row['macro_gt_normalized_activation']:.3f} | {row['exact_match_rate']:.3f} | "
+            f"{mean_discovery_score:.3f} | {total_discovery_score:.3f}/{maximum_discovery_score} | {row['exact_match_rate']:.3f} | "
             f"{row['causal_steering_rate']:.3f} | {row['usable_steering_rate']:.3f} | "
             f"{latency_text} |"
         )
@@ -306,7 +321,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
             "",
             "## Runs",
             "",
-            "| Configuration | Task | Selected ID | Exact | GT activation | Mean rank | AUROC | Activation corr. | Steering | Steering corr. |",
+            "| Configuration | Task | Selected ID | Exact | Discovery Score | Mean rank | AUROC | Activation corr. | Steering | Steering corr. |",
             "| --- | --- | ---: | :---: | ---: | ---: | ---: | ---: | ---: | ---: |",
         ]
     )
@@ -317,7 +332,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
         steering_pattern_text = "" if steering_pattern is None else f"{steering_pattern:.3f}"
         lines.append(
             f"| {_configuration_name(_configuration(row))} | {row['concept_id']} | {row['selected_feature_id']} | {exact} | "
-            f"{row['gt_normalized_activation']:.3f} | {row['positive_mean_rank']:.1f} | "
+            f"{row.get('feature_discovery_score', row['gt_normalized_activation']):.3f} | {row['positive_mean_rank']:.1f} | "
             f"{row['activation_auroc']:.3f} | {spearman} | {row['steering_effect']:.3f} | "
             f"{steering_pattern_text} |"
         )
@@ -365,4 +380,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

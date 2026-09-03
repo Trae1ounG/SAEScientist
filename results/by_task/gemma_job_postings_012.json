@@ -44,7 +44,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -83,7 +84,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -122,7 +124,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -160,7 +163,8 @@
         "usable_steering": false,
         "selected_alpha": 180.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.07157763943238192
     },
     {
       "status": "complete",
@@ -199,7 +203,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -237,7 +242,8 @@
         "usable_steering": false,
         "selected_alpha": 15.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.5324835873272722
     },
     {
       "status": "complete",
@@ -276,7 +282,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -315,7 +322,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     }
   ]
 }

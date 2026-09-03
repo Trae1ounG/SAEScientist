@@ -43,7 +43,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": 0.14431532345418158
-      }
+      },
+      "feature_discovery_score": 0.9665262119996532
     },
     {
       "status": "complete",
@@ -81,7 +82,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": 0.14431532345418158
-      }
+      },
+      "feature_discovery_score": 0.9665262119996532
     },
     {
       "status": "complete",
@@ -119,7 +121,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 0.38990813035352545
-      }
+      },
+      "feature_discovery_score": 0.9684787550672072
     },
     {
       "status": "complete",
@@ -157,7 +160,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 0.38990813035352545
-      }
+      },
+      "feature_discovery_score": 0.9684787550672072
     },
     {
       "status": "complete",
@@ -195,7 +199,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": 0.14431532345418158
-      }
+      },
+      "feature_discovery_score": 0.9665262119996532
     },
     {
       "status": "complete",
@@ -233,7 +238,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 0.16879133718111125
-      }
+      },
+      "feature_discovery_score": 0.5783981159471485
     },
     {
       "status": "complete",
@@ -271,7 +277,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 0.28899438056560756
-      }
+      },
+      "feature_discovery_score": 0.468975624533551
     },
     {
       "status": "complete",
@@ -309,7 +316,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": 0.14431532345418158
-      }
+      },
+      "feature_discovery_score": 0.9665262119996532
     }
   ]
 }

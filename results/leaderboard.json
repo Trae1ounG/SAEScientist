@@ -28,7 +28,10 @@
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 301.7356703749974,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.7941005651635598,
+      "total_feature_discovery_score": 15.882011303271195,
+      "maximum_feature_discovery_score": 20
     },
     {
       "configuration": "cursor/cursor-grok-4.6-high",
@@ -46,7 +49,10 @@
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 589.376303438039,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.7858872821550774,
+      "total_feature_discovery_score": 15.717745643101548,
+      "maximum_feature_discovery_score": 20
     },
     {
       "configuration": "cursor/claude-sonnet-5-thinking-high",
@@ -64,7 +70,10 @@
       "causal_steering_rate": 0.1,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 490.1649296039832,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.783093900285953,
+      "total_feature_discovery_score": 15.66187800571906,
+      "maximum_feature_discovery_score": 20
     },
     {
       "configuration": "cursor/claude-opus-4-8-thinking-high",
@@ -82,7 +91,10 @@
       "causal_steering_rate": 0.1,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 388.3133746870444,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.7763089585324864,
+      "total_feature_discovery_score": 15.526179170649728,
+      "maximum_feature_discovery_score": 20
     },
     {
       "configuration": "codex/gpt-5.6-sol (high)",
@@ -100,7 +112,10 @@
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 246.24218352104072,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.7521603455730868,
+      "total_feature_discovery_score": 15.043206911461734,
+      "maximum_feature_discovery_score": 20
     },
     {
       "configuration": "cursor/gpt-5.5-high",
@@ -118,7 +133,10 @@
       "causal_steering_rate": 0.1,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 453.2804516039323,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.6966665960616795,
+      "total_feature_discovery_score": 13.93333192123359,
+      "maximum_feature_discovery_score": 20
     },
     {
       "configuration": "cursor/glm-5.2-high",
@@ -136,7 +154,10 @@
       "causal_steering_rate": 0.15,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 344.39874556293944,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.692318814657453,
+      "total_feature_discovery_score": 13.84637629314906,
+      "maximum_feature_discovery_score": 20
     },
     {
       "configuration": "codex/gpt-5.6-luna (high)",
@@ -154,7 +175,10 @@
       "causal_steering_rate": 0.05,
       "usable_steering_rate": 0.0,
       "median_elapsed_seconds": 241.27133481251076,
-      "latency_runs": 20
+      "latency_runs": 20,
+      "mean_feature_discovery_score": 0.644706699499655,
+      "total_feature_discovery_score": 12.8941339899931,
+      "maximum_feature_discovery_score": 20
     }
   ],
   "runs": [
@@ -179,7 +203,8 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 416.11441000003833
+      "elapsed_seconds": 416.11441000003833,
+      "feature_discovery_score": 0.5983162624689591
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -202,7 +227,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 187.0747054159874
+      "elapsed_seconds": 187.0747054159874,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -225,7 +251,8 @@
       "pe_task_preservation": 0.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 284.74970845796634
+      "elapsed_seconds": 284.74970845796634,
+      "feature_discovery_score": 0.7413686435335088
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -248,7 +275,8 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 149.97037875000387
+      "elapsed_seconds": 149.97037875000387,
+      "feature_discovery_score": 0.9667953667953668
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -271,7 +299,8 @@
       "pe_task_preservation": 1.4,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 505.78985995799303
+      "elapsed_seconds": 505.78985995799303,
+      "feature_discovery_score": 0.6088345007659011
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -294,7 +323,8 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 340.50170437502675
+      "elapsed_seconds": 340.50170437502675,
+      "feature_discovery_score": 0.38992352891356163
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -317,7 +347,8 @@
       "pe_task_preservation": 0.25,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 232.4669922090834
+      "elapsed_seconds": 232.4669922090834,
+      "feature_discovery_score": 0.6566680717609865
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -340,7 +371,8 @@
       "pe_task_preservation": 2.275,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 462.21324229205493
+      "elapsed_seconds": 462.21324229205493,
+      "feature_discovery_score": 0.5990988144100771
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -363,7 +395,8 @@
       "pe_task_preservation": 0.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 241.47733858402353
+      "elapsed_seconds": 241.47733858402353,
+      "feature_discovery_score": 0.5324835873272722
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -386,7 +419,8 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 153.30560466693714
+      "elapsed_seconds": 153.30560466693714,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -409,7 +443,8 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 210.30594708304852
+      "elapsed_seconds": 210.30594708304852,
+      "feature_discovery_score": 0.8203325445260929
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -432,7 +467,8 @@
       "pe_task_preservation": 0.275,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 111.01086345908698
+      "elapsed_seconds": 111.01086345908698,
+      "feature_discovery_score": 0.6279940359256911
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -455,7 +491,8 @@
       "pe_task_preservation": 0.35,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 355.0174705419922
+      "elapsed_seconds": 355.0174705419922,
+      "feature_discovery_score": 0.44821933404897435
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -478,7 +515,8 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 312.5552730829222
+      "elapsed_seconds": 312.5552730829222,
+      "feature_discovery_score": 0.2045602382658235
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -501,7 +539,8 @@
       "pe_task_preservation": 0.775,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 305.3682920410065
+      "elapsed_seconds": 305.3682920410065,
+      "feature_discovery_score": 0.3475157171644367
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -524,7 +563,8 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 232.0002649590606
+      "elapsed_seconds": 232.0002649590606,
+      "feature_discovery_score": 0.18532247104716976
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -547,7 +587,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 101.58306195796467
+      "elapsed_seconds": 101.58306195796467,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -570,7 +611,8 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 341.4630756250117
+      "elapsed_seconds": 341.4630756250117,
+      "feature_discovery_score": 0.5783981159471485
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -593,7 +635,8 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 241.065331040998
+      "elapsed_seconds": 241.065331040998,
+      "feature_discovery_score": 0.6543481227265854
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -616,7 +659,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 149.6941397920018
+      "elapsed_seconds": 149.6941397920018,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -639,7 +683,8 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 224.5583445840748
+      "elapsed_seconds": 224.5583445840748,
+      "feature_discovery_score": 0.5983162624689591
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -662,7 +707,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 122.7555514590349
+      "elapsed_seconds": 122.7555514590349,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -685,7 +731,8 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 302.21179895906243
+      "elapsed_seconds": 302.21179895906243,
+      "feature_discovery_score": 0.7814096433167028
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -708,7 +755,8 @@
       "pe_task_preservation": 0.3,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 256.82081950001884
+      "elapsed_seconds": 256.82081950001884,
+      "feature_discovery_score": 0.6141356505136863
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -731,7 +779,8 @@
       "pe_task_preservation": 1.4,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 231.55329033290036
+      "elapsed_seconds": 231.55329033290036,
+      "feature_discovery_score": 0.6088345007659011
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -754,7 +803,8 @@
       "pe_task_preservation": 3.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 596.6049301249441
+      "elapsed_seconds": 596.6049301249441,
+      "feature_discovery_score": 0.6633339588385289
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -777,7 +827,8 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 356.1498322080588
+      "elapsed_seconds": 356.1498322080588,
+      "feature_discovery_score": 0.5687683401856729
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -800,7 +851,8 @@
       "pe_task_preservation": 2.475,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 324.86357858299743
+      "elapsed_seconds": 324.86357858299743,
+      "feature_discovery_score": 0.5694640891869166
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -823,7 +875,8 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 184.89130029198714
+      "elapsed_seconds": 184.89130029198714,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -846,7 +899,8 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 215.84366829204373
+      "elapsed_seconds": 215.84366829204373,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -869,7 +923,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 328.2346158749424
+      "elapsed_seconds": 328.2346158749424,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -892,7 +947,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 145.12519720802084
+      "elapsed_seconds": 145.12519720802084,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -915,7 +971,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 199.56296841602307
+      "elapsed_seconds": 199.56296841602307,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -938,7 +995,8 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 295.740406124969
+      "elapsed_seconds": 295.740406124969,
+      "feature_discovery_score": 0.2412971602201044
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -961,7 +1019,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 235.6635475420626
+      "elapsed_seconds": 235.6635475420626,
+      "feature_discovery_score": 0.6115546777224377
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -984,7 +1043,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 280.17603629198857
+      "elapsed_seconds": 280.17603629198857,
+      "feature_discovery_score": 0.7288142466171453
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -1007,7 +1067,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 183.75838474999182
+      "elapsed_seconds": 183.75838474999182,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -1030,7 +1091,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 329.1803890829906
+      "elapsed_seconds": 329.1803890829906,
+      "feature_discovery_score": 0.468975624533551
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -1053,7 +1115,8 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 258.0772642090451
+      "elapsed_seconds": 258.0772642090451,
+      "feature_discovery_score": 0.6543481227265854
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -1076,7 +1139,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 141.13768712501042
+      "elapsed_seconds": 141.13768712501042,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -1099,7 +1163,8 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 544.0248350000475
+      "elapsed_seconds": 544.0248350000475,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -1122,7 +1187,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 157.28441508300602
+      "elapsed_seconds": 157.28441508300602,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -1145,7 +1211,8 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 423.45991466601845
+      "elapsed_seconds": 423.45991466601845,
+      "feature_discovery_score": 0.7256709479081433
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -1168,7 +1235,8 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 292.3146675840253
+      "elapsed_seconds": 292.3146675840253,
+      "feature_discovery_score": 0.9667953667953668
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -1191,7 +1259,8 @@
       "pe_task_preservation": 0.775,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 537.3638033330208
+      "elapsed_seconds": 537.3638033330208,
+      "feature_discovery_score": 0.6858659998097791
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -1214,7 +1283,8 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 601.0359760830179
+      "elapsed_seconds": 601.0359760830179,
+      "feature_discovery_score": 0.38992352891356163
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -1237,7 +1307,8 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 547.3651088749757
+      "elapsed_seconds": 547.3651088749757,
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -1260,7 +1331,8 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 260.8692148330156
+      "elapsed_seconds": 260.8692148330156,
+      "feature_discovery_score": 0.6087881300899309
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -1283,7 +1355,8 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 231.2214927499881
+      "elapsed_seconds": 231.2214927499881,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -1306,7 +1379,8 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 353.1668347080704
+      "elapsed_seconds": 353.1668347080704,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -1329,7 +1403,8 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 305.7856430420652
+      "elapsed_seconds": 305.7856430420652,
+      "feature_discovery_score": 0.8203325445260929
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -1352,7 +1427,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 431.0585859580897
+      "elapsed_seconds": 431.0585859580897,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -1375,7 +1451,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 272.17311916698236
+      "elapsed_seconds": 272.17311916698236,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -1398,7 +1475,8 @@
       "pe_task_preservation": 0.675,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 331.48100962501485
+      "elapsed_seconds": 331.48100962501485,
+      "feature_discovery_score": 0.055422924744859894
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -1421,7 +1499,8 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 655.3739690829534
+      "elapsed_seconds": 655.3739690829534,
+      "feature_discovery_score": 0.3851678950837198
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -1444,7 +1523,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 604.0334002089221
+      "elapsed_seconds": 604.0334002089221,
+      "feature_discovery_score": 0.7288142466171453
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -1467,7 +1547,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 273.6943850000389
+      "elapsed_seconds": 273.6943850000389,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -1490,7 +1571,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 449.0798203749582
+      "elapsed_seconds": 449.0798203749582,
+      "feature_discovery_score": 0.9665262119996532
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -1513,7 +1595,8 @@
       "pe_task_preservation": 1.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 750.0367968329228
+      "elapsed_seconds": 750.0367968329228,
+      "feature_discovery_score": 0.5226212811891954
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -1536,7 +1619,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 316.48068066698033
+      "elapsed_seconds": 316.48068066698033,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -1559,7 +1643,8 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 513.7192522090627
+      "elapsed_seconds": 513.7192522090627,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -1582,7 +1667,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 414.2092339580413
+      "elapsed_seconds": 414.2092339580413,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -1605,7 +1691,8 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 412.25027962506283
+      "elapsed_seconds": 412.25027962506283,
+      "feature_discovery_score": 0.7256709479081433
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -1628,7 +1715,8 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 296.47942141699605
+      "elapsed_seconds": 296.47942141699605,
+      "feature_discovery_score": 0.9667953667953668
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -1651,7 +1739,8 @@
       "pe_task_preservation": 0.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 1057.9198617079528
+      "elapsed_seconds": 1057.9198617079528,
+      "feature_discovery_score": 0.6633672211324971
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -1674,7 +1763,8 @@
       "pe_task_preservation": 3.325,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 342.98304787499364
+      "elapsed_seconds": 342.98304787499364,
+      "feature_discovery_score": 0.6070694422093376
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -1697,7 +1787,8 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 385.3031967909774
+      "elapsed_seconds": 385.3031967909774,
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -1720,7 +1811,8 @@
       "pe_task_preservation": 2.275,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 589.3094313750044
+      "elapsed_seconds": 589.3094313750044,
+      "feature_discovery_score": 0.5990988144100771
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -1743,7 +1835,8 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 493.6920027079759
+      "elapsed_seconds": 493.6920027079759,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -1766,7 +1859,8 @@
       "pe_task_preservation": 1.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 618.5084347090451
+      "elapsed_seconds": 618.5084347090451,
+      "feature_discovery_score": 0.03
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -1789,7 +1883,8 @@
       "pe_task_preservation": 1.35,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 594.9473643749952
+      "elapsed_seconds": 594.9473643749952,
+      "feature_discovery_score": 0.9760721771701406
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -1812,7 +1907,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 481.45830929197837
+      "elapsed_seconds": 481.45830929197837,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -1835,7 +1931,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 430.5692312079482
+      "elapsed_seconds": 430.5692312079482,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -1858,7 +1955,8 @@
       "pe_task_preservation": 3.15,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 652.7200472919503
+      "elapsed_seconds": 652.7200472919503,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -1881,7 +1979,8 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 483.4108156670118
+      "elapsed_seconds": 483.4108156670118,
+      "feature_discovery_score": 0.3851678950837198
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -1904,7 +2003,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 441.69879370799754
+      "elapsed_seconds": 441.69879370799754,
+      "feature_discovery_score": 0.7288142466171453
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -1927,7 +2027,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 486.63785649999045
+      "elapsed_seconds": 486.63785649999045,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -1950,7 +2051,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 605.4405655410374
+      "elapsed_seconds": 605.4405655410374,
+      "feature_discovery_score": 0.9665262119996532
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -1973,7 +2075,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 1115.7630702090682
+      "elapsed_seconds": 1115.7630702090682,
+      "feature_discovery_score": 0.6064404803070479
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -1996,7 +2099,8 @@
       "pe_task_preservation": 0.375,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 618.5801557080122
+      "elapsed_seconds": 618.5801557080122,
+      "feature_discovery_score": 0.7366051091136532
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -2019,7 +2123,8 @@
       "pe_task_preservation": 0.35,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 538.1560811669333
+      "elapsed_seconds": 538.1560811669333,
+      "feature_discovery_score": 0.6503055279439428
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -2042,7 +2147,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 350.36636149999686
+      "elapsed_seconds": 350.36636149999686,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -2065,7 +2171,8 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 908.5073839579709
+      "elapsed_seconds": 908.5073839579709,
+      "feature_discovery_score": 0.7256709479081433
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -2088,7 +2195,8 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 541.3979777079076
+      "elapsed_seconds": 541.3979777079076,
+      "feature_discovery_score": 0.9667953667953668
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -2111,7 +2219,8 @@
       "pe_task_preservation": 1.25,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 862.4322852500482
+      "elapsed_seconds": 862.4322852500482,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -2134,7 +2243,8 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 907.4349207910709
+      "elapsed_seconds": 907.4349207910709,
+      "feature_discovery_score": 0.38992352891356163
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -2157,7 +2267,8 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 718.112508582999
+      "elapsed_seconds": 718.112508582999,
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -2180,7 +2291,8 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 527.2175035419641
+      "elapsed_seconds": 527.2175035419641,
+      "feature_discovery_score": 0.6087881300899309
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -2203,7 +2315,8 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 544.09505833406
+      "elapsed_seconds": 544.09505833406,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -2226,7 +2339,8 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 343.60370604204945
+      "elapsed_seconds": 343.60370604204945,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -2249,7 +2363,8 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 634.657548542018
+      "elapsed_seconds": 634.657548542018,
+      "feature_discovery_score": 0.8203325445260929
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -2272,7 +2387,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 312.8631925409427
+      "elapsed_seconds": 312.8631925409427,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -2295,7 +2411,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 541.4035090000834
+      "elapsed_seconds": 541.4035090000834,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -2318,7 +2435,8 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 840.8434004998999
+      "elapsed_seconds": 840.8434004998999,
+      "feature_discovery_score": 0.2412971602201044
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -2341,7 +2459,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 724.3910921249771
+      "elapsed_seconds": 724.3910921249771,
+      "feature_discovery_score": 0.6115546777224377
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -2364,7 +2483,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 728.1059244170319
+      "elapsed_seconds": 728.1059244170319,
+      "feature_discovery_score": 0.41000078821589564
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -2387,7 +2507,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 280.5561861250317
+      "elapsed_seconds": 280.5561861250317,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -2410,7 +2531,8 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 901.8714673341019
+      "elapsed_seconds": 901.8714673341019,
+      "feature_discovery_score": 0.9684787550672072
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -2433,7 +2555,8 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 1053.462807792006
+      "elapsed_seconds": 1053.462807792006,
+      "feature_discovery_score": 0.6543481227265854
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -2456,7 +2579,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 542.7408356670057
+      "elapsed_seconds": 542.7408356670057,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -2479,7 +2603,8 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 388.21474829199724
+      "elapsed_seconds": 388.21474829199724,
+      "feature_discovery_score": 0.6211089436859023
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -2502,7 +2627,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 333.45554645895027
+      "elapsed_seconds": 333.45554645895027,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -2525,7 +2651,8 @@
       "pe_task_preservation": 1.4,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 181.97422325005755
+      "elapsed_seconds": 181.97422325005755,
+      "feature_discovery_score": 0.9160979367694138
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -2548,7 +2675,8 @@
       "pe_task_preservation": 0.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 250.95670562493615
+      "elapsed_seconds": 250.95670562493615,
+      "feature_discovery_score": 0.35026298403644285
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -2571,7 +2699,8 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 432.41339483391494
+      "elapsed_seconds": 432.41339483391494,
+      "feature_discovery_score": 0.6899397279655968
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -2594,7 +2723,8 @@
       "pe_task_preservation": 2.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 223.6577058749972
+      "elapsed_seconds": 223.6577058749972,
+      "feature_discovery_score": 0.23915804426393616
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -2617,7 +2747,8 @@
       "pe_task_preservation": 0.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 433.35477237496525
+      "elapsed_seconds": 433.35477237496525,
+      "feature_discovery_score": 0.736295458606735
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -2640,7 +2771,8 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 304.2448525830405
+      "elapsed_seconds": 304.2448525830405,
+      "feature_discovery_score": 0.6087881300899309
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -2663,7 +2795,8 @@
       "pe_task_preservation": 0.375,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 206.82435675000306
+      "elapsed_seconds": 206.82435675000306,
+      "feature_discovery_score": 0.07157763943238192
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -2686,7 +2819,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 337.7866249169456
+      "elapsed_seconds": 337.7866249169456,
+      "feature_discovery_score": 0.6433196920260896
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -2709,7 +2843,8 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 502.61032483307645
+      "elapsed_seconds": 502.61032483307645,
+      "feature_discovery_score": 0.8203325445260929
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -2732,7 +2867,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 351.0108662089333
+      "elapsed_seconds": 351.0108662089333,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -2755,7 +2891,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 298.273838916095
+      "elapsed_seconds": 298.273838916095,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -2778,7 +2915,8 @@
       "pe_task_preservation": 3.15,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 960.432238999987
+      "elapsed_seconds": 960.432238999987,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -2801,7 +2939,8 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 428.95478150004055
+      "elapsed_seconds": 428.95478150004055,
+      "feature_discovery_score": 0.3851678950837198
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -2824,7 +2963,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 422.62125133303925
+      "elapsed_seconds": 422.62125133303925,
+      "feature_discovery_score": 0.7288142466171453
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -2847,7 +2987,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 178.9943622079445
+      "elapsed_seconds": 178.9943622079445,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -2870,7 +3011,8 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 404.4117125410121
+      "elapsed_seconds": 404.4117125410121,
+      "feature_discovery_score": 0.9684787550672072
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -2893,7 +3035,8 @@
       "pe_task_preservation": 1.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 513.3920261249878
+      "elapsed_seconds": 513.3920261249878,
+      "feature_discovery_score": 0.5226212811891954
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -2916,7 +3059,8 @@
       "pe_task_preservation": 1.175,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 199.43316829099786
+      "elapsed_seconds": 199.43316829099786,
+      "feature_discovery_score": 0.6104583794237268
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -2939,7 +3083,8 @@
       "pe_task_preservation": 0.875,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 596.5244975839742
+      "elapsed_seconds": 596.5244975839742,
+      "feature_discovery_score": 0.5983162624689591
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -2962,7 +3107,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 282.0401761250105
+      "elapsed_seconds": 282.0401761250105,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -2985,7 +3131,8 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 321.6377565829316
+      "elapsed_seconds": 321.6377565829316,
+      "feature_discovery_score": 0.7256709479081433
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -3008,7 +3155,8 @@
       "pe_task_preservation": 0.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 456.9257000829093
+      "elapsed_seconds": 456.9257000829093,
+      "feature_discovery_score": 0.35026298403644285
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -3031,7 +3179,8 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 402.7414420839632
+      "elapsed_seconds": 402.7414420839632,
+      "feature_discovery_score": 0.6899397279655968
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -3054,7 +3203,8 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 276.54268349998165
+      "elapsed_seconds": 276.54268349998165,
+      "feature_discovery_score": 0.38992352891356163
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -3077,7 +3227,8 @@
       "pe_task_preservation": 0.25,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 337.28330529108644
+      "elapsed_seconds": 337.28330529108644,
+      "feature_discovery_score": 0.6566680717609865
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -3100,7 +3251,8 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 465.9233732079156
+      "elapsed_seconds": 465.9233732079156,
+      "feature_discovery_score": 0.6087881300899309
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -3123,7 +3275,8 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 314.0482880419586
+      "elapsed_seconds": 314.0482880419586,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -3146,7 +3299,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 456.9891569999745
+      "elapsed_seconds": 456.9891569999745,
+      "feature_discovery_score": 0.6433196920260896
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -3169,7 +3323,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 512.9721684580436
+      "elapsed_seconds": 512.9721684580436,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -3192,7 +3347,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 551.1407470409758
+      "elapsed_seconds": 551.1407470409758,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -3215,7 +3371,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 449.6352031249553
+      "elapsed_seconds": 449.6352031249553,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -3238,7 +3395,8 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 762.9938133750111
+      "elapsed_seconds": 762.9938133750111,
+      "feature_discovery_score": 0.2045602382658235
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -3261,7 +3419,8 @@
       "pe_task_preservation": 0.7,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 584.2878446250688
+      "elapsed_seconds": 584.2878446250688,
+      "feature_discovery_score": 0.3851678950837198
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -3284,7 +3443,8 @@
       "pe_task_preservation": 0.85,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 283.2618237079587
+      "elapsed_seconds": 283.2618237079587,
+      "feature_discovery_score": 0.18532247104716976
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -3307,7 +3467,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 216.60913633403834
+      "elapsed_seconds": 216.60913633403834,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -3330,7 +3491,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 475.8022730409866
+      "elapsed_seconds": 475.8022730409866,
+      "feature_discovery_score": 0.9665262119996532
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -3353,7 +3515,8 @@
       "pe_task_preservation": 0.775,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 426.42488454200793
+      "elapsed_seconds": 426.42488454200793,
+      "feature_discovery_score": 0.5949111253019692
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -3376,7 +3539,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 504.0658636249136
+      "elapsed_seconds": 504.0658636249136,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_archaeological_excavation_023/task.json",
@@ -3399,7 +3563,8 @@
       "pe_task_preservation": 0.925,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 941.5470374999568
+      "elapsed_seconds": 941.5470374999568,
+      "feature_discovery_score": 0.6211089436859023
     },
     {
       "task": "tasks/gemma_cat_001/task.json",
@@ -3422,7 +3587,8 @@
       "pe_task_preservation": 2.65,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 135.2274693750078
+      "elapsed_seconds": 135.2274693750078,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
@@ -3445,7 +3611,8 @@
       "pe_task_preservation": 0.0,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 202.72960491699632
+      "elapsed_seconds": 202.72960491699632,
+      "feature_discovery_score": 0.7256709479081433
     },
     {
       "task": "tasks/gemma_earnings_reports_009/task.json",
@@ -3468,7 +3635,8 @@
       "pe_task_preservation": 0.2,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 166.4602743750438
+      "elapsed_seconds": 166.4602743750438,
+      "feature_discovery_score": 0.9667953667953668
     },
     {
       "task": "tasks/gemma_earnings_reports_017/task.json",
@@ -3491,7 +3659,8 @@
       "pe_task_preservation": 0.6,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 253.17745379102416
+      "elapsed_seconds": 253.17745379102416,
+      "feature_discovery_score": 0.6633672211324971
     },
     {
       "task": "tasks/gemma_french_005/task.json",
@@ -3514,7 +3683,8 @@
       "pe_task_preservation": 3.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 279.91588754195254
+      "elapsed_seconds": 279.91588754195254,
+      "feature_discovery_score": 0.38992352891356163
     },
     {
       "task": "tasks/gemma_gardening_advice_010/task.json",
@@ -3537,7 +3707,8 @@
       "pe_task_preservation": 0.275,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 726.1059322500369
+      "elapsed_seconds": 726.1059322500369,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_german_008/task.json",
@@ -3560,7 +3731,8 @@
       "pe_task_preservation": 2.45,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 460.18423308304045
+      "elapsed_seconds": 460.18423308304045,
+      "feature_discovery_score": 0.6087881300899309
     },
     {
       "task": "tasks/gemma_job_postings_012/task.json",
@@ -3583,7 +3755,8 @@
       "pe_task_preservation": 0.225,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 303.1000873330049
+      "elapsed_seconds": 303.1000873330049,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_latin_language_013/task.json",
@@ -3606,7 +3779,8 @@
       "pe_task_preservation": 2.05,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 348.312270958093
+      "elapsed_seconds": 348.312270958093,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
@@ -3629,7 +3803,8 @@
       "pe_task_preservation": 1.575,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 326.5120369999204
+      "elapsed_seconds": 326.5120369999204,
+      "feature_discovery_score": 0.8203325445260929
     },
     {
       "task": "tasks/gemma_portfolio_allocation_014/task.json",
@@ -3652,7 +3827,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 664.782069790992
+      "elapsed_seconds": 664.782069790992,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portfolio_allocation_018/task.json",
@@ -3675,7 +3851,8 @@
       "pe_task_preservation": 1.6,
       "causal_stable": true,
       "usable_steering": false,
-      "elapsed_seconds": 252.7056004590122
+      "elapsed_seconds": 252.7056004590122,
+      "feature_discovery_score": 1.0
     },
     {
       "task": "tasks/gemma_portuguese_007/task.json",
@@ -3698,7 +3875,8 @@
       "pe_task_preservation": 0.55,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 604.7173488750122
+      "elapsed_seconds": 604.7173488750122,
+      "feature_discovery_score": 0.2045602382658235
     },
     {
       "task": "tasks/gemma_real_estate_listings_021/task.json",
@@ -3721,7 +3899,8 @@
       "pe_task_preservation": 1.1,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 524.3648372919997
+      "elapsed_seconds": 524.3648372919997,
+      "feature_discovery_score": 0.9166346246461987
     },
     {
       "task": "tasks/gemma_spanish_006/task.json",
@@ -3744,7 +3923,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 278.8774943749886
+      "elapsed_seconds": 278.8774943749886,
+      "feature_discovery_score": 0.41000078821589564
     },
     {
       "task": "tasks/gemma_tax_filing_language_011/task.json",
@@ -3767,7 +3947,8 @@
       "pe_task_preservation": 0.625,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 235.18586112500634
+      "elapsed_seconds": 235.18586112500634,
+      "feature_discovery_score": 0.9339546343655439
     },
     {
       "task": "tasks/gemma_tax_filing_language_020/task.json",
@@ -3790,7 +3971,8 @@
       "pe_task_preservation": 0.5,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 463.14314100006595
+      "elapsed_seconds": 463.14314100006595,
+      "feature_discovery_score": 0.9665262119996532
     },
     {
       "task": "tasks/gemma_turkish_language_015/task.json",
@@ -3813,7 +3995,8 @@
       "pe_task_preservation": 0.525,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 298.5272455830127
+      "elapsed_seconds": 298.5272455830127,
+      "feature_discovery_score": 0.6543481227265854
     },
     {
       "task": "tasks/gemma_weather_forecasts_022/task.json",
@@ -3836,7 +4019,8 @@
       "pe_task_preservation": 0.8,
       "causal_stable": false,
       "usable_steering": false,
-      "elapsed_seconds": 300.37125341698993
+      "elapsed_seconds": 300.37125341698993,
+      "feature_discovery_score": 1.0
     }
   ]
 }

@@ -44,7 +44,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -82,7 +83,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": 0.44479947527927993
-      }
+      },
+      "feature_discovery_score": 0.7366051091136532
     },
     {
       "status": "complete",
@@ -121,7 +123,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -159,7 +162,8 @@
         "usable_steering": false,
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 0.3657702866890493
-      }
+      },
+      "feature_discovery_score": 0.6104583794237268
     },
     {
       "status": "complete",
@@ -198,7 +202,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -237,7 +242,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -276,7 +282,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -315,7 +322,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     }
   ]
 }

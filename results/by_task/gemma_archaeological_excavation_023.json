@@ -44,7 +44,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -83,7 +84,8 @@
         "selected_alpha": 240.0,
         "pattern_correlation_to_expert": 1.0,
         "source": "expert feature freshly scored by the selected judge"
-      }
+      },
+      "feature_discovery_score": 1.0
     },
     {
       "status": "complete",
@@ -121,7 +123,8 @@
         "usable_steering": false,
         "selected_alpha": 300.0,
         "pattern_correlation_to_expert": 0.46450192862529766
-      }
+      },
+      "feature_discovery_score": 0.6503055279439428
     },
     {
       "status": "complete",
@@ -159,7 +162,8 @@
         "usable_steering": false,
         "selected_alpha": 120.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.6211089436859023
     },
     {
       "status": "complete",
@@ -197,7 +201,8 @@
         "usable_steering": false,
         "selected_alpha": 120.0,
         "pattern_correlation_to_expert": 0.3441831532162229
-      }
+      },
+      "feature_discovery_score": 0.5983162624689591
     },
     {
       "status": "complete",
@@ -235,7 +240,8 @@
         "usable_steering": false,
         "selected_alpha": 120.0,
         "pattern_correlation_to_expert": 0.3441831532162229
-      }
+      },
+      "feature_discovery_score": 0.5983162624689591
     },
     {
       "status": "complete",
@@ -273,7 +279,8 @@
         "usable_steering": false,
         "selected_alpha": 120.0,
         "pattern_correlation_to_expert": 0.3441831532162229
-      }
+      },
+      "feature_discovery_score": 0.5983162624689591
     },
     {
       "status": "complete",
@@ -311,7 +318,8 @@
         "usable_steering": false,
         "selected_alpha": 120.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.6211089436859023
     }
   ]
 }

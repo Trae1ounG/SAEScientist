@@ -237,6 +237,9 @@ class BuildLeaderboardTest(unittest.TestCase):
         self.assertEqual(summary["completed_tasks"], 2)
         self.assertEqual(summary["coverage_rate"], 1.0)
         self.assertEqual(summary["macro_gt_normalized_activation"], 0.5)
+        self.assertEqual(summary["mean_feature_discovery_score"], 0.5)
+        self.assertEqual(summary["total_feature_discovery_score"], 1.0)
+        self.assertEqual(summary["maximum_feature_discovery_score"], 2)
         self.assertEqual(summary["exact_match_rate"], 0.5)
         self.assertEqual(summary["causal_steering_rate"], 0.5)
         self.assertEqual(summary["usable_steering_rate"], 0.5)
@@ -252,6 +255,7 @@ class BuildLeaderboardTest(unittest.TestCase):
             },
         )
         self.assertTrue(payload["runs"][0]["exact_match"])
+        self.assertEqual(payload["runs"][0]["feature_discovery_score"], 1.0)
         self.assertEqual(payload["runs"][0]["pe_target_relevance"], 3.0)
 
     def test_result_paths_deduplicate_default_absolute_and_same_relative_dir(self):
@@ -314,10 +318,12 @@ class BuildLeaderboardTest(unittest.TestCase):
             ],
         }
         markdown = build_leaderboard.render_markdown(payload)
-        self.assertIn("| codex/model-a (high) | 1/1 | 0.800 | 1.000 | 0.000 | 0.000 | 2.0 min |", markdown)
+        self.assertIn(
+            "| codex/model-a (high) | 1/1 | 0.800 | 0.800/1 | 1.000 | 0.000 | 0.000 | 2.0 min |",
+            markdown,
+        )
         self.assertIn("| codex/model-a (high) | alpha | 10 | yes | 0.800 | 20.0 | 0.900 |  | 0.400 |  |", markdown)
 
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -43,7 +43,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.5226212811891954
     },
     {
       "status": "complete",
@@ -81,7 +82,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": -0.06916236823282089
-      }
+      },
+      "feature_discovery_score": 0.6064404803070479
     },
     {
       "status": "complete",
@@ -119,7 +121,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.6543481227265854
     },
     {
       "status": "complete",
@@ -157,7 +160,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.5226212811891954
     },
     {
       "status": "complete",
@@ -195,7 +199,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.5949111253019692
     },
     {
       "status": "complete",
@@ -233,7 +238,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.6543481227265854
     },
     {
       "status": "complete",
@@ -271,7 +277,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.6543481227265854
     },
     {
       "status": "complete",
@@ -309,7 +316,8 @@
         "usable_steering": false,
         "selected_alpha": 80.0,
         "pattern_correlation_to_expert": null
-      }
+      },
+      "feature_discovery_score": 0.6543481227265854
     }
   ]
 }
