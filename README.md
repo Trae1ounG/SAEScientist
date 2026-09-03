@@ -2,9 +2,9 @@
 
 [中文](README.zh-CN.md) · [Methods and analysis](docs/benchmark_v2_blog.md) · [Machine-readable results](results/leaderboard.json)
 
-**Can an LLM agent discover the right sparse-autoencoder feature from a semantic description and causal feedback?**
+**SAE-Bench evaluates agents as autonomous SAE interpretability researchers.**
 
-SAE-Bench evaluates feature discovery as an agent task. An agent receives an English target description and a restricted probe interface to an official sparse autoencoder (SAE). It must construct its own diagnostic texts, inspect activation measurements, and submit one feature ID. The evaluator then separates three questions that are often conflated:
+An agent receives an English research target and a restricted probe interface to an official sparse autoencoder (SAE). It must form contrasts, construct diagnostic texts, run activation experiments, revise its interpretation, and submit one feature ID with evidence. The evaluator then separates three questions that are often conflated:
 
 1. Did the agent recover the expert feature exactly?
 2. If not, does its feature reproduce the expert activation pattern?
@@ -63,7 +63,7 @@ The expert set uses 20 unique feature/layer pairs: 12 at residual layer 9 and ei
 
 ## Public release boundary
 
-This repository publishes the methodology, aggregate leaderboard, behavior analysis, and website source. Hidden task payloads, expert IDs, raw agent traces, internal model paths, judge endpoints, and per-prompt PE records remain in a separate private research repository. That split keeps future offline evaluations meaningful and prevents infrastructure details from entering the public Git history.
+This repository publishes the methodology, submitted and expert feature IDs, aggregate per-run metrics, behavior analysis, and website source. Hidden prompts and task payloads, raw agent traces, internal model paths, judge endpoints, and per-prompt PE records remain in a separate private research repository. That split keeps future offline evaluations meaningful and prevents infrastructure details from entering the public Git history.
 
 The full evaluator will be released only after its hidden/public split is finalized. The current JSON files are sufficient to reproduce every aggregate number and visualization on this site without exposing the sealed evaluation inputs.
 

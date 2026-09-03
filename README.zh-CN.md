@@ -2,9 +2,9 @@
 
 [English](README.md) · [方法与分析](docs/benchmark_v2_blog.md) · [机器可读结果](results/leaderboard.json)
 
-**LLM Agent 能否只根据语义描述和受限的激活反馈，找到正确的稀疏自编码器特征？**
+**SAE-Bench：评估 Agent 的自主 SAE 可解释性研究能力。**
 
-SAE-Bench 把 SAE feature discovery 变成一个 Agent 任务。Agent 只会看到英文目标描述和一个受限的 SAE probe 接口；它需要自己构造诊断文本、比较激活与排名，并最终提交一个 feature ID。评测随后把三个问题分开：
+Agent 只会看到英文研究目标和一个受限的 SAE probe 接口；它需要像研究者一样提出对照、构造诊断文本、运行激活实验、修正解释，并最终提交一个 feature ID 与证据。评测随后把三个问题分开：
 
 1. 是否精确找到了 Expert feature？
 2. 如果没有，它的自然激活模式是否仍与 Expert 接近？
@@ -63,7 +63,7 @@ Expert set 包含 20 个互不重复的 feature/layer 组合：12 个位于 resi
 
 ## 公开边界
 
-本仓库公开方法、聚合榜单、行为分析和网站源码。隐藏 task payload、Expert ID、Agent 原始 trace、内部模型路径、judge endpoint 与逐 prompt PE 记录保留在独立私有研究仓库中。这样既能保持未来离线评测有效，也不会把内部基础设施写入公开 Git 历史。
+本仓库公开方法、Agent 提交与 Expert feature ID、逐运行聚合指标、行为分析和网站源码。隐藏 prompts 与 task payload、Agent 原始 trace、内部模型路径、judge endpoint 与逐 prompt PE 记录保留在独立私有研究仓库中。这样既能保持未来离线评测有效，也不会把内部基础设施写入公开 Git 历史。
 
 完整 evaluator 会在 hidden/public split 固定后发布。当前 JSON 已足以复现网站上的所有聚合数字和实验图。
 

@@ -13,4 +13,4 @@ Primary ordering: macro GT-normalized activation. Exact and steering outcomes ar
 | cursor/glm-5.2-high | 20/20 | 0.692 | 0.200 | 0.300 | 0.100 | 5.7 min |
 | codex/gpt-5.6-luna (high) | 20/20 | 0.645 | 0.150 | 0.200 | 0.050 | 4.0 min |
 
-The public JSON retains metric-bearing run rows but omits submitted and expert feature IDs, raw traces, evaluator payloads, and infrastructure metadata.
+The public JSON retains submitted and expert feature IDs plus metric-bearing run rows, while omitting hidden prompts, raw traces, evaluator payloads, and infrastructure metadata.
