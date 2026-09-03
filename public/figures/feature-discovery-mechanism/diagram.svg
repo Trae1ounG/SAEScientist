@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 680 600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif">
+  <style>
+    .t  { font-size: 14px; font-weight: 400; fill: #2C2C2A; }
+    .ts { font-size: 12px; font-weight: 400; fill: #5F5E5A; }
+    .th { font-size: 14px; font-weight: 500; fill: #2C2C2A; }
+    .title   { font-size: 20px; font-weight: 600; fill: #2C2C2A; }
+    .eyebrow { font-size: 10px; font-weight: 500; fill: #888780; letter-spacing: 1.2px; text-transform: uppercase; }
+    .caption { font-size: 12px; font-weight: 400; fill: #888780; font-style: italic; }
+    .anno    { font-size: 12px; font-weight: 400; fill: #888780; }
+    .box   { fill: #F1EFE8; stroke: #B4B2A9; stroke-width: 0.5; }
+    .row-alt { fill: #FFFFFF; stroke: #D3D1C7; stroke-width: 0.5; }
+    .arr   { fill: none; stroke: #5F5E5A; stroke-width: 1.5; }
+    .arr-alt { fill: none; stroke: #5F5E5A; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .leader{ fill: none; stroke: #B4B2A9; stroke-width: 0.5; stroke-dasharray: 3 3; }
+    .lifeline { fill: none; stroke: #B4B2A9; stroke-width: 1; stroke-dasharray: 4 4; }
+
+    .arr-gray   { fill: none; stroke: #5F5E5A; stroke-width: 1.5; }
+    .arr-blue   { fill: none; stroke: #185FA5; stroke-width: 1.5; }
+    .arr-teal   { fill: none; stroke: #0F6E56; stroke-width: 1.5; }
+    .arr-purple { fill: none; stroke: #534AB7; stroke-width: 1.5; }
+    .arr-coral  { fill: none; stroke: #993C1D; stroke-width: 1.5; }
+    .arr-pink   { fill: none; stroke: #993556; stroke-width: 1.5; }
+    .arr-amber  { fill: none; stroke: #854F0B; stroke-width: 1.5; }
+    .arr-green  { fill: none; stroke: #3B6D11; stroke-width: 1.5; }
+    .arr-red    { fill: none; stroke: #A32D2D; stroke-width: 1.5; }
+
+    .c-gray   > rect, .c-gray   > circle, .c-gray   > ellipse, rect.c-gray, circle.c-gray, ellipse.c-gray { fill: #F1EFE8; stroke: #5F5E5A; stroke-width: 0.5; }
+    .c-gray   .th, .c-gray   .t  { fill: #444441; }
+    .c-gray   .ts                { fill: #5F5E5A; }
+
+    .c-blue   > rect, .c-blue   > circle, .c-blue   > ellipse, rect.c-blue, circle.c-blue, ellipse.c-blue { fill: #E6F1FB; stroke: #185FA5; stroke-width: 0.5; }
+    .c-blue   .th, .c-blue   .t  { fill: #0C447C; }
+    .c-blue   .ts                { fill: #185FA5; }
+
+    .c-teal   > rect, .c-teal   > circle, .c-teal   > ellipse, rect.c-teal, circle.c-teal, ellipse.c-teal { fill: #E1F5EE; stroke: #0F6E56; stroke-width: 0.5; }
+    .c-teal   .th, .c-teal   .t  { fill: #085041; }
+    .c-teal   .ts                { fill: #0F6E56; }
+
+    .c-purple > rect, .c-purple > circle, .c-purple > ellipse, rect.c-purple, circle.c-purple, ellipse.c-purple { fill: #EEEDFE; stroke: #534AB7; stroke-width: 0.5; }
+    .c-purple .th, .c-purple .t  { fill: #3C3489; }
+    .c-purple .ts                { fill: #534AB7; }
+
+    .c-coral  > rect, .c-coral  > circle, .c-coral  > ellipse, rect.c-coral, circle.c-coral, ellipse.c-coral { fill: #FAECE7; stroke: #993C1D; stroke-width: 0.5; }
+    .c-coral  .th, .c-coral  .t  { fill: #712B13; }
+    .c-coral  .ts                { fill: #993C1D; }
+
+    .c-pink   > rect, .c-pink   > circle, .c-pink   > ellipse, rect.c-pink, circle.c-pink, ellipse.c-pink { fill: #FBEAF0; stroke: #993556; stroke-width: 0.5; }
+    .c-pink   .th, .c-pink   .t  { fill: #72243E; }
+    .c-pink   .ts                { fill: #993556; }
+
+    .c-amber  > rect, .c-amber  > circle, .c-amber  > ellipse, rect.c-amber, circle.c-amber, ellipse.c-amber { fill: #FAEEDA; stroke: #854F0B; stroke-width: 0.5; }
+    .c-amber  .th, .c-amber  .t  { fill: #633806; }
+    .c-amber  .ts                { fill: #854F0B; }
+
+    .c-green  > rect, .c-green  > circle, .c-green  > ellipse, rect.c-green, circle.c-green, ellipse.c-green { fill: #EAF3DE; stroke: #3B6D11; stroke-width: 0.5; }
+    .c-green  .th, .c-green  .t  { fill: #27500A; }
+    .c-green  .ts                { fill: #3B6D11; }
+
+    .c-red    > rect, .c-red    > circle, .c-red    > ellipse, rect.c-red, circle.c-red, ellipse.c-red { fill: #FCEBEB; stroke: #A32D2D; stroke-width: 0.5; }
+    .c-red    .th, .c-red    .t  { fill: #791F1F; }
+    .c-red    .ts                { fill: #A32D2D; }
+
+    @media (prefers-color-scheme: dark) {
+      .t, .th { fill: #F1EFE8; }
+      .ts     { fill: #B4B2A9; }
+      .title   { fill: #F1EFE8; }
+      .eyebrow { fill: #888780; }
+      .caption { fill: #888780; }
+      .anno    { fill: #888780; }
+      .box    { fill: #2C2C2A; stroke: #888780; }
+      .row-alt { fill: #444441; stroke: #5F5E5A; }
+      .arr    { stroke: #B4B2A9; }
+      .arr-alt { stroke: #B4B2A9; }
+      .leader { stroke: #888780; }
+      .lifeline { stroke: #5F5E5A; }
+
+      .arr-gray   { stroke: #B4B2A9; }
+      .arr-blue   { stroke: #85B7EB; }
+      .arr-teal   { stroke: #5DCAA5; }
+      .arr-purple { stroke: #AFA9EC; }
+      .arr-coral  { stroke: #F0997B; }
+      .arr-pink   { stroke: #ED93B1; }
+      .arr-amber  { stroke: #EF9F27; }
+      .arr-green  { stroke: #97C459; }
+      .arr-red    { stroke: #F09595; }
+
+      .c-gray   > rect, .c-gray   > circle, .c-gray   > ellipse, rect.c-gray, circle.c-gray, ellipse.c-gray { fill: #444441; stroke: #B4B2A9; }
+      .c-gray   .th, .c-gray   .t  { fill: #F1EFE8; }
+      .c-gray   .ts                { fill: #D3D1C7; }
+
+      .c-blue   > rect, .c-blue   > circle, .c-blue   > ellipse, rect.c-blue, circle.c-blue, ellipse.c-blue { fill: #0C447C; stroke: #85B7EB; }
+      .c-blue   .th, .c-blue   .t  { fill: #B5D4F4; }
+      .c-blue   .ts                { fill: #85B7EB; }
+
+      .c-teal   > rect, .c-teal   > circle, .c-teal   > ellipse, rect.c-teal, circle.c-teal, ellipse.c-teal { fill: #085041; stroke: #5DCAA5; }
+      .c-teal   .th, .c-teal   .t  { fill: #9FE1CB; }
+      .c-teal   .ts                { fill: #5DCAA5; }
+
+      .c-purple > rect, .c-purple > circle, .c-purple > ellipse, rect.c-purple, circle.c-purple, ellipse.c-purple { fill: #3C3489; stroke: #AFA9EC; }
+      .c-purple .th, .c-purple .t  { fill: #CECBF6; }
+      .c-purple .ts                { fill: #AFA9EC; }
+
+      .c-coral  > rect, .c-coral  > circle, .c-coral  > ellipse, rect.c-coral, circle.c-coral, ellipse.c-coral { fill: #712B13; stroke: #F0997B; }
+      .c-coral  .th, .c-coral  .t  { fill: #F5C4B3; }
+      .c-coral  .ts                { fill: #F0997B; }
+
+      .c-pink   > rect, .c-pink   > circle, .c-pink   > ellipse, rect.c-pink, circle.c-pink, ellipse.c-pink { fill: #72243E; stroke: #ED93B1; }
+      .c-pink   .th, .c-pink   .t  { fill: #F4C0D1; }
+      .c-pink   .ts                { fill: #ED93B1; }
+
+      .c-amber  > rect, .c-amber  > circle, .c-amber  > ellipse, rect.c-amber, circle.c-amber, ellipse.c-amber { fill: #633806; stroke: #EF9F27; }
+      .c-amber  .th, .c-amber  .t  { fill: #FAC775; }
+      .c-amber  .ts                { fill: #EF9F27; }
+
+      .c-green  > rect, .c-green  > circle, .c-green  > ellipse, rect.c-green, circle.c-green, ellipse.c-green { fill: #27500A; stroke: #97C459; }
+      .c-green  .th, .c-green  .t  { fill: #C0DD97; }
+      .c-green  .ts                { fill: #97C459; }
+
+      .c-red    > rect, .c-red    > circle, .c-red    > ellipse, rect.c-red, circle.c-red, ellipse.c-red { fill: #791F1F; stroke: #F09595; }
+      .c-red    .th, .c-red    .t  { fill: #F7C1C1; }
+      .c-red    .ts                { fill: #F09595; }
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text class="title" x="340" y="40" text-anchor="middle">SAE-Bench research loop</text>
+  <text class="ts" x="340" y="64" text-anchor="middle">Can an agent conduct a reproducible interpretability study?</text>
+
+  <text class="eyebrow" x="80" y="100">1 · Research target</text>
+  <g class="c-gray">
+    <rect x="80" y="116" width="390" height="56" rx="8"/>
+    <text class="th" x="275" y="136" text-anchor="middle">Semantic concept description</text>
+    <text class="ts" x="275" y="156" text-anchor="middle">No feature ID, label search, or hidden examples</text>
+  </g>
+  <text class="anno" x="490" y="136">fixed target</text>
+  <text class="anno" x="490" y="152">description only</text>
+
+  <line x1="275" y1="172" x2="275" y2="206" class="arr" marker-end="url(#arrow)"/>
+  <text class="eyebrow" x="80" y="204">2 · Autonomous investigation</text>
+  <line x1="55" y1="218" x2="55" y2="354" class="leader"/>
+  <text class="ts" x="45" y="286" text-anchor="middle" dominant-baseline="central" transform="rotate(-90 45 286)">revise until confident</text>
+
+  <g class="c-purple">
+    <rect x="80" y="220" width="120" height="56" rx="8"/>
+    <text class="th" x="140" y="240" text-anchor="middle">Design probes</text>
+    <text class="ts" x="140" y="260" text-anchor="middle">positive + contrasts</text>
+  </g>
+  <g class="c-purple">
+    <rect x="215" y="220" width="120" height="56" rx="8"/>
+    <text class="th" x="275" y="240" text-anchor="middle">Run experiment</text>
+    <text class="ts" x="275" y="260" text-anchor="middle">activation + rank</text>
+  </g>
+  <g class="c-purple">
+    <rect x="350" y="220" width="120" height="56" rx="8"/>
+    <text class="th" x="410" y="240" text-anchor="middle">Revise claim</text>
+    <text class="ts" x="410" y="260" text-anchor="middle">inspect alternatives</text>
+  </g>
+  <line x1="200" y1="248" x2="213" y2="248" class="arr-purple" marker-end="url(#arrow)"/>
+  <line x1="335" y1="248" x2="348" y2="248" class="arr-purple" marker-end="url(#arrow)"/>
+  <path d="M410 276 L410 290 L140 290 L140 278" class="arr-alt" fill="none" marker-end="url(#arrow)"/>
+  <text class="anno" x="490" y="234">agent-authored probes</text>
+  <text class="anno" x="490" y="250">restricted interface</text>
+  <text class="anno" x="490" y="266">offline, repo hidden</text>
+
+  <g class="c-coral">
+    <rect x="170" y="312" width="210" height="56" rx="8"/>
+    <text class="th" x="275" y="332" text-anchor="middle">Submit one feature ID</text>
+    <text class="ts" x="275" y="352" text-anchor="middle">plus evidence and interpretation</text>
+  </g>
+  <line x1="410" y1="290" x2="382" y2="312" class="arr-coral" marker-end="url(#arrow)"/>
+  <text class="anno" x="490" y="340">one testable claim</text>
+
+  <text class="eyebrow" x="80" y="408">3 · Hidden evaluation</text>
+  <path d="M275 368 L275 390 L140 390 L140 418" class="arr-coral" fill="none"/>
+  <line x1="275" y1="368" x2="275" y2="418" class="arr-coral"/>
+  <path d="M275 390 L410 390 L410 418" class="arr-coral" fill="none"/>
+  <g class="c-teal">
+    <rect x="80" y="420" width="120" height="60" rx="8"/>
+    <text class="th" x="140" y="440" text-anchor="middle">Localization</text>
+    <text class="ts" x="140" y="460" text-anchor="middle">ID + GT rank</text>
+  </g>
+  <g class="c-teal">
+    <rect x="215" y="420" width="120" height="60" rx="8"/>
+    <text class="th" x="275" y="440" text-anchor="middle">Interpretation</text>
+    <text class="ts" x="275" y="460" text-anchor="middle">held-out activation</text>
+  </g>
+  <g class="c-teal">
+    <rect x="350" y="420" width="120" height="60" rx="8"/>
+    <text class="th" x="410" y="440" text-anchor="middle">Intervention</text>
+    <text class="ts" x="410" y="460" text-anchor="middle">causal steering</text>
+  </g>
+  <text class="anno" x="490" y="436">expert + random</text>
+  <text class="anno" x="490" y="452">frozen unseen cases</text>
+  <text class="anno" x="490" y="468">blinded PE judge</text>
+
+  <path d="M140 480 L140 500 L275 500" class="arr-teal" fill="none"/>
+  <line x1="275" y1="480" x2="275" y2="500" class="arr-teal"/>
+  <path d="M410 480 L410 500 L275 500" class="arr-teal" fill="none"/>
+  <line x1="275" y1="500" x2="275" y2="510" class="arr-teal" marker-end="url(#arrow)"/>
+  <g class="c-amber">
+    <rect x="170" y="512" width="210" height="44" rx="8"/>
+    <text class="th" x="275" y="536" text-anchor="middle">Multi-axis research score</text>
+  </g>
+  <text class="caption" x="340" y="574" text-anchor="middle">A plausible feature is not yet a causal explanation.</text>
+</svg>
