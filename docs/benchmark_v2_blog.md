@@ -1,6 +1,6 @@
 # SAE-Bench: Evaluating Feature Discovery as an Agent Task
 
-> Formal v2 snapshot: 20 tasks, 8 agent configurations, and 160 trace-audited discovery runs.
+> Current snapshot: 20 tasks, 8 agent configurations, and 160 trace-audited discovery runs.
 
 Sparse autoencoders expose thousands of latent directions, but finding the direction that corresponds to a requested behavior is still a search problem. SAE-Bench turns that search into an offline agent task: given an English description and a restricted activation-probe tool, an agent must submit exactly one feature ID. Hidden evaluation then asks three separate questions. Did the agent recover the expert feature exactly? Does the submitted feature reproduce the expert's natural-activation pattern? Can the feature causally induce the intended behavior without destroying the original task?
 
@@ -8,7 +8,7 @@ The benchmark deliberately does not compress those questions into one score. Exa
 
 ## Dataset
 
-Benchmark v2 contains 20 feature-selection tasks for `google/gemma-2-9b-it`. Twelve tasks use the official Google DeepMind Gemma Scope residual-stream SAE at layer 9 (`width_131k/average_l0_121`), and eight use the corresponding official layer-20 SAE (`width_131k/average_l0_81`). The tasks cover 17 semantic targets; earnings reports, portfolio allocation, and tax-filing language each appear once at both layers and remain distinct feature-discovery tasks.
+The current benchmark contains 20 feature-selection tasks for `google/gemma-2-9b-it`. Twelve tasks use the official Google DeepMind Gemma Scope residual-stream SAE at layer 9 (`width_131k/average_l0_121`), and eight use the corresponding official layer-20 SAE (`width_131k/average_l0_81`). The tasks cover 17 semantic targets; earnings reports, portfolio allocation, and tax-filing language each appear once at both layers and remain distinct feature-discovery tasks.
 
 Every task provides an English behavioral description, the model and SAE coordinates, the valid feature-ID range, and the required one-field submission schema. The hidden suite contains positive examples, difficult matched negatives, and neutral controls. Steering calibration prompts are separate from the held-out steering-evaluation prompts.
 
@@ -95,56 +95,18 @@ The second plot exposes the behavioral trade-off hidden by target induction alon
 
 ## Limitations
 
-SAE-Bench v2 evaluates one base model, two SAE layers, and 20 expert-selected feature tasks. The duplicated semantic targets across layers are useful paired cases but are not independent new concepts. A single submitted ID also measures the combined agent, harness, prompt, and reasoning configuration rather than the model in isolation.
+The current SAE-Bench snapshot evaluates one base model, two SAE layers, and 20 expert-selected feature tasks. The duplicated semantic targets across layers are useful paired cases but are not independent new concepts. A single submitted ID also measures the combined agent, harness, prompt, and reasoning configuration rather than the model in isolation.
 
 The PE judge provides a reproducible operational rubric, not human ground truth. Its repeated judgments measure within-judge stability, and the matched-random direction controls for intervention magnitude but cannot rule out every generic steering artifact. Finally, exact-match rows inherit frozen expert steering behavior, so exact retrieval and freshly evaluated alternative-feature steering should remain visually distinguishable.
 
 ## Reproduction
 
-After producing the formal compact result files, build the leaderboard explicitly and render both publication formats:
+The public repository contains the sanitized aggregate result snapshot and the complete website source:
 
 ```bash
-python scripts/analyze_agent_behavior.py \
-  --benchmark data/benchmark_v2.json \
-  --models data/runs/agent_models_high.json \
-  --activation-summary results/formal/benchmark_v2_high/discovery/activation_summary.json \
-  --audit results/formal/benchmark_v2_high/discovery/trace_audit.json \
-  --runs-root results/formal/benchmark_v2_high/discovery/run_manifests \
-  --require-complete \
-  --output results/formal/benchmark_v2_high/discovery/behavior_analysis.json
-
-python scripts/build_agent_results.py \
-  --benchmark data/benchmark_v2.json \
-  --activation-dir results/formal/benchmark_v2_high/discovery/activation_scores \
-  --activation-summary results/formal/benchmark_v2_high/discovery/activation_summary.json \
-  --audit results/formal/benchmark_v2_high/discovery/trace_audit.json \
-  --runs-root results/formal/benchmark_v2_high/discovery/run_manifests \
-  --candidate-result-dir results/formal/benchmark_v2_high/steering/raw/candidate \
-  --candidate-result-dir results/formal/benchmark_v2_high/steering/raw/expert \
-  --candidate-judge-dir results/formal/benchmark_v2_high/steering/pe/candidate \
-  --expert-judge-dir results/formal/benchmark_v2_high/steering/pe/expert \
-  --output-dir results/formal/benchmark_v2_high/compact
-
-python scripts/build_leaderboard.py \
-  --benchmark data/benchmark_v2.json \
-  --activation-summary results/formal/benchmark_v2_high/discovery/activation_summary.json \
-  --audit results/formal/benchmark_v2_high/discovery/trace_audit.json \
-  --results-dir results/formal/benchmark_v2_high/compact \
-  --output-json results/formal/benchmark_v2_high/leaderboard.json \
-  --output-markdown results/formal/benchmark_v2_high/leaderboard.md
-
-python scripts/plot_leaderboard.py \
-  --leaderboard results/formal/benchmark_v2_high/leaderboard.json \
-  --output-dir artifacts/leaderboard
-
-python scripts/validate_formal_release.py \
-  --behavior results/formal/benchmark_v2_high/discovery/behavior_analysis.json \
-  --leaderboard results/formal/benchmark_v2_high/leaderboard.json \
-  --blog docs/benchmark_v2_blog.md \
-  --plot artifacts/leaderboard/discovery_vs_causal.png \
-  --plot artifacts/leaderboard/discovery_vs_causal.svg \
-  --plot artifacts/leaderboard/relevance_vs_preservation.png \
-  --plot artifacts/leaderboard/relevance_vs_preservation.svg
+npm ci
+npm test
+npm run dev
 ```
 
-The plotting command writes both PNG and SVG versions of the discovery-versus-causal and relevance-versus-preservation figures. It skips incomplete coordinate pairs instead of converting missing values to zero.
+`npm test` rebuilds the static site and checks that the displayed claims agree with the committed aggregate data. Full evaluator inputs, per-prompt judgments, and sanitized model traces remain in the private research repository.
