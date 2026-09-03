@@ -1,0 +1,317 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_archaeological_excavation_023/task.json",
+  "suite": "data/discovery/gemma_l20_round_005_validation.json",
+  "expert": {
+    "feature_id": 7256,
+    "reference": "data/eval/gemma_archaeological_excavation_l20_7256_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-cursor-opus48-high-retry-02",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 544.0248350000475,
+      "feature_id": 7256,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 53.125,
+        "positive_mean_percentile": 0.9996023147759612,
+        "hard_negative_mean_rank": 36258.5,
+        "neutral_mean_rank": 101551.5,
+        "auroc": 0.9791666666666666,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.225,
+        "pe_target_success_rate": 0.425,
+        "pe_task_preservation": 0.875,
+        "pe_usable_target_rate": 0.2,
+        "pe_degenerate_rate": 0.175,
+        "target_effect": 0.30625,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-cursor-sonnet5-high-retry-01",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 513.7192522090627,
+      "feature_id": 7256,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 53.125,
+        "positive_mean_percentile": 0.9996023147759612,
+        "hard_negative_mean_rank": 36258.5,
+        "neutral_mean_rank": 101551.5,
+        "auroc": 0.9791666666666666,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.225,
+        "pe_target_success_rate": 0.425,
+        "pe_task_preservation": 0.875,
+        "pe_usable_target_rate": 0.2,
+        "pe_degenerate_rate": 0.175,
+        "target_effect": 0.30625,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-cursor-grok46-high-retry-01",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 538.1560811669333,
+      "feature_id": 5279,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.02359800111049417,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.9639731849626741,
+        "expert_pattern_spearman": 0.613650925702603,
+        "mean_score": 0.6503055279439428
+      },
+      "activation": {
+        "positive_mean_rank": 2251.25,
+        "positive_mean_percentile": 0.9828318239732664,
+        "hard_negative_mean_rank": 88032.125,
+        "neutral_mean_rank": 99398.0,
+        "auroc": 0.9791666666666666,
+        "expert_pattern_spearman": 0.613650925702603
+      },
+      "steering": {
+        "pe_target_relevance": 1.375,
+        "pe_target_success_rate": 0.525,
+        "pe_task_preservation": 0.35,
+        "pe_usable_target_rate": 0.025,
+        "pe_degenerate_rate": 0.6,
+        "target_effect": 0.34375,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": 0.46450192862529766
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-cursor-glm52-high-01",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 388.21474829199724,
+      "feature_id": 112459,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.01871999295247324,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.7342880070634613,
+        "expert_pattern_spearman": 0.7314277747276748,
+        "mean_score": 0.6211089436859023
+      },
+      "activation": {
+        "positive_mean_rank": 2837.875,
+        "positive_mean_percentile": 0.9783561962600422,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 98837.75,
+        "auroc": 0.9791666666666666,
+        "expert_pattern_spearman": 0.7314277747276748
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.925,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.075,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-cursor-gpt55-high-retry-01",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 596.5244975839742,
+      "feature_id": 115400,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.17864649012189995,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.3546425762474321,
+        "expert_pattern_spearman": 0.8599759835065042,
+        "mean_score": 0.5983162624689591
+      },
+      "activation": {
+        "positive_mean_rank": 297.375,
+        "positive_mean_percentile": 0.9977388209443736,
+        "hard_negative_mean_rank": 6495.0,
+        "neutral_mean_rank": 8187.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8599759835065042
+      },
+      "steering": {
+        "pe_target_relevance": 0.05,
+        "pe_target_success_rate": 0.025,
+        "pe_task_preservation": 0.875,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.075,
+        "target_effect": 0.0125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": 0.3441831532162229
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-codex-luna-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "b4ab7e221661f44143232bd241082b6e6e0a089b",
+      "elapsed_seconds": 416.11441000003833,
+      "feature_id": 115400,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.17864649012189995,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.3546425762474321,
+        "expert_pattern_spearman": 0.8599759835065042,
+        "mean_score": 0.5983162624689591
+      },
+      "activation": {
+        "positive_mean_rank": 297.375,
+        "positive_mean_percentile": 0.9977388209443736,
+        "hard_negative_mean_rank": 6495.0,
+        "neutral_mean_rank": 8187.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8599759835065042
+      },
+      "steering": {
+        "pe_target_relevance": 0.05,
+        "pe_target_success_rate": 0.025,
+        "pe_task_preservation": 0.875,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.075,
+        "target_effect": 0.0125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": 0.3441831532162229
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-codex-sol-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "7a2b1bb08ba75e609d0bd925e0ca4dc318acc474",
+      "elapsed_seconds": 224.5583445840748,
+      "feature_id": 115400,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.17864649012189995,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.3546425762474321,
+        "expert_pattern_spearman": 0.8599759835065042,
+        "mean_score": 0.5983162624689591
+      },
+      "activation": {
+        "positive_mean_rank": 297.375,
+        "positive_mean_percentile": 0.9977388209443736,
+        "hard_negative_mean_rank": 6495.0,
+        "neutral_mean_rank": 8187.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8599759835065042
+      },
+      "steering": {
+        "pe_target_relevance": 0.05,
+        "pe_target_success_rate": 0.025,
+        "pe_task_preservation": 0.875,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.075,
+        "target_effect": 0.0125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": 0.3441831532162229
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-archaeological-excavation-023-offline-cursor-kimik3-high-01",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 941.5470374999568,
+      "feature_id": 112459,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.01871999295247324,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.7342880070634613,
+        "expert_pattern_spearman": 0.7314277747276748,
+        "mean_score": 0.6211089436859023
+      },
+      "activation": {
+        "positive_mean_rank": 2837.875,
+        "positive_mean_percentile": 0.9783561962600422,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 98837.75,
+        "auroc": 0.9791666666666666,
+        "expert_pattern_spearman": 0.7314277747276748
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.925,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.075,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    }
+  ]
+}

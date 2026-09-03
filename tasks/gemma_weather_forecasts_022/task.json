@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "task_id": "gemma_weather_forecasts_022",
+  "language": "en",
+  "difficulty": "easy",
+  "difficulty_metric": {
+    "name": "expert_positive_mean_rank",
+    "value": 11.75
+  },
+  "difficulty_rationale": "expert_positive_mean_rank <= 100",
+  "model": "google/gemma-2-9b-it",
+  "sae": {
+    "repo": "google/gemma-scope-9b-it-res",
+    "release": "layer_20/width_131k/average_l0_81",
+    "hook": "blocks.20.hook_resid_post",
+    "feature_count": 131072
+  },
+  "description": "A context-level feature for weather forecasts with predicted conditions, temperature, precipitation, or wind. It should capture weather forecast wording. Strong evidence includes predicted future conditions such as precipitation, temperature, wind, clouds, or timing. Distinguish it from climate analysis, past storm damage, generic weather interest, or radar display without prediction.",
+  "submission": {
+    "path": "submission.json",
+    "fields": {
+      "feature_id": "integer in [0, 131071]"
+    }
+  }
+}

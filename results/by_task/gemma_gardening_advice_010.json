@@ -1,0 +1,316 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_gardening_advice_010/task.json",
+  "suite": "data/discovery/gemma_l9_round_005_validation.json",
+  "expert": {
+    "feature_id": 93406,
+    "reference": "data/eval/gemma_gardening_advice_93406_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-cursor-opus48-high-retry-02",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 547.3651088749757,
+      "feature_id": 55062,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.18606492478226444,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.7591169096446756,
+        "mean_score": 0.736295458606735
+      },
+      "activation": {
+        "positive_mean_rank": 315.75,
+        "positive_mean_percentile": 0.997598629750288,
+        "hard_negative_mean_rank": 21051.75,
+        "neutral_mean_rank": 102666.0,
+        "auroc": 0.96875,
+        "expert_pattern_spearman": 0.7591169096446756
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.475,
+        "pe_task_preservation": 0.175,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.6,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": -0.3932584834898796
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-cursor-sonnet5-high-retry-03",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 385.3031967909774,
+      "feature_id": 55062,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.18606492478226444,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.7591169096446756,
+        "mean_score": 0.736295458606735
+      },
+      "activation": {
+        "positive_mean_rank": 315.75,
+        "positive_mean_percentile": 0.997598629750288,
+        "hard_negative_mean_rank": 21051.75,
+        "neutral_mean_rank": 102666.0,
+        "auroc": 0.96875,
+        "expert_pattern_spearman": 0.7591169096446756
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.475,
+        "pe_task_preservation": 0.175,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.6,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": -0.3932584834898796
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-cursor-grok46-high-retry-02",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 718.112508582999,
+      "feature_id": 55062,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.18606492478226444,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.7591169096446756,
+        "mean_score": 0.736295458606735
+      },
+      "activation": {
+        "positive_mean_rank": 315.75,
+        "positive_mean_percentile": 0.997598629750288,
+        "hard_negative_mean_rank": 21051.75,
+        "neutral_mean_rank": 102666.0,
+        "auroc": 0.96875,
+        "expert_pattern_spearman": 0.7591169096446756
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.475,
+        "pe_task_preservation": 0.175,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.6,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": -0.3932584834898796
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-cursor-glm52-high-retry-01",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "7a2b1bb08ba75e609d0bd925e0ca4dc318acc474",
+      "elapsed_seconds": 433.35477237496525,
+      "feature_id": 55062,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.18606492478226444,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.7591169096446756,
+        "mean_score": 0.736295458606735
+      },
+      "activation": {
+        "positive_mean_rank": 315.75,
+        "positive_mean_percentile": 0.997598629750288,
+        "hard_negative_mean_rank": 21051.75,
+        "neutral_mean_rank": 102666.0,
+        "auroc": 0.96875,
+        "expert_pattern_spearman": 0.7591169096446756
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.475,
+        "pe_task_preservation": 0.175,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.6,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": -0.3932584834898796
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-cursor-gpt55-high-retry-02",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 337.28330529108644,
+      "feature_id": 2006,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.022552783109404992,
+        "auroc_recovery": 0.9318181818181819,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.6723013221163594,
+        "mean_score": 0.6566680717609865
+      },
+      "activation": {
+        "positive_mean_rank": 2605.0,
+        "positive_mean_percentile": 0.9801329050667196,
+        "hard_negative_mean_rank": 84173.75,
+        "neutral_mean_rank": 100341.0,
+        "auroc": 0.9270833333333334,
+        "expert_pattern_spearman": 0.6723013221163594
+      },
+      "steering": {
+        "pe_target_relevance": 1.075,
+        "pe_target_success_rate": 0.475,
+        "pe_task_preservation": 0.25,
+        "pe_usable_target_rate": 0.025,
+        "pe_degenerate_rate": 0.3,
+        "target_effect": 0.26875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.2067100671628713
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-codex-luna-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "d43f5b3fec0c079ea689c91d4c2d3095f7ad539f",
+      "elapsed_seconds": 232.4669922090834,
+      "feature_id": 2006,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.022552783109404992,
+        "auroc_recovery": 0.9318181818181819,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.6723013221163594,
+        "mean_score": 0.6566680717609865
+      },
+      "activation": {
+        "positive_mean_rank": 2605.0,
+        "positive_mean_percentile": 0.9801329050667196,
+        "hard_negative_mean_rank": 84173.75,
+        "neutral_mean_rank": 100341.0,
+        "auroc": 0.9270833333333334,
+        "expert_pattern_spearman": 0.6723013221163594
+      },
+      "steering": {
+        "pe_target_relevance": 1.075,
+        "pe_target_success_rate": 0.475,
+        "pe_task_preservation": 0.25,
+        "pe_usable_target_rate": 0.025,
+        "pe_degenerate_rate": 0.3,
+        "target_effect": 0.26875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.2067100671628713
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-codex-sol-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "bd49a4d86f43d7b865b6e5600c288654226cd524",
+      "elapsed_seconds": 356.1498322080588,
+      "feature_id": 22806,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.02422680412371134,
+        "auroc_recovery": 0.909090909090909,
+        "activation_contrast_recovery": 0.6499400924520629,
+        "expert_pattern_spearman": 0.6918155550760086,
+        "mean_score": 0.5687683401856729
+      },
+      "activation": {
+        "positive_mean_rank": 2425.0,
+        "positive_mean_percentile": 0.9815062065598035,
+        "hard_negative_mean_rank": 83931.375,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9166666666666666,
+        "expert_pattern_spearman": 0.6918155550760086
+      },
+      "steering": {
+        "pe_target_relevance": 0.1,
+        "pe_target_success_rate": 0.05,
+        "pe_task_preservation": 0.225,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.025,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": -0.2894378179176265
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-gardening-advice-010-offline-cursor-kimik3-high-retry-01",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "7a2b1bb08ba75e609d0bd925e0ca4dc318acc474",
+      "elapsed_seconds": 726.1059322500369,
+      "feature_id": 93406,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 58.75,
+        "positive_mean_percentile": 0.9995593991043022,
+        "hard_negative_mean_rank": 52484.625,
+        "neutral_mean_rank": 102015.25,
+        "auroc": 0.9583333333333334,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.575,
+        "pe_target_success_rate": 0.7,
+        "pe_task_preservation": 0.275,
+        "pe_usable_target_rate": 0.025,
+        "pe_degenerate_rate": 0.375,
+        "target_effect": 0.39375,
+        "causal_stable": true,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    }
+  ]
+}

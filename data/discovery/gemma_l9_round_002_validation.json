@@ -1,0 +1,270 @@
+{
+  "schema": 1,
+  "checkpoint": "google/gemma-scope-9b-it-res layer_9/width_131k/average_l0_121",
+  "steering_calibration": [
+    {"id": "c01", "prompt": "Introduce yourself in two sentences."},
+    {"id": "c02", "prompt": "Explain why regular sleep matters."},
+    {"id": "c03", "prompt": "Give three tips for organizing a busy week."},
+    {"id": "c04", "prompt": "Describe a quiet morning in a small town."},
+    {"id": "c05", "prompt": "Write a short thank-you note for someone's help."}
+  ],
+  "steering_prompts": "../steering/french_105738_v1.json",
+  "concepts": [
+    {
+      "id": "german_language",
+      "target": "coherent German-language text rather than discussion of Germany",
+      "steering_target": {
+        "concept": "coherent grammatical German-language output",
+        "cues": ["der", "die", "das", "und", "ist", "nicht", "mit", "für", "eine", "wir"],
+        "strong_evidence": "most of the answer is connected grammatical German",
+        "insufficient_evidence": "German names, places, borrowed words, or English discussion of German"
+      },
+      "activation_cases": [
+        {"id": "de-p01", "label": "positive", "text": "Der neue Fahrplan gilt ab Montag für alle regionalen Züge."},
+        {"id": "de-p02", "label": "positive", "text": "Wir müssen die Ergebnisse sorgfältig prüfen, bevor wir sie veröffentlichen."},
+        {"id": "de-p03", "label": "positive", "text": "Im Garten blühen bereits die ersten Blumen des Frühlings."},
+        {"id": "de-p04", "label": "positive", "text": "Bitte bewahren Sie diese Unterlagen an einem sicheren Ort auf."},
+        {"id": "de-p05", "label": "positive", "text": "Das Museum erzählt die Geschichte der Stadt in mehreren Ausstellungen."},
+        {"id": "de-p06", "label": "positive", "text": "Wenn das Wetter besser wird, können wir morgen eine Wanderung machen."},
+        {"id": "de-p07", "label": "positive", "text": "Sie bereitete das Abendessen vor, während die Kinder ihre Aufgaben erledigten."},
+        {"id": "de-p08", "label": "positive", "text": "Diese Methode spart Zeit und verbessert gleichzeitig die Qualität."},
+        {"id": "de-h01", "label": "hard_negative", "text": "The German delegation arrived in Munich for an economic conference."},
+        {"id": "de-h02", "label": "hard_negative", "text": "German word order was explained entirely in English."},
+        {"id": "de-h03", "label": "hard_negative", "text": "Der is a German article, while die may mark several grammatical forms."},
+        {"id": "de-h04", "label": "hard_negative", "text": "Hoewel het weer beter wordt, blijven we vandaag thuis."},
+        {"id": "de-h05", "label": "hard_negative", "text": "Deutsch, Berlin, Danke und Autobahn appeared on the vocabulary sheet."},
+        {"id": "de-h06", "label": "hard_negative", "text": "The café served strudel beside a poster advertising Bavaria."},
+        {"id": "de-h07", "label": "hard_negative", "text": "A translator rendered the German report as fluent English."},
+        {"id": "de-h08", "label": "hard_negative", "text": "His surname was Müller, although nobody in the family spoke German."},
+        {"id": "de-n01", "label": "neutral", "text": "The satellite completed another orbit before dawn."},
+        {"id": "de-n02", "label": "neutral", "text": "A ceramic bowl stood on the wooden shelf."},
+        {"id": "de-n03", "label": "neutral", "text": "Please verify the checksum after downloading the archive."},
+        {"id": "de-n04", "label": "neutral", "text": "The committee postponed its decision until next week."}
+      ]
+    },
+    {
+      "id": "spanish_language",
+      "target": "coherent Spanish-language text rather than Spanish cultural references",
+      "steering_target": {
+        "concept": "coherent grammatical Spanish-language output",
+        "cues": ["el", "la", "los", "las", "de", "que", "y", "en", "para", "una"],
+        "strong_evidence": "most of the answer is connected grammatical Spanish",
+        "insufficient_evidence": "Spanish names, places, borrowed words, or nearby Portuguese and Italian text"
+      },
+      "activation_cases": [
+        {"id": "es-p01", "label": "positive", "text": "El tren llegará a la estación dentro de veinte minutos."},
+        {"id": "es-p02", "label": "positive", "text": "Necesitamos revisar los resultados antes de tomar una decisión."},
+        {"id": "es-p03", "label": "positive", "text": "La novela cuenta la historia de una familia que vive junto al mar."},
+        {"id": "es-p04", "label": "positive", "text": "Por favor, guarda una copia del documento en un lugar seguro."},
+        {"id": "es-p05", "label": "positive", "text": "Aunque estaba lloviendo, los niños siguieron jugando en el parque."},
+        {"id": "es-p06", "label": "positive", "text": "Esta investigación podría mejorar la eficiencia de las baterías."},
+        {"id": "es-p07", "label": "positive", "text": "Preparamos café mientras nuestros amigos organizaban la mesa."},
+        {"id": "es-p08", "label": "positive", "text": "¿Por qué esta solución funciona mejor que la anterior?"},
+        {"id": "es-h01", "label": "hard_negative", "text": "The Spanish delegation arrived in Madrid for the annual summit."},
+        {"id": "es-h02", "label": "hard_negative", "text": "Spanish grammar was discussed entirely in English during class."},
+        {"id": "es-h03", "label": "hard_negative", "text": "El is a Spanish article, and una is an indefinite article."},
+        {"id": "es-h04", "label": "hard_negative", "text": "Amanhã iremos ao mercado comprar frutas e legumes frescos."},
+        {"id": "es-h05", "label": "hard_negative", "text": "Domani andremo al mercato a comprare frutta e verdura fresca."},
+        {"id": "es-h06", "label": "hard_negative", "text": "Madrid, paella, flamenco, hola: the words appeared on a poster."},
+        {"id": "es-h07", "label": "hard_negative", "text": "The restaurant served tapas while English music played."},
+        {"id": "es-h08", "label": "hard_negative", "text": "A translator converted the Spanish paragraph into English."},
+        {"id": "es-n01", "label": "neutral", "text": "Clouds gathered above the mountains before sunset."},
+        {"id": "es-n02", "label": "neutral", "text": "The technician replaced the damaged power supply."},
+        {"id": "es-n03", "label": "neutral", "text": "Three boxes remained unopened in the warehouse."},
+        {"id": "es-n04", "label": "neutral", "text": "Attach the revised chart to the final presentation."}
+      ]
+    },
+    {
+      "id": "json_documents",
+      "target": "literal JSON objects and arrays with quoted keys and values",
+      "steering_target": {
+        "concept": "literal valid-looking JSON objects or arrays",
+        "cues": ["{", "}", "\":", "[", "]", "true", "false", "null"],
+        "strong_evidence": "the answer is dominated by JSON structure with quoted keys and valid JSON-style values",
+        "insufficient_evidence": "prose about JSON, Python dictionaries, YAML, XML, or isolated braces"
+      },
+      "activation_cases": [
+        {"id": "js-p01", "label": "positive", "text": "{\"project\": \"atlas\", \"version\": 3, \"public\": false}"},
+        {"id": "js-p02", "label": "positive", "text": "{\"users\": [{\"id\": 7, \"roles\": [\"editor\"]}], \"next\": null}"},
+        {"id": "js-p03", "label": "positive", "text": "[102, 204, 301, {\"status\": \"redirect\", \"cached\": true}]"},
+        {"id": "js-p04", "label": "positive", "text": "{\"window\": {\"width\": 1280, \"height\": 720}, \"fullscreen\": true}"},
+        {"id": "js-p05", "label": "positive", "text": "{\"message\": \"saved\", \"warnings\": [], \"duration_ms\": 18.4}"},
+        {"id": "js-p06", "label": "positive", "text": "{\"coordinates\": [[1.2, 3.4], [5.6, 7.8]], \"closed\": false}"},
+        {"id": "js-p07", "label": "positive", "text": "{\"theme\": \"dark\", \"features\": {\"search\": true, \"chat\": false}}"},
+        {"id": "js-p08", "label": "positive", "text": "[{\"sku\": \"A-19\", \"qty\": 2}, {\"sku\": \"B-04\", \"qty\": 1}]"},
+        {"id": "js-h01", "label": "hard_negative", "text": "JSON objects store values under quoted property names."},
+        {"id": "js-h02", "label": "hard_negative", "text": "{'project': 'atlas', 'version': 3, 'public': False}"},
+        {"id": "js-h03", "label": "hard_negative", "text": "project: atlas\nversion: 3\npublic: false"},
+        {"id": "js-h04", "label": "hard_negative", "text": "const config = {theme: 'dark', search: true};"},
+        {"id": "js-h05", "label": "hard_negative", "text": "<project public=\"false\"><name>atlas</name><version>3</version></project>"},
+        {"id": "js-h06", "label": "hard_negative", "text": "The API returned a project name, version number, and visibility flag."},
+        {"id": "js-h07", "label": "hard_negative", "text": "{project = atlas; version = 3; public = false}"},
+        {"id": "js-h08", "label": "hard_negative", "text": "A parser reported an error near the closing bracket in the JSON file."},
+        {"id": "js-n01", "label": "neutral", "text": "The orchestra rehearsed until the hall closed."},
+        {"id": "js-n02", "label": "neutral", "text": "Measure the flour before adding it to the bowl."},
+        {"id": "js-n03", "label": "neutral", "text": "A narrow trail followed the edge of the lake."},
+        {"id": "js-n04", "label": "neutral", "text": "The warranty expires at the end of the year."}
+      ]
+    },
+    {
+      "id": "sql_queries",
+      "target": "executable SQL statements and relational query syntax",
+      "steering_target": {
+        "concept": "SQL query or data-definition syntax",
+        "cues": ["SELECT", "FROM", "WHERE", "JOIN", "GROUP BY", "ORDER BY", "INSERT INTO", "CREATE TABLE", "UPDATE"],
+        "strong_evidence": "multiple connected SQL clauses forming an executable-looking statement",
+        "insufficient_evidence": "prose about databases, a lone SQL keyword, pandas, JavaScript, or MongoDB syntax"
+      },
+      "activation_cases": [
+        {"id": "sq-p01", "label": "positive", "text": "SELECT region, COUNT(*) AS total FROM customers GROUP BY region ORDER BY total DESC;"},
+        {"id": "sq-p02", "label": "positive", "text": "DELETE FROM sessions WHERE expires_at < CURRENT_TIMESTAMP;"},
+        {"id": "sq-p03", "label": "positive", "text": "ALTER TABLE invoices ADD COLUMN paid_at TIMESTAMP NULL;"},
+        {"id": "sq-p04", "label": "positive", "text": "SELECT p.title FROM posts p LEFT JOIN comments c ON c.post_id = p.id WHERE c.id IS NULL;"},
+        {"id": "sq-p05", "label": "positive", "text": "INSERT INTO metrics (name, value, recorded_at) VALUES ('latency', 42.1, NOW());"},
+        {"id": "sq-p06", "label": "positive", "text": "UPDATE inventory SET quantity = quantity - 1 WHERE sku = 'A-19' AND quantity > 0;"},
+        {"id": "sq-p07", "label": "positive", "text": "CREATE INDEX idx_orders_created ON orders (created_at DESC);"},
+        {"id": "sq-p08", "label": "positive", "text": "WITH totals AS (SELECT user_id, SUM(amount) AS spent FROM payments GROUP BY user_id) SELECT * FROM totals WHERE spent > 1000;"},
+        {"id": "sq-h01", "label": "hard_negative", "text": "The analyst wrote a SQL query to count customers by region."},
+        {"id": "sq-h02", "label": "hard_negative", "text": "df.groupby('region').size().sort_values(ascending=False)"},
+        {"id": "sq-h03", "label": "hard_negative", "text": "customers.filter(c => c.active).map(c => c.region);"},
+        {"id": "sq-h04", "label": "hard_negative", "text": "db.customers.aggregate([{$group: {_id: '$region', total: {$sum: 1}}}])"},
+        {"id": "sq-h05", "label": "hard_negative", "text": "The database contains tables for invoices, payments, and customers."},
+        {"id": "sq-h06", "label": "hard_negative", "text": "SELECT is printed on the button used to choose a report."},
+        {"id": "sq-h07", "label": "hard_negative", "text": "Choose rows where the payment amount exceeds one thousand dollars."},
+        {"id": "sq-h08", "label": "hard_negative", "text": "SQL, JOIN, WHERE, and GROUP BY were listed as topics for the exam."},
+        {"id": "sq-n01", "label": "neutral", "text": "The violinist adjusted the bridge before rehearsal."},
+        {"id": "sq-n02", "label": "neutral", "text": "Heavy rain delayed the afternoon flight."},
+        {"id": "sq-n03", "label": "neutral", "text": "The package includes a printed instruction manual."},
+        {"id": "sq-n04", "label": "neutral", "text": "A bright lamp illuminated the reading desk."}
+      ]
+    },
+    {
+      "id": "html_markup",
+      "target": "literal HTML markup with web document tags and attributes",
+      "steering_target": {
+        "concept": "literal HTML markup for a web document or component",
+        "cues": ["<html", "<body", "<div", "<p", "<a ", "href=", "<form", "<input", "</"],
+        "strong_evidence": "multiple connected HTML tags or a complete element with realistic attributes",
+        "insufficient_evidence": "prose about HTML, Markdown, XML data, JSX, or mathematical angle brackets"
+      },
+      "activation_cases": [
+        {"id": "ht-p01", "label": "positive", "text": "<section class=\"hero\"><h1>Build faster</h1><p>Start with a template.</p></section>"},
+        {"id": "ht-p02", "label": "positive", "text": "<nav aria-label=\"Main\"><a href=\"/home\">Home</a><a href=\"/docs\">Docs</a></nav>"},
+        {"id": "ht-p03", "label": "positive", "text": "<table><thead><tr><th>Name</th><th>Score</th></tr></thead><tbody><tr><td>Ada</td><td>98</td></tr></tbody></table>"},
+        {"id": "ht-p04", "label": "positive", "text": "<label for=\"email\">Email</label><input id=\"email\" type=\"email\" required>"},
+        {"id": "ht-p05", "label": "positive", "text": "<!doctype html><html lang=\"en\"><body><main><p>Ready.</p></main></body></html>"},
+        {"id": "ht-p06", "label": "positive", "text": "<video controls poster=\"preview.jpg\"><source src=\"clip.mp4\" type=\"video/mp4\"></video>"},
+        {"id": "ht-p07", "label": "positive", "text": "<button type=\"submit\" disabled>Saving…</button>"},
+        {"id": "ht-p08", "label": "positive", "text": "<footer><small>&copy; 2026 Example Studio</small></footer>"},
+        {"id": "ht-h01", "label": "hard_negative", "text": "HTML elements give a web page its semantic structure."},
+        {"id": "ht-h02", "label": "hard_negative", "text": "# Build faster\n\nStart with a [template](/templates)."},
+        {"id": "ht-h03", "label": "hard_negative", "text": "<customer><name>Ada</name><score>98</score></customer>"},
+        {"id": "ht-h04", "label": "hard_negative", "text": "const nav = <Nav ariaLabel=\"Main\"><Link to=\"/home\" /></Nav>;"},
+        {"id": "ht-h05", "label": "hard_negative", "text": "The page contains a navigation bar, a table, and a footer."},
+        {"id": "ht-h06", "label": "hard_negative", "text": "Compare the values to confirm that a < b and c > d."},
+        {"id": "ht-h07", "label": "hard_negative", "text": "Tags such as div, paragraph, anchor, and form were discussed in class."},
+        {"id": "ht-h08", "label": "hard_negative", "text": "{\"tag\": \"button\", \"type\": \"submit\", \"disabled\": true}"},
+        {"id": "ht-n01", "label": "neutral", "text": "The gardener watered the seedlings before noon."},
+        {"id": "ht-n02", "label": "neutral", "text": "A train crossed the bridge during the storm."},
+        {"id": "ht-n03", "label": "neutral", "text": "The editor corrected two dates in the manuscript."},
+        {"id": "ht-n04", "label": "neutral", "text": "Fresh bread cooled on the kitchen counter."}
+      ]
+    },
+    {
+      "id": "chess_notation",
+      "target": "algebraic chess move notation and recorded game sequences",
+      "steering_target": {
+        "concept": "recorded chess moves in algebraic notation",
+        "cues": ["e4", "d4", "Nf3", "Nc6", "B", "R", "Q", "K", "O-O", "+"],
+        "strong_evidence": "a multi-move chess sequence with move numbers and algebraic piece or square notation",
+        "insufficient_evidence": "prose about chess, isolated board coordinates, numbered instructions, or spreadsheet cells"
+      },
+      "activation_cases": [
+        {"id": "ch-p01", "label": "positive", "text": "1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6"},
+        {"id": "ch-p02", "label": "positive", "text": "14. O-O-O Bd7 15. g4 Rc8 16. Kb1 Ne5 17. h4"},
+        {"id": "ch-p03", "label": "positive", "text": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7"},
+        {"id": "ch-p04", "label": "positive", "text": "41... Qh1+ 42. Ke2 Qg2+ 43. Kd3 Qf1+ 44. Kc3"},
+        {"id": "ch-p05", "label": "positive", "text": "22. Rxe6 fxe6 23. Qxe6+ Kh8 24. Qxe7 Rxf2"},
+        {"id": "ch-p06", "label": "positive", "text": "1. Nf3 Nf6 2. g3 g6 3. Bg2 Bg7 4. O-O O-O"},
+        {"id": "ch-p07", "label": "positive", "text": "33. Bc4+ Kh7 34. Qh5# 1-0"},
+        {"id": "ch-p08", "label": "positive", "text": "9... exd4 10. cxd4 Bb4+ 11. Bd2 O-O 12. Be2"},
+        {"id": "ch-h01", "label": "hard_negative", "text": "The chess player moved a knight toward the center and prepared to castle."},
+        {"id": "ch-h02", "label": "hard_negative", "text": "The lesson explained why sacrificing a rook can expose the king."},
+        {"id": "ch-h03", "label": "hard_negative", "text": "Enter the values from spreadsheet cells E4, C5, F3, and D6."},
+        {"id": "ch-h04", "label": "hard_negative", "text": "The survey markers stand at grid coordinates D4 and E6."},
+        {"id": "ch-h05", "label": "hard_negative", "text": "1. Open the lid. 2. Add water. 3. Press the green button."},
+        {"id": "ch-h06", "label": "hard_negative", "text": "Nf3 and O-O are examples of algebraic chess notation."},
+        {"id": "ch-h07", "label": "hard_negative", "text": "White won after a queen check forced the black king onto the back rank."},
+        {"id": "ch-h08", "label": "hard_negative", "text": "The coordinates B7, Q4, and K2 were labels in the warehouse map."},
+        {"id": "ch-n01", "label": "neutral", "text": "The choir performed three songs without an intermission."},
+        {"id": "ch-n02", "label": "neutral", "text": "A mechanic inspected the brakes and replaced one tire."},
+        {"id": "ch-n03", "label": "neutral", "text": "The river level fell slowly during the dry month."},
+        {"id": "ch-n04", "label": "neutral", "text": "Please submit the signed form before the deadline."}
+      ]
+    },
+    {
+      "id": "email_headers",
+      "target": "structured email messages with From, To, Subject, and related headers",
+      "steering_target": {
+        "concept": "structured Internet email headers",
+        "cues": ["From:", "To:", "Subject:", "Cc:", "Reply-To:", "Date:", "Message-ID:"],
+        "strong_evidence": "multiple correctly placed email header fields, especially From, To, and Subject",
+        "insufficient_evidence": "ordinary letter prose, discussion of email, HTTP headers, git metadata, or source code containing addresses"
+      },
+      "activation_cases": [
+        {"id": "em-p01", "label": "positive", "text": "From: editor@example.org\nTo: author@example.net\nSubject: Proof corrections\nDate: Mon, 7 Jul 2025 10:20:00 +0000"},
+        {"id": "em-p02", "label": "positive", "text": "From: billing@example.com\nTo: client@example.org\nCc: accounts@example.com\nSubject: Invoice 4821"},
+        {"id": "em-p03", "label": "positive", "text": "To: all-staff@example.io\nFrom: hr@example.io\nSubject: Office closure\nReply-To: helpdesk@example.io"},
+        {"id": "em-p04", "label": "positive", "text": "From: alerts@example.dev\nTo: oncall@example.dev\nSubject: CPU usage recovered\nMessage-ID: <9342@example.dev>"},
+        {"id": "em-p05", "label": "positive", "text": "From: nina@example.edu\nTo: lab@example.edu\nSubject: Experiment notes\nAttachments: run-17.csv"},
+        {"id": "em-p06", "label": "positive", "text": "To: reservations@example.hotel\nFrom: guest@example.net\nSubject: Arrival time update\nDate: Fri, 12 Sep 2025 18:05:00 +0200"},
+        {"id": "em-p07", "label": "positive", "text": "From: noreply@example.app\nTo: user@example.com\nSubject: Password changed\nMIME-Version: 1.0"},
+        {"id": "em-p08", "label": "positive", "text": "From: chair@example.edu\nTo: committee@example.edu\nCc: dean@example.edu\nSubject: Agenda for Thursday"},
+        {"id": "em-h01", "label": "hard_negative", "text": "The editor emailed the author about proof corrections on Monday."},
+        {"id": "em-h02", "label": "hard_negative", "text": "Dear Author, please return the corrected proof by Friday. Kind regards, The Editor"},
+        {"id": "em-h03", "label": "hard_negative", "text": "Host: api.example.org\nContent-Type: application/json\nAccept: */*"},
+        {"id": "em-h04", "label": "hard_negative", "text": "commit 9342ca\nAuthor: Nina Example\nDate: Mon Jul 7 10:20:00 2025"},
+        {"id": "em-h05", "label": "hard_negative", "text": "from pathlib import Path\nto_address = 'author@example.net'"},
+        {"id": "em-h06", "label": "hard_negative", "text": "From and To identify the sender and recipient of an email message."},
+        {"id": "em-h07", "label": "hard_negative", "text": "The invoice was sent to the client's accounts department."},
+        {"id": "em-h08", "label": "hard_negative", "text": "sender=alerts@example.dev recipient=oncall@example.dev topic=recovery"},
+        {"id": "em-n01", "label": "neutral", "text": "The hikers reached the valley shortly before dusk."},
+        {"id": "em-n02", "label": "neutral", "text": "A glass bottle rolled beneath the table."},
+        {"id": "em-n03", "label": "neutral", "text": "The new policy takes effect at the start of April."},
+        {"id": "em-n04", "label": "neutral", "text": "Mix the ingredients until the sauce becomes smooth."}
+      ]
+    },
+    {
+      "id": "shell_commands",
+      "target": "Unix shell command lines, pipelines, redirections, and environment operations",
+      "steering_target": {
+        "concept": "Unix shell command syntax",
+        "cues": ["|", "&&", "grep", "find", "export", "chmod", "./", ">", "$"],
+        "strong_evidence": "one or more executable-looking Unix shell commands using flags, paths, pipelines, redirection, or environment variables",
+        "insufficient_evidence": "prose about terminals, source code in another language, PowerShell, or isolated utility names"
+      },
+      "activation_cases": [
+        {"id": "sh-p01", "label": "positive", "text": "rg --files src tests | sort | xargs wc -l"},
+        {"id": "sh-p02", "label": "positive", "text": "export LOG_LEVEL=debug && ./server --port 8080 > server.log 2>&1"},
+        {"id": "sh-p03", "label": "positive", "text": "find /var/tmp -type f -name '*.cache' -mtime +3 -delete"},
+        {"id": "sh-p04", "label": "positive", "text": "for f in reports/*.json; do jq -e . \"$f\" || exit 1; done"},
+        {"id": "sh-p05", "label": "positive", "text": "curl -fsSL https://example.org/data.csv | gzip -c > data.csv.gz"},
+        {"id": "sh-p06", "label": "positive", "text": "mkdir -p build/assets && cp static/*.svg build/assets/"},
+        {"id": "sh-p07", "label": "positive", "text": "git diff --check && python3 -m pytest -q"},
+        {"id": "sh-p08", "label": "positive", "text": "chmod 600 config.env; source config.env; exec ./worker"},
+        {"id": "sh-h01", "label": "hard_negative", "text": "The engineer used a shell command to search files and count lines."},
+        {"id": "sh-h02", "label": "hard_negative", "text": "from pathlib import Path\nfiles = sorted(Path('src').rglob('*.py'))"},
+        {"id": "sh-h03", "label": "hard_negative", "text": "$files = Get-ChildItem src -Recurse | Sort-Object Name"},
+        {"id": "sh-h04", "label": "hard_negative", "text": "const files = await glob('src/**/*.js'); files.sort();"},
+        {"id": "sh-h05", "label": "hard_negative", "text": "Commands such as grep, find, chmod, and curl are available on Unix."},
+        {"id": "sh-h06", "label": "hard_negative", "text": "The process writes debugging logs to a file and then exits."},
+        {"id": "sh-h07", "label": "hard_negative", "text": "pipeline:\n  test:\n    script: python3 -m pytest -q"},
+        {"id": "sh-h08", "label": "hard_negative", "text": "Use a vertical bar to represent alternatives in the grammar."},
+        {"id": "sh-n01", "label": "neutral", "text": "The actor rehearsed the final scene twice."},
+        {"id": "sh-n02", "label": "neutral", "text": "Snow covered the road during the night."},
+        {"id": "sh-n03", "label": "neutral", "text": "The museum opens at nine on weekdays."},
+        {"id": "sh-n04", "label": "neutral", "text": "A physician reviewed the patient's recent symptoms."}
+      ]
+    }
+  ]
+}

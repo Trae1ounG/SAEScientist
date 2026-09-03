@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "models": [
+    {
+      "id": "codex-sol-high",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "cli": "codex"
+    },
+    {
+      "id": "codex-luna-high",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "cli": "codex"
+    },
+    {
+      "id": "cursor-sonnet5-high",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "cli": "cursor-agent"
+    },
+    {
+      "id": "cursor-opus48-high",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "cli": "cursor-agent"
+    },
+    {
+      "id": "cursor-opus5-high",
+      "harness": "cursor",
+      "model": "claude-opus-5-thinking-high",
+      "cli": "cursor-agent"
+    },
+    {
+      "id": "cursor-gpt55-high",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "cli": "cursor-agent"
+    },
+    {
+      "id": "cursor-grok46-high",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "cli": "cursor-agent"
+    },
+    {
+      "id": "cursor-kimik3-high",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "cli": "cursor-agent"
+    },
+    {
+      "id": "cursor-glm52-high",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "cli": "cursor-agent"
+    }
+  ]
+}

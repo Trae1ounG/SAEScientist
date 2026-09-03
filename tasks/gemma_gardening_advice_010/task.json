@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "task_id": "gemma_gardening_advice_010",
+  "language": "en",
+  "difficulty": "easy",
+  "difficulty_metric": {
+    "name": "expert_positive_mean_rank",
+    "value": 58.75
+  },
+  "difficulty_rationale": "expert_positive_mean_rank <= 100",
+  "model": "google/gemma-2-9b-it",
+  "sae": {
+    "repo": "google/gemma-scope-9b-it-res",
+    "release": "layer_9/width_131k/average_l0_121",
+    "hook": "blocks.9.hook_resid_post",
+    "feature_count": 131072
+  },
+  "description": "A context-level feature for practical gardening advice involving planting, watering, pruning, soil, or plant care. It should capture practical gardening advice. Strong evidence includes hands-on garden care guidance about planting, watering, pruning, soil, compost, or growing conditions. Distinguish it from botanical exhibits, cut flowers, landscaping design, biology lessons, weather, or cooking herbs without care advice.",
+  "submission": {
+    "path": "submission.json",
+    "fields": {
+      "feature_id": "integer in [0, 131071]"
+    }
+  }
+}

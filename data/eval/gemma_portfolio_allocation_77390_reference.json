@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "status": "stable_reference",
+  "feature_case": "data/official_cases/gemma2_9b_it_l9_w131k_feature_77390.json",
+  "source": {
+    "publisher": "Google DeepMind",
+    "official_source": true,
+    "repo": "google/gemma-scope-9b-it-res",
+    "resolved_revision": "e86af97a5b6fbbccca28ab654f2fda1b0768f770",
+    "base_model": "google/gemma-2-9b-it",
+    "checkpoint": "layer_9/width_131k/average_l0_121/params.npz",
+    "hookpoint": "resid_post",
+    "layer": 9,
+    "feature_id": 77390,
+    "label": null,
+    "label_source": null,
+    "neuronpedia": null
+  },
+  "suite": "data/discovery/gemma_l9_round_005_validation.json",
+  "concept_id": "portfolio_allocation",
+  "trial_id": "403761750",
+  "admission_tier": "causal",
+  "difficulty": "easy",
+  "difficulty_metric": {
+    "name": "expert_positive_mean_rank",
+    "value": 6.625
+  },
+  "difficulty_rationale": "expert_positive_mean_rank <= 100",
+  "protocol": {
+    "alpha": 240.0,
+    "positions": "all",
+    "generation": "greedy",
+    "max_new_tokens": 64
+  },
+  "activation": {
+    "pooling": "top-3 token mean",
+    "auroc": 1.0,
+    "positive_mean": 27.58240056037903,
+    "hard_negative_mean": 2.3279045149683952,
+    "neutral_mean": 0.0,
+    "hard_negative_to_positive_ratio": 0.08439818390254013,
+    "positive_active_rate": 1.0,
+    "hard_negative_active_rate": 0.75,
+    "neutral_active_rate": 0.0,
+    "positive_mean_rank": 6.625
+  },
+  "steering": {
+    "judge_model": "legacy-pe-judge",
+    "repeats": 2,
+    "valid_rows": 40,
+    "repeat_agreement_within_one_point": 1.0,
+    "baseline": {
+      "target_relevance": 0.0,
+      "target_success_rate": 0.0,
+      "task_preservation": 1.8,
+      "usable_target_rate": 0.0,
+      "degenerate_rate": 0.5
+    },
+    "feature": {
+      "target_relevance": 3.125,
+      "target_success_rate": 1.0,
+      "task_preservation": 0.05,
+      "usable_target_rate": 0.0,
+      "degenerate_rate": 0.375
+    },
+    "random": {
+      "target_relevance": 0.0,
+      "target_success_rate": 0.0,
+      "task_preservation": 1.3,
+      "usable_target_rate": 0.0,
+      "degenerate_rate": 0.45
+    },
+    "admission_evaluation": {
+      "heldout_prompts": 20,
+      "baseline_target_score": 0.0,
+      "feature_target_score": 0.78125,
+      "random_target_score": 0.0,
+      "feature_success_rate": 1.0,
+      "usable_target_rate": 0.0,
+      "random_success_rate": 0.0,
+      "nondegenerate_rate": 0.625,
+      "rerun_agreement": 1.0,
+      "scorer": "blinded PE judge legacy-pe-judge, target_relevance / 4"
+    }
+  }
+}

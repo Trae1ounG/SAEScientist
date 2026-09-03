@@ -1,0 +1,315 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_turkish_language_015/task.json",
+  "suite": "data/discovery/gemma_l9_round_005_validation.json",
+  "expert": {
+    "feature_id": 99383,
+    "reference": "data/eval/gemma_turkish_language_99383_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-cursor-opus48-high-01",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "db5e112ff92479909fff821fcddb5c45da707e2b",
+      "elapsed_seconds": 750.0367968329228,
+      "feature_id": 50260,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.0008937065759506444,
+        "auroc_recovery": 0.875,
+        "activation_contrast_recovery": 0.43765188269368566,
+        "expert_pattern_spearman": 0.7769395354871451,
+        "mean_score": 0.5226212811891954
+      },
+      "activation": {
+        "positive_mean_rank": 17343.5,
+        "positive_mean_percentile": 0.8676862158677359,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9375,
+        "expert_pattern_spearman": 0.7769395354871451
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 1.0,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.15,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-cursor-sonnet5-high-01",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "db5e112ff92479909fff821fcddb5c45da707e2b",
+      "elapsed_seconds": 1115.7630702090682,
+      "feature_id": 98108,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.19745222929936307,
+        "auroc_recovery": 0.9791666666666667,
+        "activation_contrast_recovery": 0.39457304758081935,
+        "expert_pattern_spearman": 0.8545699776813426,
+        "mean_score": 0.6064404803070479
+      },
+      "activation": {
+        "positive_mean_rank": 78.5,
+        "positive_mean_percentile": 0.9994087174127,
+        "hard_negative_mean_rank": 816.875,
+        "neutral_mean_rank": 1587.0,
+        "auroc": 0.9895833333333334,
+        "expert_pattern_spearman": 0.8545699776813426
+      },
+      "steering": {
+        "pe_target_relevance": 0.15,
+        "pe_target_success_rate": 0.025,
+        "pe_task_preservation": 1.1,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.15,
+        "target_effect": 0.0375,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": -0.06916236823282089
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-cursor-grok46-high-01",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 1053.462807792006,
+      "feature_id": 85098,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.2059800664451827,
+        "auroc_recovery": 0.9166666666666667,
+        "activation_contrast_recovery": 0.713560991588744,
+        "expert_pattern_spearman": 0.781184766205748,
+        "mean_score": 0.6543481227265854
+      },
+      "activation": {
+        "positive_mean_rank": 75.25,
+        "positive_mean_percentile": 0.9994335131341029,
+        "hard_negative_mean_rank": 114690.25,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9583333333333334,
+        "expert_pattern_spearman": 0.781184766205748
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.525,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.775,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-cursor-glm52-high-01",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 513.3920261249878,
+      "feature_id": 50260,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.0008937065759506444,
+        "auroc_recovery": 0.875,
+        "activation_contrast_recovery": 0.43765188269368566,
+        "expert_pattern_spearman": 0.7769395354871451,
+        "mean_score": 0.5226212811891954
+      },
+      "activation": {
+        "positive_mean_rank": 17343.5,
+        "positive_mean_percentile": 0.8676862158677359,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9375,
+        "expert_pattern_spearman": 0.7769395354871451
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 1.0,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.15,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-cursor-gpt55-high-01",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "db5e112ff92479909fff821fcddb5c45da707e2b",
+      "elapsed_seconds": 426.42488454200793,
+      "feature_id": 87901,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.006423206423206423,
+        "auroc_recovery": 0.9583333333333333,
+        "activation_contrast_recovery": 0.5348296934691279,
+        "expert_pattern_spearman": 0.8800582679822092,
+        "mean_score": 0.5949111253019692
+      },
+      "activation": {
+        "positive_mean_rank": 2413.125,
+        "positive_mean_percentile": 0.9815968063110834,
+        "hard_negative_mean_rank": 86089.375,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9791666666666666,
+        "expert_pattern_spearman": 0.8800582679822092
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.775,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.175,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-codex-luna-high-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "7f836a6337cc0ff883151ed6210ba8226f30f404",
+      "elapsed_seconds": 241.065331040998,
+      "feature_id": 85098,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.2059800664451827,
+        "auroc_recovery": 0.9166666666666667,
+        "activation_contrast_recovery": 0.713560991588744,
+        "expert_pattern_spearman": 0.781184766205748,
+        "mean_score": 0.6543481227265854
+      },
+      "activation": {
+        "positive_mean_rank": 75.25,
+        "positive_mean_percentile": 0.9994335131341029,
+        "hard_negative_mean_rank": 114690.25,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9583333333333334,
+        "expert_pattern_spearman": 0.781184766205748
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.525,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.775,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-codex-sol-high-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "c477aa623a1ad1604da92aa54570cfe8643b9d79",
+      "elapsed_seconds": 258.0772642090451,
+      "feature_id": 85098,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.2059800664451827,
+        "auroc_recovery": 0.9166666666666667,
+        "activation_contrast_recovery": 0.713560991588744,
+        "expert_pattern_spearman": 0.781184766205748,
+        "mean_score": 0.6543481227265854
+      },
+      "activation": {
+        "positive_mean_rank": 75.25,
+        "positive_mean_percentile": 0.9994335131341029,
+        "hard_negative_mean_rank": 114690.25,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9583333333333334,
+        "expert_pattern_spearman": 0.781184766205748
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.525,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.775,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-turkish-language-015-offline-cursor-kimik3-high-01",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 298.5272455830127,
+      "feature_id": 85098,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.2059800664451827,
+        "auroc_recovery": 0.9166666666666667,
+        "activation_contrast_recovery": 0.713560991588744,
+        "expert_pattern_spearman": 0.781184766205748,
+        "mean_score": 0.6543481227265854
+      },
+      "activation": {
+        "positive_mean_rank": 75.25,
+        "positive_mean_percentile": 0.9994335131341029,
+        "hard_negative_mean_rank": 114690.25,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9583333333333334,
+        "expert_pattern_spearman": 0.781184766205748
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.525,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.775,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    }
+  ]
+}

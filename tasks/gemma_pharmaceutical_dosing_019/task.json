@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "task_id": "gemma_pharmaceutical_dosing_019",
+  "language": "en",
+  "difficulty": "easy",
+  "difficulty_metric": {
+    "name": "expert_positive_mean_rank",
+    "value": 55.75
+  },
+  "difficulty_rationale": "expert_positive_mean_rank <= 100",
+  "model": "google/gemma-2-9b-it",
+  "sae": {
+    "repo": "google/gemma-scope-9b-it-res",
+    "release": "layer_20/width_131k/average_l0_81",
+    "hook": "blocks.20.hook_resid_post",
+    "feature_count": 131072
+  },
+  "description": "A context-level feature for medication dosing instructions with drug names, amounts, frequency, or route. It should capture medication dosing instructions. Strong evidence includes drug administration instructions with amount, route, timing, or frequency. Distinguish it from drug names, pharmacy logistics, or treatment discussion without dosing instructions.",
+  "submission": {
+    "path": "submission.json",
+    "fields": {
+      "feature_id": "integer in [0, 131071]"
+    }
+  }
+}

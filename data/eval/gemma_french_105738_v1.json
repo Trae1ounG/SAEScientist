@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "suite_id": "gemma_french_105738_v1",
+  "frozen": true,
+  "target": "coherent French-language text rather than discussion of France",
+  "steering_target": {
+    "concept": "coherent French-language output",
+    "cues": ["le", "la", "les", "de", "des", "une", "je", "nous", "vous", "est", "et", "pour", "avec", "dans", "sur"],
+    "strong_evidence": "most of the answer is grammatical French rather than isolated French words",
+    "insufficient_evidence": "mentions of France, French names, or a few borrowed French words"
+  },
+  "activation_cases": [
+    {"id": "fr-p01", "label": "positive", "text": "Je voudrais acheter deux billets pour le prochain train, s'il vous plaît."},
+    {"id": "fr-p02", "label": "positive", "text": "La réunion commencera dès que tous les participants seront arrivés."},
+    {"id": "fr-p03", "label": "positive", "text": "Ce roman raconte l'histoire d'une famille qui traverse plusieurs générations."},
+    {"id": "fr-p04", "label": "positive", "text": "Il pleuvait encore, mais les enfants continuaient à jouer dans le jardin."},
+    {"id": "fr-p05", "label": "positive", "text": "Nous devons vérifier les résultats avant de publier notre conclusion."},
+    {"id": "fr-p06", "label": "positive", "text": "Aucune décision ne sera prise sans consulter les habitants du quartier."},
+    {"id": "fr-p07", "label": "positive", "text": "Elle prépare du café pendant que son frère range la cuisine."},
+    {"id": "fr-p08", "label": "positive", "text": "Pourquoi cette solution semble-t-elle plus efficace que la précédente ?"},
+    {"id": "fr-h01", "label": "hard_negative", "text": "The French delegation arrived in Lyon for the annual economic summit."},
+    {"id": "fr-h02", "label": "hard_negative", "text": "French grammar was discussed entirely in English during the class."},
+    {"id": "fr-h03", "label": "hard_negative", "text": "Quisiera comprar dos billetes para el próximo tren, por favor."},
+    {"id": "fr-h04", "label": "hard_negative", "text": "Vorrei comprare due biglietti per il prossimo treno, per favore."},
+    {"id": "fr-h05", "label": "hard_negative", "text": "Je is a French pronoun, while voudrais is a conjugated verb."},
+    {"id": "fr-h06", "label": "hard_negative", "text": "The café served crème brûlée beside a poster of the Eiffel Tower."},
+    {"id": "fr-h07", "label": "hard_negative", "text": "Français, Paris, baguette, bonjour: these words appeared on the vocabulary card."},
+    {"id": "fr-h08", "label": "hard_negative", "text": "A translator converted the French paragraph into fluent English."},
+    {"id": "fr-n01", "label": "neutral", "text": "The maintenance team replaced the damaged cable before sunrise."},
+    {"id": "fr-n02", "label": "neutral", "text": "Three containers remained unopened in the warehouse."},
+    {"id": "fr-n03", "label": "neutral", "text": "Clouds moved slowly across the northern horizon."},
+    {"id": "fr-n04", "label": "neutral", "text": "Please attach the revised diagram to the final report."}
+  ],
+  "steering_calibration": [
+    {"id": "c01", "prompt": "Introduce yourself in two sentences."},
+    {"id": "c02", "prompt": "Explain why regular sleep matters."},
+    {"id": "c03", "prompt": "Give three tips for organizing a busy week."},
+    {"id": "c04", "prompt": "Describe a quiet morning in a small town."},
+    {"id": "c05", "prompt": "Write a short thank-you note for someone's help."}
+  ],
+  "steering_prompts": "../steering/french_105738_v1.json"
+}

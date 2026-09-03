@@ -1,0 +1,315 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
+  "suite": "data/discovery/gemma_l20_round_005_validation.json",
+  "expert": {
+    "feature_id": 3927,
+    "reference": "data/eval/gemma_clinical_symptom_reports_l20_3927_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-cursor-opus48-high-retry-01",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 423.45991466601845,
+      "feature_id": 113440,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.12439784641541513,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.96010412703534,
+        "expert_pattern_spearman": 0.8181818181818182,
+        "mean_score": 0.7256709479081433
+      },
+      "activation": {
+        "positive_mean_rank": 441.125,
+        "positive_mean_percentile": 0.9966420871130914,
+        "hard_negative_mean_rank": 87374.625,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8181818181818182
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.0,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.05,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-cursor-sonnet5-high-retry-01",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 412.25027962506283,
+      "feature_id": 113440,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.12439784641541513,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.96010412703534,
+        "expert_pattern_spearman": 0.8181818181818182,
+        "mean_score": 0.7256709479081433
+      },
+      "activation": {
+        "positive_mean_rank": 441.125,
+        "positive_mean_percentile": 0.9966420871130914,
+        "hard_negative_mean_rank": 87374.625,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8181818181818182
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.0,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.05,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-cursor-grok46-high-retry-01",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 908.5073839579709,
+      "feature_id": 113440,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.12439784641541513,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.96010412703534,
+        "expert_pattern_spearman": 0.8181818181818182,
+        "mean_score": 0.7256709479081433
+      },
+      "activation": {
+        "positive_mean_rank": 441.125,
+        "positive_mean_percentile": 0.9966420871130914,
+        "hard_negative_mean_rank": 87374.625,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8181818181818182
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.0,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.05,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-cursor-glm52-high-retry-01",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 181.97422325005755,
+      "feature_id": 53882,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.9712389380530974,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.8954116370623676,
+        "expert_pattern_spearman": 0.7977411719621903,
+        "mean_score": 0.9160979367694138
+      },
+      "activation": {
+        "positive_mean_rank": 56.5,
+        "positive_mean_percentile": 0.9995765653729658,
+        "hard_negative_mean_rank": 8445.375,
+        "neutral_mean_rank": 13547.75,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.7977411719621903
+      },
+      "steering": {
+        "pe_target_relevance": 2.975,
+        "pe_target_success_rate": 0.925,
+        "pe_task_preservation": 1.4,
+        "pe_usable_target_rate": 0.275,
+        "pe_degenerate_rate": 0.25,
+        "target_effect": 0.74375,
+        "causal_stable": true,
+        "usable_steering": false,
+        "selected_alpha": 180.0,
+        "pattern_correlation_to_expert": 0.007761505257063329
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-cursor-gpt55-high-retry-02",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 321.6377565829316,
+      "feature_id": 113440,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.12439784641541513,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.96010412703534,
+        "expert_pattern_spearman": 0.8181818181818182,
+        "mean_score": 0.7256709479081433
+      },
+      "activation": {
+        "positive_mean_rank": 441.125,
+        "positive_mean_percentile": 0.9966420871130914,
+        "hard_negative_mean_rank": 87374.625,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8181818181818182
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.0,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.05,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-codex-luna-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "175393bcf22f744e201eaf1a9d5d9f35cf769334",
+      "elapsed_seconds": 284.74970845796634,
+      "feature_id": 85400,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.3300751879699248,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.8453628239347821,
+        "expert_pattern_spearman": 0.7900365622293283,
+        "mean_score": 0.7413686435335088
+      },
+      "activation": {
+        "positive_mean_rank": 166.25,
+        "positive_mean_percentile": 0.9987392329348216,
+        "hard_negative_mean_rank": 101087.875,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.7900365622293283
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.1,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.075,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-codex-sol-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "175393bcf22f744e201eaf1a9d5d9f35cf769334",
+      "elapsed_seconds": 302.21179895906243,
+      "feature_id": 13140,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.41493383742911155,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.8495932259726166,
+        "expert_pattern_spearman": 0.8611115098650832,
+        "mean_score": 0.7814096433167028
+      },
+      "activation": {
+        "positive_mean_rank": 132.25,
+        "positive_mean_percentile": 0.9989986343279597,
+        "hard_negative_mean_rank": 42144.25,
+        "neutral_mean_rank": 100967.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8611115098650832
+      },
+      "steering": {
+        "pe_target_relevance": 0.8,
+        "pe_target_success_rate": 0.35,
+        "pe_task_preservation": 0.55,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.2,
+        "target_effect": 0.2,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": -0.04027371746361516
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-clinical-symptom-reports-016-offline-cursor-kimik3-high-retry-01",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 202.72960491699632,
+      "feature_id": 113440,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.12439784641541513,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.96010412703534,
+        "expert_pattern_spearman": 0.8181818181818182,
+        "mean_score": 0.7256709479081433
+      },
+      "activation": {
+        "positive_mean_rank": 441.125,
+        "positive_mean_percentile": 0.9966420871130914,
+        "hard_negative_mean_rank": 87374.625,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8181818181818182
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.0,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.05,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    }
+  ]
+}

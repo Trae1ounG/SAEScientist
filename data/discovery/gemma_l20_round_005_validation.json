@@ -1,0 +1,981 @@
+{
+  "schema": 1,
+  "checkpoint": "google/gemma-scope-9b-it-res layer_20/width_131k/average_l0_81",
+  "steering_calibration": [
+    {
+      "id": "c01",
+      "prompt": "Summarize a simple plan for improving a workspace."
+    },
+    {
+      "id": "c02",
+      "prompt": "Explain how clear communication helps a team."
+    },
+    {
+      "id": "c03",
+      "prompt": "List three ways to manage a busy week."
+    },
+    {
+      "id": "c04",
+      "prompt": "Describe a quiet morning in a neighborhood."
+    },
+    {
+      "id": "c05",
+      "prompt": "Write a brief note thanking someone for their help."
+    }
+  ],
+  "steering_prompts": "../steering/french_105738_v1.json",
+  "concepts": [
+    {
+      "id": "clinical_symptom_reports",
+      "target": "patient-centered descriptions of symptoms, onset, severity, and clinical history",
+      "steering_target": {
+        "concept": "clinical symptom presentation",
+        "cues": [
+          "patient",
+          "symptom",
+          "pain",
+          "fever",
+          "nausea",
+          "cough"
+        ],
+        "strong_evidence": "specific patient complaints, onset, severity, associated symptoms, or clinical presentation",
+        "insufficient_evidence": "general health discussion, hospital operations, or medical terms without a patient symptom narrative"
+      },
+      "activation_cases": [
+        {
+          "id": "clin-p01",
+          "label": "positive",
+          "text": "Validation passage: The patient reports three days of sharp chest pain that worsens with exertion."
+        },
+        {
+          "id": "clin-p02",
+          "label": "positive",
+          "text": "Validation passage: She developed a fever, dry cough, and shortness of breath after returning from travel."
+        },
+        {
+          "id": "clin-p03",
+          "label": "positive",
+          "text": "Validation passage: He denies dizziness but notes intermittent numbness in the left hand since yesterday."
+        },
+        {
+          "id": "clin-p04",
+          "label": "positive",
+          "text": "Validation passage: The headache began suddenly this morning and is rated eight out of ten in intensity."
+        },
+        {
+          "id": "clin-p05",
+          "label": "positive",
+          "text": "Validation passage: Her abdominal pain improves after meals and is associated with nausea but no vomiting."
+        },
+        {
+          "id": "clin-p06",
+          "label": "positive",
+          "text": "Validation passage: The child presents with a rash, sore throat, and reduced appetite for two days."
+        },
+        {
+          "id": "clin-p07",
+          "label": "positive",
+          "text": "The patient describes burning throat pain that began two nights ago."
+        },
+        {
+          "id": "clin-p08",
+          "label": "positive",
+          "text": "Her symptoms include watery diarrhea, cramping, and poor appetite since Monday."
+        },
+        {
+          "id": "clin-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The hospital opened a new outpatient clinic near the central train station."
+        },
+        {
+          "id": "clin-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: Researchers compared symptom questionnaires across several public health studies."
+        },
+        {
+          "id": "clin-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The medical textbook defines fever as an elevated body temperature."
+        },
+        {
+          "id": "clin-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: She bought cough drops, a thermometer, and a box of tissues at the pharmacy."
+        },
+        {
+          "id": "clin-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The lecture summarized how physicians take a patient's history during examination."
+        },
+        {
+          "id": "clin-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: Insurance coverage for emergency visits changed at the beginning of the year."
+        },
+        {
+          "id": "clin-h07",
+          "label": "hard_negative",
+          "text": "The clinic added appointment slots for annual wellness visits."
+        },
+        {
+          "id": "clin-h08",
+          "label": "hard_negative",
+          "text": "The pharmacy sold lozenges, tissues, and bottled water near the entrance."
+        },
+        {
+          "id": "clin-n01",
+          "label": "neutral",
+          "text": "A glass pitcher stood beside a stack of plain white plates."
+        },
+        {
+          "id": "clin-n02",
+          "label": "neutral",
+          "text": "The hallway light flickered once before staying on."
+        },
+        {
+          "id": "clin-n03",
+          "label": "neutral",
+          "text": "Several notebooks were arranged neatly on the wooden desk."
+        },
+        {
+          "id": "clin-n04",
+          "label": "neutral",
+          "text": "A blue scarf hung over the back of the chair."
+        }
+      ]
+    },
+    {
+      "id": "pharmaceutical_dosing",
+      "target": "medication dosing instructions with drug names, amounts, frequency, or route",
+      "steering_target": {
+        "concept": "medication dosing instructions",
+        "cues": [
+          "mg",
+          "dose",
+          "daily",
+          "tablet",
+          "intravenous",
+          "every"
+        ],
+        "strong_evidence": "drug administration instructions with amount, route, timing, or frequency",
+        "insufficient_evidence": "drug names, pharmacy logistics, or treatment discussion without dosing instructions"
+      },
+      "activation_cases": [
+        {
+          "id": "dose-p01",
+          "label": "positive",
+          "text": "Validation passage: Take amoxicillin 500 mg by mouth every eight hours for seven days."
+        },
+        {
+          "id": "dose-p02",
+          "label": "positive",
+          "text": "Validation passage: Administer insulin glargine 18 units subcutaneously each night at bedtime."
+        },
+        {
+          "id": "dose-p03",
+          "label": "positive",
+          "text": "Validation passage: Apply one drop of timolol to the affected eye twice daily."
+        },
+        {
+          "id": "dose-p04",
+          "label": "positive",
+          "text": "Validation passage: Increase sertraline to 50 mg once daily if symptoms persist after two weeks."
+        },
+        {
+          "id": "dose-p05",
+          "label": "positive",
+          "text": "Validation passage: Give acetaminophen 10 mg per kg every six hours as needed for fever."
+        },
+        {
+          "id": "dose-p06",
+          "label": "positive",
+          "text": "Validation passage: Infuse vancomycin 1 g intravenously over ninety minutes before surgery."
+        },
+        {
+          "id": "dose-p07",
+          "label": "positive",
+          "text": "Take one 25 mg tablet each morning with food."
+        },
+        {
+          "id": "dose-p08",
+          "label": "positive",
+          "text": "Reduce the dose to 5 mg if dizziness occurs."
+        },
+        {
+          "id": "dose-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The pharmacy shelves contained antibiotics, pain relievers, and allergy medicine."
+        },
+        {
+          "id": "dose-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: Aspirin was first synthesized long before many modern prescription drugs."
+        },
+        {
+          "id": "dose-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The nurse checked the medication cabinet during the evening shift."
+        },
+        {
+          "id": "dose-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The article warned that some medicines can interact with grapefruit juice."
+        },
+        {
+          "id": "dose-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: He forgot the name of the tablet his doctor prescribed last winter."
+        },
+        {
+          "id": "dose-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The clinical trial compared two treatments but did not publish dosing details."
+        },
+        {
+          "id": "dose-h07",
+          "label": "hard_negative",
+          "text": "The hospital committee reviewed its formulary for next year."
+        },
+        {
+          "id": "dose-h08",
+          "label": "hard_negative",
+          "text": "He asked the doctor about side effects from his prescription."
+        },
+        {
+          "id": "dose-n01",
+          "label": "neutral",
+          "text": "Three cardboard boxes remained unopened near the door."
+        },
+        {
+          "id": "dose-n02",
+          "label": "neutral",
+          "text": "The ceramic mug cooled slowly on the windowsill."
+        },
+        {
+          "id": "dose-n03",
+          "label": "neutral",
+          "text": "A silver key rested under the folded paper map."
+        },
+        {
+          "id": "dose-n04",
+          "label": "neutral",
+          "text": "The elevator doors opened onto a carpeted corridor."
+        }
+      ]
+    },
+    {
+      "id": "earnings_reports",
+      "target": "corporate earnings results with revenue, profit, margins, or guidance",
+      "steering_target": {
+        "concept": "corporate earnings results",
+        "cues": [
+          "revenue",
+          "EPS",
+          "margin",
+          "guidance",
+          "quarter",
+          "cash flow"
+        ],
+        "strong_evidence": "company financial results, profit metrics, margins, guidance, or cash generation",
+        "insufficient_evidence": "stock commentary, executive profiles, product launches, or accounting lessons without earnings results"
+      },
+      "activation_cases": [
+        {
+          "id": "earn-p01",
+          "label": "positive",
+          "text": "Validation passage: The company reported quarterly revenue of $4.2 billion, up 18 percent year over year."
+        },
+        {
+          "id": "earn-p02",
+          "label": "positive",
+          "text": "Validation passage: Adjusted EPS rose to $1.37, while gross margin expanded by 240 basis points."
+        },
+        {
+          "id": "earn-p03",
+          "label": "positive",
+          "text": "Validation passage: Management raised full-year guidance after stronger demand in the enterprise segment."
+        },
+        {
+          "id": "earn-p04",
+          "label": "positive",
+          "text": "Validation passage: Operating income fell despite higher sales because freight and labor costs increased."
+        },
+        {
+          "id": "earn-p05",
+          "label": "positive",
+          "text": "Validation passage: The firm missed analyst estimates and forecast slower growth for the next quarter."
+        },
+        {
+          "id": "earn-p06",
+          "label": "positive",
+          "text": "Validation passage: Free cash flow improved to $620 million compared with $410 million a year earlier."
+        },
+        {
+          "id": "earn-p07",
+          "label": "positive",
+          "text": "Diluted EPS came in at $0.94, above analyst expectations."
+        },
+        {
+          "id": "earn-p08",
+          "label": "positive",
+          "text": "Adjusted EBITDA margin expanded to 21 percent in the quarter."
+        },
+        {
+          "id": "earn-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The stock price moved higher after several analysts upgraded the company."
+        },
+        {
+          "id": "earn-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The finance team prepared slides for next week's investor conference."
+        },
+        {
+          "id": "earn-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: A business magazine profiled the chief executive and the company's culture."
+        },
+        {
+          "id": "earn-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The firm announced a new product line for customers in Europe."
+        },
+        {
+          "id": "earn-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: Investors debated whether interest rates would pressure technology shares."
+        },
+        {
+          "id": "earn-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The accounting class covered revenue recognition and cash flow statements."
+        },
+        {
+          "id": "earn-h07",
+          "label": "hard_negative",
+          "text": "The board approved a new logo and website redesign."
+        },
+        {
+          "id": "earn-h08",
+          "label": "hard_negative",
+          "text": "Employees attended a town hall about remote work policy."
+        },
+        {
+          "id": "earn-n01",
+          "label": "neutral",
+          "text": "A clean spoon lay beside the bowl on the counter."
+        },
+        {
+          "id": "earn-n02",
+          "label": "neutral",
+          "text": "The lobby smelled faintly of polished wood and paper."
+        },
+        {
+          "id": "earn-n03",
+          "label": "neutral",
+          "text": "A folded jacket rested on the end of the bench."
+        },
+        {
+          "id": "earn-n04",
+          "label": "neutral",
+          "text": "The square table had four chairs and a small vase."
+        }
+      ]
+    },
+    {
+      "id": "tax_filing_language",
+      "target": "tax filing instructions, deductions, credits, returns, or taxable income",
+      "steering_target": {
+        "concept": "tax filing and taxable income",
+        "cues": [
+          "tax",
+          "return",
+          "deduction",
+          "credit",
+          "taxable",
+          "withholding"
+        ],
+        "strong_evidence": "filing instructions or calculations involving returns, taxable income, credits, deductions, or forms",
+        "insufficient_evidence": "budget policy, accountants, general finance, or taxes mentioned without filing substance"
+      },
+      "activation_cases": [
+        {
+          "id": "tax-p01",
+          "label": "positive",
+          "text": "Validation passage: Report the dividend income on Schedule B and attach it to Form 1040."
+        },
+        {
+          "id": "tax-p02",
+          "label": "positive",
+          "text": "Validation passage: You may claim the credit only if your modified adjusted gross income is below the threshold."
+        },
+        {
+          "id": "tax-p03",
+          "label": "positive",
+          "text": "Validation passage: Deductible business expenses must be ordinary, necessary, and supported by records."
+        },
+        {
+          "id": "tax-p04",
+          "label": "positive",
+          "text": "Validation passage: The taxpayer filed an amended return to correct the capital gains calculation."
+        },
+        {
+          "id": "tax-p05",
+          "label": "positive",
+          "text": "Validation passage: Enter the total withholding from all W-2 forms on line 25."
+        },
+        {
+          "id": "tax-p06",
+          "label": "positive",
+          "text": "Validation passage: Self-employment tax is calculated after net earnings from the trade or business are determined."
+        },
+        {
+          "id": "tax-p07",
+          "label": "positive",
+          "text": "The taxpayer must report rental income even if no profit was earned."
+        },
+        {
+          "id": "tax-p08",
+          "label": "positive",
+          "text": "This expense is not deductible unless it was incurred for the business."
+        },
+        {
+          "id": "tax-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The city council approved a property tax increase after a long debate."
+        },
+        {
+          "id": "tax-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The accountant organized receipts in a folder before meeting the client."
+        },
+        {
+          "id": "tax-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: Economists studied how tax policy affects household spending."
+        },
+        {
+          "id": "tax-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The company paid a dividend to shareholders in the second quarter."
+        },
+        {
+          "id": "tax-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: She complained that the sales tax made the purchase more expensive."
+        },
+        {
+          "id": "tax-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The budget report compared government revenue across several countries."
+        },
+        {
+          "id": "tax-h07",
+          "label": "hard_negative",
+          "text": "She saved bank statements and invoices in a folder."
+        },
+        {
+          "id": "tax-h08",
+          "label": "hard_negative",
+          "text": "A news story covered political arguments about fiscal policy."
+        },
+        {
+          "id": "tax-n01",
+          "label": "neutral",
+          "text": "A blank card was tucked inside the front pocket."
+        },
+        {
+          "id": "tax-n02",
+          "label": "neutral",
+          "text": "The path through the courtyard was swept before noon."
+        },
+        {
+          "id": "tax-n03",
+          "label": "neutral",
+          "text": "A stack of magazines sat beside the waiting room sofa."
+        },
+        {
+          "id": "tax-n04",
+          "label": "neutral",
+          "text": "The candle burned low as the room grew darker."
+        }
+      ]
+    },
+    {
+      "id": "portfolio_allocation",
+      "target": "investment portfolio allocation across assets, sectors, risk levels, or rebalancing",
+      "steering_target": {
+        "concept": "investment portfolio allocation",
+        "cues": [
+          "portfolio",
+          "allocation",
+          "equities",
+          "bonds",
+          "rebalance",
+          "benchmark"
+        ],
+        "strong_evidence": "asset weights, diversification decisions, rebalancing rules, or risk positioning across holdings",
+        "insufficient_evidence": "single-stock news, account setup, market commentary, or personal budgeting without allocation"
+      },
+      "activation_cases": [
+        {
+          "id": "port-p01",
+          "label": "positive",
+          "text": "Validation passage: The portfolio holds 55 percent equities, 30 percent bonds, and 15 percent cash equivalents."
+        },
+        {
+          "id": "port-p02",
+          "label": "positive",
+          "text": "Validation passage: Rebalance when any asset class drifts more than five percentage points from target weight."
+        },
+        {
+          "id": "port-p03",
+          "label": "positive",
+          "text": "Validation passage: The strategy reduces exposure to small-cap stocks and increases short-duration Treasuries."
+        },
+        {
+          "id": "port-p04",
+          "label": "positive",
+          "text": "Validation passage: A conservative investor may allocate more capital to investment-grade fixed income."
+        },
+        {
+          "id": "port-p05",
+          "label": "positive",
+          "text": "Validation passage: Sector weights remain underweight energy and overweight health care relative to the benchmark."
+        },
+        {
+          "id": "port-p06",
+          "label": "positive",
+          "text": "Validation passage: The fund added emerging-market debt to improve diversification and expected yield."
+        },
+        {
+          "id": "port-p07",
+          "label": "positive",
+          "text": "Cash is capped at five percent of the total portfolio value."
+        },
+        {
+          "id": "port-p08",
+          "label": "positive",
+          "text": "Each sector weight is compared with the benchmark at month end."
+        },
+        {
+          "id": "port-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The bank reported stronger trading revenue during a volatile quarter."
+        },
+        {
+          "id": "port-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: Stock prices fell after the central bank signaled another rate increase."
+        },
+        {
+          "id": "port-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: She opened a brokerage account but had not chosen any investments."
+        },
+        {
+          "id": "port-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The economics textbook explained how bond prices respond to interest rates."
+        },
+        {
+          "id": "port-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: A spreadsheet listed monthly expenses for rent, food, travel, and utilities."
+        },
+        {
+          "id": "port-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The company issued new shares to finance an acquisition."
+        },
+        {
+          "id": "port-h07",
+          "label": "hard_negative",
+          "text": "Analysts debated whether the market was overvalued."
+        },
+        {
+          "id": "port-h08",
+          "label": "hard_negative",
+          "text": "The bank reported stronger revenue from trading operations."
+        },
+        {
+          "id": "port-n01",
+          "label": "neutral",
+          "text": "A loose button rolled under the edge of the cabinet."
+        },
+        {
+          "id": "port-n02",
+          "label": "neutral",
+          "text": "The balcony railing was cool after the evening breeze."
+        },
+        {
+          "id": "port-n03",
+          "label": "neutral",
+          "text": "A pencil mark remained on the corner of the page."
+        },
+        {
+          "id": "port-n04",
+          "label": "neutral",
+          "text": "The storage shelf held jars, tape, and spare labels."
+        }
+      ]
+    },
+    {
+      "id": "weather_forecasts",
+      "target": "weather forecasts with predicted conditions, temperature, precipitation, or wind",
+      "steering_target": {
+        "concept": "weather forecast wording",
+        "cues": [
+          "forecast",
+          "rain",
+          "snow",
+          "temperature",
+          "winds",
+          "cloudy"
+        ],
+        "strong_evidence": "predicted future conditions such as precipitation, temperature, wind, clouds, or timing",
+        "insufficient_evidence": "climate analysis, past storm damage, generic weather interest, or radar display without prediction"
+      },
+      "activation_cases": [
+        {
+          "id": "wx-p01",
+          "label": "positive",
+          "text": "Validation passage: Tomorrow will be mostly cloudy with a high near 58 degrees and light northeast winds."
+        },
+        {
+          "id": "wx-p02",
+          "label": "positive",
+          "text": "Validation passage: Heavy rain is expected after midnight, with isolated thunderstorms along the coast."
+        },
+        {
+          "id": "wx-p03",
+          "label": "positive",
+          "text": "Validation passage: The forecast calls for snow showers before noon and clearing skies by evening."
+        },
+        {
+          "id": "wx-p04",
+          "label": "positive",
+          "text": "Validation passage: Temperatures will climb into the low 90s as humidity increases this weekend."
+        },
+        {
+          "id": "wx-p05",
+          "label": "positive",
+          "text": "Validation passage: A cold front will bring gusts up to 35 mph across the valley."
+        },
+        {
+          "id": "wx-p06",
+          "label": "positive",
+          "text": "Validation passage: Patchy fog should lift by midmorning, followed by sunny and dry conditions."
+        },
+        {
+          "id": "wx-p07",
+          "label": "positive",
+          "text": "Scattered showers are likely after sunset as humidity rises."
+        },
+        {
+          "id": "wx-p08",
+          "label": "positive",
+          "text": "Fog should lift late in the morning before sunshine returns."
+        },
+        {
+          "id": "wx-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The climate report analyzed rainfall trends over the past fifty years."
+        },
+        {
+          "id": "wx-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: She checked the thermometer before leaving for work."
+        },
+        {
+          "id": "wx-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The storm damaged power lines and delayed flights across the region."
+        },
+        {
+          "id": "wx-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: A geography lesson explained why mountains affect local rainfall."
+        },
+        {
+          "id": "wx-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The farmer worried that dry soil would reduce this season's harvest."
+        },
+        {
+          "id": "wx-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The app displayed radar images in bright colors on the phone screen."
+        },
+        {
+          "id": "wx-h07",
+          "label": "hard_negative",
+          "text": "The power company repaired lines damaged by lightning."
+        },
+        {
+          "id": "wx-h08",
+          "label": "hard_negative",
+          "text": "The thermometer on the porch was covered with dust."
+        },
+        {
+          "id": "wx-n01",
+          "label": "neutral",
+          "text": "A soft chime sounded when the front door opened."
+        },
+        {
+          "id": "wx-n02",
+          "label": "neutral",
+          "text": "The notebook pages were clipped together with a black binder."
+        },
+        {
+          "id": "wx-n03",
+          "label": "neutral",
+          "text": "A small mirror reflected the light from the opposite wall."
+        },
+        {
+          "id": "wx-n04",
+          "label": "neutral",
+          "text": "The empty basket sat on the floor beside the shelf."
+        }
+      ]
+    },
+    {
+      "id": "archaeological_excavation",
+      "target": "archaeological excavation reports involving artifacts, strata, trenches, or dating",
+      "steering_target": {
+        "concept": "archaeological excavation evidence",
+        "cues": [
+          "excavation",
+          "artifact",
+          "trench",
+          "radiocarbon",
+          "stratigraphic",
+          "pottery"
+        ],
+        "strong_evidence": "field excavation context with artifacts, layers, trenches, dating, site grids, or occupation phases",
+        "insufficient_evidence": "museums, history documentaries, ruins tourism, construction digging, or heritage policy without excavation evidence"
+      },
+      "activation_cases": [
+        {
+          "id": "arch-p01",
+          "label": "positive",
+          "text": "Validation passage: Excavators uncovered a ceramic vessel in the lower occupation layer of Trench B."
+        },
+        {
+          "id": "arch-p02",
+          "label": "positive",
+          "text": "Validation passage: Charcoal samples from the hearth were submitted for radiocarbon dating."
+        },
+        {
+          "id": "arch-p03",
+          "label": "positive",
+          "text": "Validation passage: The burial contained bronze ornaments, animal bones, and fragments of painted pottery."
+        },
+        {
+          "id": "arch-p04",
+          "label": "positive",
+          "text": "Validation passage: Stratigraphic evidence suggests the wall was rebuilt during a later settlement phase."
+        },
+        {
+          "id": "arch-p05",
+          "label": "positive",
+          "text": "Validation passage: Researchers mapped the site grid before removing soil from each square."
+        },
+        {
+          "id": "arch-p06",
+          "label": "positive",
+          "text": "Validation passage: The artifact assemblage indicates sustained habitation during the late Neolithic period."
+        },
+        {
+          "id": "arch-p07",
+          "label": "positive",
+          "text": "Excavators mapped each artifact before removing it from the grid."
+        },
+        {
+          "id": "arch-p08",
+          "label": "positive",
+          "text": "Charcoal from the pit was bagged separately for radiocarbon analysis."
+        },
+        {
+          "id": "arch-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The museum displayed ancient pottery in a newly renovated gallery."
+        },
+        {
+          "id": "arch-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: A history documentary described the rise and fall of the empire."
+        },
+        {
+          "id": "arch-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: Tourists visited the ruins at sunset and photographed the stone columns."
+        },
+        {
+          "id": "arch-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The construction crew found old bricks while digging a basement."
+        },
+        {
+          "id": "arch-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The professor assigned a reading about archaeological theory."
+        },
+        {
+          "id": "arch-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The local government debated how to protect cultural heritage sites."
+        },
+        {
+          "id": "arch-h07",
+          "label": "hard_negative",
+          "text": "A catalog described jewelry donated by a private collector."
+        },
+        {
+          "id": "arch-h08",
+          "label": "hard_negative",
+          "text": "The travel guide recommended visiting the old fortress first."
+        },
+        {
+          "id": "arch-n01",
+          "label": "neutral",
+          "text": "A pebble path crossed the courtyard near the fountain."
+        },
+        {
+          "id": "arch-n02",
+          "label": "neutral",
+          "text": "The shelf label had faded from years of sunlight."
+        },
+        {
+          "id": "arch-n03",
+          "label": "neutral",
+          "text": "A brass handle gleamed on the freshly painted door."
+        },
+        {
+          "id": "arch-n04",
+          "label": "neutral",
+          "text": "The room was quiet except for the hum of the fan."
+        }
+      ]
+    },
+    {
+      "id": "real_estate_listings",
+      "target": "property listings describing homes, apartments, amenities, price, or location",
+      "steering_target": {
+        "concept": "real estate property listing",
+        "cues": [
+          "bedroom",
+          "apartment",
+          "rent",
+          "listing",
+          "kitchen",
+          "balcony"
+        ],
+        "strong_evidence": "property advertisement details about rooms, amenities, price, location, rent, or showing information",
+        "insufficient_evidence": "housing policy, renovation stories, mortgage discussion, architecture plans, or neighborhood descriptions without a listing"
+      },
+      "activation_cases": [
+        {
+          "id": "re-p01",
+          "label": "positive",
+          "text": "Validation passage: Spacious two-bedroom apartment with hardwood floors, in-unit laundry, and garage parking."
+        },
+        {
+          "id": "re-p02",
+          "label": "positive",
+          "text": "Validation passage: The listing offers a renovated kitchen, fenced backyard, and easy access to downtown."
+        },
+        {
+          "id": "re-p03",
+          "label": "positive",
+          "text": "Validation passage: Asking price is $685,000 for this three-bedroom home near the elementary school."
+        },
+        {
+          "id": "re-p04",
+          "label": "positive",
+          "text": "Validation passage: This corner unit features floor-to-ceiling windows and a private balcony."
+        },
+        {
+          "id": "re-p05",
+          "label": "positive",
+          "text": "Validation passage: Monthly rent includes water, trash service, and access to the fitness center."
+        },
+        {
+          "id": "re-p06",
+          "label": "positive",
+          "text": "Validation passage: Open house Sunday for a detached ranch with a finished basement and updated roof."
+        },
+        {
+          "id": "re-p07",
+          "label": "positive",
+          "text": "The apartment is available June 1 with a twelve-month lease."
+        },
+        {
+          "id": "re-p08",
+          "label": "positive",
+          "text": "Asking price includes a detached garage and landscaped backyard."
+        },
+        {
+          "id": "re-h01",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The city approved a plan to build more affordable housing."
+        },
+        {
+          "id": "re-h02",
+          "label": "hard_negative",
+          "text": "Contrastive passage: She painted the bedroom walls and replaced the old carpet."
+        },
+        {
+          "id": "re-h03",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The mortgage lender explained interest rates and closing costs."
+        },
+        {
+          "id": "re-h04",
+          "label": "hard_negative",
+          "text": "Contrastive passage: A travel article described charming neighborhoods near the river."
+        },
+        {
+          "id": "re-h05",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The architect presented drawings for a mixed-use development."
+        },
+        {
+          "id": "re-h06",
+          "label": "hard_negative",
+          "text": "Contrastive passage: The family discussed whether to move closer to school next year."
+        },
+        {
+          "id": "re-h07",
+          "label": "hard_negative",
+          "text": "The landlord repaired the hallway lights before winter."
+        },
+        {
+          "id": "re-h08",
+          "label": "hard_negative",
+          "text": "A report analyzed population growth in suburban neighborhoods."
+        },
+        {
+          "id": "re-n01",
+          "label": "neutral",
+          "text": "A folded newspaper lay untouched on the kitchen chair."
+        },
+        {
+          "id": "re-n02",
+          "label": "neutral",
+          "text": "The window frame was painted a pale shade of gray."
+        },
+        {
+          "id": "re-n03",
+          "label": "neutral",
+          "text": "A red bookmark fell out when the book was opened."
+        },
+        {
+          "id": "re-n04",
+          "label": "neutral",
+          "text": "The counter held a bowl, a napkin, and a small tray."
+        }
+      ]
+    }
+  ]
+}

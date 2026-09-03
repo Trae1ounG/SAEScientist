@@ -30,6 +30,12 @@ The agent controls its probe texts, analysis, and search strategy. The trusted
 runtime controls the model and SAE, hidden evaluation cases, steering rollouts,
 trace audit, and blinded GPT-4o judgment.
 
+The released dataset is indexed by [`data/benchmark.json`](data/benchmark.json):
+all 20 task descriptions are under `tasks/`, frozen activation and steering
+cases are under `data/`, and the complete 160-run aggregate is available as
+[`results/leaderboard.json`](results/leaderboard.json) with one compact record
+per task under `results/by_task/`. Raw Agent traces and judge transcripts remain private.
+
 ## Results
 
 The current 20-feature experiment uses the same hidden cases and expert

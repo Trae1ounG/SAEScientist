@@ -1,0 +1,315 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_real_estate_listings_021/task.json",
+  "suite": "data/discovery/gemma_l20_round_005_validation.json",
+  "expert": {
+    "feature_id": 27182,
+    "reference": "data/eval/gemma_real_estate_listings_l20_27182_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-cursor-opus48-high-retry-01",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 655.3739690829534,
+      "feature_id": 124726,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.002277289096168605,
+        "auroc_recovery": 0.375,
+        "activation_contrast_recovery": 0.7185211081897831,
+        "expert_pattern_spearman": 0.4448731830489275,
+        "mean_score": 0.3851678950837198
+      },
+      "activation": {
+        "positive_mean_rank": 84695.0,
+        "positive_mean_percentile": 0.3538311296930671,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.6875,
+        "expert_pattern_spearman": 0.4448731830489275
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.7,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.1,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-cursor-sonnet5-high-retry-02",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 483.4108156670118,
+      "feature_id": 124726,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.002277289096168605,
+        "auroc_recovery": 0.375,
+        "activation_contrast_recovery": 0.7185211081897831,
+        "expert_pattern_spearman": 0.4448731830489275,
+        "mean_score": 0.3851678950837198
+      },
+      "activation": {
+        "positive_mean_rank": 84695.0,
+        "positive_mean_percentile": 0.3538311296930671,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.6875,
+        "expert_pattern_spearman": 0.4448731830489275
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.7,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.1,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-cursor-grok46-high-retry-02",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "5b8c14fe54b42f5edda4e631676079f2566f0cf0",
+      "elapsed_seconds": 724.3910921249771,
+      "feature_id": 17219,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.010353272721172879,
+        "auroc_recovery": 0.8333333333333333,
+        "activation_contrast_recovery": 0.8658876860089989,
+        "expert_pattern_spearman": 0.7366444188262455,
+        "mean_score": 0.6115546777224377
+      },
+      "activation": {
+        "positive_mean_rank": 18629.375,
+        "positive_mean_percentile": 0.8578756933265177,
+        "hard_negative_mean_rank": 102820.5,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9166666666666666,
+        "expert_pattern_spearman": 0.7366444188262455
+      },
+      "steering": {
+        "pe_target_relevance": 3.6,
+        "pe_target_success_rate": 1.0,
+        "pe_task_preservation": 1.1,
+        "pe_usable_target_rate": 0.25,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.9,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.42734056897205963
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-cursor-glm52-high-retry-02",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 428.95478150004055,
+      "feature_id": 124726,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.002277289096168605,
+        "auroc_recovery": 0.375,
+        "activation_contrast_recovery": 0.7185211081897831,
+        "expert_pattern_spearman": 0.4448731830489275,
+        "mean_score": 0.3851678950837198
+      },
+      "activation": {
+        "positive_mean_rank": 84695.0,
+        "positive_mean_percentile": 0.3538311296930671,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.6875,
+        "expert_pattern_spearman": 0.4448731830489275
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.7,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.1,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-cursor-gpt55-high-retry-01",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 584.2878446250688,
+      "feature_id": 124726,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.002277289096168605,
+        "auroc_recovery": 0.375,
+        "activation_contrast_recovery": 0.7185211081897831,
+        "expert_pattern_spearman": 0.4448731830489275,
+        "mean_score": 0.3851678950837198
+      },
+      "activation": {
+        "positive_mean_rank": 84695.0,
+        "positive_mean_percentile": 0.3538311296930671,
+        "hard_negative_mean_rank": 131072.0,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.6875,
+        "expert_pattern_spearman": 0.4448731830489275
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.7,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.1,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 120.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-codex-luna-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "7a2b1bb08ba75e609d0bd925e0ca4dc318acc474",
+      "elapsed_seconds": 305.3682920410065,
+      "feature_id": 30338,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.0033841207317420875,
+        "auroc_recovery": 0.53125,
+        "activation_contrast_recovery": 0.3420823180410998,
+        "expert_pattern_spearman": 0.5133464298849049,
+        "mean_score": 0.3475157171644367
+      },
+      "activation": {
+        "positive_mean_rank": 56994.125,
+        "positive_mean_percentile": 0.5651736463443477,
+        "hard_negative_mean_rank": 116579.5,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.765625,
+        "expert_pattern_spearman": 0.5133464298849049
+      },
+      "steering": {
+        "pe_target_relevance": 1.5,
+        "pe_target_success_rate": 0.525,
+        "pe_task_preservation": 0.775,
+        "pe_usable_target_rate": 0.15,
+        "pe_degenerate_rate": 0.35,
+        "target_effect": 0.375,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.12735255871714063
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-codex-sol-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "7a2b1bb08ba75e609d0bd925e0ca4dc318acc474",
+      "elapsed_seconds": 235.6635475420626,
+      "feature_id": 17219,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.010353272721172879,
+        "auroc_recovery": 0.8333333333333333,
+        "activation_contrast_recovery": 0.8658876860089989,
+        "expert_pattern_spearman": 0.7366444188262455,
+        "mean_score": 0.6115546777224377
+      },
+      "activation": {
+        "positive_mean_rank": 18629.375,
+        "positive_mean_percentile": 0.8578756933265177,
+        "hard_negative_mean_rank": 102820.5,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9166666666666666,
+        "expert_pattern_spearman": 0.7366444188262455
+      },
+      "steering": {
+        "pe_target_relevance": 3.6,
+        "pe_target_success_rate": 1.0,
+        "pe_task_preservation": 1.1,
+        "pe_usable_target_rate": 0.25,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.9,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.42734056897205963
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-real-estate-listings-021-offline-cursor-kimik3-high-retry-01",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 524.3648372919997,
+      "feature_id": 84434,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.6665384985847949,
+        "mean_score": 0.9166346246461987
+      },
+      "activation": {
+        "positive_mean_rank": 40.0,
+        "positive_mean_percentile": 0.9997024513431652,
+        "hard_negative_mean_rank": 7445.75,
+        "neutral_mean_rank": 3636.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.6665384985847949
+      },
+      "steering": {
+        "pe_target_relevance": 3.775,
+        "pe_target_success_rate": 1.0,
+        "pe_task_preservation": 1.1,
+        "pe_usable_target_rate": 0.1,
+        "pe_degenerate_rate": 0.525,
+        "target_effect": 0.94375,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.34318686878996785
+      }
+    }
+  ]
+}

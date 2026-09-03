@@ -1,0 +1,321 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_weather_forecasts_022/task.json",
+  "suite": "data/discovery/gemma_l20_round_005_validation.json",
+  "expert": {
+    "feature_id": 44494,
+    "reference": "data/eval/gemma_weather_forecasts_l20_44494_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-cursor-opus48-high-retry-01",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 316.48068066698033,
+      "feature_id": 44494,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 11.75,
+        "positive_mean_percentile": 0.9999179833830519,
+        "hard_negative_mean_rank": 68559.75,
+        "neutral_mean_rank": 103450.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.875,
+        "pe_target_success_rate": 0.625,
+        "pe_task_preservation": 0.8,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.46875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-cursor-sonnet5-high-retry-02",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 618.5801557080122,
+      "feature_id": 85606,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.1598639455782313,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.7865564908763816,
+        "mean_score": 0.7366051091136532
+      },
+      "activation": {
+        "positive_mean_rank": 73.5,
+        "positive_mean_percentile": 0.9994468646763968,
+        "hard_negative_mean_rank": 86464.5,
+        "neutral_mean_rank": 102825.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.7865564908763816
+      },
+      "steering": {
+        "pe_target_relevance": 3.325,
+        "pe_target_success_rate": 0.975,
+        "pe_task_preservation": 0.375,
+        "pe_usable_target_rate": 0.075,
+        "pe_degenerate_rate": 0.675,
+        "target_effect": 0.83125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": 0.44479947527927993
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-cursor-grok46-high-retry-01",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 542.7408356670057,
+      "feature_id": 44494,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 11.75,
+        "positive_mean_percentile": 0.9999179833830519,
+        "hard_negative_mean_rank": 68559.75,
+        "neutral_mean_rank": 103450.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.875,
+        "pe_target_success_rate": 0.625,
+        "pe_task_preservation": 0.8,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.46875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-cursor-glm52-high-retry-01",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 199.43316829099786,
+      "feature_id": 127623,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.029147286821705427,
+        "auroc_recovery": 0.9791666666666667,
+        "activation_contrast_recovery": 0.6340327963939095,
+        "expert_pattern_spearman": 0.7994867678126257,
+        "mean_score": 0.6104583794237268
+      },
+      "activation": {
+        "positive_mean_rank": 403.125,
+        "positive_mean_percentile": 0.9969320063171869,
+        "hard_negative_mean_rank": 99619.75,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9895833333333334,
+        "expert_pattern_spearman": 0.7994867678126257
+      },
+      "steering": {
+        "pe_target_relevance": 0.75,
+        "pe_target_success_rate": 0.225,
+        "pe_task_preservation": 1.175,
+        "pe_usable_target_rate": 0.075,
+        "pe_degenerate_rate": 0.275,
+        "target_effect": 0.1875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.3657702866890493
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-cursor-gpt55-high-retry-01",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 504.0658636249136,
+      "feature_id": 44494,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 11.75,
+        "positive_mean_percentile": 0.9999179833830519,
+        "hard_negative_mean_rank": 68559.75,
+        "neutral_mean_rank": 103450.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.875,
+        "pe_target_success_rate": 0.625,
+        "pe_task_preservation": 0.8,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.46875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-codex-luna-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "7a2b1bb08ba75e609d0bd925e0ca4dc318acc474",
+      "elapsed_seconds": 149.6941397920018,
+      "feature_id": 44494,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 11.75,
+        "positive_mean_percentile": 0.9999179833830519,
+        "hard_negative_mean_rank": 68559.75,
+        "neutral_mean_rank": 103450.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.875,
+        "pe_target_success_rate": 0.625,
+        "pe_task_preservation": 0.8,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.46875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-codex-sol-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "7a2b1bb08ba75e609d0bd925e0ca4dc318acc474",
+      "elapsed_seconds": 141.13768712501042,
+      "feature_id": 44494,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 11.75,
+        "positive_mean_percentile": 0.9999179833830519,
+        "hard_negative_mean_rank": 68559.75,
+        "neutral_mean_rank": 103450.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.875,
+        "pe_target_success_rate": 0.625,
+        "pe_task_preservation": 0.8,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.46875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-weather-forecasts-022-offline-cursor-kimik3-high-retry-01",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 300.37125341698993,
+      "feature_id": 44494,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 11.75,
+        "positive_mean_percentile": 0.9999179833830519,
+        "hard_negative_mean_rank": 68559.75,
+        "neutral_mean_rank": 103450.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 1.875,
+        "pe_target_success_rate": 0.625,
+        "pe_task_preservation": 0.8,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.46875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    }
+  ]
+}

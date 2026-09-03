@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "status": "stable_reference",
+  "feature_case": "data/official_cases/gemma2_9b_it_l9_w131k_feature_33987.json",
+  "suite": "data/discovery/gemma_l9_round_002_validation.json",
+  "concept_id": "german_language",
+  "trial_id": "403761750",
+  "protocol": {
+    "alpha": 60,
+    "positions": "all",
+    "generation": "greedy",
+    "max_new_tokens": 128
+  },
+  "activation": {
+    "pooling": "top-3 token mean",
+    "auroc": 0.9895833333333334,
+    "positive_mean": 11.806134581565857,
+    "hard_negative_mean": 3.5062565729022026,
+    "neutral_mean": 0.2938048541545868,
+    "hard_negative_to_positive_ratio": 0.2969859905185974,
+    "positive_active_rate": 1.0,
+    "hard_negative_active_rate": 1.0,
+    "neutral_active_rate": 0.25,
+    "positive_mean_rank": 47.375,
+    "hard_negative_mean_rank": 3429.5,
+    "neutral_mean_rank": 99804.75
+  },
+  "steering": {
+    "judge_model": "legacy-pe-judge",
+    "repeats": 2,
+    "valid_rows": 40,
+    "repeat_agreement_within_one_point": 1.0,
+    "baseline": {"target_relevance": 0.0, "target_success_rate": 0.0, "task_preservation": 2.65, "degenerate_rate": 0.15},
+    "feature": {"target_relevance": 3.275, "target_success_rate": 1.0, "task_preservation": 2.7, "usable_target_rate": 0.925, "degenerate_rate": 0.05},
+    "random": {"target_relevance": 0.0, "target_success_rate": 0.0, "task_preservation": 2.85, "degenerate_rate": 0.05},
+    "admission_evaluation": {
+      "heldout_prompts": 20,
+      "baseline_target_score": 0,
+      "feature_target_score": 0.81875,
+      "random_target_score": 0,
+      "feature_success_rate": 1.0,
+      "usable_target_rate": 0.925,
+      "random_success_rate": 0.0,
+      "nondegenerate_rate": 0.95,
+      "rerun_agreement": 1.0,
+      "scorer": "blinded PE judge legacy-pe-judge, target_relevance / 4"
+    }
+  },
+  "source": {
+    "publisher": "Google DeepMind",
+    "official_source": true,
+    "repo": "google/gemma-scope-9b-it-res",
+    "resolved_revision": "e86af97a5b6fbbccca28ab654f2fda1b0768f770",
+    "base_model": "google/gemma-2-9b-it",
+    "checkpoint": "layer_9/width_131k/average_l0_121/params.npz",
+    "hookpoint": "resid_post",
+    "layer": 9,
+    "feature_id": 33987,
+    "label": null,
+    "label_source": null,
+    "neuronpedia": null
+  },
+  "admission_tier": "usable"
+}

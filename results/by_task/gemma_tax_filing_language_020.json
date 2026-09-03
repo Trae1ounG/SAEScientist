@@ -1,0 +1,315 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_tax_filing_language_020/task.json",
+  "suite": "data/discovery/gemma_l20_round_005_validation.json",
+  "expert": {
+    "feature_id": 78694,
+    "reference": "data/eval/gemma_tax_filing_language_l20_78694_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-cursor-opus48-high-retry-01",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 449.0798203749582,
+      "feature_id": 45257,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124,
+        "mean_score": 0.9665262119996532
+      },
+      "activation": {
+        "positive_mean_rank": 30.625,
+        "positive_mean_percentile": 0.9997739774625967,
+        "hard_negative_mean_rank": 115200.5,
+        "neutral_mean_rank": 102076.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.35,
+        "pe_task_preservation": 0.5,
+        "pe_usable_target_rate": 0.05,
+        "pe_degenerate_rate": 0.475,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": 0.14431532345418158
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-cursor-sonnet5-high-retry-01",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "db5e112ff92479909fff821fcddb5c45da707e2b",
+      "elapsed_seconds": 605.4405655410374,
+      "feature_id": 45257,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124,
+        "mean_score": 0.9665262119996532
+      },
+      "activation": {
+        "positive_mean_rank": 30.625,
+        "positive_mean_percentile": 0.9997739774625967,
+        "hard_negative_mean_rank": 115200.5,
+        "neutral_mean_rank": 102076.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.35,
+        "pe_task_preservation": 0.5,
+        "pe_usable_target_rate": 0.05,
+        "pe_degenerate_rate": 0.475,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": 0.14431532345418158
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-cursor-grok46-high-retry-01",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "db5e112ff92479909fff821fcddb5c45da707e2b",
+      "elapsed_seconds": 901.8714673341019,
+      "feature_id": 53018,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.9938039842496182,
+        "expert_pattern_spearman": 0.8801110360192105,
+        "mean_score": 0.9684787550672072
+      },
+      "activation": {
+        "positive_mean_rank": 113.875,
+        "positive_mean_percentile": 0.9991388255220452,
+        "hard_negative_mean_rank": 27270.125,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8801110360192105
+      },
+      "steering": {
+        "pe_target_relevance": 1.525,
+        "pe_target_success_rate": 0.6,
+        "pe_task_preservation": 0.525,
+        "pe_usable_target_rate": 0.05,
+        "pe_degenerate_rate": 0.4,
+        "target_effect": 0.38125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.38990813035352545
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-cursor-glm52-high-retry-02",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 404.4117125410121,
+      "feature_id": 53018,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 0.9938039842496182,
+        "expert_pattern_spearman": 0.8801110360192105,
+        "mean_score": 0.9684787550672072
+      },
+      "activation": {
+        "positive_mean_rank": 113.875,
+        "positive_mean_percentile": 0.9991388255220452,
+        "hard_negative_mean_rank": 27270.125,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8801110360192105
+      },
+      "steering": {
+        "pe_target_relevance": 1.525,
+        "pe_target_success_rate": 0.6,
+        "pe_task_preservation": 0.525,
+        "pe_usable_target_rate": 0.05,
+        "pe_degenerate_rate": 0.4,
+        "target_effect": 0.38125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.38990813035352545
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-cursor-gpt55-high-retry-03",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 475.8022730409866,
+      "feature_id": 45257,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124,
+        "mean_score": 0.9665262119996532
+      },
+      "activation": {
+        "positive_mean_rank": 30.625,
+        "positive_mean_percentile": 0.9997739774625967,
+        "hard_negative_mean_rank": 115200.5,
+        "neutral_mean_rank": 102076.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.35,
+        "pe_task_preservation": 0.5,
+        "pe_usable_target_rate": 0.05,
+        "pe_degenerate_rate": 0.475,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": 0.14431532345418158
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-codex-luna-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "1bba51624cac0406a6b214fe99f1db01c8ba223f",
+      "elapsed_seconds": 341.4630756250117,
+      "feature_id": 13805,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.03295178633368019,
+        "auroc_recovery": 0.9583333333333333,
+        "activation_contrast_recovery": 0.56552760554795,
+        "expert_pattern_spearman": 0.7567797385736306,
+        "mean_score": 0.5783981159471485
+      },
+      "activation": {
+        "positive_mean_rank": 4684.875,
+        "positive_mean_percentile": 0.9642645970504535,
+        "hard_negative_mean_rank": 115690.5,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.9791666666666666,
+        "expert_pattern_spearman": 0.7567797385736306
+      },
+      "steering": {
+        "pe_target_relevance": 0.525,
+        "pe_target_success_rate": 0.2,
+        "pe_task_preservation": 0.175,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.575,
+        "target_effect": 0.13125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.16879133718111125
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-codex-sol-high-retry-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "1bba51624cac0406a6b214fe99f1db01c8ba223f",
+      "elapsed_seconds": 329.1803890829906,
+      "feature_id": 37636,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.004685164530838625,
+        "auroc_recovery": 0.6875,
+        "activation_contrast_recovery": 0.514519969269155,
+        "expert_pattern_spearman": 0.6691973643342104,
+        "mean_score": 0.468975624533551
+      },
+      "activation": {
+        "positive_mean_rank": 32949.75,
+        "positive_mean_percentile": 0.7486190690541767,
+        "hard_negative_mean_rank": 87317.5,
+        "neutral_mean_rank": 131072.0,
+        "auroc": 0.84375,
+        "expert_pattern_spearman": 0.6691973643342104
+      },
+      "steering": {
+        "pe_target_relevance": 1.475,
+        "pe_target_success_rate": 0.575,
+        "pe_task_preservation": 0.625,
+        "pe_usable_target_rate": 0.125,
+        "pe_degenerate_rate": 0.425,
+        "target_effect": 0.36875,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 240.0,
+        "pattern_correlation_to_expert": 0.28899438056560756
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-tax-filing-language-020-offline-cursor-kimik3-high-retry-02",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "7fafaf133d6d5f48a4aa745c293122c33ebc33e9",
+      "elapsed_seconds": 463.14314100006595,
+      "feature_id": 45257,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124,
+        "mean_score": 0.9665262119996532
+      },
+      "activation": {
+        "positive_mean_rank": 30.625,
+        "positive_mean_percentile": 0.9997739774625967,
+        "hard_negative_mean_rank": 115200.5,
+        "neutral_mean_rank": 102076.5,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 0.8661048479986124
+      },
+      "steering": {
+        "pe_target_relevance": 1.125,
+        "pe_target_success_rate": 0.35,
+        "pe_task_preservation": 0.5,
+        "pe_usable_target_rate": 0.05,
+        "pe_degenerate_rate": 0.475,
+        "target_effect": 0.28125,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 300.0,
+        "pattern_correlation_to_expert": 0.14431532345418158
+      }
+    }
+  ]
+}

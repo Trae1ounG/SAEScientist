@@ -1,0 +1,317 @@
+{
+  "schema": 2,
+  "task": "tasks/gemma_portuguese_007/task.json",
+  "suite": "data/discovery/gemma_l9_round_003_validation.json",
+  "expert": {
+    "feature_id": 41424,
+    "reference": "data/eval/gemma_portuguese_41424_reference.json"
+  },
+  "agents": [
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-cursor-opus48-high-01",
+      "harness": "cursor",
+      "model": "claude-opus-4-8-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "5fb9051f0b092a67fe9164429e67b9ff18d298d9",
+      "elapsed_seconds": 331.48100962501485,
+      "feature_id": 111414,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.0001314120221783059,
+        "auroc_recovery": 0.04166666666666674,
+        "activation_contrast_recovery": 0.0,
+        "expert_pattern_spearman": 0.17989362029059452,
+        "mean_score": 0.055422924744859894
+      },
+      "activation": {
+        "positive_mean_rank": 98925.5,
+        "positive_mean_percentile": 0.2452602024856757,
+        "hard_negative_mean_rank": 114871.75,
+        "neutral_mean_rank": 98494.0,
+        "auroc": 0.5208333333333334,
+        "expert_pattern_spearman": 0.17989362029059452
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.675,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.075,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 10.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-cursor-sonnet5-high-01",
+      "harness": "cursor",
+      "model": "claude-sonnet-5-thinking-high",
+      "reasoning_effort": null,
+      "source_commit": "5fb9051f0b092a67fe9164429e67b9ff18d298d9",
+      "elapsed_seconds": 652.7200472919503,
+      "feature_id": 41424,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 13.0,
+        "positive_mean_percentile": 0.9999084465671277,
+        "hard_negative_mean_rank": 34530.375,
+        "neutral_mean_rank": 99556.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 3.4,
+        "pe_target_success_rate": 1.0,
+        "pe_task_preservation": 3.15,
+        "pe_usable_target_rate": 0.8,
+        "pe_degenerate_rate": 0.15,
+        "target_effect": 0.85,
+        "causal_stable": true,
+        "usable_steering": false,
+        "selected_alpha": 160.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-cursor-grok46-high-retry-02",
+      "harness": "cursor",
+      "model": "cursor-grok-4.6-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 840.8434004998999,
+      "feature_id": 114418,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.00038545214648664074,
+        "auroc_recovery": 0.41666666666666674,
+        "activation_contrast_recovery": 0.26959641869276924,
+        "expert_pattern_spearman": 0.2785401033744949,
+        "mean_score": 0.2412971602201044
+      },
+      "activation": {
+        "positive_mean_rank": 33726.625,
+        "positive_mean_percentile": 0.7426919379572903,
+        "hard_negative_mean_rank": 38320.625,
+        "neutral_mean_rank": 4931.0,
+        "auroc": 0.7083333333333334,
+        "expert_pattern_spearman": 0.2785401033744949
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.85,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-cursor-glm52-high-01",
+      "harness": "cursor",
+      "model": "glm-5.2-high",
+      "reasoning_effort": null,
+      "source_commit": "a37b417afaad285d029b2408a47beeb3e189367e",
+      "elapsed_seconds": 960.432238999987,
+      "feature_id": 41424,
+      "exact_match": true,
+      "gt_normalized": {
+        "positive_rank_recovery": 1.0,
+        "auroc_recovery": 1.0,
+        "activation_contrast_recovery": 1.0,
+        "expert_pattern_spearman": 1.0,
+        "mean_score": 1.0
+      },
+      "activation": {
+        "positive_mean_rank": 13.0,
+        "positive_mean_percentile": 0.9999084465671277,
+        "hard_negative_mean_rank": 34530.375,
+        "neutral_mean_rank": 99556.25,
+        "auroc": 1.0,
+        "expert_pattern_spearman": 1.0
+      },
+      "steering": {
+        "pe_target_relevance": 3.4,
+        "pe_target_success_rate": 1.0,
+        "pe_task_preservation": 3.15,
+        "pe_usable_target_rate": 0.8,
+        "pe_degenerate_rate": 0.15,
+        "target_effect": 0.85,
+        "causal_stable": true,
+        "usable_steering": false,
+        "selected_alpha": 160.0,
+        "pattern_correlation_to_expert": 1.0,
+        "source": "expert feature freshly scored by the selected judge"
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-cursor-gpt55-high-retry-02",
+      "harness": "cursor",
+      "model": "gpt-5.5-high",
+      "reasoning_effort": null,
+      "source_commit": "aaf90a52e78912bcccee9ed83a18f6432f6fbfc4",
+      "elapsed_seconds": 762.9938133750111,
+      "feature_id": 68458,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.0007442339757122104,
+        "auroc_recovery": 0.45833333333333326,
+        "activation_contrast_recovery": 0.047713004074859185,
+        "expert_pattern_spearman": 0.3114503816793893,
+        "mean_score": 0.2045602382658235
+      },
+      "activation": {
+        "positive_mean_rank": 17467.625,
+        "positive_mean_percentile": 0.8667392100464634,
+        "hard_negative_mean_rank": 67104.5,
+        "neutral_mean_rank": 1842.0,
+        "auroc": 0.7291666666666666,
+        "expert_pattern_spearman": 0.3114503816793893
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.55,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.425,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-codex-luna-high-01",
+      "harness": "codex",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "source_commit": "5fb9051f0b092a67fe9164429e67b9ff18d298d9",
+      "elapsed_seconds": 312.5552730829222,
+      "feature_id": 68458,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.0007442339757122104,
+        "auroc_recovery": 0.45833333333333326,
+        "activation_contrast_recovery": 0.047713004074859185,
+        "expert_pattern_spearman": 0.3114503816793893,
+        "mean_score": 0.2045602382658235
+      },
+      "activation": {
+        "positive_mean_rank": 17467.625,
+        "positive_mean_percentile": 0.8667392100464634,
+        "hard_negative_mean_rank": 67104.5,
+        "neutral_mean_rank": 1842.0,
+        "auroc": 0.7291666666666666,
+        "expert_pattern_spearman": 0.3114503816793893
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.55,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.425,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-codex-sol-high-01",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "source_commit": "075dbe0c813a865702e44eb7bd62a650ad92fadb",
+      "elapsed_seconds": 295.740406124969,
+      "feature_id": 114418,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.00038545214648664074,
+        "auroc_recovery": 0.41666666666666674,
+        "activation_contrast_recovery": 0.26959641869276924,
+        "expert_pattern_spearman": 0.2785401033744949,
+        "mean_score": 0.2412971602201044
+      },
+      "activation": {
+        "positive_mean_rank": 33726.625,
+        "positive_mean_percentile": 0.7426919379572903,
+        "hard_negative_mean_rank": 38320.625,
+        "neutral_mean_rank": 4931.0,
+        "auroc": 0.7083333333333334,
+        "expert_pattern_spearman": 0.2785401033744949
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.85,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.325,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    },
+    {
+      "status": "complete",
+      "run_id": "gemma-portuguese-007-offline-cursor-kimik3-high-01",
+      "harness": "cursor",
+      "model": "kimi-k3-high",
+      "reasoning_effort": null,
+      "source_commit": "a37b417afaad285d029b2408a47beeb3e189367e",
+      "elapsed_seconds": 604.7173488750122,
+      "feature_id": 68458,
+      "exact_match": false,
+      "gt_normalized": {
+        "positive_rank_recovery": 0.0007442339757122104,
+        "auroc_recovery": 0.45833333333333326,
+        "activation_contrast_recovery": 0.047713004074859185,
+        "expert_pattern_spearman": 0.3114503816793893,
+        "mean_score": 0.2045602382658235
+      },
+      "activation": {
+        "positive_mean_rank": 17467.625,
+        "positive_mean_percentile": 0.8667392100464634,
+        "hard_negative_mean_rank": 67104.5,
+        "neutral_mean_rank": 1842.0,
+        "auroc": 0.7291666666666666,
+        "expert_pattern_spearman": 0.3114503816793893
+      },
+      "steering": {
+        "pe_target_relevance": 0.0,
+        "pe_target_success_rate": 0.0,
+        "pe_task_preservation": 0.55,
+        "pe_usable_target_rate": 0.0,
+        "pe_degenerate_rate": 0.425,
+        "target_effect": 0.0,
+        "causal_stable": false,
+        "usable_steering": false,
+        "selected_alpha": 80.0,
+        "pattern_correlation_to_expert": null
+      }
+    }
+  ]
+}
