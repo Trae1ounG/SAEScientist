@@ -1,9 +1,7 @@
-import { CSSProperties, ReactNode, useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import leaderboard from "../results/leaderboard.json";
 
 type Language = "en" | "zh";
-type Metric = "activation" | "exact" | "causal" | "usable";
-type MatrixMetric = "activation" | "steering" | "exact";
 type PointFilter = "all" | "exact" | "alternative";
 
 type Configuration = {
@@ -46,14 +44,16 @@ function ResearchFigure({
   title,
   caption,
   children,
+  wide = false,
 }: {
   number: number;
   title: string;
   caption: string;
   children: ReactNode;
+  wide?: boolean;
 }) {
   return (
-    <figure className="research-figure">
+    <figure className={`research-figure${wide ? " wide" : ""}`}>
       <div className="figure-frame">{children}</div>
       <figcaption><b>Figure {number}.</b> <strong>{title}</strong> {caption}</figcaption>
     </figure>
@@ -138,13 +138,6 @@ function spearman(rows: Run[]): number {
   );
 }
 
-function metricValue(row: Configuration, metric: Metric): number {
-  if (metric === "activation") return row.macro_gt_normalized_activation;
-  if (metric === "exact") return row.exact_match_rate;
-  if (metric === "causal") return row.causal_steering_rate;
-  return row.usable_steering_rate;
-}
-
 function percentage(value: number): string {
   return `${Math.round(value * 100)}%`;
 }
@@ -216,32 +209,53 @@ function FeatureAtlas({ language }: { language: Language }) {
       concept: tx("猫相关文本", "Cat-related text"),
       layer: "Gemma 2 9B · layer 9",
       expert: 62610,
-      candidate: 62610,
-      result: tx("8/8 Agent 精确命中", "8/8 agents found the exact ID"),
-      note: tx("语义边界清晰，positive 与动物/品牌 hard negatives 容易分开。", "A crisp boundary separates animal positives from brand and metaphor hard negatives."),
+      agent: tx("8/8 exact", "8/8 exact"),
+      activation: [41.93, 5.92, 0, 0.996],
+      steering: [0.594, 0.60],
+      note: tx("正例覆盖家猫身份与行为；困难负例包括单独出现的 kitty、名字 Kitty 与比喻性 purr。Expert feature 的正例平均 activation 为 41.93，困难负例为 5.92，中性文本为 0；8 个 Agent 均恢复了同一 ID。", "Positive cases cover domestic-cat identity and behavior. Hard negatives include isolated uses of kitty, the name Kitty, and metaphorical purr. The expert averages 41.93 activation on positives, 5.92 on hard negatives, and zero on neutral text; all eight agents recovered the same ID."),
     },
     {
       concept: tx("法语文本", "French-language text"),
       layer: "Gemma 2 9B · layer 9",
       expert: 105738,
-      candidate: 108861,
-      result: tx("0/8 精确；出现多个强替代项", "0/8 exact; several strong alternatives"),
-      note: tx("108861、43576、78422 与 130037 都能表现出部分法语语义，但不是同一个 SAE 方向。", "108861, 43576, 78422, and 130037 capture parts of French semantics without reproducing the expert direction."),
+      agent: tx("0/8 exact · 4 个替代 ID", "0/8 exact · 4 alternative IDs"),
+      activation: [11.39, 2.66, 0, 1.0],
+      steering: [0.925, 0.90],
+      note: tx("正例是在日常、科学、程序和叙事主题中的连贯法语；对照集包含英语中的法国话题、孤立法语词、西班牙语与意大利语。Expert 的 activation 分离清晰。Agent 提交了 108861、43576、78422 与 130037 四个替代 ID；这些替代项在隐藏 steering 上均为 0。", "Positive cases contain coherent French across everyday, scientific, procedural, and narrative domains. Controls include English discussion of France, isolated French words, Spanish, and Italian. The expert separates the activation sets cleanly. Agents submitted four alternatives—108861, 43576, 78422, and 130037—and all produced zero hidden steering effect."),
     },
     {
       concept: tx("报税语言", "Tax-filing language"),
       layer: "Gemma 2 9B · layer 9",
       expert: 18713,
-      candidate: 64827,
-      result: tx("8/8 选择同一替代项", "8/8 agents chose the same alternative"),
-      note: tx("替代项的 GT-normalized activation 约为 0.934，steering effect 为 0.613：看起来很像，也确实有因果作用，但方向仍不等价。", "The alternative reaches about 0.934 GT-normalized activation and 0.613 steering effect: semantically close and causal, yet still directionally distinct."),
+      agent: tx("8/8 都提交 64827", "8/8 submitted 64827"),
+      activation: [19.07, 1.02, 0.47, 0.990],
+      steering: [0.644, 0.025],
+      note: tx("正例包含报税指令、应税收入、抵扣、税收抵免与表格；困难负例仅包含一般性的 tax 提及。8 个 Agent 均提交了 64827，Expert ID 为 18713。替代项达到 0.934 GT-normalized activation 和 0.613 steering effect，但未通过 usable gate，构成一致的替代方向。", "Positive cases contain filing instructions, taxable income, deductions, credits, and forms; hard negatives contain only general tax references. All eight agents submitted 64827, while the expert ID is 18713. The alternative reaches 0.934 GT-normalized activation and 0.613 steering effect, but does not pass the usable gate, forming a consistent alternative direction."),
+    },
+    {
+      concept: tx("临床症状报告", "Clinical symptom reports"),
+      layer: "Gemma 2 9B · layer 20",
+      expert: 3927,
+      agent: tx("0/8 exact · 5/8 选 113440", "0/8 exact · 5/8 chose 113440"),
+      activation: [21.79, 1.74, 0, 1.0],
+      steering: [0.894, 0.0],
+      note: tx("正例描述患者症状、起病时间、严重程度与病史；一般医学词汇和医院运营文本构成对照。Expert 的 activation AUROC 为 1.0，target induction 较高，usable rate 为 0，表明干预破坏了原任务。Agent 最常提交 113440；另一个候选 53882 达到 0.916 GT-normalized activation 与 0.769 steering effect。", "Positive cases describe patient symptoms, onset, severity, and clinical history; generic medical vocabulary and hospital operations form the controls. The expert has activation AUROC 1.0 and strong target induction, with a zero usable rate because the intervention disrupts the requested task. Agents most often submitted 113440; candidate 53882 reached 0.916 GT-normalized activation and 0.769 steering effect."),
+    },
+    {
+      concept: tx("天气预报", "Weather forecasts"),
+      layer: "Gemma 2 9B · layer 20",
+      expert: 44494,
+      agent: tx("6/8 exact", "6/8 exact"),
+      activation: [39.17, 2.85, 0.44, 1.0],
+      steering: [0.644, 0.175],
+      note: tx("描述强调未来的气温、降水、风、云量与时间，排除气候分析、过去风暴损害或只谈雷达。六个 Agent 找到 Expert 44494；两个替代项是 85606 与 127623，其中 85606 的 steering effect 甚至达到 0.988，说明更强 steering 并不自动意味着与 Expert 是同一 feature。", "The description emphasizes predicted temperature, precipitation, wind, clouds, and timing, excluding climate analysis, past storm damage, or radar without prediction. Six agents recovered expert 44494; the alternatives were 85606 and 127623. Feature 85606 even reached 0.988 steering effect, showing that stronger steering does not automatically imply the same feature."),
     },
   ];
   return (
     <div className="feature-atlas">{cases.map((item, index) => <div className="feature-case" key={item.expert}>
-      <span className="case-number">0{index + 1}</span>
-      <div className="feature-case-copy"><span className="eyebrow">{item.layer}</span><h3>{item.concept}</h3><p>{item.note}</p><strong>{item.result}</strong></div>
-      <div className="id-comparison"><div><span>Expert</span><code>{item.expert}</code></div><i aria-hidden="true">{item.expert === item.candidate ? "=" : "≠"}</i><div><span>Agent</span><code>{item.candidate}</code></div></div>
+      <span className="case-number">CASE {index + 1}</span>
+      <div className="feature-case-copy"><h3>{item.concept} <code>#{item.expert}</code></h3><p className="case-layer">{item.layer} · {item.agent}</p><p>{item.note}</p></div>
+      <dl className="case-metrics"><div><dt>{tx("正例均值", "Positive mean")}</dt><dd>{item.activation[0].toFixed(2)}</dd></div><div><dt>{tx("困难负例", "Hard negative")}</dt><dd>{item.activation[1].toFixed(2)}</dd></div><div><dt>{tx("中性", "Neutral")}</dt><dd>{item.activation[2].toFixed(2)}</dd></div><div><dt>AUROC</dt><dd>{item.activation[3].toFixed(3)}</dd></div><div><dt>{tx("Expert steering", "Expert steering")}</dt><dd>{item.steering[0].toFixed(3)}</dd></div><div><dt>Usable</dt><dd>{percentage(item.steering[1])}</dd></div></dl>
     </div>)}
     </div>
   );
@@ -254,48 +268,6 @@ function FormalLeaderboard({ language }: { language: Language }) {
     <div className="table-scroll"><table className="formal-table"><thead><tr><th>#</th><th>{tx("模型", "Model")}</th><th>{tx("GT 激活", "GT activation")}</th><th>Exact</th><th>Causal</th><th>Usable</th><th>{tx("中位耗时", "Median time")}</th></tr></thead><tbody>{ordered.map((row, index) => (
       <tr key={row.configuration}><td>{index + 1}</td><td><strong>{displayName(row)}</strong><small>{row.harness}</small></td><td>{row.macro_gt_normalized_activation.toFixed(3)}</td><td>{percentage(row.exact_match_rate)}</td><td>{percentage(row.causal_steering_rate)}</td><td>{percentage(row.usable_steering_rate)}</td><td>{(row.median_elapsed_seconds / 60).toFixed(1)} min</td></tr>
     ))}</tbody></table></div>
-  );
-}
-
-function Leaderboard({ language }: { language: Language }) {
-  const [metric, setMetric] = useState<Metric>("activation");
-  const tx = (zh: string, en: string) => language === "zh" ? zh : en;
-  const ordered = [...configurations].sort((a, b) => metricValue(b, metric) - metricValue(a, metric));
-  const metricLabels: Record<Metric, string> = {
-    activation: tx("GT 激活", "GT activation"),
-    exact: tx("精确命中", "Exact match"),
-    causal: tx("因果通过", "Causal pass"),
-    usable: tx("可用通过", "Usable pass"),
-  };
-  return (
-    <div className="interactive-panel">
-      <div className="panel-head">
-        <div>
-          <span className="eyebrow">FIGURE EXPLORER</span>
-          <h3>{tx("按不同指标重新查看模型", "Re-rank models by each metric")}</h3>
-          <p>{tx("正式主榜固定按 GT activation 排序；这里可以观察不同指标怎样改变相对位置。", "The official ordering stays fixed to GT activation; this view reveals how other criteria change the order.")}</p>
-        </div>
-        <MetricTabs
-          value={metric}
-          onChange={setMetric}
-          label={tx("榜单指标", "Leaderboard metric")}
-          options={(["activation", "exact", "causal", "usable"] as Metric[]).map((key) => ({ key, label: metricLabels[key] }))}
-        />
-      </div>
-      <div className="ranking-list">
-        {ordered.map((row, index) => {
-          const value = metricValue(row, metric);
-          return (
-            <div className="ranking-row" key={row.configuration}>
-              <span className="rank-number">{String(index + 1).padStart(2, "0")}</span>
-              <div className="model-label"><strong>{displayName(row)}</strong><small>{row.harness} · {row.completed_tasks}/{row.benchmark_tasks}</small></div>
-              <div className="rank-track" aria-hidden="true"><i style={{ width: `${Math.max(value * 100, 1)}%` }} /></div>
-              <strong className="rank-value">{metric === "activation" ? value.toFixed(3) : percentage(value)}</strong>
-            </div>
-          );
-        })}
-      </div>
-    </div>
   );
 }
 
@@ -315,7 +287,7 @@ function ScatterExplorer({ language }: { language: Language }) {
       <div className="panel-head">
         <div>
           <span className="eyebrow">FIGURE EXPLORER</span>
-          <h3>{tx("自然激活相似，不等于 steering 相同", "Activation similarity is not steering equivalence")}</h3>
+          <h3>{tx("自然激活与 steering 效果的关系", "Association between natural activation and steering")}</h3>
           <p>{tx("每个点是一条 Agent × 题目运行。点击点查看它的激活、steering 和 PE 结果。", "Each point is one agent-by-task run. Select a point to inspect activation, steering, and PE outcomes.")}</p>
         </div>
         <MetricTabs
@@ -379,55 +351,6 @@ function ScatterExplorer({ language }: { language: Language }) {
   );
 }
 
-function quantileClass(value: number): string {
-  return `q${Math.max(0, Math.min(5, Math.floor(value * 5.999)))}`;
-}
-
-function TaskMatrix({ language }: { language: Language }) {
-  const [metric, setMetric] = useState<MatrixMetric>("activation");
-  const tx = (zh: string, en: string) => language === "zh" ? zh : en;
-  const orderedConfigs = [...configurations].sort((a, b) => b.macro_gt_normalized_activation - a.macro_gt_normalized_activation);
-  const tasks = [...new Set(runs.map((run) => run.task_id))].sort();
-  const lookup = new Map(runs.map((run) => [`${run.configuration}:${run.task_id}`, run]));
-  const value = (run: Run) => metric === "activation" ? run.gt_normalized_activation : metric === "steering" ? run.steering_effect : Number(run.exact_match);
-  return (
-    <div className="interactive-panel matrix-panel">
-      <div className="panel-head">
-        <div>
-          <span className="eyebrow">FIGURE EXPLORER</span>
-          <h3>{tx("20 道题并不是同一种难度", "The 20 tasks are not equally difficult")}</h3>
-          <p>{tx("行是 Agent，列是 task；颜色越深表示该指标越高。悬停方格查看精确数值。", "Rows are agents and columns are tasks; darker cells indicate higher values. Hover or focus a cell for the exact score.")}</p>
-        </div>
-        <MetricTabs
-          value={metric}
-          onChange={setMetric}
-          label={tx("矩阵指标", "Matrix metric")}
-          options={[
-            { key: "activation", label: tx("GT 激活", "GT activation") },
-            { key: "steering", label: "Steering" },
-            { key: "exact", label: "Exact" },
-          ]}
-        />
-      </div>
-      <div className="matrix-scroll">
-        <div className="task-matrix" style={{ "--task-count": tasks.length } as CSSProperties}>
-          <div className="matrix-corner" />
-          {tasks.map((task, index) => <div className="matrix-task" key={task}><span>{String(index + 1).padStart(2, "0")}</span><small>{humanize(task)}</small></div>)}
-          {orderedConfigs.flatMap((config) => [
-            <div className="matrix-model" key={`${config.configuration}-label`}><strong>{displayName(config)}</strong><small>{config.harness}</small></div>,
-            ...tasks.map((task) => {
-              const run = lookup.get(`${config.configuration}:${task}`)!;
-              const score = value(run);
-              return <button className={`matrix-cell ${quantileClass(score)}`} key={`${config.configuration}-${task}`} aria-label={`${displayName(config)}, ${humanize(task)}, ${score.toFixed(3)}`}><span>{metric === "exact" ? (run.exact_match ? "✓" : "·") : score.toFixed(2)}</span><small>{humanize(run.target)}</small></button>;
-            }),
-          ])}
-        </div>
-      </div>
-      <div className="matrix-legend"><span>{tx("低", "Low")}</span>{[0, 1, 2, 3, 4, 5].map((level) => <i className={`q${level}`} key={level} />)}<span>{tx("高", "High")}</span></div>
-    </div>
-  );
-}
-
 function Home() {
   const [language, setLanguage] = useState<Language>("en");
   const tx = (zh: string, en: string) => language === "zh" ? zh : en;
@@ -455,55 +378,77 @@ function Home() {
 
       <article id="top" className="research-article">
         <section className="article-masthead">
-          <span className="issue">SAE-BENCH · RESEARCH BLOG · V2</span>
           <h1>{tx("SAE-Bench：评估 Agent 的自主 SAE 可解释性研究能力", "SAE-Bench: Evaluating agents as autonomous SAE researchers")}</h1>
           <p className="dek">{tx("我们评估 Agent 能否像研究者一样提出对照、设计实验、搜索并解释 SAE feature，再用 activation 与 steering 证据验证自己的结论。", "We evaluate whether an agent can work like a researcher: form contrasts, design experiments, discover and interpret an SAE feature, then validate its claim with activation and steering evidence.")}</p>
-          <div className="article-byline"><span>{tx("SAE-Bench 团队", "SAE-Bench team")}</span><span>September 2026</span><span>{summary.tasks} tasks · {runs.length} runs</span></div>
-          <div className="hero-links"><a className="primary-link" href="#idea">{tx("阅读文章", "Read the article")}</a><a href="https://github.com/Trae1ounG/SAE-Bench">GitHub ↗</a><a href="https://huggingface.co/google/gemma-scope-9b-it-res">Gemma Scope ↗</a></div>
+          <div className="article-authors"><p className="author-names">SAE-Bench Research Team</p></div>
+          <p className="article-meta">{tx("2026 年 9 月", "September 2026")} <span>·</span> {tx("预计阅读时间：18 分钟", "18 min read")} <span>·</span> {summary.tasks} tasks <span>·</span> {runs.length} runs</p>
+          <p className="article-links"><a href="https://github.com/Trae1ounG/SAE-Bench">Code &amp; data</a> <span>·</span> <a href="https://huggingface.co/google/gemma-scope-9b-it-res">Official SAE</a></p>
         </section>
 
         <section className="abstract-block">
-          <span className="eyebrow">{tx("摘要", "Abstract")}</span>
+          <h2>Abstract</h2>
           <p>{tx("稀疏自编码器把模型内部状态分解成大量 feature，但从语义假设走到可复现的 Feature ID，仍是一项需要构造数据、运行实验、解释证据并排除替代解释的科学研究工作。SAE-Bench 测试 Agent 能否自主完成这条研究链。在 20 个官方 Gemma Scope expert features 上，Agent 经常能找到语义接近的方向，但 exact recovery 与等价 steering 明显更难。", "Sparse autoencoders decompose model states into a large feature dictionary, but moving from a semantic hypothesis to a reproducible feature ID remains a scientific workflow: construct data, run experiments, interpret evidence, and rule out alternatives. SAE-Bench tests whether an agent can execute that research loop autonomously. Across 20 expert features from the official Gemma Scope release, semantic neighbors are common; exact recovery and equivalent steering are much harder.")}</p>
         </section>
 
-        <aside className="table-of-contents"><span>{tx("目录", "Contents")}</span><ol><li><a href="#idea">{tx("从描述到可干预方向", "From description to intervention")}</a></li><li><a href="#features">{tx("Feature ID 到底代表什么", "What a feature ID represents")}</a></li><li><a href="#results">{tx("主榜结果", "Main results")}</a></li><li><a href="#analysis">{tx("语义—因果鸿沟", "The semantic–causal gap")}</a></li><li><a href="#method">{tx("方法与边界", "Methods and limits")}</a></li></ol></aside>
+        <aside className="table-of-contents"><details open><summary>{tx("目录", "Table of Contents")}</summary><ol><li><a href="#idea">{tx("我们究竟测什么能力", "What capability are we measuring?")}</a></li><li><a href="#features">{tx("Expert feature 与案例", "Expert features and cases")}</a></li><li><a href="#results">{tx("主要实验结果", "Main experimental results")}</a></li><li><a href="#analysis">{tx("语义—因果鸿沟", "The semantic–causal gap")}</a></li><li><a href="#method">{tx("有效性边界与局限", "Validity and limitations")}</a></li><li><a href="#conclusion">{tx("结论", "Conclusion")}</a></li></ol></details></aside>
+
+        <aside className="claims-at-glance"><h2>{tx("一分钟了解", "In one minute")}</h2><div><p><b>{tx("任务", "Task")}</b><span>{tx("Agent 根据英文语义目标自主构造 probes，并从 131,072 个 SAE 方向中提交一个 Feature ID。", "From an English semantic target, an agent authors probes and submits one feature ID from 131,072 SAE directions.")}</span></p><p><b>{tx("证据", "Evidence")}</b><span>{tx("20 个官方 Gemma Scope expert features、8 个 Agent 配置、160 条完成且通过 trace audit 的运行。", "20 official Gemma Scope expert features, eight agent configurations, and 160 completed trace-audited runs.")}</span></p><p><b>{tx("结果", "Result")}</b><span>{tx("语义近邻在候选中普遍存在。Exact recovery、自然激活与因果 steering 的结果需要分别报告。", "Semantic neighbors are common among candidate features. Exact recovery, natural activation, and causal steering require separate measurement.")}</span></p></div></aside>
 
         <section id="idea" className="article-section">
-          <div className="section-kicker">01 · {tx("核心想法", "The core idea")}</div>
-          <div className="article-copy"><h2>{tx("我们测的不是检索，而是一条自主研究链。", "We evaluate a research loop, not retrieval.")}</h2><p>{tx("SAE 中的 feature ID 只是某层字典里的列号，没有天然标签。Agent 从英文研究目标出发，自主写 positive、hard-negative 与 neutral probes，调用受限实验接口，观察激活并反复修正假设，最终提交一个 ID 和解释。", "A feature ID is only a column index in one layer's SAE dictionary; it has no intrinsic label. Starting from an English research target, the agent authors positive, hard-negative, and neutral probes, queries a restricted experiment interface, revises its hypothesis from activations, and finally submits one ID with an interpretation.")}</p><p>{tx("Benchmark 随后在隐藏评测上复现实验，并把候选 decoder direction 写回残差流，与 expert 和 matched-random 对照。评分因此覆盖研究过程的三个层次：定位是否准确、解释是否吻合、干预是否沿相同方向改变行为。", "The benchmark then reproduces the experiment on hidden cases and writes the candidate decoder direction back into the residual stream against expert and matched-random controls. Scoring therefore covers three levels of research evidence: localization, interpretation, and causal intervention.")}</p></div>
-          <ResearchFigure number={1} title={tx("SAE-Bench 的自主研究流程。", "The SAE-Bench autonomous research loop.")} caption={tx("公开任务只提供研究目标和受限 probe；Expert ID、隐藏 case 与 steering 结果在提交后才用于评估。", "The task exposes only a research target and a restricted probe; expert IDs, hidden cases, and steering outcomes are used only after submission.")}><img className="mechanism-diagram" src={`${import.meta.env.BASE_URL}figures/feature-discovery-mechanism/diagram.svg`} alt={tx("SAE-Bench 自主研究流程图", "SAE-Bench autonomous research workflow")} /></ResearchFigure>
-          <ResearchFigure number={2} title={tx("Feature 62610 的完整画像。", "A complete portrait of feature 62610.")} caption={tx("上半部分展示 feature 的语义与 32 条冻结 case 上的 activation 深度；下半部分展示同一 instruction 在 steering 前后的真实输出差异。", "The upper half shows the feature's interpretation and activation depth over 32 frozen cases; the lower half shows real before/after outputs for the same instruction.")}><FeaturePortrait language={language} /></ResearchFigure>
+          <div className="article-copy">
+            <h2>{tx("1. Benchmark 定义与评测协议", "1. Benchmark definition and evaluation protocol")}</h2>
+            <p>{tx("SAE 中的 feature ID 只是某层字典里的列号，没有天然标签。Agent 从英文研究目标出发，自主写 positive、hard-negative 与 neutral probes，调用受限实验接口，观察激活并反复修正假设，最终提交一个 ID 和解释。", "A feature ID is only a column index in one layer's SAE dictionary; it has no intrinsic label. Starting from an English research target, the agent authors positive, hard-negative, and neutral probes, queries a restricted experiment interface, revises its hypothesis from activations, and finally submits one ID with an interpretation.")}</p>
+            <p>{tx("Benchmark 随后在隐藏评测上复现实验，并把候选 decoder direction 写回残差流，与 expert 和 matched-random 对照。评分因此覆盖研究过程的三个层次：定位是否准确、解释是否吻合、干预是否沿相同方向改变行为。", "The benchmark then reproduces the experiment on hidden cases and writes the candidate decoder direction back into the residual stream against expert and matched-random controls. Scoring therefore covers three levels of research evidence: localization, interpretation, and causal intervention.")}</p>
+            <h3>{tx("实验设置", "Experimental setting")}</h3>
+            <dl className="setup-facts">
+              <div><dt>{tx("基础模型", "Base model")}</dt><dd>Gemma 2 9B IT</dd></div>
+              <div><dt>SAE</dt><dd>Official Gemma Scope · resid_post</dd></div>
+              <div><dt>{tx("搜索空间", "Search space")}</dt><dd>131,072 features · layer 9 / 20</dd></div>
+              <div><dt>{tx("Agent 可见", "Agent sees")}</dt><dd>{tx("英文研究目标 + 受限激活 probe", "English research target + restricted activation probe")}</dd></div>
+              <div><dt>{tx("Agent 提交", "Agent submits")}</dt><dd>{tx("一个 Feature ID + 实验证据 + 解释", "One feature ID + evidence + interpretation")}</dd></div>
+              <div><dt>{tx("隐藏评测", "Hidden evaluation")}</dt><dd>{tx("激活、GT rank、steering、PE judge", "Activation, GT rank, steering, and PE judge")}</dd></div>
+            </dl>
+          </div>
+          <ResearchFigure wide number={1} title={tx("SAE-Bench 的自主研究流程。", "The SAE-Bench autonomous research loop.")} caption={tx("公开任务只提供研究目标和受限 probe；Expert ID、隐藏 case 与 steering 结果在提交后才用于评估。", "The task exposes only a research target and a restricted probe; expert IDs, hidden cases, and steering outcomes are used only after submission.")}><img className="mechanism-diagram" src={`${import.meta.env.BASE_URL}figures/feature-discovery-mechanism/diagram.svg`} alt={tx("SAE-Bench 自主研究流程图", "SAE-Bench autonomous research workflow")} /></ResearchFigure>
+          <ResearchFigure wide number={2} title={tx("Feature 62610 的完整画像。", "A complete portrait of feature 62610.")} caption={tx("上半部分展示 feature 的语义与 32 条冻结 case 上的 activation 深度；下半部分展示同一 instruction 在 steering 前后的真实输出差异。", "The upper half shows the feature's interpretation and activation depth over 32 frozen cases; the lower half shows real before/after outputs for the same instruction.")}><FeaturePortrait language={language} /></ResearchFigure>
         </section>
 
         <section id="features" className="article-section">
-          <div className="section-kicker">02 · FEATURE IDS</div>
-          <div className="article-copy"><h2>{tx("同一种语义，可以对应多个不同方向。", "One semantic idea can occupy several different directions.")}</h2><p>{tx("这正是 exact match 有意义的原因。猫特征 62610 是一个容易复现的锚点；法语则出现多个相近方向；报税任务更极端——所有 Agent 都选择了 64827，而 expert 是 18713。替代项既有高激活也能 steering，却仍不能被称为同一个方向。", "This is why exact match matters. Cat feature 62610 is an easy-to-recover anchor; French produces several nearby directions; tax filing is more striking—every agent selected 64827 while the expert is 18713. The alternative activates strongly and can steer, yet it is still not the same direction.")}</p></div>
-          <ResearchFigure number={3} title={tx("三个 Feature ID 案例。", "Three feature-ID cases.")} caption={tx("同一版式比较精确命中、语义近邻、以及具有因果作用但方向不等价的替代 feature。", "The same layout compares an exact recovery, semantic neighbors, and a causal but directionally distinct alternative.")}><FeatureAtlas language={language} /></ResearchFigure>
+          <div className="article-copy"><h2>{tx("2. Expert features 与候选方向的案例分析", "2. Case analysis of expert features and candidate directions")}</h2><p>{tx("20 个任务覆盖语言、主题与文体 feature。猫特征 62610 在所有配置中均被精确恢复；法语任务产生四个相近候选；报税任务的 8 个 Agent 则一致提交 64827，而 Expert ID 为 18713。后两个任务展示了 SAE 字典中语义相近但索引不同的候选方向。", "The 20 tasks cover language, topic, and register features. Cat feature 62610 is recovered exactly by every configuration; the French task produces four nearby candidates; and all eight agents submit 64827 for tax filing, while the expert ID is 18713. The latter two tasks expose semantically related directions with distinct indices in the SAE dictionary.")}</p></div>
+          <ResearchFigure number={3} title={tx("五个 Feature ID 案例。", "Five feature-ID case studies.")} caption={tx("从 8/8 exact recovery，到稳定替代方向，再到强 steering 但低 usable，五个案例展示不同的成功与失败模式。", "The five cases span 8/8 exact recovery, stable alternative directions, and strong steering with low usability.")}><FeatureAtlas language={language} /></ResearchFigure>
+          <div className="article-copy post-figure-copy">
+            <p>{tx("French 与 clinical expert 在冻结数据上均呈现近乎完美的 activation 分离，Agent 仍会收敛到其他方向。这一结果表明，expert feature 的准入质量与 Agent 的精确恢复率需要独立评估；SAE 字典中的局部语义冗余会直接影响 Feature ID 定位。", "The French and clinical experts both show nearly perfect activation separation on frozen data, while agents converge on other directions. Expert admission quality and agent exact-recovery rate therefore require independent evaluation, with local semantic redundancy in the SAE dictionary directly affecting feature localization.")}</p>
+            <p>{tx("Weather 候选 85606 的 target induction 高于 Expert 44494；clinical expert 则呈现较高 target induction 和 0 usable rate。两项观察共同支持分解式报告：exact、activation、causal effect 与 task preservation 分别对应不同的有效性证据。", "Weather candidate 85606 has higher target induction than expert 44494, while the clinical expert combines strong target induction with a zero usable rate. These observations support decomposed reporting: exact match, activation, causal effect, and task preservation measure distinct forms of validity.")}</p>
+          </div>
           <div className="feature-index"><div className="feature-index-head"><span>{tx("20 个 Expert anchors", "20 expert anchors")}</span><small>{tx("官方 Gemma Scope · layer 9 / 20", "Official Gemma Scope · layers 9 / 20")}</small></div><div>{expertFeatures.map(([label, id]) => <span key={id}><small>{label}</small><code>{id}</code></span>)}</div></div>
         </section>
 
         <section id="results" className="article-section">
-          <div className="section-kicker">03 · {tx("实验结果", "Results")}</div>
-          <div className="article-copy"><h2>{tx("激活排名给出了一张主榜，但不是一个总分。", "Activation ranking gives us a leaderboard—not a single truth.")}</h2><p>{tx(`当前公开快照覆盖 ${summary.tasks} 道题、${configurations.length} 个 Agent 配置与 ${runs.length} 条完整运行。主排序使用 expert-normalized activation；Exact、causal 与 usable 独立报告，因为它们回答不同问题。`, `The current public snapshot covers ${summary.tasks} tasks, ${configurations.length} agent configurations, and ${runs.length} complete runs. The primary ordering uses expert-normalized activation; exact, causal, and usable outcomes remain separate because they answer different questions.`)}</p></div>
-          <ResearchFigure number={4} title={tx("SAE-Bench v2 主榜。", "SAE-Bench v2 leaderboard.")} caption={tx("每个配置每题一次运行；该表是同协议观察结果，不是带置信区间的稳定能力结论。", "One run per configuration and task; this is a controlled-protocol snapshot, not a confidence-bounded capability estimate.")}><FormalLeaderboard language={language} /></ResearchFigure>
+          <div className="article-copy"><h2>{tx("3. 20 个任务上的主要实验结果", "3. Main results across 20 tasks")}</h2><p>{tx(`当前公开快照覆盖 ${summary.tasks} 道题、${configurations.length} 个 Agent 配置与 ${runs.length} 条完整运行。主排序使用 expert-normalized activation。Exact、causal 与 usable 作为独立指标报告，分别衡量 ID 恢复、干预方向和任务保留。`, `The current public snapshot covers ${summary.tasks} tasks, ${configurations.length} agent configurations, and ${runs.length} complete runs. The primary ordering uses expert-normalized activation. Exact, causal, and usable outcomes are reported separately to measure ID recovery, intervention direction, and task preservation.`)}</p></div>
+          <ResearchFigure number={4} title={tx("SAE-Bench v2 主榜。", "SAE-Bench v2 leaderboard.")} caption={tx("每个配置在每个任务上运行一次。该表描述当前固定协议下的观测结果；重复运行与置信区间仍待补充。", "Each configuration is run once per task. The table reports observations under the current frozen protocol; repeated runs and confidence intervals remain future work.")}><FormalLeaderboard language={language} /></ResearchFigure>
           <p className="status-note"><b>Claude Opus 5 High.</b> {tx("已接入同一离线协议，但完整 20 题结果尚未完成，因此当前不进入正式榜单。", "It is wired into the same offline protocol, but remains outside the formal table until all 20 tasks finish.")}</p>
         </section>
 
         <section id="analysis" className="article-section">
-          <div className="section-kicker">04 · {tx("行为分析", "Behavioral analysis")}</div>
-          <div className="article-copy"><h2>{tx("“找得像”与“推得动”之间有一道鸿沟。", "There is a gap between looking right and steering right.")}</h2><p>{tx("把所有运行混在一起时，activation 与 steering 的 rank correlation 看起来较强；但 exact features 会同时把两个指标推高。只看非精确候选，关系显著变弱。这意味着自然激活适合做 discovery 主指标，却不能替代因果验证。", "Across all runs, activation and steering rank correlation looks strong; exact features, however, raise both measures together. Among non-exact candidates alone, the relationship weakens markedly. Natural activation is therefore useful as a discovery metric, but cannot replace causal validation.")}</p></div>
+          <div className="article-copy"><h2>{tx("4. Activation fidelity 与因果 steering 的关系", "4. Relationship between activation fidelity and causal steering")}</h2><p>{tx("全部运行上的 activation—steering rank correlation 较高，部分原因是 exact features 会同时提高两个指标。将分析限制在非精确候选后，相关性显著降低。自然激活因此适合作为 discovery 指标，因果有效性仍需通过独立 steering 实验估计。", "Activation and steering have a relatively high rank correlation across all runs, partly because exact features increase both measures. The association is substantially weaker when the analysis is restricted to non-exact candidates. Natural activation is therefore suitable as a discovery metric, while causal validity still requires an independent steering experiment.")}</p></div>
           <div className="finding-grid"><div><span>Spearman · all</span><strong>{summary.allCorrelation.toFixed(3)}</strong><p>activation ↔ steering</p></div><div><span>Spearman · alternatives</span><strong>{summary.alternativeCorrelation.toFixed(3)}</strong><p>{tx("只看非精确候选", "non-exact candidates only")}</p></div><div><span>Mean causal effect</span><strong>{summary.exactEffect.toFixed(3)} <i>/</i> {summary.alternativeEffect.toFixed(3)}</strong><p>exact / alternative</p></div></div>
-          <ResearchFigure number={5} title={tx("自然激活与因果效果。", "Natural activation versus causal effect.")} caption={tx("每个点是一条 Agent × task 运行；点击可查看 Feature ID 与 PE judge 结果。", "Each point is one agent-by-task run; select it to inspect the feature ID and PE judge outcomes.")}><ScatterExplorer language={language} /></ResearchFigure>
+          <ResearchFigure wide number={5} title={tx("自然激活与因果效果。", "Natural activation versus causal effect.")} caption={tx("每个点是一条 Agent × task 运行；点击可查看 Feature ID 与 PE judge 结果。", "Each point is one agent-by-task run; select it to inspect the feature ID and PE judge outcomes.")}><ScatterExplorer language={language} /></ResearchFigure>
         </section>
 
         <section id="method" className="article-section methods-section">
-          <div className="section-kicker">05 · {tx("方法与边界", "Methods and limits")}</div>
-          <div className="article-copy"><h2>{tx("冻结任务，隐藏评测，公开 ID。", "Frozen tasks, hidden evaluation, public IDs.")}</h2><h3>{tx("Expert case 准入", "Expert-case admission")}</h3><p>{tx("每个目标都绑定官方 Gemma Scope SAE 中的一个 expert feature，并经过自然激活、matched-random steering、独立 calibration prompts、held-out prompts 与盲评验证。Feature ID 可以公开复现；隐藏的是评测 prompts、原始轨迹与基础设施。", "Each target is anchored to an expert feature from the official Gemma Scope SAE and admitted through natural-activation tests, matched-random steering, separate calibration prompts, held-out prompts, and blinded judging. Feature IDs are public for reproducibility; evaluation prompts, raw traces, and infrastructure remain hidden.")}</p><h3>{tx("Agent 隔离", "Agent isolation")}</h3><p>{tx("正式 discovery 禁止联网与搜索公开 feature labels，也不能读取 benchmark 仓库或 expert ID。Agent 唯一可用的外部反馈，是受限 probe 返回的激活与 rank。", "Scored discovery disables internet access and public-label search, and blocks access to the benchmark repository and expert IDs. The only external feedback is activation and rank returned by a restricted probe.")}</p><h3>{tx("限制", "Limitations")}</h3><p>{tx("当前榜单每个配置每题只有一次运行，且只覆盖 Gemma 2 9B 的两个层。Steering 的 judge 指标依然可能受 prompt 与解码随机性影响；因此 exact recovery、activation quality、causal stability、usable steering 与 latency 均分开报告。", "The current table has one run per configuration and task and covers only two layers of Gemma 2 9B. Steering judgments remain sensitive to prompts and decoding variance; exact recovery, activation quality, causal stability, usable steering, and latency are therefore reported separately.")}</p></div>
+          <div className="article-copy"><h2>{tx("5. 冻结任务，隐藏评测，公开 ID", "5. Frozen tasks, hidden evaluation, public IDs")}</h2><h3>{tx("Expert case 准入", "Expert-case admission")}</h3><p>{tx("每个目标都绑定官方 Gemma Scope SAE 中的一个 expert feature，并经过自然激活、matched-random steering、独立 calibration prompts、held-out prompts 与盲评验证。Feature ID 可以公开复现；隐藏的是评测 prompts、原始轨迹与基础设施。", "Each target is anchored to an expert feature from the official Gemma Scope SAE and admitted through natural-activation tests, matched-random steering, separate calibration prompts, held-out prompts, and blinded judging. Feature IDs are public for reproducibility; evaluation prompts, raw traces, and infrastructure remain hidden.")}</p><h3>{tx("Agent 隔离", "Agent isolation")}</h3><p>{tx("正式 discovery 禁止联网与搜索公开 feature labels，也不能读取 benchmark 仓库或 expert ID。Agent 唯一可用的外部反馈，是受限 probe 返回的激活与 rank。", "Scored discovery disables internet access and public-label search, and blocks access to the benchmark repository and expert IDs. The only external feedback is activation and rank returned by a restricted probe.")}</p><h3>{tx("限制", "Limitations")}</h3><p>{tx("当前榜单每个配置每题只有一次运行，且只覆盖 Gemma 2 9B 的两个层。Steering 的 judge 指标依然可能受 prompt 与解码随机性影响；因此 exact recovery、activation quality、causal stability、usable steering 与 latency 均分开报告。", "The current table has one run per configuration and task and covers only two layers of Gemma 2 9B. Steering judgments remain sensitive to prompts and decoding variance; exact recovery, activation quality, causal stability, usable steering, and latency are therefore reported separately.")}</p></div>
           <div className="references"><span>{tx("参考", "References")}</span><ol><li><a href="https://deepmind.google/models/gemma/gemma-scope/">Google DeepMind, Gemma Scope</a></li><li><a href="https://www.anthropic.com/research/evaluating-feature-steering">Anthropic, Evaluating feature steering</a></li><li><a href="https://www.anthropic.com/news/mapping-mind-language-model">Anthropic, Mapping the mind of a large language model</a></li></ol></div>
         </section>
 
-        <section className="closing"><span className="eyebrow">THE CENTRAL RESULT</span><blockquote>{tx("Agent 常常能找到一个“像”的 feature；真正困难的是找到同一个方向。", "Agents often find a feature that looks right. The hard part is finding the same direction.")}</blockquote><div><a href="https://github.com/Trae1ounG/SAE-Bench">{tx("代码、Feature IDs 与结果", "Code, feature IDs, and results")} ↗</a></div></section>
+        <section id="conclusion" className="article-section conclusion-section">
+          <div className="article-copy">
+            <h2>{tx("6. 结论", "6. Conclusion")}</h2>
+            <p>{tx("在这个第一版协议里，Agent 已经能够构造有信息量的 probes，并在一部分 feature 上精确复现 expert；更常见的结果则是找到语义合理、激活很高、甚至可以 steering 的替代方向。SAE-Bench 的价值正是把这些情况拆开，让“提出解释”和“证明解释”成为两个可以独立审计的能力。", "In this first protocol, agents can author informative probes and exactly reproduce the expert on some features. More often, they find an alternative direction that is semantically plausible, highly activating, and sometimes steerable. SAE-Bench separates these outcomes so that proposing an interpretation and proving it become independently auditable capabilities.")}</p>
+            <p>{tx("后续实验将扩大经过准入验证的 expert set，对每个配置执行重复运行，并检验该研究流程在更多模型、层与 SAE 上的迁移性。", "Future experiments will expand the admitted expert set, repeat each configuration, and evaluate transfer across additional models, layers, and SAEs.")}</p>
+          </div>
+        </section>
+
+        <section className="closing"><span className="eyebrow">SUMMARY</span><blockquote>{tx("自主 Feature Discovery 的有效性需要同时由语义定位、隐藏激活与因果干预支持。", "Valid autonomous feature discovery requires convergent evidence from semantic localization, hidden activation, and causal intervention.")}</blockquote><div><a href="https://github.com/Trae1ounG/SAE-Bench">{tx("代码、Feature IDs 与结果", "Code, feature IDs, and results")} ↗</a></div></section>
       </article>
 
       <footer><span>SAE-Bench · 2026</span><span>{tx("基于官方 Google Gemma Scope SAE", "Built on the official Google Gemma Scope SAE")}</span></footer>
