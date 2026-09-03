@@ -47,6 +47,24 @@ def leaderboard(activation: float, exact: float, feature_ids: list[int]) -> dict
     }
 
 
+def rename_model(payload: dict, model: str) -> dict:
+    payload["configurations"][0]["configuration"] = f"cursor/{model} (high)"
+    payload["configurations"][0]["harness"] = "cursor"
+    payload["configurations"][0]["model"] = model
+    for row in payload["runs"]:
+        row["harness"] = "cursor"
+        row["model"] = model
+    return payload
+
+
+def combine(*payloads: dict) -> dict:
+    return {
+        "task_coverage": {"stable_benchmark_tasks": 2},
+        "configurations": [row for payload in payloads for row in payload["configurations"]],
+        "runs": [row for payload in payloads for row in payload["runs"]],
+    }
+
+
 class AggregateReplicatesTest(unittest.TestCase):
     def test_aggregates_variance_and_feature_selection_agreement(self):
         payload = aggregate_replicates.aggregate(
@@ -69,10 +87,38 @@ class AggregateReplicatesTest(unittest.TestCase):
     def test_rejects_missing_configuration(self):
         second = leaderboard(0.8, 0.5, [1, 2])
         second["configurations"] = []
-        with self.assertRaisesRegex(ValueError, "missing from a replicate"):
+        with self.assertRaisesRegex(ValueError, "has 1 replicates, expected 2"):
             aggregate_replicates.aggregate(
                 [("run1", leaderboard(0.6, 0.0, [1, 2])), ("run2", second)]
             )
+
+    def test_allows_late_added_configuration_with_three_runs(self):
+        model_a_1 = rename_model(leaderboard(0.6, 0.0, [1, 2]), "model-a")
+        model_b_1 = rename_model(leaderboard(0.7, 0.0, [3, 4]), "model-b")
+        model_a_2 = rename_model(leaderboard(0.8, 0.5, [1, 3]), "model-a")
+        model_b_2 = rename_model(leaderboard(0.9, 0.5, [3, 5]), "model-b")
+        model_a_3 = rename_model(leaderboard(1.0, 1.0, [1, 2]), "model-a")
+        model_b_3 = rename_model(leaderboard(1.1, 1.0, [3, 4]), "model-b")
+        payload = aggregate_replicates.aggregate(
+            [
+                ("original", model_a_1),
+                ("opus-first", model_b_1),
+                ("repeat-2", combine(model_a_2, model_b_2)),
+                ("repeat-3", combine(model_a_3, model_b_3)),
+            ],
+            expected_replicates=3,
+        )
+        self.assertEqual(len(payload["configurations"]), 2)
+        self.assertEqual(payload["replicates"], 3)
+        labels = {
+            row["model"]: row["replicate_labels"] for row in payload["configurations"]
+        }
+        configurations = {
+            row["model"]: row["configuration"] for row in payload["configurations"]
+        }
+        self.assertEqual(labels["model-a"], ["original", "repeat-2", "repeat-3"])
+        self.assertEqual(labels["model-b"], ["opus-first", "repeat-2", "repeat-3"])
+        self.assertEqual(configurations["model-b"], "cursor/model-b (high)")
 
 
 if __name__ == "__main__":

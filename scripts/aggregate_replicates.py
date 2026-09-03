@@ -42,9 +42,15 @@ def mean_std(values: list[float]) -> dict[str, float]:
     return {"mean": fmean(values), "std": pstdev(values)}
 
 
-def aggregate(replicates: list[tuple[str, dict[str, Any]]]) -> dict[str, Any]:
+def aggregate(
+    replicates: list[tuple[str, dict[str, Any]]],
+    expected_replicates: int | None = None,
+) -> dict[str, Any]:
     if len(replicates) < 2:
         raise ValueError("at least two replicates are required")
+    expected_replicates = expected_replicates or len(replicates)
+    if not 2 <= expected_replicates <= len(replicates):
+        raise ValueError("expected replicates must be between 2 and the number of inputs")
     labels = [label for label, _ in replicates]
     if len(set(labels)) != len(labels):
         raise ValueError("replicate labels must be unique")
@@ -77,31 +83,37 @@ def aggregate(replicates: list[tuple[str, dict[str, Any]]]) -> dict[str, Any]:
             runs_by_config[key][label][task] = row
 
     rows = []
-    expected_labels = set(labels)
     for key, by_label in by_config.items():
-        if set(by_label) != expected_labels:
-            raise ValueError(f"configuration missing from a replicate: {key}")
+        config_labels = [label for label in labels if label in by_label]
+        if len(config_labels) != expected_replicates:
+            raise ValueError(
+                f"configuration has {len(config_labels)} replicates, expected "
+                f"{expected_replicates}: {key}"
+            )
         run_sets = runs_by_config[key]
-        if set(run_sets) != expected_labels:
+        if set(run_sets) != set(config_labels):
             raise ValueError(f"configuration has missing run data: {key}")
-        task_sets = [set(run_sets[label]) for label in labels]
+        task_sets = [set(run_sets[label]) for label in config_labels]
         if any(tasks != task_sets[0] for tasks in task_sets[1:]) or len(task_sets[0]) != task_count:
             raise ValueError(f"configuration has inconsistent task coverage: {key}")
 
         metrics = {
-            metric: mean_std([float(by_label[label][metric]) for label in labels])
+            metric: mean_std([float(by_label[label][metric]) for label in config_labels])
             for metric in METRICS
         }
         pe_target = []
         pe_preservation = []
         pairwise_matches = []
         all_same = []
-        for label in labels:
+        for label in config_labels:
             runs = run_sets[label].values()
             pe_target.append(fmean(float(row["pe_target_relevance"]) for row in runs))
             pe_preservation.append(fmean(float(row["pe_task_preservation"]) for row in runs))
         for task in sorted(task_sets[0]):
-            feature_ids = [int(run_sets[label][task]["selected_feature_id"]) for label in labels]
+            feature_ids = [
+                int(run_sets[label][task]["selected_feature_id"])
+                for label in config_labels
+            ]
             matches = [
                 left == right
                 for index, left in enumerate(feature_ids)
@@ -114,11 +126,12 @@ def aggregate(replicates: list[tuple[str, dict[str, Any]]]) -> dict[str, Any]:
         metrics["macro_pe_task_preservation"] = mean_std(pe_preservation)
         rows.append(
             {
-                "configuration": by_label[labels[0]]["configuration"],
+                "configuration": by_label[config_labels[0]]["configuration"],
                 "harness": key[0],
                 "model": key[1],
                 "reasoning_effort": key[2],
-                "replicates": len(labels),
+                "replicates": len(config_labels),
+                "replicate_labels": config_labels,
                 "benchmark_tasks": task_count,
                 "metrics": metrics,
                 "feature_id_pairwise_agreement": fmean(pairwise_matches),
@@ -132,8 +145,8 @@ def aggregate(replicates: list[tuple[str, dict[str, Any]]]) -> dict[str, Any]:
     )
     return {
         "schema": 1,
-        "replicate_labels": labels,
-        "replicates": len(labels),
+        "replicate_sources": labels,
+        "replicates": expected_replicates,
         "benchmark_tasks": task_count,
         "configurations": rows,
     }
@@ -142,9 +155,17 @@ def aggregate(replicates: list[tuple[str, dict[str, Any]]]) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Aggregate independent SAE-Bench replicates.")
     parser.add_argument("--replicate", action="append", type=parse_replicate, required=True)
+    parser.add_argument(
+        "--expected-replicates",
+        type=int,
+        help="Required replicate count per configuration; defaults to all inputs.",
+    )
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    payload = aggregate([(label, load_json(path)) for label, path in args.replicate])
+    payload = aggregate(
+        [(label, load_json(path)) for label, path in args.replicate],
+        args.expected_replicates,
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"replicates": payload["replicates"], "configurations": len(payload["configurations"])}))
