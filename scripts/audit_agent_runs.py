@@ -111,6 +111,7 @@ def cursor_audit(run_root: Path) -> dict[str, Any]:
     trace = run_root / "logs" / "agent.jsonl"
     violations: list[str] = []
     calls: dict[str, int] = {}
+    listed_mcp_servers: dict[str, int] = {}
     probe_calls = 0
     for line in trace.read_text(encoding="utf-8").splitlines():
         try:
@@ -150,8 +151,8 @@ def cursor_audit(run_root: Path) -> dict[str, Any]:
             if detail.get("serverIdentifier") != "sae_probe" or detail.get("toolName") != "probe_sae":
                 violations.append("non_probe_mcp")
         elif kind == "getMcpToolsToolCall":
-            if body.get("args", {}).get("server") != "sae_probe":
-                violations.append("non_probe_mcp")
+            server = str(body.get("args", {}).get("server", "unknown"))
+            listed_mcp_servers[server] = listed_mcp_servers.get(server, 0) + 1
         elif kind in {"readToolCall", "writeToolCall", "editToolCall", "deleteToolCall", "grepToolCall"}:
             path = body.get("args", {}).get("path")
             if path and not inside(path, workspace):
@@ -164,6 +165,7 @@ def cursor_audit(run_root: Path) -> dict[str, Any]:
     return {
         "trace": str(trace),
         "tool_calls": calls,
+        "listed_mcp_servers": listed_mcp_servers,
         "probe_calls": probe_calls,
         "violations": sorted(set(violations)),
     }

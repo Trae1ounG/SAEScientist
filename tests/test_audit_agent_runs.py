@@ -169,6 +169,45 @@ class AuditAgentRunsTest(unittest.TestCase):
         self.assertIn("unknown_tool:browserToolCall", violations)
         self.assertIn("open_world_tool:taskToolCall", violations)
 
+    def test_cursor_records_tool_listing_but_rejects_non_probe_execution(self):
+        with tempfile.TemporaryDirectory() as directory:
+            run_root = Path(directory)
+            (run_root / "workspace").mkdir()
+            (run_root / "logs").mkdir()
+            rows = [
+                {
+                    "type": "tool_call",
+                    "subtype": "started",
+                    "tool_call": {
+                        "getMcpToolsToolCall": {"args": {"server": "cursor"}}
+                    },
+                },
+                {
+                    "type": "tool_call",
+                    "subtype": "started",
+                    "tool_call": {
+                        "mcpToolCall": {
+                            "args": {
+                                "serverIdentifier": "cursor",
+                                "toolName": "read_external_data",
+                            }
+                        }
+                    },
+                },
+            ]
+            trace = run_root / "logs" / "agent.jsonl"
+            trace.write_text(json.dumps(rows[0]) + "\n", encoding="utf-8")
+            audit = audit_agent_runs.cursor_audit(run_root)
+            self.assertEqual(audit["violations"], [])
+            self.assertEqual(audit["listed_mcp_servers"], {"cursor": 1})
+
+            trace.write_text(
+                "".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8"
+            )
+            self.assertIn(
+                "non_probe_mcp", audit_agent_runs.cursor_audit(run_root)["violations"]
+            )
+
     def test_codex_requires_successful_completed_probe(self):
         with tempfile.TemporaryDirectory() as directory:
             run_root = Path(directory)
