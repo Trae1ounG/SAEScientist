@@ -197,7 +197,7 @@ def reproduce(config_path: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="sae-bench")
+    parser = argparse.ArgumentParser(prog="sae-scientist")
     subparsers = parser.add_subparsers(dest="command", required=True)
     for name in ("serve", "run"):
         command = subparsers.add_parser(name)

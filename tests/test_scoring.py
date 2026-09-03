@@ -1,6 +1,6 @@
 import unittest
 
-from sae_bench.scoring import (
+from sae_scientist.scoring import (
     gt_normalized_metrics,
     spearman_correlation,
     summarize_rank_rows,
@@ -58,4 +58,3 @@ class ScoringTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

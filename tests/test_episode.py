@@ -3,7 +3,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from sae_bench.episode import (
+from sae_scientist.episode import (
     initialize_run,
     read_submission,
     recover_submission_from_trace,
@@ -114,4 +114,3 @@ class EpisodeTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

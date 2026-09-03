@@ -13,8 +13,8 @@ from typing import Any
 
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from sae_bench.admission import AdmissionThresholds, admission_failures
-from sae_bench.suites import judge_system_prompt, load_suite, steering_sets
+from sae_scientist.admission import AdmissionThresholds, admission_failures
+from sae_scientist.suites import judge_system_prompt, load_suite, steering_sets
 
 
 def mean(values: list[float]) -> float:

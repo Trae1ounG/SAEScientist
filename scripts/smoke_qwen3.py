@@ -12,8 +12,8 @@ import numpy as np
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from sae_bench.sources import require_official_source
-from sae_bench.steering import matched_random_direction, steer
+from sae_scientist.sources import require_official_source
+from sae_scientist.steering import matched_random_direction, steer
 
 
 DEFAULT_PROMPT = "Explain why sleep matters for learning in one short paragraph."
@@ -160,4 +160,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -88,7 +88,7 @@ def validate(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Validate a complete formal SAE-Bench release.")
+    parser = argparse.ArgumentParser(description="Validate a complete formal SAEScientist-Bench release.")
     parser.add_argument("--behavior", type=Path, required=True)
     parser.add_argument("--leaderboard", type=Path, required=True)
     parser.add_argument("--blog", type=Path)
@@ -115,4 +115,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

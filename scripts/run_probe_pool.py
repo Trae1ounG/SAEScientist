@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from sae_bench.probe import MAX_TEXTS_PER_REQUEST, make_worker, validate_request
+from sae_scientist.probe import MAX_TEXTS_PER_REQUEST, make_worker, validate_request
 
 
 def read_requests(path: Path, default_top_k: int) -> list[dict[str, Any]]:
@@ -100,4 +100,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

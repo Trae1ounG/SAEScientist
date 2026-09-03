@@ -4,7 +4,7 @@ from pathlib import Path
 
 import torch
 
-from sae_bench.steering import matched_random_direction, steering_hook
+from sae_scientist.steering import matched_random_direction, steering_hook
 
 
 SPEC = importlib.util.spec_from_file_location(
@@ -56,4 +56,3 @@ class SteeringTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

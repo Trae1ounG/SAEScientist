@@ -1,19 +1,19 @@
 <div align="center">
 
-# SAE-Bench
+# SAEScientist-Bench
 
 ### Can AI agents conduct autonomous SAE interpretability research?
 
-[Research blog](https://trae1oung.github.io/SAE-Bench/) · [Agent instruction](prompts/discover_feature.md)
+[Research blog](https://trae1oung.github.io/SAEScientist/) · [Agent instruction](prompts/discover_feature.md)
 
 </div>
 
-SAE-Bench asks an AI agent to recover a semantically specified feature from an
+SAEScientist-Bench asks an AI agent to recover a semantically specified feature from an
 official sparse autoencoder. The agent receives a restricted activation probe,
 designs its own experiments, and submits one feature ID. A trusted evaluator
 then measures localization, held-out activation selectivity, and causal steering.
 
-![SAE-Bench system overview](assets/system-overview.svg)
+![SAEScientist-Bench system overview](assets/system-overview.svg)
 
 ## Benchmark
 
@@ -73,7 +73,7 @@ separate audit columns instead of being counted a second time in Overall.
 These are single-run measurements. Three-run mean and variance, including
 Claude Opus 5, will replace this table after the repeated evaluation completes.
 Full analysis and per-feature visualizations are on the
-[research blog](https://trae1oung.github.io/SAE-Bench/).
+[research blog](https://trae1oung.github.io/SAEScientist/).
 
 ## Reproduce
 
@@ -81,8 +81,8 @@ Use Linux with an NVIDIA GPU and Python 3.10+. Accept the Gemma license on
 Hugging Face, then install the benchmark and download the model and official SAE:
 
 ```bash
-git clone https://github.com/Trae1ounG/SAE-Bench.git
-cd SAE-Bench
+git clone https://github.com/Trae1ounG/SAEScientist.git
+cd SAEScientist
 python -m venv .venv
 . .venv/bin/activate
 pip install -e '.[test]'
@@ -101,7 +101,7 @@ export AZURE_OPENAI_API_KEY='<your-key>'
 export AZURE_OPENAI_ENDPOINT='https://<resource>.openai.azure.com/'
 export OPENAI_API_VERSION='<supported-api-version>'
 
-sae-bench run --config configs/cat.json
+sae-scientist run --config configs/cat.json
 ```
 
 The command starts and stops the restricted probe runtime, runs the Agent,
@@ -109,6 +109,6 @@ scores the submitted feature on held-out activations, generates baseline / featu
 matched-random steering rollouts, and performs the blinded judge pass. Its complete
 output is written under `outputs/cat-codex-run01/`.
 
-Use `sae-bench serve --config configs/cat.json` only when running the probe as a
+Use `sae-scientist serve --config configs/cat.json` only when running the probe as a
 separate long-lived service. Developer-level batch commands remain in `scripts/`.
 Run the protocol tests with `pytest -q`.

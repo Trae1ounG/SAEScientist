@@ -1,6 +1,6 @@
 import pytest
 
-from sae_bench.remote_scoring import score_probe_results
+from sae_scientist.remote_scoring import score_probe_results
 
 
 def test_score_probe_results_compares_candidate_and_expert():

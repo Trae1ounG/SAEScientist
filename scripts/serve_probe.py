@@ -9,7 +9,7 @@ from queue import Queue
 import socket
 import uuid
 
-from sae_bench.probe import make_worker, validate_request
+from sae_scientist.probe import make_worker, validate_request
 
 
 MAX_BODY_BYTES = 1_000_000
@@ -118,4 +118,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

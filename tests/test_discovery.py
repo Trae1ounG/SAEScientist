@@ -1,6 +1,6 @@
 import unittest
 
-from sae_bench.discovery import rank_contrast_features
+from sae_scientist.discovery import rank_contrast_features
 
 
 class DiscoveryTest(unittest.TestCase):
@@ -18,4 +18,3 @@ class DiscoveryTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from sae_bench.cli import read_config, serve_command
+from sae_scientist.cli import read_config, serve_command
 
 
 def test_config_requires_complete_pipeline(tmp_path: Path):

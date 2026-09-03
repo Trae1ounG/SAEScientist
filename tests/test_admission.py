@@ -1,7 +1,7 @@
 import unittest
 
-from sae_bench.admission import activation_failures, admission_failures, is_admitted
-from sae_bench.sources import (
+from sae_scientist.admission import activation_failures, admission_failures, is_admitted
+from sae_scientist.sources import (
     QWEN3_8B_BASE_L0_50,
     require_official_source,
     validate_checkpoint_state,
@@ -96,4 +96,3 @@ class AdmissionTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

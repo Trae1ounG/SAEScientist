@@ -16,12 +16,12 @@ if [[ -n "$reasoning_effort" ]]; then
   reasoning_args=(-c "model_reasoning_effort=\"$reasoning_effort\"")
 fi
 
-permission_profile='permissions.sae-bench={description="SAE benchmark source and network isolation",filesystem={":minimal"="read",":workspace_roots"="write"},network={enabled=false}}'
+permission_profile='permissions.sae-scientist={description="SAEScientist-Bench source and network isolation",filesystem={":minimal"="read",":workspace_roots"="write"},network={enabled=false}}'
 
 set +e
 "$codex_bin" sandbox \
   -c "$permission_profile" \
-  --permission-profile sae-bench \
+  --permission-profile sae-scientist \
   --cd "$agent_home" \
   /bin/test -r "$isolation_canary"
 preflight_status=$?
@@ -38,11 +38,10 @@ exec "$codex_bin" \
   --skip-git-repo-check --model "$agent_model" \
   ${reasoning_args[@]+"${reasoning_args[@]}"} \
   -c 'approval_policy="never"' \
-  -c 'default_permissions="sae-bench"' \
+  -c 'default_permissions="sae-scientist"' \
   -c "$permission_profile" \
   -c "mcp_servers.sae_probe.command=\"$python_bin\"" \
   -c "mcp_servers.sae_probe.args=[\"$probe_mcp\"]" \
   -c "mcp_servers.sae_probe.env={SAE_PROBE_URL=\"$probe_url\"}" \
   -c 'mcp_servers.sae_probe.default_tools_approval_mode="approve"' \
   - < agent_input.md
-

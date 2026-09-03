@@ -1,6 +1,6 @@
 import unittest
 
-from sae_bench.scaling import (
+from sae_scientist.scaling import (
     merge_discovery_batches,
     merge_validation_batches,
     rank_steering_screen,
@@ -194,4 +194,3 @@ class ScalingTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

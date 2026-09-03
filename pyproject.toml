@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sae-bench"
+name = "sae-scientist"
 version = "0.1.0"
 requires-python = ">=3.10"
 dependencies = [
@@ -21,7 +21,7 @@ dependencies = [
 test = ["pytest>=8"]
 
 [project.scripts]
-sae-bench = "sae_bench.cli:main"
+sae-scientist = "sae_scientist.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

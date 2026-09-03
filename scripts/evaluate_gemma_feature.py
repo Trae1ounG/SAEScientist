@@ -11,10 +11,10 @@ import numpy as np
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from sae_bench.admission import activation_failures, admission_failures
-from sae_bench.sources import require_official_source
-from sae_bench.steering import matched_random_direction, steer
-from sae_bench.suites import load_suite, steering_sets, target_score
+from sae_scientist.admission import activation_failures, admission_failures
+from sae_scientist.sources import require_official_source
+from sae_scientist.steering import matched_random_direction, steer
+from sae_scientist.suites import load_suite, steering_sets, target_score
 
 
 def mean(values: list[float]) -> float:

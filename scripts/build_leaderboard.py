@@ -352,7 +352,7 @@ def collect_leaderboard(
 
 def render_markdown(payload: dict[str, Any]) -> str:
     lines = [
-        "# SAE-Bench Leaderboard",
+        "# SAEScientist-Bench Leaderboard",
         "",
         f"Benchmark: `{payload['benchmark']}`",
         "",
@@ -414,7 +414,7 @@ def _result_paths(results_dir: list[Path], result_file: list[Path]) -> list[Path
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build a compact SAE-Bench leaderboard from scored agent runs.")
+    parser = argparse.ArgumentParser(description="Build a compact SAEScientist-Bench leaderboard from scored agent runs.")
     parser.add_argument("--results-dir", type=Path, action="append", default=[])
     parser.add_argument("--result-file", type=Path, action="append", default=[])
     parser.add_argument("--benchmark", type=Path, default=ROOT / "data" / "benchmark_v2.json")

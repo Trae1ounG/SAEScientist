@@ -7,7 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
-from sae_bench.sources import GEMMA_SCOPE_9B_IT_RES
+from sae_scientist.sources import GEMMA_SCOPE_9B_IT_RES
 
 
 WIDTHS = {"16k": 16384, "131k": 131072}
@@ -112,4 +112,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

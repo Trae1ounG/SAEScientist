@@ -1,4 +1,4 @@
-"""SAE Bench steering primitives."""
+"""SAEScientist-Bench evaluation primitives."""
 
 from .admission import admission_failures, is_admitted
 from .sources import QWEN3_8B_BASE_L0_50, require_official_source
@@ -22,4 +22,3 @@ def __getattr__(name: str):
             "steering_hook": steering_hook,
         }[name]
     raise AttributeError(name)
-

@@ -151,7 +151,7 @@ def aggregate(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Aggregate independent SAE-Bench replicates.")
+    parser = argparse.ArgumentParser(description="Aggregate independent SAEScientist-Bench replicates.")
     parser.add_argument("--replicate", action="append", type=parse_replicate, required=True)
     parser.add_argument(
         "--expected-replicates",

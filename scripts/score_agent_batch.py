@@ -9,12 +9,12 @@ import re
 from typing import Any
 from urllib.request import ProxyHandler, Request, build_opener
 
-from sae_bench.scoring import (
+from sae_scientist.scoring import (
     gt_normalized_metrics,
     spearman_correlation,
     summarize_rank_rows,
 )
-from sae_bench.suites import load_suite
+from sae_scientist.suites import load_suite
 
 
 ROOT = Path(__file__).resolve().parents[1]

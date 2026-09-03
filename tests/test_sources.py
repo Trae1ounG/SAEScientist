@@ -1,6 +1,6 @@
 import unittest
 
-from sae_bench.sources import (
+from sae_scientist.sources import (
     GEMMA_SCOPE_9B_IT_RES,
     QWEN3_8B_BASE_L0_50,
     require_official_source,
@@ -19,4 +19,3 @@ class OfficialSourceTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
