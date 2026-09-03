@@ -32,27 +32,38 @@ frozen hidden evaluator
                          blinded GPT-4o judge
 ```
 
-The benchmark reports four outcomes separately:
+The benchmark reports one normalized overall score plus diagnostic outcomes:
 
 - **Exact:** whether the submitted ID equals the frozen expert ID.
-- **Activation:** expert-normalized recovery of held-out rank, AUROC, activation contrast, and per-case activation pattern.
+- **Rank:** expert-normalized recovery of positive-case mean rank.
+- **Activation:** expert-normalized recovery of AUROC, activation contrast, and per-case activation pattern.
+- **Steering:** expert-normalized recovery of the control-adjusted target effect and per-instruction steering pattern.
+- **Overall:** the equal-weight mean of Rank, Activation, and Steering for one task.
 - **Causal:** whether feature steering induces the target more strongly than both control conditions.
 - **Usable:** whether the target is induced without destroying the original user task.
 
-There is no composite score that hides these distinctions.
+The 20-task **Total** is the sum of per-task Overall scores. The expert feature is
+the normalization reference at 1.0 per task and 20.0 in total, not a ceiling:
+candidates that outperform it on the same hidden cases can score above 1.0.
+Exact, Causal, and Usable remain audit columns rather than being counted again.
 
 ## Current evidence
 
-| Rank | Agent configuration | Activation | Exact | GPT-4o target | Causal | Usable |
-| ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | Kimi K3 High · Cursor | 0.794 | 35% | 0.281 | 15% | 0% |
-| 2 | Grok 4.6 High · Cursor | 0.786 | 35% | 0.303 | 15% | 0% |
-| 3 | Claude Sonnet 5 High · Cursor | 0.783 | 30% | 0.277 | 10% | 0% |
-| 4 | Claude Opus 4.8 High · Cursor | 0.776 | 35% | 0.226 | 10% | 0% |
-| 5 | GPT-5.6 Sol High · Codex | 0.752 | 35% | 0.298 | 15% | 0% |
-| 6 | GPT-5.5 High · Cursor | 0.697 | 30% | 0.217 | 10% | 0% |
-| 7 | GLM-5.2 High · Cursor | 0.692 | 20% | 0.242 | 15% | 0% |
-| 8 | GPT-5.6 Luna High · Codex | 0.645 | 15% | 0.170 | 5% | 0% |
+| Rank | Model | Overall | Total / 20 | Rank | Activation | Steering | Exact | Causal | Usable |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| GT | Expert feature baseline | 1.000 | 20.000 | 1.000 | 1.000 | 1.000 | 100% | 60% | 0% |
+| 1 | Kimi K3 High | 0.718 | 14.370 | 0.748 | 0.920 | 0.488 | 35% | 15% | 0% |
+| 2 | Grok 4.6 High | 0.699 | 13.978 | 0.648 | 0.920 | 0.529 | 35% | 15% | 0% |
+| 3 | Claude Sonnet 5 High | 0.696 | 13.916 | 0.710 | 0.917 | 0.461 | 30% | 10% | 0% |
+| 4 | Claude Opus 4.8 High | 0.680 | 13.598 | 0.674 | 0.907 | 0.458 | 35% | 10% | 0% |
+| 5 | GPT-5.6 Sol High | 0.645 | 12.895 | 0.506 | 0.912 | 0.517 | 35% | 15% | 0% |
+| 6 | GPT-5.5 High | 0.596 | 11.922 | 0.497 | 0.862 | 0.429 | 30% | 10% | 0% |
+| 7 | GLM-5.2 High | 0.562 | 11.248 | 0.462 | 0.857 | 0.368 | 20% | 15% | 0% |
+| 8 | GPT-5.6 Luna High | 0.526 | 10.516 | 0.398 | 0.849 | 0.330 | 15% | 5% | 0% |
+
+The rescaling is symmetric around the Expert: higher-is-better quantities use
+`2c/(c+e)`, while lower-is-better rank uses `2e/(c+e)`. The resulting 0–2 scale
+preserves candidates that exceed the Expert instead of clipping them to 1.
 
 The single-run snapshot supports three observations:
 

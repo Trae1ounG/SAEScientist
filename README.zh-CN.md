@@ -32,27 +32,36 @@ Agent 只获得一个英文语义目标和受限的 activation probe API。它�
                               盲化 GPT-4o Judge
 ```
 
-Benchmark 分开汇报四项结果：
+Benchmark 汇报一个归一化综合分，并保留诊断指标：
 
 - **Exact**：提交 ID 是否等于冻结 Expert ID。
-- **Activation**：候选对 Expert held-out rank、AUROC、激活对比度与逐 case pattern 的归一化恢复程度。
+- **Rank**：候选对 Expert 正例平均排名的归一化恢复程度。
+- **Activation**：候选对 Expert AUROC、激活对比度与逐 case 激活 pattern 的归一化恢复程度。
+- **Steering**：候选对 Expert 的 control-adjusted target effect 与逐 instruction steering pattern 的归一化恢复程度。
+- **Overall**：单题 Rank、Activation 与 Steering 的等权平均。
 - **Causal**：Feature steering 是否比两个 control 更强地诱导目标行为。
 - **Usable**：目标行为出现时，是否仍然保留用户的原始任务。
 
-这四项不会被压缩成一个掩盖差异的总分。
+20 题 **Total** 是各题 Overall 的直接求和。Expert Feature 是归一化参照点：
+每题 1.0、总分 20.0，但不是上限；候选在相同 hidden cases 上表现更好时
+可以超过 1.0。Exact、Causal 与 Usable 作为审计列单独保留，不会重复计权。
 
 ## 当前结论
 
-| 排名 | Agent 配置 | Activation | Exact | GPT-4o 目标分 | Causal | Usable |
-| ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | Kimi K3 High · Cursor | 0.794 | 35% | 0.281 | 15% | 0% |
-| 2 | Grok 4.6 High · Cursor | 0.786 | 35% | 0.303 | 15% | 0% |
-| 3 | Claude Sonnet 5 High · Cursor | 0.783 | 30% | 0.277 | 10% | 0% |
-| 4 | Claude Opus 4.8 High · Cursor | 0.776 | 35% | 0.226 | 10% | 0% |
-| 5 | GPT-5.6 Sol High · Codex | 0.752 | 35% | 0.298 | 15% | 0% |
-| 6 | GPT-5.5 High · Cursor | 0.697 | 30% | 0.217 | 10% | 0% |
-| 7 | GLM-5.2 High · Cursor | 0.692 | 20% | 0.242 | 15% | 0% |
-| 8 | GPT-5.6 Luna High · Codex | 0.645 | 15% | 0.170 | 5% | 0% |
+| 排名 | 模型 | Overall | 总分 / 20 | Rank | Activation | Steering | Exact | Causal | Usable |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| GT | Expert Feature 基线 | 1.000 | 20.000 | 1.000 | 1.000 | 1.000 | 100% | 60% | 0% |
+| 1 | Kimi K3 High | 0.718 | 14.370 | 0.748 | 0.920 | 0.488 | 35% | 15% | 0% |
+| 2 | Grok 4.6 High | 0.699 | 13.978 | 0.648 | 0.920 | 0.529 | 35% | 15% | 0% |
+| 3 | Claude Sonnet 5 High | 0.696 | 13.916 | 0.710 | 0.917 | 0.461 | 30% | 10% | 0% |
+| 4 | Claude Opus 4.8 High | 0.680 | 13.598 | 0.674 | 0.907 | 0.458 | 35% | 10% | 0% |
+| 5 | GPT-5.6 Sol High | 0.645 | 12.895 | 0.506 | 0.912 | 0.517 | 35% | 15% | 0% |
+| 6 | GPT-5.5 High | 0.596 | 11.922 | 0.497 | 0.862 | 0.429 | 30% | 10% | 0% |
+| 7 | GLM-5.2 High | 0.562 | 11.248 | 0.462 | 0.857 | 0.368 | 20% | 15% | 0% |
+| 8 | GPT-5.6 Luna High | 0.526 | 10.516 | 0.398 | 0.849 | 0.330 | 15% | 5% | 0% |
+
+重标定以 Expert 为中心：越大越好的量使用 `2c/(c+e)`，越小越好的 rank
+使用 `2e/(c+e)`。所得 0–2 分数会保留优于 Expert 的候选，不再截断到 1。
 
 当前单次运行快照支持三个观察：
 

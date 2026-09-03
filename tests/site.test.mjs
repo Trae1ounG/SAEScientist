@@ -25,7 +25,9 @@ test("research blog contains feature meaning, activation depth, and steering con
   assert.match(bundle, /Distribution of all 20 tasks/);
   assert.match(bundle, /Archaeological excavation/);
   assert.match(bundle, /One task, different agent-submitted directions/);
-  assert.match(bundle, /How natural activation is scored/);
+  assert.match(bundle, /How Rank, Activation, and Overall are scored/);
+  assert.match(bundle, /Expert feature baseline/);
+  assert.match(bundle, /not a ceiling/);
   assert.match(bundle, /Positive, hard negative, and neutral/);
   assert.match(bundle, /How AUROC is computed/);
   assert.match(bundle, /How steering is executed and judged/);
