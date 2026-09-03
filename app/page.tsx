@@ -1,5 +1,6 @@
 import { ReactNode, useMemo, useState } from "react";
 import leaderboard from "../results/leaderboard.json";
+import replicateResults from "../results/replicates.json";
 
 type Language = "en" | "zh";
 type PointFilter = "all" | "exact" | "alternative";
@@ -53,6 +54,22 @@ type Run = {
   elapsed_seconds: number;
 };
 
+type RawRun = Omit<Run, "task_id" | "target" | "configuration" | "feature_discovery_score"> & {
+  task: string;
+  concept_id: string;
+  model: string;
+  harness: string;
+  reasoning_effort: string | null;
+  feature_discovery_score?: number;
+};
+
+type ReplicateMetric = { mean: number; std: number };
+type ReplicateConfiguration = Pick<Configuration, "configuration" | "harness" | "model" | "reasoning_effort"> & {
+  replicates: number;
+  benchmark_tasks: number;
+  metrics: Record<string, ReplicateMetric>;
+};
+
 function ResearchFigure({
   number,
   title,
@@ -75,7 +92,19 @@ function ResearchFigure({
 }
 
 const configurations = leaderboard.configurations as Configuration[];
-const runs = leaderboard.runs as Run[];
+const aggregateConfigurations = replicateResults.configurations as ReplicateConfiguration[];
+const aggregateAnalysis = replicateResults.analysis;
+const runs = (leaderboard.runs as RawRun[]).map((run) => ({
+  ...run,
+  task_id: run.task.split("/").at(-1)?.replace(/\.json$/, "") ?? run.task,
+  target: run.concept_id,
+  configuration: configurations.find((row) =>
+    row.harness === run.harness
+    && row.model === run.model
+    && row.reasoning_effort === run.reasoning_effort
+  )?.configuration ?? `${run.harness}/${run.model}`,
+  feature_discovery_score: run.feature_discovery_score ?? run.gt_normalized_activation,
+})) as Run[];
 
 const modelNames: Record<string, string> = {
   "kimi-k3-high": "Kimi K3 High",
@@ -132,7 +161,7 @@ function displayName(row: Pick<Configuration, "model">): string {
 }
 
 function configurationLabel(key: string): string {
-  const row = configurations.find((candidate) => candidate.configuration === key);
+  const row = [...aggregateConfigurations, ...configurations].find((candidate) => candidate.configuration === key);
   return row ? displayName(row) : key;
 }
 
@@ -252,10 +281,10 @@ function FeatureAtlas({ language }: { language: Language }) {
       concept: tx("猫相关文本", "Cat-related text"),
       layer: "Gemma 2 9B · layer 9",
       expert: 62610,
-      agent: tx("8/8 exact", "8/8 exact"),
+      agent: tx("首轮 8/8 exact", "8/8 exact in run 1"),
       activation: [41.93, 5.92, 0, 0.996],
       steering: [0.438, 0.475],
-      note: tx("正例覆盖家猫身份与行为；困难负例包括单独出现的 kitty、名字 Kitty 与比喻性 purr。Expert feature 的正例平均 activation 为 41.93，困难负例为 5.92，中性文本为 0；8 个 Agent 均恢复了同一 ID。", "Positive cases cover domestic-cat identity and behavior. Hard negatives include isolated uses of kitty, the name Kitty, and metaphorical purr. The expert averages 41.93 activation on positives, 5.92 on hard negatives, and zero on neutral text; all eight agents recovered the same ID."),
+      note: tx("正例覆盖家猫身份与行为；困难负例包括单独出现的 kitty、名字 Kitty 与比喻性 purr。Expert feature 的正例平均 activation 为 41.93，困难负例为 5.92，中性文本为 0；首轮 8 个 Agent 均恢复了同一 ID。", "Positive cases cover domestic-cat identity and behavior. Hard negatives include isolated uses of kitty, the name Kitty, and metaphorical purr. The expert averages 41.93 activation on positives, 5.92 on hard negatives, and zero on neutral text; all eight agents in the first run recovered the same ID."),
     },
     {
       concept: tx("法语文本", "French-language text"),
@@ -270,10 +299,10 @@ function FeatureAtlas({ language }: { language: Language }) {
       concept: tx("报税语言", "Tax-filing language"),
       layer: "Gemma 2 9B · layer 9",
       expert: 18713,
-      agent: tx("8/8 都提交 64827", "8/8 submitted 64827"),
+      agent: tx("首轮 8/8 提交 64827", "8/8 submitted 64827 in run 1"),
       activation: [19.07, 1.02, 0.47, 0.990],
       steering: [0.300, 0.075],
-      note: tx("正例包含报税指令、应税收入、抵扣、税收抵免与表格；困难负例仅包含一般性的 tax 提及。8 个 Agent 均提交了 64827，Expert ID 为 18713。替代项的 Feature Discovery Score 为 0.934，steering effect 为 0.613，但未通过 usable gate，构成一致的替代方向。", "Positive cases contain filing instructions, taxable income, deductions, credits, and forms; hard negatives contain only general tax references. All eight agents submitted 64827, while the expert ID is 18713. The alternative reaches a Feature Discovery Score of 0.934 and a steering effect of 0.613, but does not pass the usable gate, forming a consistent alternative direction."),
+      note: tx("正例包含报税指令、应税收入、抵扣、税收抵免与表格；困难负例仅包含一般性的 tax 提及。首轮 8 个 Agent 均提交了 64827，Expert ID 为 18713。替代项的 Feature Discovery Score 为 0.934，steering effect 为 0.613，但未通过 usable gate，构成一致的替代方向。", "Positive cases contain filing instructions, taxable income, deductions, credits, and forms; hard negatives contain only general tax references. All eight agents in the first run submitted 64827, while the expert ID is 18713. The alternative reaches a Feature Discovery Score of 0.934 and a steering effect of 0.613, but does not pass the usable gate, forming a consistent alternative direction."),
     },
     {
       concept: tx("临床症状报告", "Clinical symptom reports"),
@@ -397,19 +426,17 @@ Evaluate every output above exactly once. Return exactly three ratings with labe
 
 function FormalLeaderboard({ language }: { language: Language }) {
   const tx = (zh: string, en: string) => language === "zh" ? zh : en;
-  const ordered = [...configurations].sort((a, b) => b.mean_overall_score - a.mean_overall_score);
-  const expert = leaderboard.expert_baseline;
-  const targetScore = (configuration: string) => {
-    const values = runs
-      .filter((run) => run.configuration === configuration)
-      .map((run) => run.pe_target_relevance / 4);
-    return values.reduce((sum, value) => sum + value, 0) / values.length;
+  const ordered = [...aggregateConfigurations].sort((a, b) => b.metrics.mean_overall_score.mean - a.metrics.mean_overall_score.mean);
+  const expert = replicateResults.expert_baseline;
+  const score = (row: ReplicateConfiguration, key: string, scale = 1) => {
+    const metric = row.metrics[key];
+    return `${(metric.mean * scale).toFixed(3)} ± ${(metric.std * scale).toFixed(3)}`;
   };
   return (
     <div className="leaderboard-panel"><div className="table-scroll"><table className="formal-table"><thead><tr><th>#</th><th>{tx("模型", "Model")}</th><th>{tx("综合分", "Overall")}</th><th>Rank</th><th>Activation</th><th>Steering</th><th>Exact</th><th>{tx("目标相关度", "Target relevance")}</th><th>Causal</th><th>Usable</th><th>{tx("中位耗时", "Median time")}</th></tr></thead><tbody>
       <tr className="expert-baseline"><td>GT</td><td><strong>{tx("Expert Feature 基线", "Expert feature baseline")}</strong></td><td>{expert.mean_overall_score.toFixed(3)}</td><td>{expert.mean_rank_score.toFixed(3)}</td><td>{expert.mean_activation_score.toFixed(3)}</td><td>{expert.mean_steering_score.toFixed(3)}</td><td>{percentage(expert.exact_match_rate)}</td><td>{expert.mean_target_relevance.toFixed(3)}</td><td>{percentage(expert.causal_steering_rate)}</td><td>{percentage(expert.usable_steering_rate)}</td><td>—</td></tr>
       {ordered.map((row, index) => (
-      <tr key={row.configuration}><td>{index + 1}</td><td><strong>{displayName(row)}</strong></td><td>{row.mean_overall_score.toFixed(3)}</td><td>{row.mean_rank_score.toFixed(3)}</td><td>{row.mean_activation_score.toFixed(3)}</td><td>{row.mean_steering_score.toFixed(3)}</td><td>{percentage(row.exact_match_rate)}</td><td>{targetScore(row.configuration).toFixed(3)}</td><td>{percentage(row.causal_steering_rate)}</td><td>{percentage(row.usable_steering_rate)}</td><td>{(row.median_elapsed_seconds / 60).toFixed(1)} min</td></tr>
+      <tr key={row.configuration}><td>{index + 1}</td><td><strong>{displayName(row)}</strong></td><td>{score(row, "mean_overall_score")}</td><td>{score(row, "mean_rank_score")}</td><td>{score(row, "mean_activation_score")}</td><td>{score(row, "mean_steering_score")}</td><td>{score(row, "exact_match_rate", 100)}%</td><td>{score(row, "macro_pe_target_relevance", 0.25)}</td><td>{score(row, "causal_steering_rate", 100)}%</td><td>{score(row, "usable_steering_rate", 100)}%</td><td>{score(row, "median_elapsed_seconds", 1 / 60)} min</td></tr>
     ))}</tbody></table></div><p className="figure-note">{tx(`GT Feature 在 20 题上的原始均值：positive mean rank ${expert.raw_metrics.mean_positive_rank.toFixed(2)}，AUROC ${expert.raw_metrics.mean_activation_auroc.toFixed(3)}，activation contrast ${expert.raw_metrics.mean_activation_contrast.toFixed(2)}，control-adjusted steering effect ${expert.raw_metrics.mean_steering_effect.toFixed(3)}。归一化后的 1.0 是参照点而非上限。`, `Raw GT-feature means across 20 tasks: positive mean rank ${expert.raw_metrics.mean_positive_rank.toFixed(2)}, AUROC ${expert.raw_metrics.mean_activation_auroc.toFixed(3)}, activation contrast ${expert.raw_metrics.mean_activation_contrast.toFixed(2)}, and control-adjusted steering effect ${expert.raw_metrics.mean_steering_effect.toFixed(3)}. The normalized value 1.0 is a reference point, not a ceiling.`)}</p></div>
   );
 }
@@ -498,16 +525,18 @@ function Home() {
   const [language, setLanguage] = useState<Language>("en");
   const tx = (zh: string, en: string) => language === "zh" ? zh : en;
   const summary = useMemo(() => {
-    const alternatives = runs.filter((run) => !run.exact_match);
-    const exact = runs.filter((run) => run.exact_match);
     return {
-      tasks: new Set(runs.map((run) => run.task_id)).size,
-      exact: exact.length,
-      causal: runs.filter((run) => run.causal_stable).length,
-      allCorrelation: spearman(runs),
-      alternativeCorrelation: spearman(alternatives),
-      exactEffect: average(exact.map((run) => run.steering_effect)),
-      alternativeEffect: average(alternatives.map((run) => run.steering_effect)),
+      tasks: replicateResults.benchmark_tasks,
+      runs: replicateResults.discovery_runs,
+      exact: aggregateAnalysis.exact_runs,
+      causal: aggregateAnalysis.causal_runs,
+      usable: aggregateAnalysis.usable_runs,
+      alternatives: aggregateAnalysis.alternative_runs,
+      alternativeCausal: aggregateAnalysis.alternative_causal_runs,
+      allCorrelation: aggregateAnalysis.activation_steering_spearman,
+      alternativeCorrelation: aggregateAnalysis.alternative_activation_steering_spearman,
+      exactEffect: aggregateAnalysis.exact_mean_steering_effect,
+      alternativeEffect: aggregateAnalysis.alternative_mean_steering_effect,
     };
   }, []);
 
@@ -524,7 +553,7 @@ function Home() {
           <h1>{tx("SAEScientist-Bench：评估 Agent 的自主 SAE 可解释性研究能力", "SAEScientist-Bench: Evaluating agents as autonomous SAE researchers")}</h1>
           <p className="dek">{tx("我们评估 Agent 能否像研究者一样提出对照、设计实验、搜索并解释 SAE feature，再用 activation 与 steering 证据验证自己的结论。", "We evaluate whether an agent can work like a researcher: form contrasts, design experiments, discover and interpret an SAE feature, then validate its claim with activation and steering evidence.")}</p>
           <div className="article-authors"><p className="author-names">SAEScientist Research Team</p></div>
-          <p className="article-meta">{tx("2026 年 9 月", "September 2026")} <span>·</span> {tx("预计阅读时间：18 分钟", "18 min read")} <span>·</span> {summary.tasks} tasks <span>·</span> {runs.length} runs</p>
+          <p className="article-meta">{tx("2026 年 9 月", "September 2026")} <span>·</span> {tx("预计阅读时间：18 分钟", "18 min read")} <span>·</span> {summary.tasks} tasks <span>·</span> {summary.runs} runs</p>
           <p className="article-links"><a href="https://github.com/Trae1ounG/SAEScientist">Code &amp; data</a> <span>·</span> <a href="https://huggingface.co/google/gemma-scope-9b-it-res">Official SAE</a></p>
         </section>
 
@@ -535,7 +564,7 @@ function Home() {
 
         <aside className="table-of-contents"><details open><summary>{tx("目录", "Table of Contents")}</summary><ol><li><a href="#idea">{tx("我们究竟测什么能力", "What capability are we measuring?")}</a></li><li><a href="#features">{tx("Expert feature 与案例", "Expert features and cases")}</a></li><li><a href="#results">{tx("主要实验结果", "Main experimental results")}</a></li><li><a href="#analysis">{tx("语义—因果鸿沟", "The semantic–causal gap")}</a></li><li><a href="#method">{tx("有效性边界与局限", "Validity and limitations")}</a></li><li><a href="#conclusion">{tx("结论", "Conclusion")}</a></li></ol></details></aside>
 
-        <aside className="claims-at-glance"><h2>{tx("一分钟了解", "In one minute")}</h2><div><p><b>{tx("任务", "Task")}</b><span>{tx("Agent 根据英文语义目标自主构造 probes，并从 131,072 个 SAE 方向中提交一个 Feature ID。", "From an English semantic target, an agent authors probes and submits one feature ID from 131,072 SAE directions.")}</span></p><p><b>{tx("证据", "Evidence")}</b><span>{tx("20 个官方 Gemma Scope expert features、8 个 Agent 配置、160 条完成且通过 trace audit 的运行。", "20 official Gemma Scope expert features, eight agent configurations, and 160 completed trace-audited runs.")}</span></p><p><b>{tx("结果", "Result")}</b><span>{tx("语义近邻在候选中普遍存在。Exact recovery、自然激活与因果 steering 的结果需要分别报告。", "Semantic neighbors are common among candidate features. Exact recovery, natural activation, and causal steering require separate measurement.")}</span></p></div></aside>
+        <aside className="claims-at-glance"><h2>{tx("一分钟了解", "In one minute")}</h2><div><p><b>{tx("任务", "Task")}</b><span>{tx("Agent 根据英文语义目标自主构造 probes，并从 131,072 个 SAE 方向中提交一个 Feature ID。", "From an English semantic target, an agent authors probes and submits one feature ID from 131,072 SAE directions.")}</span></p><p><b>{tx("证据", "Evidence")}</b><span>{tx("20 个官方 Gemma Scope expert features、9 个 Agent 配置、每个模型三次独立运行，共 540 条通过 trace audit 的运行。", "20 official Gemma Scope expert features, nine agent configurations, and three independent runs per model: 540 completed trace-audited episodes.")}</span></p><p><b>{tx("结果", "Result")}</b><span>{tx("语义近邻在候选中普遍存在。Exact recovery、自然激活与因果 steering 的结果需要分别报告。", "Semantic neighbors are common among candidate features. Exact recovery, natural activation, and causal steering require separate measurement.")}</span></p></div></aside>
 
         <section id="idea" className="article-section">
           <div className="article-copy">
@@ -557,8 +586,8 @@ function Home() {
         </section>
 
         <section id="features" className="article-section">
-          <div className="article-copy"><h2>{tx("2. Expert features 与候选方向的案例分析", "2. Case analysis of expert features and candidate directions")}</h2><p>{tx("20 个任务覆盖 1 个主题 feature、6 个语言 feature、8 个商业/金融 feature 与 5 个领域或文体 feature；12 个 anchor 位于 layer 9，8 个位于 layer 20。猫特征 62610 在所有配置中均被精确恢复；法语任务产生四个相近候选；报税任务的 8 个 Agent 则一致提交 64827，而 Expert ID 为 18713。后两个任务展示了 SAE 字典中语义相近但索引不同的候选方向。", "The 20 tasks comprise one topic feature, six language features, eight business/finance features, and five domain or register features; 12 anchors are at layer 9 and eight at layer 20. Cat feature 62610 is recovered exactly by every configuration; the French task produces four nearby candidates; and all eight agents submit 64827 for tax filing, while the expert ID is 18713. The latter two tasks expose semantically related directions with distinct indices in the SAE dictionary.")}</p></div>
-          <ResearchFigure number={3} title={tx("五个 Feature ID 案例。", "Five feature-ID case studies.")} caption={tx("从 8/8 exact recovery，到稳定替代方向，再到强 steering 但低 usable，五个案例展示不同的成功与失败模式。", "The five cases span 8/8 exact recovery, stable alternative directions, and strong steering with low usability.")}><FeatureAtlas language={language} /></ResearchFigure>
+          <div className="article-copy"><h2>{tx("2. Expert features 与候选方向的案例分析", "2. Case analysis of expert features and candidate directions")}</h2><p>{tx("20 个任务覆盖 1 个主题 feature、6 个语言 feature、8 个商业/金融 feature 与 5 个领域或文体 feature；12 个 anchor 位于 layer 9，8 个位于 layer 20。下面的逐题案例取自首轮可审计运行：猫特征 62610 被全部 8 个配置精确恢复；法语任务产生四个相近候选；报税任务的 8 个 Agent 一致提交 64827，而 Expert ID 为 18713。后两个任务展示了 SAE 字典中语义相近但索引不同的候选方向。", "The 20 tasks comprise one topic feature, six language features, eight business/finance features, and five domain or register features; 12 anchors are at layer 9 and eight at layer 20. The task-level examples below use the auditable first run: all eight configurations recover cat feature 62610 exactly, the French task produces four nearby candidates, and all eight agents submit 64827 for tax filing while the expert ID is 18713. The latter two tasks expose semantically related directions with distinct indices in the SAE dictionary.")}</p></div>
+          <ResearchFigure number={3} title={tx("五个 Feature ID 案例。", "Five feature-ID case studies.")} caption={tx("首轮案例覆盖 8/8 exact recovery、稳定替代方向，以及强 steering 但低 usable 的方向。", "First-run cases span 8/8 exact recovery, stable alternative directions, and strong steering with low usability.")}><FeatureAtlas language={language} /></ResearchFigure>
           <div className="article-copy post-figure-copy">
             <p>{tx("French 与 clinical expert 在冻结数据上均呈现近乎完美的 activation 分离，Agent 仍会收敛到其他方向。这一结果表明，expert feature 的准入质量与 Agent 的精确恢复率需要独立评估；SAE 字典中的局部语义冗余会直接影响 Feature ID 定位。", "The French and clinical experts both show nearly perfect activation separation on frozen data, while agents converge on other directions. Expert admission quality and agent exact-recovery rate therefore require independent evaluation, with local semantic redundancy in the SAE dictionary directly affecting feature localization.")}</p>
             <p>{tx("Weather 候选 85606 的 target induction 高于 Expert 44494；clinical expert 则呈现较高 target induction 和 0 usable rate。两项观察共同支持分解式报告：exact、activation、causal effect 与 task preservation 分别对应不同的有效性证据。", "Weather candidate 85606 has higher target induction than expert 44494, while the clinical expert combines strong target induction with a zero usable rate. These observations support decomposed reporting: exact match, activation, causal effect, and task preservation measure distinct forms of validity.")}</p>
@@ -576,15 +605,15 @@ function Home() {
         </section>
 
         <section id="results" className="article-section">
-          <div className="article-copy"><h2>{tx("3. 20 个任务上的主要实验结果", "3. Main results across 20 tasks")}</h2><p>{tx(`当前公开快照覆盖 ${summary.tasks} 道题、${configurations.length} 个 Agent 配置与 ${runs.length} 条完整运行。每题先得到三个以同题 Expert 为 1.0 参照点的分数：Rank 衡量正例平均排名，Activation 汇总 AUROC、正负例激活对比度与逐 case 激活 pattern，Steering 汇总 control-adjusted effect 与逐 instruction steering pattern。Overall 是三项等权平均；总分是 20 个 Overall 的和。候选若在同一 hidden set 上优于 Expert，可以得到高于 1.0 的单项或单题分数。`, `The current public snapshot covers ${summary.tasks} tasks, ${configurations.length} agent configurations, and ${runs.length} complete runs. Each task first receives three scores centered on its expert feature at 1.0: Rank measures positive-case ranking, Activation combines AUROC, positive-versus-control contrast, and per-case activation patterns, and Steering combines control-adjusted effect with per-instruction steering patterns. Overall is their equal-weight mean; Total sums the 20 Overall scores. A candidate can score above 1.0 when it exceeds the expert on the same hidden set.`)}</p></div>
-          <ResearchFigure number={5} title={tx("SAEScientist-Bench 当前主榜。", "Current SAEScientist-Bench leaderboard.")} caption={tx("GT 行是同一套 hidden cases 上的 Expert Feature 归一化基线，不参与模型排名。Exact 衡量 Expert ID 的精确恢复。Target relevance 是匿名输出对目标语义的平均相关度；Causal 要求它显著强于 baseline 和等范数随机方向；Usable 还要求保留原始任务且输出不退化。GPT‑4o 仅作为 steering 输出的盲评模型。每个配置目前每题运行一次。", "The GT row is the expert-feature normalization baseline on the same hidden cases and is not a competing model. Exact measures recovery of the expert ID. Target relevance is the mean semantic relevance of anonymized outputs; Causal requires a clear gain over baseline and a norm-matched random direction; Usable additionally requires task preservation and non-degenerate text. GPT-4o is only the blinded judge for steering outputs. Each configuration currently has one run per task.")}><FormalLeaderboard language={language} /></ResearchFigure>
-          <div className="article-copy post-figure-copy"><h3>{tx("Judge 重打实验", "Judge re-scoring experiment")}</h3><p>{tx("我们固定全部 73 组 steering 输出，只替换 Judge，并以 GPT‑4o-2024-11-20 在 temperature 0 下完成 2,920 条有效判断。GPT‑4o 与旧 Judge 的 feature target score 在 73 个方向上的 Spearman 相关为 0.962，但均值由 0.387 降至 0.278；causal gate 从 21/73 降至 13/73。映射回 160 条 Agent 运行后，19 条通过 causal gate，0 条通过 usable gate；113 个非 exact 候选中仅 1 条通过 causal gate。这说明排序趋势相对稳定，但阈值结论明显依赖 Judge。", "We froze all 73 steering-output sets and changed only the judge. GPT-4o-2024-11-20 produced 2,920 valid judgments at temperature zero. Across the 73 directions, its feature target scores have Spearman 0.962 with the previous judge, while the mean falls from 0.387 to 0.278 and causal passes fall from 21/73 to 13/73. Mapped back to 160 agent runs, 19 pass the causal gate and none pass the usable gate; only one of 113 non-exact selections passes the causal gate. Ranking trends are comparatively stable, but thresholded conclusions are judge-sensitive.")}</p></div>
+          <div className="article-copy"><h2>{tx("3. 20 个任务上的主要实验结果", "3. Main results across 20 tasks")}</h2><p>{tx(`正式结果覆盖 ${summary.tasks} 道题、${aggregateConfigurations.length} 个 Agent 配置，每个配置独立运行三次，共 ${summary.runs} 条完整运行。每题先得到三个以同题 Expert 为 1.0 参照点的分数：Rank 衡量正例平均排名，Activation 汇总 AUROC、正负例激活对比度与逐 case 激活 pattern，Steering 汇总 control-adjusted effect 与逐 instruction steering pattern。Overall 是三项等权平均。候选若在同一 hidden set 上优于 Expert，可以得到高于 1.0 的单项或单题分数。`, `The formal results cover ${summary.tasks} tasks and ${aggregateConfigurations.length} agent configurations, with three independent runs per configuration and ${summary.runs} complete episodes. Each task receives three scores centered on its expert feature at 1.0: Rank measures positive-case ranking, Activation combines AUROC, positive-versus-control contrast, and per-case activation patterns, and Steering combines control-adjusted effect with per-instruction steering patterns. Overall is their equal-weight mean. A candidate can score above 1.0 when it exceeds the expert on the same hidden set.`)}</p></div>
+          <ResearchFigure number={5} title={tx("SAEScientist-Bench 三轮主榜。", "Three-run SAEScientist-Bench leaderboard.")} caption={tx("表中为三次独立运行的均值 ± 总体标准差。GT 行是同一套 hidden cases 上的 Expert Feature 归一化基线，不参与模型排名。Exact 衡量 Expert ID 的精确恢复；Causal 要求目标效果显著强于 baseline 和等范数随机方向；Usable 还要求保留原始任务且输出不退化。GPT‑4o 仅作为 steering 输出的盲评模型。", "Entries are mean ± population standard deviation over three independent runs. The GT row is the expert-feature normalization baseline on the same hidden cases and is not a competing model. Exact measures expert-ID recovery; Causal requires a clear gain over baseline and a norm-matched random direction; Usable additionally requires task preservation and non-degenerate text. GPT-4o is used only as the blinded judge for steering outputs.")}><FormalLeaderboard language={language} /></ResearchFigure>
+          <div className="article-copy post-figure-copy"><h3>{tx("盲评结果", "Blinded steering judgments")}</h3><p>{tx(`三轮实验共包含 ${aggregateAnalysis.evaluated_task_feature_pairs} 个不同的 task–feature 组合；每个组合使用 20 条 held-out instructions、三个匿名条件，并在 temperature 0 下独立判断两次。映射回 ${summary.runs} 条 Agent 运行后，${summary.causal} 条通过 causal gate，${summary.usable} 条通过 usable gate；${summary.alternatives} 个非 exact 选择中有 ${summary.alternativeCausal} 个通过 causal gate。连续 steering 分数进入 Overall，而 Causal 与 Usable 作为阈值型审计结果单独报告。`, `The three runs contain ${aggregateAnalysis.evaluated_task_feature_pairs} distinct task-feature pairs. Each pair is evaluated on 20 held-out instructions with three anonymized conditions and two independent judgments at temperature zero. Mapped back to ${summary.runs} agent episodes, ${summary.causal} pass the causal gate and ${summary.usable} passes the usable gate; ${summary.alternativeCausal} of ${summary.alternatives} non-exact selections pass the causal gate. The continuous Steering score enters Overall, while Causal and Usable remain separately reported thresholded audits.`)}</p></div>
         </section>
 
         <section id="analysis" className="article-section">
           <div className="article-copy"><h2>{tx("4. Activation fidelity 与因果 steering 的关系", "4. Relationship between activation fidelity and causal steering")}</h2><p>{tx("全部运行上的 activation—steering rank correlation 较高，部分原因是 exact features 会同时提高两个指标。将分析限制在非精确候选后，相关性显著降低。自然激活因此适合作为 discovery 指标，因果有效性仍需通过独立 steering 实验估计。", "Activation and steering have a relatively high rank correlation across all runs, partly because exact features increase both measures. The association is substantially weaker when the analysis is restricted to non-exact candidates. Natural activation is therefore suitable as a discovery metric, while causal validity still requires an independent steering experiment.")}</p></div>
           <div className="finding-grid"><div><span>Spearman · all</span><strong>{summary.allCorrelation.toFixed(3)}</strong><p>activation ↔ steering</p></div><div><span>Spearman · alternatives</span><strong>{summary.alternativeCorrelation.toFixed(3)}</strong><p>{tx("只看非精确候选", "non-exact candidates only")}</p></div><div><span>Mean causal effect</span><strong>{summary.exactEffect.toFixed(3)} <i>/</i> {summary.alternativeEffect.toFixed(3)}</strong><p>exact / alternative</p></div></div>
-          <ResearchFigure wide number={6} title={tx("自然激活与因果效果。", "Natural activation versus causal effect.")} caption={tx("每个点是一条 Agent × task 运行；点击可查看 Feature ID 与盲评结果。", "Each point is one agent-by-task run; select it to inspect the feature ID and blinded-judge outcomes.")}><ScatterExplorer language={language} /></ResearchFigure>
+          <ResearchFigure wide number={6} title={tx("自然激活与因果效果。", "Natural activation versus causal effect.")} caption={tx("相关系数使用全部 540 条运行；可交互散点展示首轮的 160 条逐题记录，点击可查看 Feature ID 与盲评结果。", "Correlations use all 540 runs; the interactive scatter shows the 160 task-level records from the representative first run. Select a point to inspect its feature ID and blinded-judge outcomes.")}><ScatterExplorer language={language} /></ResearchFigure>
         </section>
 
         <section id="method" className="article-section methods-section">
@@ -612,7 +641,7 @@ function Home() {
               <li><b>Rank Score</b>：{tx("对 candidate 与 Expert 的 positive mean rank 应用 g↓。rank 越靠前越好。", "apply g↓ to candidate and Expert positive mean rank; earlier ranks are better.")}</li>
               <li><b>Activation Score</b>：{tx("对 AUROC−0.5、positive mean−max(hard-negative mean, neutral mean)，以及非负的逐 case Spearman 分别重标定后取平均。", "average rescaled AUROC−0.5, positive mean minus the stronger hard-negative/neutral mean, and non-negative per-case Spearman agreement.")}</li>
               <li><b>Steering Score</b>：{tx("对 control-adjusted target effect 与逐 instruction steering-effect Spearman 分别重标定后取平均。", "average rescaled control-adjusted target effect and per-instruction steering-effect Spearman agreement.")}</li>
-              <li><b>Overall / Total</b>：{tx("Overall 是三项等权平均；Total 是 20 道题的 Overall 直接求和。", "Overall is the equal-weight mean of the three blocks; Total directly sums Overall across the 20 tasks.")}</li>
+              <li><b>Overall</b>：{tx("Rank、Activation 与 Steering 三项等权平均，再对 20 道题取平均。", "take the equal-weight mean of Rank, Activation, and Steering, then average across the 20 tasks.")}</li>
             </ol>
             <p>{tx("Exact match 另行记录，不参与 Overall；Causal 与 Usable 也作为门槛型审计结果单列，避免把已经进入 Steering Score 的信号重复计权。", "Exact match is recorded separately rather than mixed into Overall. Causal and Usable are also shown as thresholded audit outcomes, avoiding double-counting signals already represented in the Steering Score.")}</p>
             <h3>{tx("Steering 如何执行与判分", "How steering is executed and judged")}</h3>
@@ -628,7 +657,7 @@ function Home() {
             <h3>{tx("Agent 隔离与公开边界", "Agent isolation and release boundary")}</h3>
             <p>{tx("正式 discovery 禁止联网与搜索公开 feature labels，也不能读取 benchmark 仓库或 expert ID。Agent 唯一可用的外部反馈，是受限 probe 返回的激活与 rank。Feature ID、聚合指标与筛选后的输出案例可以公开复现；隐藏的是评测 prompts、原始轨迹与基础设施。", "Scored discovery disables internet access and public-label search and blocks access to the benchmark repository and expert IDs. The only external feedback is activation and rank returned by a restricted probe. Feature IDs, aggregate metrics, and screened output examples can be released for reproducibility; evaluation prompts, raw traces, and infrastructure remain hidden.")}</p>
             <h3>{tx("限制", "Limitations")}</h3>
-            <p>{tx("当前榜单每个配置每题只有一次运行，且只覆盖 Gemma 2 9B 的两个层。固定输出上的 Judge 重打已经显示：连续 target score 的排序较稳定，但 causal/usable 阈值结论会发生明显变化。因而 exact recovery、activation quality、连续 steering effect、causal gate、usable steering 与 latency 均分开报告；Expert steering 还需要按 GPT‑4o 重新校准与准入。", "The current table has one run per configuration and task and covers only two layers of Gemma 2 9B. Re-scoring frozen outputs shows that continuous target-score ordering is relatively stable while causal and usable threshold decisions can change materially. We therefore report exact recovery, activation quality, continuous steering effect, causal gate, usable steering, and latency separately; expert steering also requires GPT-4o-based recalibration and re-admission.")}</p>
+            <p>{tx("当前榜单对每个配置执行三次独立运行，但仍只覆盖 Gemma 2 9B 的两个层与 20 个 Expert features。连续 target score 与 causal/usable 阈值回答不同问题，因此 exact recovery、activation quality、连续 steering effect、causal gate、usable steering 与 latency 均分开报告；跨基础模型、SAE 和层的迁移性仍需额外实验。", "The current leaderboard uses three independent runs per configuration, but still covers only 20 expert features from two layers of Gemma 2 9B. Continuous target scores and causal/usable thresholds answer different questions, so exact recovery, activation quality, continuous steering effect, causal gate, usable steering, and latency remain separate. Transfer across base models, SAEs, and layers requires additional experiments.")}</p>
           </div>
           <div className="references"><span>{tx("参考", "References")}</span><ol><li><a href="https://deepmind.google/models/gemma/gemma-scope/">Google DeepMind, Gemma Scope</a></li><li><a href="https://www.anthropic.com/research/evaluating-feature-steering">Anthropic, Evaluating feature steering</a></li><li><a href="https://www.anthropic.com/news/mapping-mind-language-model">Anthropic, Mapping the mind of a large language model</a></li></ol></div>
         </section>

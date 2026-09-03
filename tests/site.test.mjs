@@ -7,6 +7,7 @@ const assets = readdirSync(new URL("../dist-pages/assets", import.meta.url));
 const script = assets.find((name) => name.endsWith(".js"));
 assert.ok(script, "built JavaScript asset is missing");
 const bundle = readFileSync(new URL(`../dist-pages/assets/${script}`, import.meta.url), "utf8");
+const replicates = JSON.parse(readFileSync(new URL("../results/replicates.json", import.meta.url), "utf8"));
 
 test("build targets the GitHub Pages base path", () => {
   assert.match(html, /\/SAEScientist\/assets\//);
@@ -36,8 +37,21 @@ test("research blog contains feature meaning, activation depth, and steering con
   assert.match(bundle, /Return exactly three ratings with labels A, B, and C/);
   assert.match(bundle, /GPT-4o-2024-11-20/);
   assert.match(bundle, /Expert steering is/);
+  assert.match(bundle, /540 completed trace-audited episodes/);
+  assert.match(bundle, /Claude Opus 5 High/);
+  assert.match(bundle, /mean ± population standard deviation/);
   assert.doesNotMatch(bundle, /SUMMARY/);
+  assert.doesNotMatch(bundle, /Each configuration currently has one run per task/);
   assert.match(bundle, /Association between natural activation and steering/);
+});
+
+test("three-run leaderboard is complete", () => {
+  assert.equal(replicates.discovery_runs, 540);
+  assert.equal(replicates.configurations.length, 9);
+  assert.ok(replicates.configurations.every((row) => row.replicates === 3));
+  assert.equal(replicates.configurations[0].model, "claude-opus-5-thinking-high");
+  assert.equal(replicates.configurations[0].metrics.mean_overall_score.mean.toFixed(3), "0.738");
+  assert.equal(replicates.analysis.evaluated_task_feature_pairs, 119);
 });
 
 test("public bundle presents feature IDs but excludes private infrastructure", () => {

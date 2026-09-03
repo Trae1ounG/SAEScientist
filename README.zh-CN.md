@@ -1,36 +1,16 @@
 # SAEScientist-Bench
 
-[English](README.md) · [交互式研究博客](https://trae1oung.github.io/SAEScientist/) · [机器可读结果](results/leaderboard.json)
+[English](README.md) · [交互式研究博客](https://trae1oung.github.io/SAEScientist/) · [三轮机器可读结果](results/replicates.json)
 
 **SAEScientist-Bench 评估 AI Agent 能否独立完成一次稀疏自编码器 Feature 的研究与定位。**
 
 Agent 只获得一个英文语义目标和受限的 activation probe API。它需要自主编写诊断样例、比较 Feature 激活、修正假设，并最终提交一个 Feature ID。隐藏评测器随后检验该候选能否复现 Expert feature 的自然激活 pattern 与因果 steering 行为。
 
-当前快照使用 Google 官方 Gemma Scope SAE 与 `google/gemma-2-9b-it`，包含 20 个 Expert feature/layer 任务、8 个 Agent 配置和 160 次通过 trace audit 的 discovery episode。Agent 不可联网，也不能读取 benchmark 代码、隐藏 case、Expert ID 或公开 feature label。
+实验使用 Google 官方 Gemma Scope SAE 与 `google/gemma-2-9b-it`，包含 20 个 Expert feature/layer 任务和 9 个 Agent 配置；每个配置独立运行三次，共 540 次通过 trace audit 的 discovery episode。Agent 不可联网，也不能读取 benchmark 代码、隐藏 case、Expert ID 或公开 feature label。
 
 ## 架构
 
-```text
-语义目标
-   │
-   ▼
-隔离 Agent ── 编写 positive / hard-negative / neutral probes
-   │
-   ├── 查询：文本 + 候选 Feature IDs
-   └── 返回：activations + ranks
-   │
-   ▼
-提交一个 Feature ID
-   │
-   ▼
-冻结隐藏评测器
-   ├── Expert ID 精确恢复
-   ├── held-out activation 一致性
-   └── baseline / feature / 等范数随机方向 steering
-                                      │
-                                      ▼
-                              盲化 GPT-4o Judge
-```
+![SAEScientist-Bench 系统架构](public/figures/feature-discovery-mechanism/diagram.svg)
 
 Benchmark 汇报一个归一化综合分，并保留诊断指标：
 
@@ -48,28 +28,31 @@ Overall 是 20 题的平均值。Expert Feature 是归一化参照点 1.0，但�
 
 ## 当前结论
 
+表中为三次独立运行的均值 ± 总体标准差。
+
 | 排名 | 模型 | Overall | Rank | Activation | Steering | Exact | Causal | Usable |
 | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | GT | Expert Feature 基线 | 1.000 | 1.000 | 1.000 | 1.000 | 100% | 60% | 0% |
-| 1 | Kimi K3 High | 0.718 | 0.748 | 0.920 | 0.488 | 35% | 15% | 0% |
-| 2 | Grok 4.6 High | 0.699 | 0.648 | 0.920 | 0.529 | 35% | 15% | 0% |
-| 3 | Claude Sonnet 5 High | 0.696 | 0.710 | 0.917 | 0.461 | 30% | 10% | 0% |
-| 4 | Claude Opus 4.8 High | 0.680 | 0.674 | 0.907 | 0.458 | 35% | 10% | 0% |
-| 5 | GPT-5.6 Sol High | 0.645 | 0.506 | 0.912 | 0.517 | 35% | 15% | 0% |
-| 6 | GPT-5.5 High | 0.596 | 0.497 | 0.862 | 0.429 | 30% | 10% | 0% |
-| 7 | GLM-5.2 High | 0.562 | 0.462 | 0.857 | 0.368 | 20% | 15% | 0% |
-| 8 | GPT-5.6 Luna High | 0.526 | 0.398 | 0.849 | 0.330 | 15% | 5% | 0% |
+| 1 | Claude Opus 5 High | 0.738 ± 0.007 | 0.753 ± 0.001 | 0.935 ± 0.003 | 0.526 ± 0.023 | 41.7% ± 2.4 | 18.3% ± 2.4 | 0.0% ± 0.0 |
+| 2 | Claude Sonnet 5 High | 0.727 ± 0.024 | 0.734 ± 0.023 | 0.939 ± 0.020 | 0.508 ± 0.033 | 40.0% ± 8.2 | 16.7% ± 4.7 | 0.0% ± 0.0 |
+| 3 | Kimi K3 High | 0.724 ± 0.021 | 0.743 ± 0.046 | 0.927 ± 0.007 | 0.503 ± 0.016 | 31.7% ± 4.7 | 15.0% ± 0.0 | 0.0% ± 0.0 |
+| 4 | Claude Opus 4.8 High | 0.705 ± 0.046 | 0.702 ± 0.052 | 0.929 ± 0.019 | 0.482 ± 0.071 | 35.0% ± 8.2 | 13.3% ± 4.7 | 0.0% ± 0.0 |
+| 5 | Grok 4.6 High | 0.701 ± 0.005 | 0.672 ± 0.025 | 0.919 ± 0.001 | 0.513 ± 0.034 | 33.3% ± 6.2 | 16.7% ± 6.2 | 0.0% ± 0.0 |
+| 6 | GPT-5.6 Sol High | 0.643 ± 0.006 | 0.516 ± 0.018 | 0.902 ± 0.007 | 0.511 ± 0.031 | 35.0% ± 0.0 | 16.7% ± 2.4 | 1.7% ± 2.4 |
+| 7 | GPT-5.5 High | 0.611 ± 0.024 | 0.556 ± 0.043 | 0.876 ± 0.016 | 0.401 ± 0.046 | 25.0% ± 4.1 | 11.7% ± 2.4 | 0.0% ± 0.0 |
+| 8 | GLM-5.2 High | 0.586 ± 0.028 | 0.477 ± 0.047 | 0.860 ± 0.020 | 0.420 ± 0.037 | 26.7% ± 6.2 | 13.3% ± 2.4 | 0.0% ± 0.0 |
+| 9 | GPT-5.6 Luna High | 0.565 ± 0.063 | 0.469 ± 0.122 | 0.852 ± 0.014 | 0.373 ± 0.056 | 20.0% ± 7.1 | 10.0% ± 4.1 | 0.0% ± 0.0 |
 
 重标定以 Expert 为中心：越大越好的量使用 `2c/(c+e)`，越小越好的 rank
 使用 `2e/(c+e)`。所得 0–2 分数会保留优于 Expert 的候选，不再截断到 1。
 
-当前单次运行快照支持三个观察：
+三轮实验支持三个观察：
 
 1. Agent 经常能找到语义相关 Feature，但未必恢复准确的 Expert ID。
-2. Activation 相似性有用，但不足以证明因果等价：在 GPT‑4o 重新打标后，全部运行的 activation–steering Spearman 相关为 0.690；只看非 exact 候选时降至 0.378。
+2. Activation 相似性有用，但不足以证明因果等价：全部运行的 activation–steering Spearman 相关为 0.685；只看非 exact 候选时降至 0.322。
 3. 很强的 steering 可能直接抹掉用户任务，因此 causal target induction 和 usable control 必须分别评估。
 
-GPT‑4o 将 19/160 条运行判为 causal，没有运行通过 usable gate；113 个非 exact 候选中只有 1 个通过 causal gate。20 个 Expert direction 中也有 8 个未达到冻结的 70% target-success 阈值。这是 Judge 敏感性结果，最终论文需要先重新校准 Expert steering，或把因果结论限制在重新准入的子集上。这些仍是快照结论，不是最终方差估计。
+540 条运行中，173 条精确恢复 Expert ID，79 条通过 causal gate，1 条通过更严格的 usable gate；367 个非 exact 选择中有 5 个通过 causal gate。
 
 ## Steering 评测
 
@@ -97,7 +80,7 @@ npm run dev
 `npm test` 会构建 GitHub Pages 静态站点，并执行数据与正文一致性检查；`npm run dev` 会启动本地交互博客。提交的结果快照可直接读取：
 
 ```bash
-jq '.benchmark, .configurations' results/leaderboard.json
+jq '.replicates, .discovery_runs, .configurations' results/replicates.json
 ```
 
 公开仓库可以复现当前分析与网站。隐藏 prompts 与脱敏后的原始 Agent traces 保存在私有研究仓库；credentials 不落盘，两边仓库都不保留机器相关的绝对路径。
