@@ -46,8 +46,11 @@ def submitted_run(
     model_id: str,
     runs_root: Path,
     eligible_run_ids: set[str] | None = None,
+    replicate_index: int = 1,
 ) -> tuple[str, Path] | None:
     base = f"{task_id.replace('_', '-')}-offline-{model_id}"
+    if replicate_index > 1:
+        base = f"{base}-rep-{replicate_index:02d}"
     retry_pattern = re.compile(rf"^{re.escape(base)}-retry-(\d+)$")
     retries = sorted(
         (
@@ -161,6 +164,7 @@ def collect_jobs(
     models: list[dict[str, Any]],
     runs_root: Path,
     eligible_run_ids: set[str] | None = None,
+    replicate_index: int = 1,
 ) -> list[dict[str, Any]]:
     jobs = []
     for row in benchmark["tasks"]:
@@ -169,7 +173,11 @@ def collect_jobs(
         layer = task_layer(task)
         for model in models:
             selected = submitted_run(
-                task["task_id"], model["id"], runs_root, eligible_run_ids
+                task["task_id"],
+                model["id"],
+                runs_root,
+                eligible_run_ids,
+                replicate_index,
             )
             if selected is None:
                 continue
@@ -195,6 +203,7 @@ def main() -> None:
     parser.add_argument("--runs-root", type=Path, default=ROOT / "runs")
     parser.add_argument("--probe-url", action="append", required=True)
     parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument("--replicate-index", type=int, default=1)
     parser.add_argument(
         "--audit",
         type=Path,
@@ -203,6 +212,8 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--summary", type=Path, required=True)
     args = parser.parse_args()
+    if args.replicate_index < 1:
+        parser.error("replicate index must be positive")
 
     benchmark = read_json(args.benchmark)
     models = read_json(args.models)["models"]
@@ -212,7 +223,13 @@ def main() -> None:
         eligible_run_ids = {
             row["run_id"] for row in read_json(args.audit)["runs"] if row["eligible"]
         }
-    jobs = collect_jobs(benchmark, models, args.runs_root, eligible_run_ids)
+    jobs = collect_jobs(
+        benchmark,
+        models,
+        args.runs_root,
+        eligible_run_ids,
+        args.replicate_index,
+    )
     missing_layers = sorted({job["layer"] for job in jobs} - set(urls))
     if missing_layers:
         parser.error(f"missing probe URLs for layers: {missing_layers}")
@@ -233,6 +250,7 @@ def main() -> None:
     summary = {
         "schema": 1,
         "benchmark": str(args.benchmark),
+        "replicate_index": args.replicate_index,
         "eligible_runs": len(jobs),
         "scored": sum(row["status"] == "scored" for row in rows),
         "skipped": sum(row["status"] == "skipped" for row in rows),
@@ -246,4 +264,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -78,7 +78,22 @@ class ScoreAgentBatchTest(unittest.TestCase):
         self.assertIsNotNone(selected)
         self.assertEqual(selected[0], f"{base}-retry-01")
 
+    def test_selects_requested_replicate(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            primary = root / "gemma-cat-001-offline-cursor-high-01"
+            replicate = root / "gemma-cat-001-offline-cursor-high-rep-03-01"
+            for path in (primary, replicate):
+                path.mkdir()
+                (path / "result.json").write_text(
+                    json.dumps({"status": "submitted"}), encoding="utf-8"
+                )
+            selected = MODULE.submitted_run(
+                "gemma_cat_001", "cursor-high", root, replicate_index=3
+            )
+        self.assertIsNotNone(selected)
+        self.assertEqual(selected[0], replicate.name)
+
 
 if __name__ == "__main__":
     unittest.main()
-
