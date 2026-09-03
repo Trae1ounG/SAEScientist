@@ -2,3 +2,10 @@ node_modules/
 dist-pages/
 .DS_Store
 *.log
+.venv/
+__pycache__/
+*.pyc
+checkpoints/
+runs/
+outputs/
+artifacts/*.npz

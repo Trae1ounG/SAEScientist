@@ -1,98 +1,198 @@
+<div align="center">
+
 # SAE-Bench
 
-[中文](README.zh-CN.md) · [Interactive research blog](https://trae1oung.github.io/SAE-Bench/) · [Machine-readable results](results/leaderboard.json)
+### Can AI agents conduct autonomous SAE interpretability research?
 
-**SAE-Bench evaluates whether an AI agent can independently investigate and identify a sparse-autoencoder feature.**
+[中文](README.zh-CN.md) · [Research blog](https://trae1oung.github.io/SAE-Bench/) · [Agent instruction](prompts/discover_feature.md)
 
-The agent receives an English semantic target and a restricted activation-probe API. It writes diagnostic examples, compares feature activations, revises its hypothesis, and submits one Feature ID. A hidden evaluator then checks whether the submitted feature matches the expert feature's activation pattern and causal steering behavior.
+</div>
 
-The current snapshot uses the official Google Gemma Scope SAE for `google/gemma-2-9b-it`: 20 expert feature/layer tasks, eight agent configurations, and 160 trace-audited discovery episodes. Agents have no web access and cannot inspect benchmark code, hidden cases, expert IDs, or public feature labels.
+SAE-Bench gives an AI agent an English semantic target and a restricted probe
+interface to an official sparse autoencoder. The agent must design diagnostic
+texts, inspect activations and ranks, revise its hypothesis, and submit one
+feature ID. A trusted evaluator then tests exact recovery, held-out activation
+agreement, causal steering, and preservation of the original task.
 
-## Architecture
+[![SAE-Bench system overview](docs/assets/system-overview.svg)](docs/assets/system-overview.svg)
 
-```text
-semantic target
-      │
-      ▼
-isolated agent ── writes positive / hard-negative / neutral probes
-      │
-      ├── query: text + candidate Feature IDs
-      └── receive: activations + ranks
-      │
-      ▼
-one submitted Feature ID
-      │
-      ▼
-frozen hidden evaluator
-      ├── exact expert-ID recovery
-      ├── held-out activation fidelity
-      └── baseline / feature / norm-matched-random steering
-                                   │
-                                   ▼
-                         blinded GPT-4o judge
-```
+**Figure 1. SAE-Bench system overview.** The agent can access only its task,
+writable workspace, and the local `probe_sae` tool. Expert IDs, evaluation
+cases, model weights, and judge credentials remain outside the agent workspace.
+The evaluator compares the submitted feature with the expert direction on
+natural activation and on baseline, feature-steered, and norm-matched-random
+generations.
 
-The benchmark reports four outcomes separately:
+## Benchmark contract
 
-- **Exact:** whether the submitted ID equals the frozen expert ID.
-- **Activation:** expert-normalized recovery of held-out rank, AUROC, activation contrast, and per-case activation pattern.
-- **Causal:** whether feature steering induces the target more strongly than both control conditions.
-- **Usable:** whether the target is induced without destroying the original user task.
+| Component | Setting |
+|---|---|
+| Base model | `google/gemma-2-9b-it` |
+| SAE | Google DeepMind Gemma Scope residual-stream SAE |
+| Agent input | English target description and SAE metadata |
+| Agent tool | Text probes returning feature IDs, activations, and full-SAE ranks |
+| Agent output | One `submission.json` containing one integer `feature_id` |
+| Isolation | No web access and no access to evaluator code, hidden cases, expert IDs, or public labels |
+| Evaluation | Exact match, expert-normalized activation, causal steering, and usable steering |
 
-There is no composite score that hides these distinctions.
+The agent writes the research procedure. The trusted runtime controls model
+loading, GPU assignment, append-only traces, hidden evaluation, and final
+scoring.
 
-## Current evidence
-
-| Rank | Agent configuration | Activation | Exact | GPT-4o target | Causal | Usable |
-| ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| 1 | Kimi K3 High · Cursor | 0.794 | 35% | 0.281 | 15% | 0% |
-| 2 | Grok 4.6 High · Cursor | 0.786 | 35% | 0.303 | 15% | 0% |
-| 3 | Claude Sonnet 5 High · Cursor | 0.783 | 30% | 0.277 | 10% | 0% |
-| 4 | Claude Opus 4.8 High · Cursor | 0.776 | 35% | 0.226 | 10% | 0% |
-| 5 | GPT-5.6 Sol High · Codex | 0.752 | 35% | 0.298 | 15% | 0% |
-| 6 | GPT-5.5 High · Cursor | 0.697 | 30% | 0.217 | 10% | 0% |
-| 7 | GLM-5.2 High · Cursor | 0.692 | 20% | 0.242 | 15% | 0% |
-| 8 | GPT-5.6 Luna High · Codex | 0.645 | 15% | 0.170 | 5% | 0% |
-
-The single-run snapshot supports three observations:
-
-1. Agents often find semantically related features without recovering the exact expert ID.
-2. Activation similarity is informative but insufficient for causal equivalence: under the GPT-4o re-judgment, the activation–steering Spearman correlation is 0.690 overall and 0.378 among non-exact candidates.
-3. Strong steering can erase the requested task. Causal target induction and usable control therefore need separate metrics.
-
-GPT-4o marks 19/160 runs causal and none usable; only 1/113 non-exact selections passes the causal gate. Eight of the 20 expert directions also fall below the frozen 70% target-success threshold under this judge. The latter is a judge-sensitivity finding and requires expert re-calibration or a restricted causal subset before a final paper claim. These are snapshot results, not final variance estimates.
-
-## Steering evaluation
-
-For submitted feature `k`, the evaluator intervenes at the SAE layer with
+## Repository structure
 
 ```text
-h'_t = h_t + alpha × W_dec[:, k]
+src/sae_bench/      activation, steering, scoring, suites, and episode logic
+agents/             Codex, Cursor, Claude, and OpenCode harness adapters
+scripts/            probe service, agent runner, scorer, steering, judge, audit
+prompts/            shared agent instruction
+examples/cat/       public end-to-end task and evaluation suite
+tests/              unit and protocol tests
+docs/assets/        framework figure
 ```
 
-`alpha` is chosen on five calibration prompts. Evaluation uses 20 separate held-out instructions and three conditions: baseline, the submitted feature, and a norm-matched random decoder direction. Their outputs are shuffled and anonymized before GPT-4o scores target relevance, task preservation, and degeneration twice at temperature zero.
+The public `main` branch contains executable benchmark code. The `website`
+branch contains the research blog and sanitized aggregate visualizations. Raw
+agent traces, complete experiment outputs, and per-prompt judge records are
+stored in the private experiment repository.
 
-The full judge prompt, label definitions, aggregation formulas, per-feature activation distributions, and steering examples are reported in the [research blog](https://trae1oung.github.io/SAE-Bench/).
+## Reproduce one complete experiment
 
-## Reproduce the public release
+The public Cat case runs the same sequence as a scored task: serve the official
+SAE, run an isolated agent, score its submitted feature, generate steering
+rollouts, and judge the anonymized outputs.
+
+### 1. Install
+
+Use a Linux machine with an NVIDIA GPU, Python 3.10+, and enough memory for
+Gemma 2 9B plus one 131K Gemma Scope SAE.
 
 ```bash
 git clone https://github.com/Trae1ounG/SAE-Bench.git
 cd SAE-Bench
-git checkout website
-npm ci
-npm test
-npm run dev
+python -m venv .venv
+. .venv/bin/activate
+pip install -e '.[test]'
 ```
 
-`npm test` builds the static GitHub Pages site and runs its data/content consistency checks. `npm run dev` starts the local interactive blog. The committed result snapshot is available directly:
+Accept the Gemma license on Hugging Face, then download the exact model and
+official SAE checkpoint:
 
 ```bash
-jq '.benchmark, .configurations' results/leaderboard.json
+hf download google/gemma-2-9b-it \
+  --local-dir checkpoints/gemma-2-9b-it
+
+hf download google/gemma-scope-9b-it-res \
+  layer_9/width_131k/average_l0_121/params.npz \
+  --local-dir checkpoints/gemma-scope-9b-it-res
 ```
 
-The public repository reproduces the reported analysis and website. Hidden prompts and sanitized raw agent traces remain in the private research repository; credentials are never stored, and machine-specific paths are removed from both repositories.
+### 2. Start the restricted probe service
 
-## Citation
+```bash
+ray start --head --num-gpus=1
 
-Please cite this repository and the accessed commit when using the benchmark or reported results.
+PYTHONPATH=src python scripts/serve_probe.py \
+  --model-path checkpoints/gemma-2-9b-it \
+  --sae-path checkpoints/gemma-scope-9b-it-res/layer_9/width_131k/average_l0_121/params.npz \
+  --layer 9 --workers 1 --host 127.0.0.1 --port 8765
+```
+
+The service loads the model and full SAE once. It returns measurements only;
+it never returns feature labels or expert metadata.
+
+### 3. Run the agent
+
+In a second shell, point the adapter at an installed Agent CLI. This example
+uses Codex; `agents/` contains the other adapters.
+
+```bash
+PYTHONPATH=src python scripts/run_agent.py \
+  --task examples/cat/task.json \
+  --run-id cat-codex-run01 \
+  --harness codex \
+  --model gpt-5.6-sol \
+  --reasoning-effort high \
+  --cli-path "$(command -v codex)" \
+  --probe-url http://127.0.0.1:8765
+```
+
+The submitted ID is written to
+`runs/cat-codex-run01/workspace/submission.json`; the complete agent trajectory
+is stored in `runs/cat-codex-run01/logs/agent.jsonl`.
+
+### 4. Score held-out activation
+
+```bash
+mkdir -p outputs
+
+PYTHONPATH=src python scripts/score_feature_submission.py \
+  --model-path checkpoints/gemma-2-9b-it \
+  --full-sae checkpoints/gemma-scope-9b-it-res/layer_9/width_131k/average_l0_121/params.npz \
+  --suite examples/cat/suite.json \
+  --submission runs/cat-codex-run01/workspace/submission.json \
+  --expert-feature-id 62610 \
+  --layer 9 \
+  --output outputs/cat_activation.json
+```
+
+This produces exact match, positive/hard-negative/neutral statistics, AUROC,
+activation-pattern correlation, decoder cosine, and the expert-normalized
+activation score.
+
+### 5. Generate and judge steering rollouts
+
+Extract the submitted decoder direction from the official checkpoint:
+
+```bash
+FEATURE_ID="$(jq -r .feature_id runs/cat-codex-run01/workspace/submission.json)"
+
+PYTHONPATH=src python scripts/fetch_gemma_feature.py \
+  --layer 9 --width 131k --average-l0 121 \
+  --feature-id "$FEATURE_ID" \
+  --output-dir artifacts
+```
+
+Run baseline, feature, and norm-matched-random generations:
+
+```bash
+PYTHONPATH=src python scripts/evaluate_gemma_feature.py \
+  --model-path checkpoints/gemma-2-9b-it \
+  --feature "artifacts/gemma2_9b_it_l9_w131k_feature_${FEATURE_ID}.npz" \
+  --suite examples/cat/suite.json \
+  --alphas 160 \
+  --max-new-tokens 192 \
+  --output outputs/cat_steering.json
+```
+
+Finally, configure an Azure OpenAI deployment of GPT-4o and run two blinded
+judge passes over every held-out instruction:
+
+```bash
+export AZURE_OPENAI_API_KEY='<your-key>'
+export AZURE_OPENAI_ENDPOINT='https://<resource>.openai.azure.com/'
+export OPENAI_API_VERSION='<supported-api-version>'
+
+PYTHONPATH=src python scripts/judge_feature_steering.py \
+  --result outputs/cat_steering.json \
+  --suite examples/cat/suite.json \
+  --output-prefix outputs/cat_judgment \
+  --provider azure-openai \
+  --model-name gpt-4o-2024-11-20 \
+  --repeats 2
+```
+
+The command writes the full per-prompt records to
+`outputs/cat_judgment.jsonl` and the aggregate admission decision to
+`outputs/cat_judgment_summary.json`.
+
+## Verify the implementation
+
+```bash
+pytest -q
+```
+
+Tests cover feature admission, activation scoring, steering, judge aggregation,
+agent-run isolation and audit, batch execution, and release validation. GPU
+integration requires the downloaded model and SAE; unit tests do not download
+checkpoints.
