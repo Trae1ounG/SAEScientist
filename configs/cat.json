@@ -1,0 +1,38 @@
+{
+  "model_path": "checkpoints/gemma-2-9b-it",
+  "sae": {
+    "path": "checkpoints/gemma-scope-9b-it-res/layer_9/width_131k/average_l0_121/params.npz",
+    "layer": 9,
+    "width": "131k",
+    "average_l0": 121,
+    "resolved_revision": "e86af97a5b6fbbccca28ab654f2fda1b0768f770"
+  },
+  "task": "examples/cat/task.json",
+  "suite": "examples/cat/suite.json",
+  "expert_feature_id": 62610,
+  "agent": {
+    "run_id": "cat-codex-run01",
+    "harness": "codex",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "cli": "codex",
+    "timeout_minutes": 60
+  },
+  "probe": {
+    "workers": 1,
+    "host": "127.0.0.1",
+    "port": 8765,
+    "start_timeout_seconds": 600
+  },
+  "steering": {
+    "alphas": "160",
+    "max_new_tokens": 192
+  },
+  "judge": {
+    "provider": "azure-openai",
+    "model": "gpt-4o-2024-11-20",
+    "api_key_env": "AZURE_OPENAI_API_KEY",
+    "repeats": 2
+  },
+  "output_dir": "outputs/cat-codex-run01"
+}

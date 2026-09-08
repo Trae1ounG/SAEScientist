@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "status": "stable_reference",
+  "feature_case": "data/official_cases/gemma2_9b_it_l9_w131k_feature_105738.json",
+  "suite": "data/eval/gemma_french_105738_v1.json",
+  "protocol": {
+    "alpha": 120,
+    "positions": "all",
+    "generation": "greedy",
+    "max_new_tokens": 128
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "status": "stable_reference",
+  "feature_case": "data/official_cases/gemma2_9b_it_l9_w131k_feature_33987.json",
+  "suite": "data/discovery/gemma_l9_round_002_validation.json",
+  "concept_id": "german_language",
+  "protocol": {
+    "alpha": 60,
+    "positions": "all",
+    "generation": "greedy",
+    "max_new_tokens": 128
+  }
+}

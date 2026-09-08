@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "models": [
+    {
+      "id": "codex-sol-high",
+      "harness": "codex",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "cli": "codex"
+    }
+  ]
+}

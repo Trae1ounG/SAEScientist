@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "prompts": [
+    {"id": "s01", "prompt": "Introduce yourself in two sentences."},
+    {"id": "s02", "prompt": "Give three practical ways to stay focused while studying."},
+    {"id": "s03", "prompt": "Write a short welcome message for a new teammate."},
+    {"id": "s04", "prompt": "Explain photosynthesis in two sentences."},
+    {"id": "s05", "prompt": "Suggest a simple dinner using rice and vegetables."},
+    {"id": "s06", "prompt": "Explain what an HTTP request is to a beginner."},
+    {"id": "s07", "prompt": "Calculate 17 times 24 and explain the calculation."},
+    {"id": "s08", "prompt": "Plan a quiet one-day visit to a small coastal town."},
+    {"id": "s09", "prompt": "Draft a polite email asking to reschedule a meeting."},
+    {"id": "s10", "prompt": "Summarize the water cycle in three steps."},
+    {"id": "s11", "prompt": "Give two debugging tips for a Python program."},
+    {"id": "s12", "prompt": "Write a four-line poem about moonlight."},
+    {"id": "s13", "prompt": "Compare solar and wind energy in two sentences."},
+    {"id": "s14", "prompt": "Create a three-item agenda for a weekly team meeting."},
+    {"id": "s15", "prompt": "Describe what visitors might see in a natural history museum."},
+    {"id": "s16", "prompt": "Suggest a healthy breakfast that takes under ten minutes."},
+    {"id": "s17", "prompt": "Give three pieces of advice for creating a strong password."},
+    {"id": "s18", "prompt": "Write a brief positive review of an imaginary novel."},
+    {"id": "s19", "prompt": "Provide a concise project status update with one risk."},
+    {"id": "s20", "prompt": "Explain gravity to a ten-year-old."}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "publisher": "Google DeepMind",
+  "official_source": true,
+  "repo": "google/gemma-scope-9b-it-res",
+  "resolved_revision": "e86af97a5b6fbbccca28ab654f2fda1b0768f770",
+  "base_model": "google/gemma-2-9b-it",
+  "checkpoint": "layer_9/width_131k/average_l0_121/params.npz",
+  "hookpoint": "resid_post",
+  "layer": 9,
+  "feature_id": 62610,
+  "label": "cats and feline",
+  "label_source": "Neuronpedia featured steering preset",
+  "neuronpedia": "https://www.neuronpedia.org/gemma-2-9b-it/9-gemmascope-res-131k/62610",
+  "reference_steering": {
+    "url": "https://www.neuronpedia.org/steer/cm7cp63af00jx1q952neqg6e5",
+    "strength": 192,
+    "seed": 16,
+    "temperature": 1,
+    "positions": "all",
+    "special_tokens": true
+  }
+}

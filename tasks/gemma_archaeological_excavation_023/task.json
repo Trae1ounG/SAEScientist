@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "task_id": "gemma_archaeological_excavation_023",
+  "language": "en",
+  "difficulty": "easy",
+  "difficulty_metric": {
+    "name": "expert_positive_mean_rank",
+    "value": 53.125
+  },
+  "difficulty_rationale": "expert_positive_mean_rank <= 100",
+  "model": "google/gemma-2-9b-it",
+  "sae": {
+    "repo": "google/gemma-scope-9b-it-res",
+    "release": "layer_20/width_131k/average_l0_81",
+    "hook": "blocks.20.hook_resid_post",
+    "feature_count": 131072
+  },
+  "description": "A context-level feature for archaeological excavation reports involving artifacts, strata, trenches, or dating. It should capture archaeological excavation evidence. Strong evidence includes field excavation context with artifacts, layers, trenches, dating, site grids, or occupation phases. Distinguish it from museums, history documentaries, ruins tourism, construction digging, or heritage policy without excavation evidence.",
+  "submission": {
+    "path": "submission.json",
+    "fields": {
+      "feature_id": "integer in [0, 131071]"
+    }
+  }
+}

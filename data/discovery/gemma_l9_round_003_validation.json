@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "checkpoint": "google/gemma-scope-9b-it-res layer_9/width_131k/average_l0_121",
+  "steering_calibration": [
+    {"id": "c01", "prompt": "Introduce yourself in two sentences."},
+    {"id": "c02", "prompt": "Explain why regular sleep matters."},
+    {"id": "c03", "prompt": "Give three tips for organizing a busy week."},
+    {"id": "c04", "prompt": "Describe a quiet morning in a small town."},
+    {"id": "c05", "prompt": "Write a short thank-you note for someone's help."}
+  ],
+  "steering_prompts": "../steering/french_105738_v1.json",
+  "concepts": [
+    {
+      "id": "italian_language",
+      "target": "coherent Italian-language text rather than Italian cultural references",
+      "steering_target": {
+        "concept": "coherent grammatical Italian-language output",
+        "cues": ["gli", "della", "delle", "questo", "questa", "perché", "anche", "sono", "nella", "degli"],
+        "strong_evidence": "most of the answer is connected grammatical Italian",
+        "insufficient_evidence": "Italian names, places, borrowed words, or nearby Spanish and Portuguese text"
+      },
+      "activation_cases": [
+        {"id": "it-p01", "label": "positive", "text": "Il treno arriverà alla stazione tra venti minuti."},
+        {"id": "it-p02", "label": "positive", "text": "Dobbiamo controllare i risultati prima di prendere una decisione."},
+        {"id": "it-p03", "label": "positive", "text": "La storia racconta di una famiglia che vive vicino al mare."},
+        {"id": "it-p04", "label": "positive", "text": "Conserva una copia del documento in un luogo sicuro."},
+        {"id": "it-p05", "label": "positive", "text": "Nonostante la pioggia, i bambini hanno continuato a giocare."},
+        {"id": "it-p06", "label": "positive", "text": "Questa ricerca potrebbe migliorare l'efficienza delle batterie."},
+        {"id": "it-p07", "label": "positive", "text": "Preparavamo il caffè mentre gli amici sistemavano la tavola."},
+        {"id": "it-p08", "label": "positive", "text": "Perché questa soluzione funziona meglio della precedente?"},
+        {"id": "it-h01", "label": "hard_negative", "text": "The Italian delegation arrived in Rome for the annual summit."},
+        {"id": "it-h02", "label": "hard_negative", "text": "Italian grammar was discussed entirely in English."},
+        {"id": "it-h03", "label": "hard_negative", "text": "Il is an Italian article, while una is an indefinite article."},
+        {"id": "it-h04", "label": "hard_negative", "text": "El tren llegará a la estación dentro de veinte minutos."},
+        {"id": "it-h05", "label": "hard_negative", "text": "O trem chegará à estação dentro de vinte minutos."},
+        {"id": "it-h06", "label": "hard_negative", "text": "Roma, pasta, grazie, buongiorno appeared on the vocabulary sheet."},
+        {"id": "it-h07", "label": "hard_negative", "text": "The restaurant served risotto while English music played."},
+        {"id": "it-h08", "label": "hard_negative", "text": "A translator converted the Italian paragraph into English."},
+        {"id": "it-n01", "label": "neutral", "text": "Clouds gathered above the mountains before sunset."},
+        {"id": "it-n02", "label": "neutral", "text": "The technician replaced the damaged power supply."},
+        {"id": "it-n03", "label": "neutral", "text": "Three boxes remained unopened in the warehouse."},
+        {"id": "it-n04", "label": "neutral", "text": "Attach the revised chart to the final presentation."}
+      ]
+    },
+    {
+      "id": "portuguese_language",
+      "target": "coherent Portuguese-language text rather than Portuguese cultural references",
+      "steering_target": {
+        "concept": "coherent grammatical Portuguese-language output",
+        "cues": ["uma", "não", "para", "com", "dos", "das", "pelo", "pela", "você", "está"],
+        "strong_evidence": "most of the answer is connected grammatical Portuguese",
+        "insufficient_evidence": "Portuguese names, places, borrowed words, or nearby Spanish and Italian text"
+      },
+      "activation_cases": [
+        {"id": "pt-p01", "label": "positive", "text": "O trem chegará à estação dentro de vinte minutos."},
+        {"id": "pt-p02", "label": "positive", "text": "Precisamos revisar os resultados antes de tomar uma decisão."},
+        {"id": "pt-p03", "label": "positive", "text": "O romance conta a história de uma família que vive perto do mar."},
+        {"id": "pt-p04", "label": "positive", "text": "Guarde uma cópia do documento em um lugar seguro."},
+        {"id": "pt-p05", "label": "positive", "text": "Embora estivesse chovendo, as crianças continuaram brincando."},
+        {"id": "pt-p06", "label": "positive", "text": "Esta pesquisa pode melhorar a eficiência das baterias."},
+        {"id": "pt-p07", "label": "positive", "text": "Preparamos café enquanto nossos amigos arrumavam a mesa."},
+        {"id": "pt-p08", "label": "positive", "text": "Por que esta solução funciona melhor do que a anterior?"},
+        {"id": "pt-h01", "label": "hard_negative", "text": "The Portuguese delegation arrived in Lisbon for the annual summit."},
+        {"id": "pt-h02", "label": "hard_negative", "text": "Portuguese grammar was discussed entirely in English."},
+        {"id": "pt-h03", "label": "hard_negative", "text": "Uma is a Portuguese article, and não expresses negation."},
+        {"id": "pt-h04", "label": "hard_negative", "text": "El tren llegará a la estación dentro de veinte minutos."},
+        {"id": "pt-h05", "label": "hard_negative", "text": "Il treno arriverà alla stazione tra venti minuti."},
+        {"id": "pt-h06", "label": "hard_negative", "text": "Lisboa, fado, obrigado, pastel appeared on the vocabulary sheet."},
+        {"id": "pt-h07", "label": "hard_negative", "text": "The café served Portuguese pastries with an English menu."},
+        {"id": "pt-h08", "label": "hard_negative", "text": "A translator converted the Portuguese paragraph into English."},
+        {"id": "pt-n01", "label": "neutral", "text": "A narrow trail followed the edge of the lake."},
+        {"id": "pt-n02", "label": "neutral", "text": "The warranty expires at the end of the year."},
+        {"id": "pt-n03", "label": "neutral", "text": "The orchestra rehearsed until the hall closed."},
+        {"id": "pt-n04", "label": "neutral", "text": "Measure the flour before adding it to the bowl."}
+      ]
+    },
+    {
+      "id": "russian_language",
+      "target": "coherent Russian-language Cyrillic text rather than references to Russia",
+      "steering_target": {
+        "concept": "coherent grammatical Russian-language output",
+        "cues": ["и", "в", "не", "на", "что", "это", "для", "мы", "с", "как"],
+        "strong_evidence": "most of the answer is connected grammatical Russian in Cyrillic",
+        "insufficient_evidence": "Russian names, isolated Cyrillic words, or neighboring Ukrainian and Belarusian text"
+      },
+      "activation_cases": [
+        {"id": "ru-p01", "label": "positive", "text": "Поезд прибудет на станцию через двадцать минут."},
+        {"id": "ru-p02", "label": "positive", "text": "Нам нужно проверить результаты перед принятием решения."},
+        {"id": "ru-p03", "label": "positive", "text": "Роман рассказывает историю семьи, живущей у моря."},
+        {"id": "ru-p04", "label": "positive", "text": "Сохраните копию документа в безопасном месте."},
+        {"id": "ru-p05", "label": "positive", "text": "Несмотря на дождь, дети продолжали играть в парке."},
+        {"id": "ru-p06", "label": "positive", "text": "Это исследование может повысить эффективность батарей."},
+        {"id": "ru-p07", "label": "positive", "text": "Мы готовили кофе, пока друзья накрывали на стол."},
+        {"id": "ru-p08", "label": "positive", "text": "Почему это решение работает лучше предыдущего?"},
+        {"id": "ru-h01", "label": "hard_negative", "text": "The Russian delegation arrived in Moscow for the annual summit."},
+        {"id": "ru-h02", "label": "hard_negative", "text": "Russian grammar was discussed entirely in English."},
+        {"id": "ru-h03", "label": "hard_negative", "text": "И means and, while не is a common Russian negation."},
+        {"id": "ru-h04", "label": "hard_negative", "text": "Потяг прибуде на станцію через двадцять хвилин."},
+        {"id": "ru-h05", "label": "hard_negative", "text": "Цягнік прыбудзе на станцыю праз дваццаць хвілін."},
+        {"id": "ru-h06", "label": "hard_negative", "text": "Москва, спасибо, да, нет appeared on the vocabulary sheet."},
+        {"id": "ru-h07", "label": "hard_negative", "text": "The restaurant used a Russian name but served an English menu."},
+        {"id": "ru-h08", "label": "hard_negative", "text": "A translator converted the Russian paragraph into English."},
+        {"id": "ru-n01", "label": "neutral", "text": "The satellite completed another orbit before dawn."},
+        {"id": "ru-n02", "label": "neutral", "text": "A ceramic bowl stood on the wooden shelf."},
+        {"id": "ru-n03", "label": "neutral", "text": "Please verify the checksum after downloading the archive."},
+        {"id": "ru-n04", "label": "neutral", "text": "The committee postponed its decision until next week."}
+      ]
+    },
+    {
+      "id": "japanese_language",
+      "target": "coherent Japanese-language text rather than references to Japan",
+      "steering_target": {
+        "concept": "coherent grammatical Japanese-language output",
+        "cues": ["です", "ます", "の", "に", "は", "を", "が", "と", "で", "した"],
+        "strong_evidence": "most of the answer is connected grammatical Japanese",
+        "insufficient_evidence": "Japanese names, isolated words, or neighboring Chinese and Korean text"
+      },
+      "activation_cases": [
+        {"id": "ja-p01", "label": "positive", "text": "電車は二十分後に駅へ到着する予定です。"},
+        {"id": "ja-p02", "label": "positive", "text": "決定する前に結果を詳しく確認する必要があります。"},
+        {"id": "ja-p03", "label": "positive", "text": "その小説は海辺に住む家族の物語を描いています。"},
+        {"id": "ja-p04", "label": "positive", "text": "書類のコピーを安全な場所に保管してください。"},
+        {"id": "ja-p05", "label": "positive", "text": "雨が降っていましたが、子どもたちは遊び続けました。"},
+        {"id": "ja-p06", "label": "positive", "text": "この研究は電池の効率を改善する可能性があります。"},
+        {"id": "ja-p07", "label": "positive", "text": "友人がテーブルを整える間にコーヒーを作りました。"},
+        {"id": "ja-p08", "label": "positive", "text": "なぜこの方法は以前の方法よりよく機能するのでしょうか。"},
+        {"id": "ja-h01", "label": "hard_negative", "text": "The Japanese delegation arrived in Tokyo for the annual summit."},
+        {"id": "ja-h02", "label": "hard_negative", "text": "Japanese grammar was discussed entirely in English."},
+        {"id": "ja-h03", "label": "hard_negative", "text": "です and ます are common endings in polite Japanese."},
+        {"id": "ja-h04", "label": "hard_negative", "text": "火车将在二十分钟后到达车站。"},
+        {"id": "ja-h05", "label": "hard_negative", "text": "기차는 이십 분 후에 역에 도착할 예정입니다."},
+        {"id": "ja-h06", "label": "hard_negative", "text": "Tokyo, sushi, anime, arigato appeared on the vocabulary sheet."},
+        {"id": "ja-h07", "label": "hard_negative", "text": "The café had a Japanese name but an English menu."},
+        {"id": "ja-h08", "label": "hard_negative", "text": "A translator converted the Japanese paragraph into English."},
+        {"id": "ja-n01", "label": "neutral", "text": "The gardener watered the seedlings before noon."},
+        {"id": "ja-n02", "label": "neutral", "text": "A train crossed the bridge during the storm."},
+        {"id": "ja-n03", "label": "neutral", "text": "The editor corrected two dates in the manuscript."},
+        {"id": "ja-n04", "label": "neutral", "text": "Fresh bread cooled on the kitchen counter."}
+      ]
+    },
+    {
+      "id": "korean_language",
+      "target": "coherent Korean-language Hangul text rather than references to Korea",
+      "steering_target": {
+        "concept": "coherent grammatical Korean-language output",
+        "cues": ["합니다", "습니다", "이", "가", "을", "를", "은", "는", "에", "그리고"],
+        "strong_evidence": "most of the answer is connected grammatical Korean",
+        "insufficient_evidence": "Korean names, isolated words, or neighboring Japanese and Chinese text"
+      },
+      "activation_cases": [
+        {"id": "ko-p01", "label": "positive", "text": "기차는 이십 분 후에 역에 도착할 예정입니다."},
+        {"id": "ko-p02", "label": "positive", "text": "결정을 내리기 전에 결과를 자세히 검토해야 합니다."},
+        {"id": "ko-p03", "label": "positive", "text": "그 소설은 바닷가에 사는 한 가족의 이야기를 담고 있습니다."},
+        {"id": "ko-p04", "label": "positive", "text": "문서 사본을 안전한 곳에 보관해 주세요."},
+        {"id": "ko-p05", "label": "positive", "text": "비가 내렸지만 아이들은 계속 공원에서 놀았습니다."},
+        {"id": "ko-p06", "label": "positive", "text": "이 연구는 배터리의 효율을 높일 수 있습니다."},
+        {"id": "ko-p07", "label": "positive", "text": "친구들이 식탁을 준비하는 동안 우리는 커피를 만들었습니다."},
+        {"id": "ko-p08", "label": "positive", "text": "왜 이 방법이 이전 방법보다 더 잘 작동합니까?"},
+        {"id": "ko-h01", "label": "hard_negative", "text": "The Korean delegation arrived in Seoul for the annual summit."},
+        {"id": "ko-h02", "label": "hard_negative", "text": "Korean grammar was discussed entirely in English."},
+        {"id": "ko-h03", "label": "hard_negative", "text": "합니다 and 습니다 are formal Korean sentence endings."},
+        {"id": "ko-h04", "label": "hard_negative", "text": "電車は二十分後に駅へ到着する予定です。"},
+        {"id": "ko-h05", "label": "hard_negative", "text": "火车将在二十分钟后到达车站。"},
+        {"id": "ko-h06", "label": "hard_negative", "text": "Seoul, kimchi, Hangul, annyeong appeared on the vocabulary sheet."},
+        {"id": "ko-h07", "label": "hard_negative", "text": "The café had a Korean name but an English menu."},
+        {"id": "ko-h08", "label": "hard_negative", "text": "A translator converted the Korean paragraph into English."},
+        {"id": "ko-n01", "label": "neutral", "text": "The violinist adjusted the bridge before rehearsal."},
+        {"id": "ko-n02", "label": "neutral", "text": "Heavy rain delayed the afternoon flight."},
+        {"id": "ko-n03", "label": "neutral", "text": "The package includes a printed instruction manual."},
+        {"id": "ko-n04", "label": "neutral", "text": "A bright lamp illuminated the reading desk."}
+      ]
+    },
+    {
+      "id": "arabic_language",
+      "target": "coherent Arabic-language text rather than references to Arab culture",
+      "steering_target": {
+        "concept": "coherent grammatical Arabic-language output",
+        "cues": ["ال", "في", "من", "على", "أن", "إلى", "هذا", "التي", "مع", "كان"],
+        "strong_evidence": "most of the answer is connected grammatical Arabic",
+        "insufficient_evidence": "Arabic names, isolated words, or neighboring Persian and Urdu text"
+      },
+      "activation_cases": [
+        {"id": "ar-p01", "label": "positive", "text": "سيصل القطار إلى المحطة بعد عشرين دقيقة."},
+        {"id": "ar-p02", "label": "positive", "text": "علينا مراجعة النتائج بعناية قبل اتخاذ القرار."},
+        {"id": "ar-p03", "label": "positive", "text": "تحكي الرواية قصة عائلة تعيش بالقرب من البحر."},
+        {"id": "ar-p04", "label": "positive", "text": "احتفظ بنسخة من الوثيقة في مكان آمن."},
+        {"id": "ar-p05", "label": "positive", "text": "رغم هطول المطر واصل الأطفال اللعب في الحديقة."},
+        {"id": "ar-p06", "label": "positive", "text": "قد يساعد هذا البحث على تحسين كفاءة البطاريات."},
+        {"id": "ar-p07", "label": "positive", "text": "أعددنا القهوة بينما كان أصدقاؤنا يرتبون المائدة."},
+        {"id": "ar-p08", "label": "positive", "text": "لماذا تعمل هذه الطريقة أفضل من الطريقة السابقة؟"},
+        {"id": "ar-h01", "label": "hard_negative", "text": "The Arab delegation arrived in Cairo for the annual summit."},
+        {"id": "ar-h02", "label": "hard_negative", "text": "Arabic grammar was discussed entirely in English."},
+        {"id": "ar-h03", "label": "hard_negative", "text": "ال is the Arabic definite article, while في often means in."},
+        {"id": "ar-h04", "label": "hard_negative", "text": "قطار بیست دقیقه دیگر به ایستگاه خواهد رسید."},
+        {"id": "ar-h05", "label": "hard_negative", "text": "ٹرین بیس منٹ بعد اسٹیشن پہنچے گی۔"},
+        {"id": "ar-h06", "label": "hard_negative", "text": "Cairo, hummus, salaam, shukran appeared on the vocabulary sheet."},
+        {"id": "ar-h07", "label": "hard_negative", "text": "The café had an Arabic name but an English menu."},
+        {"id": "ar-h08", "label": "hard_negative", "text": "A translator converted the Arabic paragraph into English."},
+        {"id": "ar-n01", "label": "neutral", "text": "The choir performed three songs without an intermission."},
+        {"id": "ar-n02", "label": "neutral", "text": "A mechanic inspected the brakes and replaced one tire."},
+        {"id": "ar-n03", "label": "neutral", "text": "The river level fell slowly during the dry month."},
+        {"id": "ar-n04", "label": "neutral", "text": "Please submit the signed form before the deadline."}
+      ]
+    }
+  ]
+}

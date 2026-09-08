@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "benchmark_id": "gemma_scope_mixed",
+  "model": "google/gemma-2-9b-it",
+  "sae": [
+    "google/gemma-scope-9b-it-res layer_9/width_131k/average_l0_121",
+    "google/gemma-scope-9b-it-res layer_20/width_131k/average_l0_81"
+  ],
+  "tasks": [
+    {
+      "task": "tasks/gemma_cat_001/task.json",
+      "expert_feature_id": 62610,
+      "suite": "data/eval/gemma_cat_62610.json",
+      "reference": "data/eval/gemma_cat_62610_reference.json"
+    },
+    {
+      "task": "tasks/gemma_french_005/task.json",
+      "expert_feature_id": 105738,
+      "suite": "data/eval/gemma_french_105738_v1.json",
+      "reference": "data/eval/gemma_french_105738_reference.json"
+    },
+    {
+      "task": "tasks/gemma_spanish_006/task.json",
+      "expert_feature_id": 94329,
+      "suite": "data/discovery/gemma_l9_round_002_validation.json",
+      "concept_id": "spanish_language",
+      "reference": "data/eval/gemma_spanish_94329_reference.json"
+    },
+    {
+      "task": "tasks/gemma_portuguese_007/task.json",
+      "expert_feature_id": 41424,
+      "suite": "data/discovery/gemma_l9_round_003_validation.json",
+      "concept_id": "portuguese_language",
+      "reference": "data/eval/gemma_portuguese_41424_reference.json"
+    },
+    {
+      "task": "tasks/gemma_german_008/task.json",
+      "expert_feature_id": 33987,
+      "suite": "data/discovery/gemma_l9_round_002_validation.json",
+      "concept_id": "german_language",
+      "reference": "data/eval/gemma_german_33987_reference.json"
+    },
+    {
+      "task": "tasks/gemma_earnings_reports_009/task.json",
+      "expert_feature_id": 131024,
+      "suite": "data/discovery/gemma_l9_round_005_validation.json",
+      "concept_id": "earnings_reports",
+      "reference": "data/eval/gemma_earnings_reports_131024_reference.json"
+    },
+    {
+      "task": "tasks/gemma_gardening_advice_010/task.json",
+      "expert_feature_id": 93406,
+      "suite": "data/discovery/gemma_l9_round_005_validation.json",
+      "concept_id": "gardening_advice",
+      "reference": "data/eval/gemma_gardening_advice_93406_reference.json"
+    },
+    {
+      "task": "tasks/gemma_tax_filing_language_011/task.json",
+      "expert_feature_id": 18713,
+      "suite": "data/discovery/gemma_l9_round_005_validation.json",
+      "concept_id": "tax_filing_language",
+      "reference": "data/eval/gemma_tax_filing_language_18713_reference.json"
+    },
+    {
+      "task": "tasks/gemma_job_postings_012/task.json",
+      "expert_feature_id": 91086,
+      "suite": "data/discovery/gemma_l9_round_005_validation.json",
+      "concept_id": "job_postings",
+      "reference": "data/eval/gemma_job_postings_91086_reference.json"
+    },
+    {
+      "task": "tasks/gemma_latin_language_013/task.json",
+      "expert_feature_id": 7659,
+      "suite": "data/discovery/gemma_l9_round_005_validation.json",
+      "concept_id": "latin_language",
+      "reference": "data/eval/gemma_latin_language_7659_reference.json"
+    },
+    {
+      "task": "tasks/gemma_portfolio_allocation_014/task.json",
+      "expert_feature_id": 77390,
+      "suite": "data/discovery/gemma_l9_round_005_validation.json",
+      "concept_id": "portfolio_allocation",
+      "reference": "data/eval/gemma_portfolio_allocation_77390_reference.json"
+    },
+    {
+      "task": "tasks/gemma_turkish_language_015/task.json",
+      "expert_feature_id": 99383,
+      "suite": "data/discovery/gemma_l9_round_005_validation.json",
+      "concept_id": "turkish_language",
+      "reference": "data/eval/gemma_turkish_language_99383_reference.json"
+    },
+    {
+      "task": "tasks/gemma_clinical_symptom_reports_016/task.json",
+      "expert_feature_id": 3927,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "clinical_symptom_reports",
+      "reference": "data/eval/gemma_clinical_symptom_reports_l20_3927_reference.json"
+    },
+    {
+      "task": "tasks/gemma_earnings_reports_017/task.json",
+      "expert_feature_id": 100747,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "earnings_reports",
+      "reference": "data/eval/gemma_earnings_reports_l20_100747_reference.json"
+    },
+    {
+      "task": "tasks/gemma_portfolio_allocation_018/task.json",
+      "expert_feature_id": 101617,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "portfolio_allocation",
+      "reference": "data/eval/gemma_portfolio_allocation_l20_101617_reference.json"
+    },
+    {
+      "task": "tasks/gemma_pharmaceutical_dosing_019/task.json",
+      "expert_feature_id": 104583,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "pharmaceutical_dosing",
+      "reference": "data/eval/gemma_pharmaceutical_dosing_l20_104583_reference.json"
+    },
+    {
+      "task": "tasks/gemma_tax_filing_language_020/task.json",
+      "expert_feature_id": 78694,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "tax_filing_language",
+      "reference": "data/eval/gemma_tax_filing_language_l20_78694_reference.json"
+    },
+    {
+      "task": "tasks/gemma_real_estate_listings_021/task.json",
+      "expert_feature_id": 27182,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "real_estate_listings",
+      "reference": "data/eval/gemma_real_estate_listings_l20_27182_reference.json"
+    },
+    {
+      "task": "tasks/gemma_weather_forecasts_022/task.json",
+      "expert_feature_id": 44494,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "weather_forecasts",
+      "reference": "data/eval/gemma_weather_forecasts_l20_44494_reference.json"
+    },
+    {
+      "task": "tasks/gemma_archaeological_excavation_023/task.json",
+      "expert_feature_id": 7256,
+      "suite": "data/discovery/gemma_l20_round_005_validation.json",
+      "concept_id": "archaeological_excavation",
+      "reference": "data/eval/gemma_archaeological_excavation_l20_7256_reference.json"
+    }
+  ]
+}

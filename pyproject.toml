@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sae-scientist"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "huggingface-hub>=0.30",
+  "accelerate>=0.26",
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "openai>=1.0",
+  "ray[default]>=2.40",
+  "safetensors>=0.4",
+  "torch>=2.5",
+  "transformers>=4.51",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+sae-scientist = "sae_scientist.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

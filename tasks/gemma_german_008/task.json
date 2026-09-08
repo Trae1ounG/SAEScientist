@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "task_id": "gemma_german_008",
+  "language": "en",
+  "difficulty": "medium",
+  "model": "google/gemma-2-9b-it",
+  "sae": {
+    "repo": "google/gemma-scope-9b-it-res",
+    "release": "layer_9/width_131k/average_l0_121",
+    "hook": "blocks.9.hook_resid_post",
+    "feature_count": 131072
+  },
+  "description": "A context-level feature for coherent German-language text across everyday, scientific, procedural, and narrative topics. Distinguish sustained grammatical German from English discussion of Germany or German grammar, isolated German words and loanwords, German names or cultural references in English, and nearby Dutch or Scandinavian text.",
+  "submission": {
+    "path": "submission.json",
+    "fields": {
+      "feature_id": "integer in [0, 131071]"
+    }
+  }
+}

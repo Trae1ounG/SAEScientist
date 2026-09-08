@@ -1,0 +1,26 @@
+{
+  "benchmark": "data/benchmark.json",
+  "model_path": "checkpoints/gemma-2-9b-it",
+  "sae_root": "checkpoints/gemma-scope-9b-it-res",
+  "agent": {
+    "harness": "codex",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "cli": "codex",
+    "timeout_minutes": 60
+  },
+  "judge": {
+    "provider": "azure-openai",
+    "model": "YOUR_4O_DEPLOYMENT",
+    "api_key_env": "AZURE_OPENAI_API_KEY",
+    "repeats": 2
+  },
+  "probe": {
+    "workers": 1,
+    "host": "127.0.0.1",
+    "port": 8765,
+    "start_timeout_seconds": 600
+  },
+  "replicates": 3,
+  "output_dir": "outputs/my-experiment"
+}
