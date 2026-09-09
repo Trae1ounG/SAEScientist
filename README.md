@@ -4,6 +4,8 @@
 
 ### Can AI Agents Conduct Autonomous SAE Interpretability Research?
 
+[![arXiv](https://img.shields.io/badge/arXiv-2609.09113-b31b1b.svg?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2609.09113)
+
 [Overview](#overview) · [Agent Index](#agent-index) · [Quick Start](#quick-start) · [Scoring](#scoring)
 
 </div>
