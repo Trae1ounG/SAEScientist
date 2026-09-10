@@ -5,8 +5,9 @@
 ### Can AI Agents Conduct Autonomous SAE Interpretability Research?
 
 [![arXiv](https://img.shields.io/badge/arXiv-2609.09113-b31b1b.svg?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2609.09113)
+[![Hugging Face Papers](https://img.shields.io/badge/Hugging%20Face-Papers-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/papers/2609.09113)
 
-[Overview](#overview) · [Agent Index](#agent-index) · [Quick Start](#quick-start) · [Scoring](#scoring)
+[Overview](#overview) · [Agent Index](#agent-index) · [Quick Start](#quick-start) · [Scoring](#scoring) · [Citation](#citation)
 
 </div>
 
@@ -143,3 +144,17 @@ Use the same configuration, task selection, and repeat count as the original run
 This command reads the saved measurements and updates `summary.json`.
 See [Evaluation](docs/evaluation.md) for the formulas, judge rubric, and individual
 task scoring.
+
+## Citation
+
+If you use SAEScientist-Bench in your research, please cite:
+
+```bibtex
+@article{tan2026saescientist,
+  title={{SAEScientist-Bench}: Can {AI} Agents Conduct Autonomous {SAE} Interpretability Research?},
+  author={Tan, Yuqiao and He, Shizhu and Zhao, Jun and Liu, Kang},
+  journal={arXiv preprint arXiv:2609.09113},
+  year={2026},
+  url={https://arxiv.org/abs/2609.09113}
+}
+```
